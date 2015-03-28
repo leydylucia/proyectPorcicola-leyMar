@@ -69,13 +69,50 @@
           </div>
         </div>
       </div>
+      
+      <!--REPORTE CON FILTRO-->
+      <!-- REPORTE CON FILTROS -->
+    <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="report" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportProv') ?>">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Proveedor</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filterProveedor" name="filter[proveedor]" placeholder="nombre del proveedor">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha Creaccion</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filterDate1" name="filter[fechaCreacion1]">
+                  <br>
+                  <input type="date" class="form-control" id="filterDate2" name="filter[fechaCreacion2]">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+<!--FIN REPORTE-->
 
       <div style="margin-bottom: 10px; margin-top: 30px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'insertProv') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
         <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filter') ?></button>
         <a href="#" class="btn btn-default btn-xs"><?php echo i18n::__('delete filter') ?></a>
+              <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport"><?php echo i18n::__('report') ?></button>
       </div>
 
 
