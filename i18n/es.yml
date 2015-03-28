@@ -120,6 +120,7 @@ dictionary:
     printOut:                  imprimir
     report:                    Reporte
     Error:                         Error
+    information:              Informacion
     
     
   errors:

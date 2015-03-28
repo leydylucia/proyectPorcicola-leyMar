@@ -20,16 +20,16 @@ class editDeptoActionClass extends controllerClass implements controllerActionIn
       if (request::getInstance()->hasRequest(deptoTableClass::ID)) {
         $fields = array(
             deptoTableClass::ID,
-            deptoTableClass::NOM_DEPTO,
-          
+            deptoTableClass::NOM_DEPTO          
         );
         $where = array(
             deptoTableClass::ID => request::getInstance()->getRequest(deptoTableClass::ID)
         );
         $this->objDepto = deptoTableClass::getAll($fields, true, null, null, null, null, $where);
-        $this->defineView('edit', 'depto', session::getInstance()->getFormatOutput());
+        $this->defineView('editDepto', 'depto', session::getInstance()->getFormatOutput());
+        session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('depto', 'indexDepto');
       }
 
     } catch (PDOException $exc) {

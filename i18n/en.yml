@@ -96,6 +96,7 @@ dictionary:
     start:                        Start
     confirm:                   confirm
     printOut:                 printOut  
+    information:              Information
     
     #menu#
     product:                   product

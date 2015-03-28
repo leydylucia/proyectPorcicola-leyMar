@@ -22,6 +22,7 @@
         <li><a href="http://localhost/proyecto/web/index.php/depto/"></?php echo i18n::__('departament') ?></a></li>-->
 <li><a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('provisioner') ?></a></li>
 <li><a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>"><?php echo i18n::__('city') ?></a></li>
+<li><a href="<?php echo routing::getInstance()->getUrlWeb('depto', 'indexDepto') ?>"><?php echo i18n::__('departament') ?></a></li>
       </ul>
     </li>
     

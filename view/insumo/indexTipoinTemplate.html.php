@@ -14,7 +14,7 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Tipo Insumos</h1>  
+        <h1><?php echo i18n::__('typeProd') ?></h1>  
     </div>
     
 </div>
@@ -53,19 +53,19 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+          <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
         </div>
 
         <div class="modal-body">
           <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>">
             <div class="form-group">
-              <label for="filtertipoInsumo" class="col-sm-2 control-label">Tipo Insumo</label>
+              <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('typeProd') ?></label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_insumo">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Fecha creacción</label>
+              <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
               <div class="col-sm-10">
                 <input type="datetime-local" class="form-control" id="filter[Date1]" name="filterDate1">
                 <br>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
           <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
         </div>
       </div>
@@ -121,10 +121,11 @@
 <!--fin de modal-->
     
 <?php view::includeHandlerMessage()?><!--esta linea es para traer mensajes de exito cunado registra-->
-
+<!--formulario de borrado masivo-->
  <div class="container">
             <div class="table-responsive">
 <form id="frmDeleteAll" id ="filterForm"action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteSelectTipoin') ?>" method="POST">
+
 
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
@@ -173,7 +174,7 @@
 
 
                 </table>  
-                </form>
+                </form><!-- fin formulario de borrado masivo-->
                 <div class="text-right">
      página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>')">
       <?php for($x=1; $x<= $cntPages; $x++):?> 

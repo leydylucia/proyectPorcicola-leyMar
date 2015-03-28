@@ -55,7 +55,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
             <div class="col-xs-9">
                 <select class="form-control" id="<?php proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE) ?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE); ?>">
-                    <option>Seleccione el tipo insumo</option>
+                    <option>Seleccione ciudad</option>
 <?php foreach ($objCiudad as $ciudad): ?>
                         <option value="<?php echo $ciudad->id ?>"><?php echo $ciudad->$nom_ciudad ?></option>
 <?php endforeach; ?>

@@ -15,8 +15,8 @@ $pdf = new FPDF('l', 'mm', 'letter');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(80);
-$pdf->Cell(20, 10, utf8_decode('PROVEEDOR'), 0, 1, 'C');
-$pdf->Image(routing::getInstance()->getUrlImg('pig.jpg'),50,8,30);
+$pdf->Cell(10, 50, utf8_decode('PROVEEDOR'), 100, 10, 'C');
+$pdf->Image(routing::getInstance()->getUrlImg('prueba.jpg'), 50, 8,200);/*200 ancho*/
 
 $pdf->Ln(50);
 

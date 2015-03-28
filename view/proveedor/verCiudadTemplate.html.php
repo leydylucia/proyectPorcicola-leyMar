@@ -1,12 +1,8 @@
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 
-
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
 <?php $nom_ciudad = ciudadTableClass::NOM_CIUDAD ?>
-<?php $nom_depto = ciudadTableClass::DEPTO_ID ?>
+<?php $depto_id = ciudadTableClass::DEPTO_ID ?>
 <?php $created_at = ciudadTableClass::CREATED_AT ?>
 
 <div class="container container-fluid">
@@ -41,7 +37,7 @@ use mvc\i18n\i18nClass as i18n ?>
           <tr>
             <th><?php echo i18n::__('name_dept') ?></th>
           <tr>
-            <td><?php echo $ciudad->$nom_depto ?></td>
+            <td><?php echo deptoTableClass::getNameDepto($ciudad->$depto_id) ?></td>
           <tr>
             <th><?php echo i18n::__('date_creation') ?></th>
           <tr>

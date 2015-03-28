@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
  */
 class createDeptoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -21,21 +21,20 @@ class createDeptoActionClass extends controllerClass implements controllerAction
 
         $nom_depto = request::getInstance()->getPost(deptoTableClass::getNameField(deptoTableClass::NOM_DEPTO, true));
         
+        
 
        if (strlen($nom_depto) > deptoTableClass::NOM_DEPTO_LENGTH) {
          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => deptoTableClass::NOM_DEPTO_LENGTH)), 00001);
         }
 
         $data = array(
-            deptoTableClass::NOM_DEPTO => $nom_depto
-  
+            deptoTableClass::NOM_DEPTO => $nom_depto,
         );
         deptoTableClass::insert($data);
-        
-        session::getInstance()->setSuccess('Registro Exitoso');
-        routing::getInstance()->redirect('depto', 'index');
+        session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mendaje exitoso*/
+        routing::getInstance()->redirect('depto', 'indexDepto');
       } else {
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('depto', 'indexDepto');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -1,23 +1,59 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu')?>
-<?php
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
 
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
 
 <?php $nomCiud = ciudadTableClass::NOM_CIUDAD ?>
 <?php $depto_id = ciudadTableClass::DEPTO_ID ?>
 <?php $id = ciudadTableClass::ID ?>
-<!--titulo-->
+
+
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1><?php echo i18n::__('city') ?></h1>  
+<h1>CIUDAD</h1>
     </div>
-
 </div>
-<!--fintitulo-->
+
+
+<!-- FILTROS De Reporte --> 
+<div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportCiudad') ?>">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Ciudad</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="filterCiudad" name="filter[ciudad]" placeholder="nombre de la ciudad">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fecha Creaccion</label>
+            <div class="col-sm-10">
+              <input type="datetime-local" class="form-control" id="filterDate1" name="filter[fechaCreacion1]">
+              <br>
+              <input type="datetime-local" class="form-control" id="filterDate2" name="filter[fechaCreacion2]">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary">Filtrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <!-- FILTROS --> 
 <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,7 +95,11 @@ use mvc\i18n\i18nClass as i18n ?>
   <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'insertCiudad') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
   <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
   <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filter') ?></button>
-  <a href="#" class="btn btn-default btn-xs"><?php echo i18n::__('delete filter') ?></a>    
+  <a href="#" class="btn btn-default btn-xs"><?php echo i18n::__('delete filter') ?></a> 
+  <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('report') ?></button>
+  <div class="text-right">
+        <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportCiudad') ?>" class="btn btn-info"><?php echo i18n::__('printOut') ?></a>
+        </div>
 </div>
 
 <!--eliminado individual con ajax-->
@@ -134,7 +174,7 @@ use mvc\i18n\i18nClass as i18n ?>
   </div>
 
   </div>
-  <a href="http://localhost/proyecto/web/index.php/proveedor"><?php echo i18n::__('return') ?> </a>
+  <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/proveedor"><?php echo i18n::__('return') ?> </a>
 
   <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'deleteCiudad') ?>" method="POST">
     <input type="hidden" id="idDelete" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::ID, true) ?>">

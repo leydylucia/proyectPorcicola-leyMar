@@ -8,17 +8,23 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-/**
- * Description of ejemploClass
- *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+/*
+ * DESCRIPCION DE LA CLASE
+ * @autor Alexandra Marcela Florez
  */
-class insertDeptoActionClass extends controllerClass implements controllerActionInterface {
+
+class reportDeptoActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-    
-      $this->defineView('insert', 'depto', session::getInstance()->getFormatOutput());
+
+      $fields = array(
+          deptoTableClass::ID,
+          deptoTableClass::NOM_DEPTO,
+          deptoTableClass::CREATED_AT
+      );
+      $this->objDepto = deptoTableClass::getAll($fields, FALSE);
+      $this->defineView('indexDepto', 'depto', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

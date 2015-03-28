@@ -28,9 +28,9 @@ class deleteSelectDeptoActionClass extends controllerClass implements controller
           deptoTableClass::delete($ids, true);
         }
         
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('depto', 'indexDepto');
       } else {
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('depto', 'indexDepto');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

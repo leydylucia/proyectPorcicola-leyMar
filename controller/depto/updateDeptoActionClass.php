@@ -21,20 +21,19 @@ class updateDeptoActionClass extends controllerClass implements controllerAction
 
         $id = request::getInstance()->getPost(deptoTableClass::getNameField(deptoTableClass::ID, true));
         $nomDepto = request::getInstance()->getPost(deptoTableClass::getNameField(deptoTableClass::NOM_DEPTO, true));
-       
+
         $ids = array(
             deptoTableClass::ID => $id
         );
 
         $data = array(
-            deptoTableClass::NOM_DEPTO => $nomDepto,
-           
+            deptoTableClass::NOM_DEPTO => $nomDepto
         );
 
         deptoTableClass::update($ids, $data);
       }
 
-      routing::getInstance()->redirect('depto', 'index');
+      routing::getInstance()->redirect('depto', 'indexDepto');
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

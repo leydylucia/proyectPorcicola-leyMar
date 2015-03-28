@@ -15,63 +15,70 @@ use mvc\i18n\i18nClass as i18n;
  */
 class indexCiudadActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
+    public function execute() {
+        try {
 
-      /* filtros */
-      $where = null;
-      if (request::getInstance()->hasPost('filter')) {
-        $filter = request::getInstance()->getPost('filter');
+            /* filtros */
+            $where = null;
+            if (request::getInstance()->hasPost('filter')) {
+                $filter = request::getInstance()->getPost('filter');
 
-        // aqui validar datos de filtros
+                // aqui validar datos de filtros
 
-        if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
-          $where[ciudadTableClass::NOM_CIUDAD] = $filter['ciudad'];
+                if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
+                    $where[ciudadTableClass::NOM_CIUDAD] = $filter['ciudad'];
+                }
+                if (isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '' and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
+                    $where[proveedorTableClass::CREATED_AT] = array(
+                        date(config::getFormatTimestamp(), strtotime($filter['Date1'] . ' 00:00:00')),
+                        date(config::getFormatTimestamp(), strtotime($filter['Date2'] . ' 23:59:59'))
+                    );
+                }
+                /* para mantener filtro con paginado */
+                session::getInstance()->setAttribute('defaultIndexFilters', $where);
+            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+                $where = session::getInstance()->getAttribute('defaultIndexFilters');
+            }
+
+
+            $fields = array(
+                ciudadTableClass::ID,
+                ciudadTableClass::NOM_CIUDAD,
+                ciudadTableClass::DEPTO_ID
+                    //ciudadTableClass::CREATED_AT
+            );
+            $orderBy = array(
+                ciudadTableClass::NOM_CIUDAD
+            );
+
+            $page = 0;
+            if (request::getInstance()->hasGet('page')) {
+                $this->page = request::getInstance()->getGet('page');
+                $page = request::getInstance()->getGet('page') - 1;
+                $page = $page * config::getRowGrid();
+            }
+            /* para mantener filtro con paginado,@var $where=>filtro */
+            $this->cntPages = ciudadTableClass::getTotalPages(config::getRowGrid(), $where);
+            //$page = request::getInstance()->getGet('page');
+
+
+            /** @var $where => para filtros
+             * *@var $page => para el paginado
+             * *@var $fileds => para declarar los cmpos de la table en la bd
+             * @var $orderBy => ordernar por el campo deseado
+             *  true=> es el borrado logico si lo tienes en la bd pones true sino false
+             * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
+             * config::getRowGrid()=> va con el paginado y hace una funcion
+             * @var $this->objInsumo para enviar los datos a la vista      */
+            $this->objCiudad = ciudadTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+            $this->defineView('indexCiudad', 'proveedor', session::getInstance()->getFormatOutput());
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+            echo '<br>';
+            echo '<pre>';
+            print_r($exc->getTrace());
+            echo '</pre>';
         }
-        if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
-          $where[proveedorTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
-              date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
-          );
-        }
-        /* para mantener filtro con paginado */
-        session::getInstance()->setAttribute('defaultIndexFilters', $where);
-      } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-        $where = session::getInstance()->getAttribute('defaultIndexFilters');
-      }
-
-
-      $fields = array(
-          ciudadTableClass::ID,
-          ciudadTableClass::NOM_CIUDAD,
-          ciudadTableClass::DEPTO_ID
-              //ciudadTableClass::CREATED_AT
-      );
-      $orderBy = array(
-          ciudadTableClass::NOM_CIUDAD
-      );
-
-$page = 0;
-      if (request::getInstance()->hasGet('page')) {
-        $this->page = request::getInstance()->getGet('page');
-        $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * config::getRowGrid();
-      }
-      /*para mantener filtro con paginado,@var $where=>filtro*/
-      $this->cntPages = ciudadTableClass::getTotalPages(config::getRowGrid(),$where);
-      //$page = request::getInstance()->getGet('page');
-
-      
-      
-      $this->objCiudad = ciudadTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(),$page,$where);
-      $this->defineView('indexCiudad', 'proveedor', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
     }
-  }
 
 }

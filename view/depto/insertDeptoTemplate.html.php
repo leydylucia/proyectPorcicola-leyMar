@@ -4,4 +4,3 @@
 <h1>NUEVO DEPARTAMENTO</h1>
 <?php view::includePartial('depto/formDepto') ?>
 
-

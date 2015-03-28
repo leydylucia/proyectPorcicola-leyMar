@@ -168,6 +168,25 @@ depto_deleteSelect:
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
     
+depto_ver:
+  url:    /depto/ver
+  param:  { module: depto, action: verDepto, format: html }
+  load:
+    - model/base/deptoBaseTableClass.php
+    - model/deptoTableClass.php
+    
+depto_reporte:
+  url:    /depto/reporte
+  param:  { module: depto, action: reportDepto, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/deptoBaseTableClass.php
+    - model/deptoTableClass.php
+   
+depto_traduccion:
+  url:  traduccion4
+  param:  { module: depto, action: traductorDepto, format: html }
+    
     ##--------------------------ciudad----------------------------##
 ciudad_index:
   url:    /ciudad/index
@@ -241,6 +260,16 @@ ciudad_deleteSelect:
   url:    /ciudad/eliminarSeleccion
   param:  { module: proveedor, action: deleteSelectCiudad, format: html }
   load:
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/deptoBaseTableClass.php
+    - model/deptoTableClass.php
+    
+ciudad_reporte:
+  url:    /ciudad/reporte
+  param:  { module: proveedor, action: reportCiudad, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
     - model/base/deptoBaseTableClass.php

@@ -1,3 +1,4 @@
+
 <?php
 
 use mvc\interfaces\controllerActionInterface;
@@ -32,8 +33,9 @@ class deleteDeptoActionClass extends controllerClass implements controllerAction
             
         );
         $this->defineView('deleteDepto', 'depto',session::getInstance()->getFormatOutput());
+        session::getInstance()->setSuccess('Eliminado con Exitoso');
       } else {
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('depto', 'indexDepto');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();
