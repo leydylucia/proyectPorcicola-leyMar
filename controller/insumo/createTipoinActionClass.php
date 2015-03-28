@@ -25,7 +25,12 @@ class createTipoinActionClass extends controllerClass implements controllerActio
 
                 $desc_tipoIn = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true));
 
-
+//validaciones
+                 //caracteres especiales
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_tipoIn) == false) {
+                    throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
+                }
+                
                 if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {
                     throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => tipoInsumoTableClass::DESC_TIPOIN_LENGTH)), 00001);
                 }

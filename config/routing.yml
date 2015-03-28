@@ -700,7 +700,7 @@ insumo_ver:
   
     
 insumo_deleteFilters:
-  url:    /borrar_filtros
+  url:    /borrar_filtros_insumo
   param:  { module: insumo, action: deleteFilters, format: html }
   
 insumo_traduccion:

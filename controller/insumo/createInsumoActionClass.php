@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
@@ -15,14 +16,14 @@ use mvc\i18n\i18nClass as i18n;
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class createInsumoActionClass extends controllerClass implements controllerActionInterface {
-    /*public function execute inicializa las variables 
+    /* public function execute inicializa las variables 
      * @var $desc_insumo=> descripcion insumo
      * @var $precio=> precio
      * @var $tipoInsumo=> id tipo insumo
      * @var $fechaFabricacion=> fecha fabricacion
      * @var $fechaVencimiento=> fecha vencimiento
      * @var $proveedorId =>id del proveedor
-     * ***/
+     * ** */
 
     public function execute() {
         try {
@@ -35,14 +36,25 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
-
-
-
-
+//if(!is_numeric($precio)){
+//    throw new PDOException(i18n::__(10001, null, 'errors')) ;
+//}
+                //validaciones
+                //caracteres especiales
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == false) {
+                    throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
+                }
+                //
                 if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
                     throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => insumoTableClass::DESC_INSUMO_LENGTH)), 00001);
                 }
-/** @var $data recorre el campo  o campos seleccionados de la tabla deseada**/
+                //numericos
+                if (!is_numeric($precio)) {
+                    throw new PDOException(i18n::__(10001, null, 'errors'));
+                }
+                
+                
+                /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     insumoTableClass::DESC_INSUMO => $desc_insumo,
                     insumoTableClass::PRECIO => $precio,
@@ -54,19 +66,19 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 insumoTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-               // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
+                // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('insumo', 'indexInsumo');
             } else {
                 routing::getInstance()->redirect('insumo', 'indexInsumo');
             }
         } catch (PDOException $exc) {
-             echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
-//            session::getInstance()->setFlash('exc', $exc);
-//            routing::getInstance()->forward('shfSecurity', 'exception');
+//             echo $exc->getMessage();
+//            echo '<br>';
+//            echo '<pre>';
+//            print_r($exc->getTrace());
+//            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

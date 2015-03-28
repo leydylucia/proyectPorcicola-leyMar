@@ -28,6 +28,16 @@ class editCiudadActionClass extends controllerClass implements controllerActionI
             ciudadTableClass::ID => request::getInstance()->getRequest(ciudadTableClass::ID)
         );
         $this->objCiudad = ciudadTableClass::getAll($fields, true, null, null, null, null, $where);
+        //editar foraneas
+         $fields = array(
+            deptoTableClass::ID,
+            deptoTableClass::NOM_DEPTO
+            );
+            $orderBy = array(
+           deptoTableClass::NOM_DEPTO
+            );
+            $this->objDepto = deptoTableClass::getAll($fields, true , $orderBy,'ASC');
+        //fin
         $this->defineView('editCiudad', 'proveedor', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {

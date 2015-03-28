@@ -4,4 +4,4 @@
 <!--@var $depto para definir que campo voy a modificar-->
 <?php $ciudad = ciudadTableClass::NOM_CIUDAD ?>
 <h1>EDITAR CIUDAD <?php echo $objCiudad[0]->$ciudad ?></h1>
-<?php view::includePartial('proveedor/formCiudad', array('objCiudad' => $objCiudad, 'nom_ciudad' => $ciudad)) ?>
+<?php view::includePartial('proveedor/formCiudad', array('objCiudad' => $objCiudad, 'nom_ciudad' => $ciudad,'objDepto' => $objDepto)) ?>

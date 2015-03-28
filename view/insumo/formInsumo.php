@@ -39,7 +39,7 @@ use mvc\i18n\i18nClass as i18n ?>
         <div class="form-group">
             <label for="precio" class="control-label col-xs-3"><?php echo i18n::__('prise') ?>:</label>
 
-            <div class="col-xs-9"><input id="precio" class="form-control" value="<?php echo ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?>" type="text" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">    </div>
+            <div class="col-xs-9"><input id="precio" class="form-control" value="<?php echo ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?>" type="number" required="" title="Este campo es obligatorio" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">    </div>
 
         </div>
 

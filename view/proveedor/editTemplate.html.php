@@ -7,4 +7,4 @@
 <?php $proveedor = proveedorTableClass::NOMBRE ?>
 <h1>EDITAR PROVEEDOR   <?php echo $objProveedor[0]->$proveedor ?></h1>
 
-<?php view::includePartial('proveedor/formProveedor', array('objProveedor' => $objProveedor, 'nombre' => $proveedor)) ?>
+<?php view::includePartial('proveedor/formProveedor', array('objProveedor' => $objProveedor, 'nombre' => $proveedor,'objCiudad' => $objCiudad)) ?>

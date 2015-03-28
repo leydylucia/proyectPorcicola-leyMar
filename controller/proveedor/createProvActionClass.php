@@ -27,7 +27,23 @@ class createProvActionClass extends controllerClass implements controllerActionI
         $telefono = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true));
         $ciudad_id = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true));
         
-        
+        //validaciones
+                //caracteres especiales
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $nombre) == false) {
+                    throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
+                } 
+                
+                 //validaciones
+                //caracteres especiales
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $apellido) == false) {
+                    throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
+                }
+                
+                //numericos
+                if (!is_numeric($telefono)) {
+                    throw new PDOException(i18n::__(10001, null, 'errors'));
+                }
+                
 
        if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBRE_LENGTH)), 00001);

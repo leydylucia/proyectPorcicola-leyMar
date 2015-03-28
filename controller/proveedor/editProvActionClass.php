@@ -32,6 +32,16 @@ class editProvActionClass extends controllerClass implements controllerActionInt
             proveedorTableClass::ID => request::getInstance()->getRequest(proveedorTableClass::ID)
         );
         $this->objProveedor = proveedorTableClass::getAll($fields, true, null, null, null, null, $where);
+        // para editar foraneas
+         $fields = array(
+            ciudadTableClass::ID,
+            ciudadTableClass::NOM_CIUDAD
+            );
+            $orderBy = array(
+           ciudadTableClass::NOM_CIUDAD
+            );
+            $this->objCiudad = ciudadTableClass::getAll($fields, true , $orderBy,'ASC');
+            //fin
         $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {
