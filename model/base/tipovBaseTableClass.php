@@ -18,7 +18,7 @@ class tipovBaseTableClass extends tableBaseClass {
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  const DESC_TIPOV = 'desc_tipoV';
+  const DESC_TIPOV = 'desc_tipov';
   const DESC_TIPOV_LENGTH = 80;
   
   function getId() {
