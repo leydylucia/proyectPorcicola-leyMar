@@ -1,6 +1,6 @@
 <!--@var $objInsumo
 @var $descInsumo,$precio,$tipoInsumo,$fechaFabricacion,$fechaVencimiento,$proveedorId-->
-<?php mvc\view\viewClass::includePartial('insumo/menu') ?>
+
 <?php
 
 use mvc\routing\routingClass as routing ?>
