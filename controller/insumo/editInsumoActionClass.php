@@ -1,0 +1,77 @@
+<?php
+
+use mvc\interfaces\controllerActionInterface;
+use mvc\controller\controllerClass;
+use mvc\config\configClass as config;
+use mvc\request\requestClass as request;
+use mvc\routing\routingClass as routing;
+use mvc\session\sessionClass as session;
+use mvc\i18n\i18nClass as i18n;
+//use hook\log\logHookClass as log;/*linea de la bitacora*/
+
+
+/**
+ * Description of ejemploClass
+ *
+ * @author leydy lucia castillo moaquera
+ */
+class editInsumoActionClass extends controllerClass implements controllerActionInterface {
+
+  public function execute() {
+    try {
+      if (request::getInstance()->hasRequest(insumoTableClass::ID)) {
+        $fields = array(
+        insumoTableClass::ID,
+        insumoTableClass::DESC_INSUMO,
+        insumoTableClass::PRECIO,
+        insumoTableClass::TIPO_INSUMO_ID,
+        insumoTableClass::FECHA_FABRICACION,
+        insumoTableClass::FECHA_VENCIMIENTO,
+        insumoTableClass::PROVEEDOR_ID
+          
+        );
+        $where = array(
+        insumoTableClass::ID => request::getInstance()->getRequest(insumoTableClass::ID)
+        );
+        $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, null, $where);
+        //estos campo son para llamar las foraneas
+         $fields = array(
+            tipoInsumoTableClass::ID,
+            tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $orderBy = array(
+            tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $this->objTipoin = tipoinsumoTableClass::getAll($fields, true , $orderBy,'ASC');
+            
+            $fieldsProveedor = array(
+            proveedorTableClass::ID,
+           proveedorTableClass::NOMBRE
+            );
+            $orderByProvedor = array(
+            proveedorTableClass::NOMBRE
+            );
+            $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor,'ASC');
+         
+        $this->defineView('edit', 'insumo', session::getInstance()->getFormatOutput());/*en caso de no funcionar addicionar en edit editInsumo*/
+        session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
+       
+       // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
+        
+        
+      } else {
+        routing::getInstance()->redirect('insumo', 'indexInsumo');
+      }
+
+    } catch (PDOException $exc) {
+      echo $exc->getMessage();
+      echo '<br>';
+      echo '<pre>';
+      print_r($exc->getTrace());
+      echo '</pre>';
+//        session::getInstance()->setFlash('exc', $exc);
+//      routing::getInstance()->forward('shfSecurity', 'exception');
+    }
+  }
+
+}

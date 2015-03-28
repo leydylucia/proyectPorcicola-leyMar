@@ -1,0 +1,57 @@
+shfSecurity:
+  index:
+    security: false
+  login:
+    security: false
+  logout:
+    security: true
+  noPermission:
+    security: false
+  exception:
+    security: false
+
+default:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+  insert:
+    security: true
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true
+    
+insumo:
+  indexInsumo:
+    security: true
+#    credentials:
+#      -admin
+  insertInsumo:
+    security: true
+  createInsumo:
+    security: true 
+  editInsumo:
+    security: true 
+  updateInsumo:
+    security: true
+  deleteInsumo:
+    security: true 
+  deleteSelectInsumo:
+    security: true
+  verInsumo:
+    security: true
+  reportInsumo:
+    security: true    
+    
+   
