@@ -47,7 +47,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
         <div class="form-group"> 
             <label for="telefono" class="control-label col-xs-3"><?php echo i18n::__('telephone') ?>:</label>
-            <div class="col-xs-9"><input id="telefono" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$telefono : '') ?>" type="number" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>"> </div>
+            <div class="col-xs-9"><input id="telefono" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$telefono : '') ?>" type="number"min="0" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>"> </div>
         </div>
 
         <div class="form-group">
@@ -75,7 +75,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
         <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objProveedor)) ? 'update' : 'register')) ?>">
 
-        <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/proveedor"><?php echo i18n::__('return') ?> </a>
+        <a href="http://www.porcicolatapasco.com/index.php/proveedor"><?php echo i18n::__('return') ?> </a>
     </form>
 </div>
 

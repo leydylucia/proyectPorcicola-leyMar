@@ -27,7 +27,7 @@ class createTipoinActionClass extends controllerClass implements controllerActio
 
 //validaciones
                  //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_tipoIn) == false) {
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_tipoIn) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
                 }
                  //caracteres especiales

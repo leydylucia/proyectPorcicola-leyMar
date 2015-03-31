@@ -22,8 +22,8 @@ class createCiudadActionClass extends controllerClass implements controllerActio
                 $nom_ciudad = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true));
                 $depto_id = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true));
                 //validaciones
-                //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $nom_ciudad) == false) {
+               // caracteres especiales
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $nom_ciudad) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
                 }
                 if (strlen($nom_ciudad) > ciudadTableClass::NOM_CIUDAD_LENGTH) {

@@ -35,10 +35,12 @@ default:
 insumo:
   indexInsumo:
     security: true
-#    credentials:
-#      -admin
+    credentials:
+      - [admin]
   insertInsumo:
     security: true
+    credentials:
+      - [admin]
   createInsumo:
     security: true 
   editInsumo:
@@ -53,5 +55,6 @@ insumo:
     security: true
   reportInsumo:
     security: true    
-    
+    credentials:
+      - [admin]    
    

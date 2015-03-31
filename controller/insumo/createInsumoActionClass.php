@@ -41,18 +41,18 @@ class createInsumoActionClass extends controllerClass implements controllerActio
 //}
                 //validaciones
                 //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == false) {
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
                 }
                 //
                 if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
                     throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => insumoTableClass::DESC_INSUMO_LENGTH)), 00001);
                 }
-                //numericos
-                if (!is_numeric($precio)) {
-                    throw new PDOException(i18n::__(10001, null, 'errors'));
-                }
-                
+//                //numericos
+//                if (!is_numeric($precio)) {
+//                    throw new PDOException(i18n::__(10001, null, 'errors'));
+//                }
+//                
                 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(

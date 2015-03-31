@@ -29,20 +29,20 @@ class createProvActionClass extends controllerClass implements controllerActionI
         
         //validaciones
                 //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $nombre) == false) {
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $nombre) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
                 } 
                 
                  //validaciones
                 //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $apellido) == false) {
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $apellido) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
                 }
                 
                 //numericos
-                if (!is_numeric($telefono)) {
-                    throw new PDOException(i18n::__(10001, null, 'errors'));
-                }
+//                if (!is_numeric($telefono)) {
+//                    throw new PDOException(i18n::__(10001, null, 'errors'));
+//                }
                 
 
        if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {

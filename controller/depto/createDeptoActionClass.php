@@ -23,7 +23,7 @@ class createDeptoActionClass extends controllerClass implements controllerAction
 
 
                 //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $nom_depto) == false) {
+                if (ereg("^{a-zA-Z0-9}{3,20}$", $nom_depto) == true) {
                     throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
                 }
                 

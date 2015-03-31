@@ -44,7 +44,7 @@
  
  <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objCiudad)) ? 'update' : 'register')) ?>">
  
- <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/ciudad"><?php echo i18n::__('return') ?> </a>
+ <a href="http://www.porcicolatapasco.com/web/index.php/ciudad"><?php echo i18n::__('return') ?> </a>
  
 
 
