@@ -73,15 +73,12 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
              *  true=> es el borrado logico si lo tienes en la bd pones true sino false
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
-             * @var $this->objtipoIn para enviar los datos a la vista      */
-            $this->objTipoIn = tipoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+             * @var $this->objTipoin para enviar los datos a la vista      */
+            $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
             $this->defineView('indexTipoin', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

@@ -8,12 +8,12 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-/**
- * Description of ejemploClass
- *
-  @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+/*
+ * DESCRIPCION DE LA CLASE
+ * @autor Alexandra Marcela Florez
  */
-class indexTipovActionClass extends controllerClass implements controllerActionInterface {
+
+class reportTipovActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
@@ -52,25 +52,23 @@ class indexTipovActionClass extends controllerClass implements controllerActionI
                 tipovTableClass::DESC_TIPOV
             );
 
-            $page = 0;
-            if (request::getInstance()->hasGet('page')) {
-                $this->page = request::getInstance()->getGet('page');
-                $page = request::getInstance()->getGet('page') - 1;
-                $page = $page * config::getRowGrid();
-            }
-            $this->cntPages = tipovTableClass::getTotalPages(config::getRowGrid(), $where);
-          //  $page = request::getInstance()->getGet('page');
 
 
-            $this->objTipoV = tipovTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+            /** @var $where => para filtros
+             * *@var $page => para el paginado
+             * *@var $fileds => para declarar los cmpos de la table en la bd
+             * @var $orderBy => ordernar por el campo deseado
+             *  true=> es el borrado logico si lo tienes en la bd pones true sino false
+             * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
+             * config::getRowGrid()=> va con el paginado y hace una funcion
+             * @var $this-v>objTipoin para enviar los datos a la vista      */
+            $this->objTipoV = tipovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
             $this->defineView('indexTipov', 'tipoVenta', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
+
     }
 
 }

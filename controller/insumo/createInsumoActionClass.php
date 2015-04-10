@@ -29,7 +29,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
         try {
             if (request::getInstance()->isMethod('POST')) {
 
-                $desc_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
+                $desc_insumo = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true)));
                 $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
                 $tipoInsumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true));
                 $fechaFabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true));
@@ -41,19 +41,16 @@ class createInsumoActionClass extends controllerClass implements controllerActio
 //}
                 //validaciones
                 //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == true) {
-                    throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
-                }
-                //
-                if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
-                    throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => insumoTableClass::DESC_INSUMO_LENGTH)), 00001);
-                }
-//                //numericos
-//                if (!is_numeric($precio)) {
-//                    throw new PDOException(i18n::__(10001, null, 'errors'));
+//                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == true) {
+//                    throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
 //                }
-//                
-                
+                //           insumoTableClass::Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
+                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
+//                if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
+//                    throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => insumoTableClass::DESC_INSUMO_LENGTH)), 00001);
+//                }
+
+
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     insumoTableClass::DESC_INSUMO => $desc_insumo,
@@ -61,7 +58,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                     insumoTableClass::TIPO_INSUMO_ID => $tipoInsumo,
                     insumoTableClass::FECHA_FABRICACION => $fechaFabricacion,
                     insumoTableClass::FECHA_VENCIMIENTO => $fechaVencimiento,
-                    insumoTableClass::PROVEEDOR_ID => $proveedorId
+                    insumoTableClass::PROVEEDOR_ID => $proveedorId,
                 );
                 insumoTableClass::insert($data);
 
@@ -72,13 +69,58 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 routing::getInstance()->redirect('insumo', 'indexInsumo');
             }
         } catch (PDOException $exc) {
-//             echo $exc->getMessage();
-//            echo '<br>';
-//            echo '<pre>';
-//            print_r($exc->getTrace());
-//            echo '</pre>';
+
+            routing::getInstance()->redirect('insumo','insertInsumo');
             session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+            //routing::getInstance()->forward('shfSecurity', 'exception');    
+        }
+    }
+
+    static public function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
+        $flag = false;
+        if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO_LENGTH)));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
+        }
+
+        if (!is_numeric($precio)) {//validacion de numeros
+            session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
+        }
+
+        if ($desc_insumo === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
+        }
+        
+        if ($precio === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
+        }
+        if ($fechaFabricacion  === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true), true);
+        }
+        if ($fechaVencimiento  === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true), true);
+        }
+
+//        if (!ereg("^[A-Za_z_]*$", $desc_insumo)) {//validacion de solo texto
+//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO)));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
+//        }
+
+        if ($flag === true) {
+            request::getInstance()->setMethod('GET');
+            routing::getInstance()->forward('insumo', 'insertInsumo');
         }
     }
 

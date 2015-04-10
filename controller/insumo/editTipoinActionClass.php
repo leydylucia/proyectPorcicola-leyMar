@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
-class editTipoinActionClass extends controllerClass implements controllerActionInterface {
+class editTipoInActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -26,7 +26,7 @@ class editTipoinActionClass extends controllerClass implements controllerActionI
         $where = array(
         tipoInsumoTableClass::ID => request::getInstance()->getRequest(tipoInsumoTableClass::ID)
         );
-        $this->objTipoIn = tipoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
+        $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipoin', 'insumo', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
         
@@ -35,11 +35,8 @@ class editTipoinActionClass extends controllerClass implements controllerActionI
       }
 
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

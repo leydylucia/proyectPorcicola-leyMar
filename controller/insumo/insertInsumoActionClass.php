@@ -19,35 +19,34 @@ class insertInsumoActionClass extends controllerClass implements controllerActio
     public function execute() {
         try {
 
-            if(session::getInstance()->hasAttribute('form_' . insumoTableClass::getNameTable())){
+            if (session::getInstance()->hasAttribute('form_' . insumoTableClass::getNameTable())) {
                 $this->insumo = session::getInstance()->getAttribute('form_' . insumoTableClass::getNameTable());
-                
             }
-            /* fields para foraneas*/
+            /* fields para foraneas */
             $fields = array(
-            tipoInsumoTableClass::ID,
-            tipoInsumoTableClass::DESC_TIPOIN
+                tipoInsumoTableClass::ID,
+                tipoInsumoTableClass::DESC_TIPOIN
             );
             $orderBy = array(
-            tipoInsumoTableClass::DESC_TIPOIN
+                tipoInsumoTableClass::DESC_TIPOIN
             );
-            $this->objTipoin = tipoinsumoTableClass::getAll($fields, true , $orderBy,'ASC');
-            
+            $this->objTipoin = tipoinsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
             $fieldsProveedor = array(
-            proveedorTableClass::ID,
-           proveedorTableClass::NOMBRE
+                proveedorTableClass::ID,
+                proveedorTableClass::NOMBRE
             );
             $orderByProvedor = array(
-            proveedorTableClass::NOMBRE
+                proveedorTableClass::NOMBRE
             );
-            $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor,'ASC');
-         
+            $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor, 'ASC');
+
 
 
             $this->defineView('insert', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

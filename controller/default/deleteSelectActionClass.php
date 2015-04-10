@@ -11,31 +11,49 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia <ingeniero.leydylucia@hotmail.com>
  */
 class deleteSelectActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    try {
-      if (request::getInstance()->isMethod('POST')) {
-        
-        $idsToDelete = request::getInstance()->getPost('chk');
-        
-        foreach ($idsToDelete as $id) {
-          $ids = array(
-            usuarioTableClass::ID => $id
-          );
-          usuarioTableClass::delete($ids, true);
+        try {/* se grago el and resquest etc.. */
+            if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
+
+
+
+                $idsToDelete = request::getInstance()->getPost('chk');
+
+
+                foreach ($idsToDelete as $id) {
+                    $ids = array(
+                        usuarioTableClass::ID => $id
+                    );
+                    usuarioTableClass::delete($ids, true);
+                }
+                /* session para  mensaje */
+                session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
+//        session::getInstance()->setSucces();
+
+
+                routing::getInstance()->redirect('default', 'index');
+            } else {
+                routing::getInstance()->redirect('default', 'index');
+            }
+        } catch (PDOException $exc) {
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
+
+//validacion de eilimiacion por foranea
+//            switch ($exc->getCode()) {
+//                case 23503:
+//                    session::getInstance()->setError(i18n::__('errorDeleteForeign'));
+//                    routing::getInstance()->redirect('insumo', 'indexInsumo');
+//                    break;
+//
+//                case 00000;
+//                    break;
+  //          }
         }
-        
-        routing::getInstance()->redirect('default', 'index');
-      } else {
-        routing::getInstance()->redirect('default', 'index');
-      }
-    } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
     }
-  }
 
 }

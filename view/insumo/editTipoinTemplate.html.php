@@ -7,10 +7,10 @@
 <div class="container container-fluid">
     <div class="page-header titulo">
         <h1>Editar Tipo Insumo</h1>  
-        <?php echo $objTipoIn[0]->$desc_tipoIn ?>
+        <?php echo $objTipoin[0]->$desc_tipoIn ?>
     </div>
     
 </div>
 <!--fintitulo-->
 
-<?php view::includePartial('insumo/formTipoIn', array('objTipoIn' => $objTipoIn, 'desc_tipoIn' => $desc_tipoIn)) ?>
+<?php view::includePartial('insumo/formTipoIn', array('objTipoin' => $objTipoin, 'desc_tipoIn' => $desc_tipoIn)) ?>

@@ -4,6 +4,7 @@ dictionary:
   default:
     user:                         Usuario
     pass:                         contraseña
+    pass2:                        Verifique la contraseña
     register:                     Registro
     update:                       actualizacion
     #usuario credencial#
@@ -121,13 +122,25 @@ dictionary:
     report:                    Reporte
     Error:                         Error
     information:              Informacion
+    Date:                     fecha
+    #sacrificio#
+    sacrifice:                sacrificio
+    type sale:                tipo venta
     
+    ##errores##
+    errorLength:        este campo excede la longitud
+    errorNumeric:           este campo solo es numerico
+    errorNull:              este campo no puede estar vacio
+    errorText:               tan solo ingresar texto
+    errorDeleteForeign:      este campo no puede ser eliminado por que esta siendo usado en otro formulario
     
   errors:
     00001:                     El módulo y la acción solicitada, no existe.
     00002:                     La dirección que solicita no está registrada.
     00003:                     Los datos de usuario y contrseña son inválidos.
-    
+    00004:                     El usuario %user% excede los %caracteres% caracteres maximos permitidos.
+    00005:                     Las contraseñas son diferentes.
+    00006:                     El insumo %insumo% excede los %caracteres% caracteres maximos permitidos.
     10001:                     Hay campos que deben ser numericos
     10002:                     tan solo se permiten letras en este campo
 #    00001:  Lo que buscas no existe

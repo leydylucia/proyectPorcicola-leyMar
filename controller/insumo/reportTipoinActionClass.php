@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  * @autor Alexandra Marcela Florez
  */
 
-class reportTipoinActionClass extends controllerClass implements controllerActionInterface {
+class reportTipoInActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
@@ -62,32 +62,14 @@ class reportTipoinActionClass extends controllerClass implements controllerActio
              *  true=> es el borrado logico si lo tienes en la bd pones true sino false
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
-             * @var $this->objtipoIn para enviar los datos a la vista      */
-            $this->objTipoIn = tipoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+             * @var $this->objTipoin para enviar los datos a la vista      */
+            $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
             $this->defineView('indexTipoin', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
-//    try {
-//
-//      $fields = array(
-//      tipoInsumoTableClass::ID,
-//      tipoInsumoTableClass::DESC_TIPOIN
-//          
-//      );
-//      $this->objTipoIn = tipoInsumoTableClass::getAll($fields, FALSE);
-//      $this->defineView('indexTipoin', 'insumo', session::getInstance()->getFormatOutput());
-//    } catch (PDOException $exc) {
-//      echo $exc->getMessage();
-//      echo '<br>';
-//      echo '<pre>';
-//      print_r($exc->getTrace());
-//      echo '</pre>';
-//    }
+
     }
 
 }

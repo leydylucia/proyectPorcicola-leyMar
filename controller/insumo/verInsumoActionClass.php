@@ -29,16 +29,13 @@ class verInsumoActionClass extends controllerClass implements controllerActionIn
                 insumoTableClass::CREATED_AT
             );
             $where = array(
-            insumoTableClass::ID => request::getInstance()->getRequest(insumoTableClass::ID)
+                insumoTableClass::ID => request::getInstance()->getRequest(insumoTableClass::ID)
             );
             $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, nULL, $where);
             $this->defineView('ver', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

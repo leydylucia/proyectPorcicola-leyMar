@@ -4,6 +4,7 @@ dictionary:
   default:
     user:                         User
     pass:                         Password
+    pass2:                        verify the password
     register:                     Register
     update:                       Update
     #usuario credencial#
@@ -102,7 +103,12 @@ dictionary:
     product:                   product
     hoja de vida:              hoja de vida
     report:                    Report
-    
+    Error:                    Error
+    information:              Information
+    Date:                     Date
+    #sacrificio#
+    sacrifice:                sacrifice
+    type sale:                type Sale
 
  
     

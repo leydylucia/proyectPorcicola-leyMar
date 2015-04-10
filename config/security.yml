@@ -14,9 +14,11 @@ default:
   index:
     security: true
     credentials:
-      - [admin, cajero]
+      - [admin, usuario]
   insert:
     security: true
+    credentials:
+      - [admin, usuario]
   create:
     security: true 
   edit:
@@ -36,17 +38,23 @@ insumo:
   indexInsumo:
     security: true
     credentials:
-      - [admin]
+      - [admin, usuario]
   insertInsumo:
     security: true
     credentials:
-      - [admin]
+      - [admin, usuario]
   createInsumo:
     security: true 
+    credentials:
+      - [admin, usuario]
   editInsumo:
-    security: true 
+    security: true
+    credentials:
+      - [admin, usuario]
   updateInsumo:
     security: true
+    credentials:
+      - [admin, usuario]
   deleteInsumo:
     security: true 
   deleteSelectInsumo:

@@ -2,6 +2,10 @@
 
 use mvc\model\modelClass as model;
 use mvc\config\configClass as config;
+use mvc\request\requestClass as request;
+use mvc\routing\routingClass as routing;
+use mvc\session\sessionClass as session;
+use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of usuarioCredencialTableClass
@@ -9,6 +13,9 @@ use mvc\config\configClass as config;
  * @author leydy lucia castillo 
  */
 class insumoTableClass extends insumoBaseTableClass {
+    
+    
+    
     /**
    * Método para el paginado
    *
@@ -24,7 +31,7 @@ class insumoTableClass extends insumoBaseTableClass {
             if (is_array($where) === true) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {
-                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . 'AND' . ((is_numeric($value[1])) ? $value[1] : "'$value'");
+                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'");
                     } else {
                         $sql = $sql . ' AND ' . $field . '=' . ((is_numeric($value)) ? $value : "'$value'") . '';
                     }
@@ -45,6 +52,7 @@ class insumoTableClass extends insumoBaseTableClass {
    * 
    
    */
+    
     public static function getNameInsumo($id) {
         try {
             $sql = 'SELECT ' . insumoTableClass::DESC_INSUMO . ' As desc_insumo '
@@ -61,7 +69,7 @@ class insumoTableClass extends insumoBaseTableClass {
             $answer = model::getInstance()->prepare($sql);
             $answer->execute($params);
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-            return $answer[0]->nombre;
+            return $answer[0]->desc_insumo;
         } catch (PDOException $exc) {
             throw $exc;
         }

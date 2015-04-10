@@ -13,4 +13,4 @@
 </div>
 <!--fintitulo-->
 
-<?php view::includePartial('tipoVenta/formTipov', array('objTipov' => $objTipoV, 'desc_tipoV' => $desc_tipoV)) ?>
+<?php view::includePartial('tipoVenta/formTipov', array('objTipoV' => $objTipoV, 'desc_tipoV' => $desc_tipoV)) ?>

@@ -19,7 +19,7 @@ class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
       if(is_array($where)===true){
           foreach ($where as $field=>$value){
               if (is_array($value)){
-                  $sql=$sql.' AND '.$field.' BETWEEN '.((is_numeric($value[0]))? $value[0]:"'$value[0]'"). ' AND '.((is_numeric($value[1]))? $value[1]:"'$value'");
+                  $sql=$sql.' AND '.$field.' BETWEEN '.((is_numeric($value[0]))? $value[0]:"'$value[0]'"). ' AND '.((is_numeric($value[1]))? $value[1]:"'$value[1]]'");
               }else{
                   $sql=$sql.' AND '.$field.'='.((is_numeric($value))?$value:"'$value'").'';
               }
@@ -34,7 +34,7 @@ class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
     }
   }
   
-   public static function getNameTipoin($id) {
+ public static function getNameTipoin($id) {
     try {
       $sql = 'SELECT ' . tipoInsumoTableClass::DESC_TIPOIN . ' AS desc_tipoin  '
               . ' FROM ' . tipoInsumoTableClass::getNameTable() . '  '

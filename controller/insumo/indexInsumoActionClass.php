@@ -22,7 +22,7 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
-              
+
                 if (isset($filter['insumo']) and $filter['insumo'] !== null and $filter['insumo'] !== '') {
                     $where[insumoTableClass::DESC_INSUMO] = $filter['insumo'];
                 }
@@ -61,10 +61,11 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO,
                 insumoTableClass::PRECIO,
+                insumoTableClass::TIPO_INSUMO_ID,
                 insumoTableClass::FECHA_FABRICACION,
                 insumoTableClass::FECHA_VENCIMIENTO,
                 insumoTableClass::PROVEEDOR_ID,
-                insumoTableClass::TIPO_INSUMO_ID
+                insumoTableClass::CREATED_AT
             );
             $orderBy = array(
                 insumoTableClass::DESC_INSUMO
@@ -76,9 +77,9 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 $page = request::getInstance()->getGet('page') - 1;
                 $page = $page * config::getRowGrid();
             }
-            /**para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
+            /*             * para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
              * *getTotalPages => se encuentra en insumoTables class
-            * * @var $where => para sostener el filtro con el paginado  */
+             * * @var $where => para sostener el filtro con el paginado  */
             $this->cntPages = insumoTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
 
@@ -94,11 +95,8 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
             $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
             $this->defineView('index', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

@@ -10,7 +10,8 @@
 
 
        
-        <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/tipoIn"><?php echo i18n::__('return') ?> </a>
+         <a href="http://www.porcicolatapasco.com/index.php/tipoInsumo/index"><?php echo i18n::__('return') ?> </a>
+
  
     </div>
 
@@ -27,7 +28,7 @@
                     </tr>        
                 </thead>
                 <tbody>
-                <?php foreach ($objTipoIn as $tipoIn): ?>  
+                <?php foreach ($objTipoin as $tipoIn): ?>  
                         <tr >
                            <th><?php echo i18n::__('describe_typeProduct') ?></th>
                             

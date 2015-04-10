@@ -37,6 +37,16 @@
       </ul>
     </li>
     
+    
+     <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown" href="</?php  echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('sacrifice') ?>
+        <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+
+       <li><a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'indexTipov') ?>"><?php echo i18n::__('type sale') ?></a></li>
+       
+      </ul>
+    </li>
 <!--     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="http://localhost/proyecto/web/index.php/proveedor/"><//?php echo i18n::__('hoja de vida') ?>
         <span class="caret"></span></a>

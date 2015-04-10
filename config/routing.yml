@@ -596,7 +596,7 @@ tipoInsumo_ver:
     - model/tipoInsumoTableClass.php
     
 tipoInsumo_deleteFilters:
-  url:    /borrar_filtros
+  url:    /borrar_filtros_tipoin
   param:  { module: insumo, action: deleteFiltersTipoin, format: html }
   
 tipoInsumo_traduccion:
@@ -695,6 +695,10 @@ insumo_ver:
   load:
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
   
   
@@ -714,6 +718,10 @@ insumo_reporte:
     - libs/fpdf/fpdf.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 ##-------------------------------------------TIPO VENTA--------------------##
 tipoVenta_index:
@@ -776,13 +784,19 @@ tipoVenta_ver:
     - model/tipovTableClass.php
     
 tipoVenta_deleteFilters:
-  url:    /borrar_filtros
+  url:    /borrar_filtros_tipov
   param:  { module: tipoVenta, action: deleteFiltersTipov, format: html }
   
 tipoVenta_traduccion:
-  url:    /traduccion2
+  url:    /traduccion_tipov
   param:  { module: tipoVenta, action: traductorTipov, format: html }  
-    
-        
+
+tipoVenta_reporte:
+  url:    /tipoVenta/reporte_tipov
+  param:  { module: tipoVenta, action: reportTipov, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
   
  

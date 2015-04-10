@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class deleteSelectTipoinActionClass extends controllerClass implements controllerActionInterface {
 
@@ -29,18 +29,15 @@ class deleteSelectTipoinActionClass extends controllerClass implements controlle
                 }
                 /* session para  mensaje */
                 session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
-              //  session::getInstance()->setSucces('los Elementos seleccionas fueron eliminados con exito');
+                //  session::getInstance()->setSucces('los Elementos seleccionas fueron eliminados con exito');
 
                 routing::getInstance()->redirect('insumo', 'indexTipoin');
             } else {
                 routing::getInstance()->redirect('insumo', 'indexTipoin');
             }
         } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

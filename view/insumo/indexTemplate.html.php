@@ -1,17 +1,11 @@
 <!--@var $Insumo 
 @var $page paginado mantiene el numero de la pagina -->
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as confing ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as confing ?>
+<?php use mvc\request\requestClass as request ?>
 
 
 <?php $id = insumoTableClass::ID ?>
@@ -21,6 +15,7 @@ use mvc\request\requestClass as request ?>
 <?php $fechaFabricacion = insumoTableClass::FECHA_FABRICACION ?>
 <?php $fechaVencimiento = insumoTableClass::FECHA_VENCIMIENTO ?>
 <?php $proveedorId = insumoTableClass::PROVEEDOR_ID ?>
+<?php $fecha = insumoTableClass::CREATED_AT ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
@@ -50,14 +45,14 @@ use mvc\request\requestClass as request ?>
     <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
 
     <button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php echo i18n::__('filter') ?></button>
-     
+
 
     <!--filtros-->
     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
     <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-    <div class="text-right">
-        <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info"><?php echo i18n::__('printOut') ?></a>
-    </div>
+  
+        <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+
 </div>
 
 <!--filtro con reporte-->
@@ -177,9 +172,9 @@ use mvc\request\requestClass as request ?>
                     <div class="form-group">
                         <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Date1]" name="filter[Date1]">
+                            <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
                             <br>
-                            <input type="datetime-local" class="form-control" id="filter[Date2]" name="filter[Date2]">
+                            <input type="date" class="form-control" id="filter[Date2]" name="filter[Date2]">
                         </div>
                     </div>
                 </form>
@@ -211,11 +206,13 @@ use mvc\request\requestClass as request ?>
                         <th><?php echo i18n::__('date_manufacture') ?></th>
                         <th><?php echo i18n::__('date_conquering') ?></th>
                         <th><?php echo i18n::__('provisioner') ?></th>
+                        <th><?php echo i18n::__('date') ?></th>
                         <th><?php echo i18n::__('action') ?></th>
+
                     </tr>        
                 </thead>
                 <tbody>
-<?php foreach ($objInsumo as $insumo): ?> 
+                    <?php foreach ($objInsumo as $insumo): ?> 
                         <tr >
                             <td><input type="checkbox" name="chk[]" value="<?php echo $insumo->$id ?>"></td>
                             <td><?php echo $insumo->$descInsumo ?></td>
@@ -224,6 +221,7 @@ use mvc\request\requestClass as request ?>
                             <td><?php echo $insumo->$fechaFabricacion ?></td>
                             <td><?php echo $insumo->$fechaVencimiento ?></td>
                             <td><?php echo proveedorTableClass::getNameProveedor($insumo->$proveedorId) ?></td>
+                            <td><?php echo $insumo->$fecha ?></td>
                             <td>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'verInsumo', array(insumoTableClass::ID => $insumo->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'editInsumo', array(insumoTableClass::ID => $insumo->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
@@ -242,7 +240,7 @@ use mvc\request\requestClass as request ?>
                                 </div>
                                 <div class="modal-body">
                                     <!--pára que imprima el id en cada ventana-->
-    <?php i18n::__('confirmDelete') ?> <?php echo $insumo->$descInsumo ?>
+                                    <?php i18n::__('confirmDelete') ?> <?php echo $insumo->$descInsumo ?>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -251,7 +249,7 @@ use mvc\request\requestClass as request ?>
                             </div>
                         </div>
                     </div>
-<?php endforeach ?>
+                <?php endforeach ?>
                 </tbody>
 
 
@@ -261,24 +259,25 @@ use mvc\request\requestClass as request ?>
         <!--paginado-->
         <div class="text-right">
             página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+                <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                     <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+                <?php endfor; ?>
 
 
 
             </select>de <?php echo $cntPages ?>
-        
+
         </div>
         <!--fin paginado-->
     </div>
 </div>
 
-
+<!--formulario eliminado individual-->
 <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteInsumo') ?>" method="POST">
     <input type="hidden" id="idDelete" name="<?php echo insumoTableClass::getNameField(insumoTableClass::ID, true) ?>">
 </form>
+<!--fin formulario eliminado individual-->
 
 <!--eliminado masivo en ajax-->
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -290,7 +289,7 @@ use mvc\request\requestClass as request ?>
             </div>
             <div class="modal-body">
 
-<?php i18n::__('confirmDeleteMasivo') ?> <?php echo $insumo->$descInsumo ?>
+                <?php i18n::__('confirmDeleteMasivo') ?> <?php echo $insumo->$descInsumo ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -299,5 +298,5 @@ use mvc\request\requestClass as request ?>
         </div>
     </div>
 </div>
-
+<!--fin eliminado masivo en ajax-->
 </div>

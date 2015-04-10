@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
-class verTipoinActionClass extends controllerClass implements controllerActionInterface {
+class verTipoInActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -26,14 +26,11 @@ class verTipoinActionClass extends controllerClass implements controllerActionIn
       $where = array(
       tipoInsumoTableClass::ID=>  request::getInstance()->getRequest(tipoInsumoTableClass::ID)
       );
-      $this->objTipoIn = tipoInsumoTableClass::getAll($fields, true, null,null,null,nULL,$where);
+      $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null,null,null,nULL,$where);
       $this->defineView('verTipoin', 'insumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 
