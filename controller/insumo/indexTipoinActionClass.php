@@ -29,8 +29,10 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
                 }
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[proveedorTableClass::CREATED_AT] = array(
-                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
-                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+                        $filter['Date1'],
+                        $filter['Date2']
                     );
                 }
                 /* para mantener el filtro */

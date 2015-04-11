@@ -29,8 +29,10 @@ class indexTipovActionClass extends controllerClass implements controllerActionI
                 }
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[tipovTableClass::CREATED_AT] = array(
-                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
-                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+                        $filter['Date1'],
+                        $filter['Date2']
                     );
                 }
                 /* para mantener el filtro */
@@ -59,7 +61,7 @@ class indexTipovActionClass extends controllerClass implements controllerActionI
                 $page = $page * config::getRowGrid();
             }
             $this->cntPages = tipovTableClass::getTotalPages(config::getRowGrid(), $where);
-          //  $page = request::getInstance()->getGet('page');
+            //  $page = request::getInstance()->getGet('page');
 
 
             $this->objTipoV = tipovTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);

@@ -87,13 +87,13 @@
                     <div class="form-group">
                         <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
+                            <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
                         </div>
                     </div> 
                     <div class="form-group">
                         <label for="filterFecha_vencimiento" class="col-sm-2 control-label"><?php echo i18n::__('date_conquering') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
+                            <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
                         </div>
                     </div> 
                     <!-- <div class="form-group">
@@ -106,9 +106,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Date1]" name="filter[Date1]">
+                            <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
                             <br>
-                            <input type="datetime-local" class="form-control" id="filter[Date2]" name="filter[Date2]">
+                            <input type="date" class="form-control" id="filter[Date2]" name="filter[Date2]">
                         </div>
                     </div>
                 </form>
@@ -153,13 +153,13 @@
                     <div class="form-group">
                         <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
+                            <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
                         </div>
                     </div> 
                     <div class="form-group">
                         <label for="filterFecha_vencimiento" class="col-sm-2 control-label"><?php echo i18n::__('date_conquering') ?></label>
                         <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
+                            <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
                         </div>
                     </div> 
                     <!-- <div class="form-group">

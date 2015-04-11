@@ -16,6 +16,7 @@ use mvc\request\requestClass as request ?>
 
 <?php $desc_tipoV = tipovTableClass::DESC_TIPOV ?>
 <?php $id = tipovTableClass::ID ?>
+<?php $fecha= tipovTableClass::CREATED_AT ?>
 
 <!--titulo-->
 <div class="container container-fluid">
@@ -76,9 +77,9 @@ use mvc\request\requestClass as request ?>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Fecha creacción</label>
                                 <div class="col-sm-10">
-                                    <input type="datetime-local" class="form-control" id="filter[Date1]" name="filterDate1">
+                                    <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
                                     <br>
-                                    <input type="datetime-local" class="form-control" id="filter[Date2]" name="filterDate2">
+                                    <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
                                 </div>
                             </div>
                         </form>
@@ -114,9 +115,9 @@ use mvc\request\requestClass as request ?>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Fecha creacción</label>
                                 <div class="col-sm-10">
-                                    <input type="datetime-local" class="form-control" id="filter[Date1]" name="filterDate1">
+                                    <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
                                     <br>
-                                    <input type="datetime-local" class="form-control" id="filter[Date2]" name="filterDate2">
+                                    <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
                                 </div>
                             </div>
                         </form>
@@ -142,6 +143,7 @@ use mvc\request\requestClass as request ?>
                             <tr>
                                 <th><input type="checkbox" id="chkAll"></th>
                                 <th><?php echo i18n::__('describe_typeProduct') ?></th>
+                                <th><?php echo i18n::__('date') ?></th>
                                 <th><?php echo i18n::__('action') ?></th>
                             </tr>        
                         </thead>
@@ -150,6 +152,7 @@ use mvc\request\requestClass as request ?>
                                 <tr >
                                     <td><input type="checkbox" name="chk[]" value="<?php echo $tipoV->$id ?>"></td>
                                     <td><?php echo $tipoV->$desc_tipoV ?></td>
+                                    <td><?php echo $tipoV->$fecha ?></td>
                                     <td>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'verTipov', array(tipovTableClass::ID => $tipoV->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'editTipov', array(tipovTableClass::ID => $tipoV->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
