@@ -3,18 +3,20 @@
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
-use mvc\session\sessionClass as session;
 use mvc\request\requestClass as request;
+use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
  *
- * @author leydy lucia castillo
+ * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
-    
+    /*     * @var $ids=> declara con que va a borrar
+     * @var  $this->arrayAjax que el dato que va a la vista es de tipo ajax* */
+
     public function execute() {
         try {
             if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
@@ -22,7 +24,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 $id = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true));
 
                 $ids = array(
-                   usuarioTableClass::ID => $id
+                    usuarioTableClass::ID => $id
                 );
                 usuarioTableClass::delete($ids, true); /* el true es para el borrado logico false si no lo tiene */
                 //routing::getInstance()->redirect('depto', 'index');
@@ -32,7 +34,6 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 );
                 $this->defineView('delete', 'default', session::getInstance()->getFormatOutput());
                 session::getInstance()->setSuccess('el registro se elimino con exito'); /* mensaje de exito */
-                // log::register('eliminar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('default', 'index');
             }
@@ -41,6 +42,5 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
-
 
 }

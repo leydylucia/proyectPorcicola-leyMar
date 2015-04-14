@@ -97,13 +97,24 @@ default_update:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-
+    
+default_ver:
+  url:    /usuario/ver
+  param:  { module: default, action: ver, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+    
 default_delete:
   url:    /usuario/eliminar
-  param:  { module: default, action: delete, format: html }
+  param:  { module: default, action: delete, format: json }
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    
+default_deleteFilters:
+  url:    /borrar_filtros_usuario
+  param:  { module: default, action: deleteFilters, format: html }    
 
 default_deleteSelect:
   url:    /usuario/eliminarSeleccion
@@ -111,10 +122,15 @@ default_deleteSelect:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    
+default_traduccion:
+  url:    /traduccion_usuario
+  param:  { module: default, action: traductor, format: html }      
 
 default_reporte:
   url:    /usuario/reporte
   param:  { module: default, action: report, format: pdf }
+  
 ##-------------------------- EJEMPLO --------------------------##
 ##---------------------------USUARIO CREDENCIAL----------------##
 

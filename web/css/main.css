@@ -27,5 +27,6 @@
 }
 
 #prueba{
-    width: 100%;
+   background-image: url('/css/img/prueba.jpg');
+   background-position: 100%;
 }

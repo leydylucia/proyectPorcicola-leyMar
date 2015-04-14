@@ -11,14 +11,16 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
-class insertActionClass extends controllerClass implements controllerActionInterface {
+class deleteFiltersActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-    
-      $this->defineView('insert', 'default', session::getInstance()->getFormatOutput());
+    if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+   session::getInstance()->deleteAttribute('defaultIndexFilters');
+}
+routing::getInstance()->redirect('default','index');
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

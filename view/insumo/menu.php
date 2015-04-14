@@ -13,7 +13,14 @@
 <div class="container container-fluid boton1">
 
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#">Inicio</a></li>
+    <li class="active"><a href="#">Inicio</a>
+    
+    <li><a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><?php echo i18n::__('user') ?></a></li>
+    </li>
+    
+    
+    
+    
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="http://localhost/proyecto/web/index.php/proveedor/"><?php echo i18n::__('supplier') ?>
         <span class="caret"></span></a>
