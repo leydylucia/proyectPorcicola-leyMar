@@ -130,6 +130,10 @@ default_traduccion:
 default_reporte:
   url:    /usuario/reporte
   param:  { module: default, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php  
   
 ##-------------------------- EJEMPLO --------------------------##
 ##---------------------------USUARIO CREDENCIAL----------------##
@@ -290,7 +294,16 @@ ciudad_reporte:
     - model/ciudadTableClass.php
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
+
+
+ciudad_traduccion:
+  url:    /traduccion_ciudad
+  param:  { module: proveedor, action: traductorCiudad, format: html }
+
     
+ciudad_deleteFilters:
+  url:    /borrar_filtros_ciudad
+  param:  { module: proveedor, action: deleteFiltersCiudad, format: html }        
 
  ##--------------------------lote----------------------------##
 lote_index:
@@ -511,7 +524,9 @@ proveedor_update:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
 
 proveedor_delete:
   url:    /proveedor/eliminar
@@ -519,7 +534,9 @@ proveedor_delete:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
 
 proveedor_deleteSelect:
   url:    /proveedor/eliminarSeleccion
@@ -527,7 +544,9 @@ proveedor_deleteSelect:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
 
 proveedor_ver:
   url:    /proveedor/ver
@@ -535,7 +554,9 @@ proveedor_ver:
   load:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
 
 proveedor_reporte:
   url:    /proveedor/reporte
@@ -545,6 +566,9 @@ proveedor_reporte:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
 
+proveedor_deleteFilters:
+  url:    /borrar_filtros_proveedor
+  param:  { module: proveedor, action: deleteFiltersProv, format: html }    
 
 proveedor_traduccion:
   url:    /traduccion3
@@ -773,7 +797,7 @@ tipoVenta_edit:
 
 tipoVenta_update:
   url:    /tipoVenta/actualizar
-  param:  { module: tipoVenta, action: updatetipov, format: html }
+  param:  { module: tipoVenta, action: updateTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php

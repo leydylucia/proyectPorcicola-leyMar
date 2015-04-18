@@ -12,7 +12,7 @@
   <?php if(isset($objTipoV) == true): ?>
         <input name="<?php echo tipovTableClass::getNameField(tipovTableClass::ID,true) ?>" value="<?php echo $objTipoV[0]->$id ?>" type="hidden">
   <?php endif ?>
-    
+   
     
         <div class="form-group">
             <label for="desc_tipoIn" class="control-label col-xs-3"><?php echo i18n::__('describe') ?>:</label>

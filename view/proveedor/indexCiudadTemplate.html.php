@@ -12,94 +12,64 @@
 
 
 <div class="container container-fluid">
-    <div class="page-header titulo">
-<h1>CIUDAD</h1>
-    </div>
-</div>
-
-
-<!-- FILTROS De Reporte --> 
-<div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportCiudad') ?>">
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Ciudad</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="filterCiudad" name="filter[ciudad]" placeholder="nombre de la ciudad">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Fecha Creaccion</label>
-            <div class="col-sm-10">
-              <input type="datetime-local" class="form-control" id="filterDate1" name="filter[fechaCreacion1]">
-              <br>
-              <input type="datetime-local" class="form-control" id="filterDate2" name="filter[fechaCreacion2]">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary">Filtrar</button>
-      </div>
-    </div>
+  <div class="page-header titulo">
+    <h1><?php echo i18n::__('city') ?></h1>  
   </div>
 </div>
 
 
+<div class="container container-fluid">
+  <div style="margin-bottom: 10px; margin-top: 30px">
+
+    <!--cambio de idioma-->
+    <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'traductorCiudad') ?>" method="POST">
+      <select name="language" onchange="$('#frmTraductor').submit()">
+        <option <?php echo (config::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español</option>
+        <option <?php echo (config::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English</option>            
+      </select>
+      <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
+    </form>    
+    <!--fin cambio de idioma-->
 
 
-<!-- FILTROS --> 
-<div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>">
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Ciudad</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="filterCiudad" name="filter[ciudad]" placeholder="nombre de la ciudad">
-            </div>
+    <!-- FILTROS -->
+    <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Fecha Creaccion</label>
-            <div class="col-sm-10">
-              <input type="datetime-local" class="form-control" id="filterDate1" name="filter[fechaCreacion1]">
-              <br>
-              <input type="datetime-local" class="form-control" id="filterDate2" name="filter[fechaCreacion2]">
-            </div>
+
+          <div class="modal-body">
+            <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>">
+              <div class="form-group">
+                <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary">Filtrar</button>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 
-
-<div style="margin-bottom: 10px; margin-top: 30px">
+<div class="container container-fluid" style="margin-bottom: 10px; margin-top: 30px">
   <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'insertCiudad') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
   <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
   <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filter') ?></button>
-  <a href="#" class="btn btn-default btn-xs"><?php echo i18n::__('delete filter') ?></a> 
-  <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('report') ?></button>
-  <div class="text-right">
-        <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportCiudad') ?>" class="btn btn-info"><?php echo i18n::__('printOut') ?></a>
-        </div>
+  <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'deleteFiltersCiudad') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
+  <!--<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalFilters"></?php echo i18n::__('report') ?></button> -->
+ <!-- <div class="text-right">
+        <a href="<//?php echo routing::getInstance()->getUrlWeb('proveedor', 'reportCiudad') ?>" class="btn btn-info"><//?php echo i18n::__('printOut') ?></a>
+        </div>  -->
 </div>
 
 <!--eliminado individual con ajax-->
@@ -111,12 +81,12 @@
 
 <?php view::includeHandlerMessage() ?>
 
-<div class="container">
+<div class="container container-fluid" style="margin-bottom: 10px; margin-top: 30px"> 
   <div class="table-responsive">
     <form id="frmDeleteAll" id ="filterForm"action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'deleteSelectCiudad') ?>" method="POST">
 
 
-      <table class="table table-bordered table-responsive">
+      <table class="table table-bordered table-responsive table-striped table-condensed mitabla">
         <thead>
           <tr>
             <th><input type="checkbox" id="chkAll"></th>
@@ -127,7 +97,7 @@
         </thead>
         <tbody>
           <?php foreach ($objCiudad as $ciudad): ?> 
-            <tr>
+            <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $ciudad->$id ?>"></td>
               <td><?php echo $ciudad->$nomCiud ?></td>
               <td><?php echo deptoTableClass::getNameDepto($ciudad->$depto_id) ?></td>
@@ -135,7 +105,6 @@
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'verCiudad', array(ciudadTableClass::ID => $ciudad->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a> 
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'editCiudad', array(ciudadTableClass::ID => $ciudad->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
-                <a href="#" class="btn btn-xs btn-success">Detalle </a>
                 <a href="#" data-target="#myModalDelete<?php echo $ciudad->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs">Eliminar</a>
               </td>
 

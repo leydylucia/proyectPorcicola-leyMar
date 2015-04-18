@@ -50,8 +50,8 @@
     <!--filtros-->
     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
     <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-  
-        <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+  <!--target_new para abrir una nueva ventana-->
+    <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
 
 </div>
 
@@ -61,7 +61,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+                <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report')?></h4>
             </div>
 
             <div class="modal-body">
@@ -78,12 +78,15 @@
                             <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
                         </div>
                     </div>  
-                    <!--             <div class="form-group">
-                                  <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
+                    <!--foranea-->
+                             <div class="form-group">
+                                  <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
                                   <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
                                   </div>
-                                </div> -->
+                                </div> 
+                    
+                    
                     <div class="form-group">
                         <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
                         <div class="col-sm-10">
@@ -103,20 +106,13 @@
                        </div>
                      </div> -->
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
-                            <br>
-                            <input type="date" class="form-control" id="filter[Date2]" name="filter[Date2]">
-                        </div>
-                    </div>
+                   
                 </form>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                <button type="button" onclick="$('#report').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
+                <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
             </div>
         </div>
     </div>
@@ -144,7 +140,7 @@
                             <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
                         </div>
                     </div>  
-                    <!--             <div class="form-group">
+<!--                                <div class="form-group">
                                   <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
                                   <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
@@ -196,7 +192,7 @@
     <div class="table-responsive">
         <form id="frmDeleteAll" id ="filterForm"action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteSelectInsumo') ?>" method="POST">
 
-            <table class="table table-bordered table-striped table-condensed">
+            <table class="table table-bordered table-striped table-condensed mitabla">
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="chkAll"></th>
@@ -213,7 +209,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($objInsumo as $insumo): ?> 
-                        <tr >
+                        <tr class="text-info bg-info">
                             <td><input type="checkbox" name="chk[]" value="<?php echo $insumo->$id ?>"></td>
                             <td><?php echo $insumo->$descInsumo ?></td>
                             <td><?php echo $insumo->$precio ?></td>

@@ -20,6 +20,7 @@ dictionary:
     #ciudad#
     name_city:                    Nombre ciudad
     dept_id:                      Identificacion del departamento
+    new_city:                     Nueva Ciudad
    
     #Estado# 
     desc_state:                   Descripcion estado
@@ -46,6 +47,7 @@ dictionary:
     page:                         paginador
     pag:                          página
     off:                          de
+    new_supplier:                 Nuevo Proveedor 
     secure the Eliminate register:  Seguro de eliminar registro
     #insumo#
     desc_prod:                    Descripcion insumo
@@ -127,12 +129,40 @@ dictionary:
     sacrifice:                sacrificio
     type sale:                tipo venta
     
+    closing session:          cierre de sesion
+
+ #Parto#
+    delivery:                  Parto
+    date of birth:             Fecha Nacimiento
+    number born:               Numero de nacidos
+    number of live:            Numero de vivos
+    body count:                Numero de muertos
+    number of females:         Numero de hembras
+    number of males:           Numero de machos
+    date mounted:              Fecha montada  
+    id the father:             Identicacion Padre
+    
+    #Control Peso#
+    pig weight:                Peso Cerdo               
+    employee:                  Empleado
+    weight control:            Control Peso
+    control:                   Control
+    
+    new_delivery:              Nuevo Parto
+    
+    
+    
     ##errores##
-    errorLength:        este campo excede la longitud
-    errorNumeric:           este campo solo es numerico
-    errorNull:              este campo no puede estar vacio
+    errorLength:             este campo excede la longitud
+    errorNumeric:            este campo solo es numerico
+    errorNull:               este campo no puede estar vacio
+    errorLengthName:           Este Nombre (%nombre%) excede la longitud 
+    errorLengthLastName:       Este Apellido (%apellido%) excede la longitud
+    errorAdress:               Este Apellido (%direccion%) excede la longitud
+    errorMail:               debe contener el simbolo@
     errorText:               tan solo ingresar texto
     errorDeleteForeign:      este campo no puede ser eliminado por que esta siendo usado en otro formulario
+    errorLengthin:           el campo descripcion tipo insumo %desc_tipoIn% excede los %caracteres% maximos permitidos
     
   errors:
     00001:                     El módulo y la acción solicitada, no existe.

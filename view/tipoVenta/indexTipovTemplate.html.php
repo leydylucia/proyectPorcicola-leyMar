@@ -63,19 +63,19 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report')?></h4>
                     </div>
 
                     <div class="modal-body">
                         <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'reportTipov') ?>">
                             <div class="form-group">
-                                <label for="filtertipoInsumo" class="col-sm-2 control-label">Tipo venta</label>
+                                <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type sale') ?></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[tipoVenta]" placeholder="desc_tipov">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Fecha creacción</label>
+                                <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
                                     <br>
@@ -86,8 +86,8 @@ use mvc\request\requestClass as request ?>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report')?></button>
                     </div>
                 </div>
             </div>
@@ -101,19 +101,19 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
                     </div>
 
                     <div class="modal-body">
                         <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'indexTipov') ?>">
                             <div class="form-group">
-                                <label for="filtertipoInsumo" class="col-sm-2 control-label">Tipo venta</label>
+                                <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type sale') ?></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[tipoVenta]" placeholder="desc_tipov">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Fecha creacción</label>
+                                <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation')?></label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
                                     <br>
@@ -124,8 +124,8 @@ use mvc\request\requestClass as request ?>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary">Filtrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+                        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
                     </div>
                 </div>
             </div>

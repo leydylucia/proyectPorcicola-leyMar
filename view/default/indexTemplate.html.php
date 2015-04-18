@@ -55,7 +55,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
                     </div>
 
                     <div class="modal-body">
@@ -79,7 +79,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                        <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
+                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report')?></button>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Alexandra Florez
  */
-class traductorActionClass extends controllerClass implements controllerActionInterface {
+class traductorCiudadActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
@@ -25,7 +25,7 @@ class traductorActionClass extends controllerClass implements controllerActionIn
               $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
               header('location: ' . $dir);
                 } else { 
-                routing::getInstance()->redirect('proveedor', 'indexProv');
+                routing::getInstance()->redirect('proveedor', 'indexCiudad');
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();

@@ -5,6 +5,6 @@
 <!--@var $depto para definir que campo voy a modificar-->
 
 <?php $proveedor = proveedorTableClass::NOMBRE ?>
-<h1>EDITAR PROVEEDOR   <?php echo $objProveedor[0]->$proveedor ?></h1>
+<h1>EDITAR PROVEEDOR      <small><?php echo $objProveedor[0]->$proveedor ?></small>    </h1>
 
 <?php view::includePartial('proveedor/formProveedor', array('objProveedor' => $objProveedor, 'nombre' => $proveedor,'objCiudad' => $objCiudad)) ?>

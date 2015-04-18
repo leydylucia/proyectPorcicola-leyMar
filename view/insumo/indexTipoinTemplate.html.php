@@ -61,7 +61,7 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
                     </div>
 
                     <div class="modal-body">
@@ -70,6 +70,35 @@ use mvc\request\requestClass as request ?>
                                 <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('typeProd') ?></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_insumo">
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report')?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--fin reporte con filtro-->
+        <!--modal en ajax para filtrar-->
+        <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>">
+                            <div class="form-group">
+                                <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type sale') ?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_tipo_insumo">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -85,43 +114,7 @@ use mvc\request\requestClass as request ?>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                        <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--fin reporte con filtro-->
-        <!--modal en ajax para filtrar-->
-        <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Filtros</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>">
-                            <div class="form-group">
-                                <label for="filtertipoInsumo" class="col-sm-2 control-label">Tipo Insumo</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_tipo_insumo">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Fecha creacción</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
-                                    <br>
-                                    <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary">Filtrar</button>
+                        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
                     </div>
                 </div>
             </div>
@@ -146,7 +139,7 @@ use mvc\request\requestClass as request ?>
                         </thead>
                         <tbody>
                             <?php foreach ($objTipoin as $tipoIn): ?> 
-                                <tr >
+                                <tr class="text-info bg-info">
                                     <td><input type="checkbox" name="chk[]" value="<?php echo $tipoIn->$id ?>"></td>
                                     <td><?php echo $tipoIn->$desc_tipoIn ?></td>
                                     <td><?php echo $tipoIn->$fecha ?></td>

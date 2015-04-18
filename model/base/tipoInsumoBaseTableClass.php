@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of credencialBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castilo mosquera<leydylucia@hotamil.com>
  */
 class tipoinsumoBaseTableClass extends tableBaseClass {
   private $id;

@@ -1,32 +1,63 @@
 .shfDevelopmentBar {
-  background-color: rgb(61,35,0);
-  position: fixed;
-  right: 0px;
-  color: #ffffff;
-  /*width: 500px;*/
-  z-index: 2147483647;
-  padding: 3px 3px 3px 5px;
-  border-radius: 0px 0px 0px 5px;
-  font-size: 0.8em;
-  text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
-  top: 0px;
+    background-color: rgb(61,35,0);
+    position: fixed;
+    right: 0px;
+    color: #ffffff;
+    /*width: 500px;*/
+    z-index: 2147483647;
+    padding: 3px 3px 3px 5px;
+    border-radius: 0px 0px 0px 5px;
+    font-size: 0.8em;
+    text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
+    top: 0px;
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #ffffe0;
+  //background-image: url('../img/blanco.jpg');
 }
 
 .mvcPointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .titulo{
-    
- color:#0000CC;
+
+    color:#0000CC;
+    text-align:center ;
+    text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
+
 }
 
 .boton1{
     background: -webkit-linear-gradient(top,#ffccff,#ccffff);
     background: -webkit-linear-gradient(top,#ffccff,#ccffff);
+    width: 98%;
 }
 
-#prueba{
+.imagen{
+    width: 100%;
+    
+
+}
+
+.base {
+    width:100%;
+    background:#ffffcc;
+}
+
+h1{
+    text-shadow: rgb(0,0,150) 3px 3px 9px;/*5PX ES EL RADIO Y SE PUEDE AUMENTAR Y LOS DOS 3PX ES INTENCIDAD*/
+    font: bold 50px agencifb, sans-serif;
+
+}
+
+.mitabla{
+    margin-top: 20px;
+}
+/*#prueba{
    background-image: url('/css/img/prueba.jpg');
    background-position: 100%;
-}
+}*/

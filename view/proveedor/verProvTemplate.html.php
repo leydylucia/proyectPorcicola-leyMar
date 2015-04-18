@@ -8,12 +8,13 @@
 <?php $correo = proveedorTableClass::CORREO ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $ciudad_id = proveedorTableClass::CIUDAD_ID ?>
+<?php $nom_ciudad = ciudadTableClass::NOM_CIUDAD ?>
 <?php $created_at = proveedorTableClass::CREATED_AT ?>
 
 <div class="container container-fluid">
 
 
-        <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/proveedor"><?php echo i18n::__('return') ?> </a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('return') ?> </a>
 
     </div>
 
@@ -57,7 +58,7 @@
                             <tr>
                             <th><?php echo i18n::__('city_id') ?></th>
                             
-                            <td><?php echo $proveedor->  $ciudad_id ?></td>
+                            <td><?php echo ciudadTableClass::getNameCiudad($proveedor->$ciudad_id) ?></td>
                             <tr>
                             <th><?php echo i18n::__('date_creation') ?></th>
                             <td><?php echo $proveedor->$created_at ?></td>

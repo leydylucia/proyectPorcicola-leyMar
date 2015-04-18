@@ -23,22 +23,23 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-                // aqui validar datos de filtros
-
-                if (isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== '') {
-                    $where[proveedorTableClass::NOMBRE] = $filter['proveedor'];
+                if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+                    $where[proveedorTableClass::NOMBRE] = $filter['nombre'];
+                }
+                if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
+                    $where[proveedorTableClass::APELLIDO] = $filter['apellido'];
+                }
+         
+                
                 }
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[proveedorTableClass::CREATED_AT] = array(
-                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
-                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date2']))
+                        $filter['Date1'],
+                        $filter['Date2']
                     );
                 }
-                /* para mantener filtro con paginado */
-                session::getInstance()->setAttribute('defaultIndexFilters', $where);
-            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-                $where = session::getInstance()->getAttribute('defaultIndexFilters');
-            }
 
 
             $fields = array(

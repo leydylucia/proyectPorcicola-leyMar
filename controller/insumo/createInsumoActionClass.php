@@ -70,7 +70,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             }
         } catch (PDOException $exc) {
 
-            routing::getInstance()->redirect('insumo','insertInsumo');
+            routing::getInstance()->redirect('insumo', 'insertInsumo');
             session::getInstance()->setFlash('exc', $exc);
             //routing::getInstance()->forward('shfSecurity', 'exception');    
         }
@@ -84,6 +84,12 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
         }
 
+        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {
+            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
+            $flag = true;
+            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);
+        }
+
         if (!is_numeric($precio)) {//validacion de numeros
             session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
             $flag = true;
@@ -95,28 +101,24 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             $flag = true;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
         }
-        
+
         if ($precio === '') {// validacion de campo vacio
             session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
             $flag = true;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
         }
-        if ($fechaFabricacion  === '') {// validacion de campo vacio
+        if ($fechaFabricacion === '') {// validacion de campo vacio
             session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
             $flag = true;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true), true);
         }
-        if ($fechaVencimiento  === '') {// validacion de campo vacio
+        if ($fechaVencimiento === '') {// validacion de campo vacio
             session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
             $flag = true;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true), true);
         }
 
-//        if (!ereg("^[A-Za_z_]*$", $desc_insumo)) {//validacion de solo texto
-//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO)));
-//            $flag = true;
-//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
-//        }
+
 
         if ($flag === true) {
             request::getInstance()->setMethod('GET');

@@ -4,3 +4,7 @@
 /web/upload/*
 .DS_Store
 Thumbs.db
+/leyMar/nbproject/private/
+/ley/nbproject/private/
+/SohoFramework-master/nbproject/private/
+/proyectPorcicola-leyMar/nbproject/private/

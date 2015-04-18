@@ -29,6 +29,7 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 if (isset($filter['Precio']) and $filter['Precio'] !== null and $filter['Precio'] !== '') {
                     $where[insumoTableClass::PRECIO] = $filter['Precio'];
                 }
+                //foranea
 //         if (isset($filter['Tipo_insumo']) and $filter['Tipo_insumo'] !== null and $filter['Tipo_insumo'] !== '') {
 //          $where[insumoTableClass::TIPO_INSUMO_ID] = $filter['Tipo_insumo'];
 //        }

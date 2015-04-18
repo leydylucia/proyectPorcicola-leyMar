@@ -14,7 +14,7 @@ default:
   index:
     security: true
     credentials:
-      - [admin, usuario]
+      - [admin, empleado]
   insert:
     security: true
     credentials:
