@@ -64,5 +64,81 @@ insumo:
   reportInsumo:
     security: true    
     credentials:
-      - [admin]    
+      - [admin]  
+  indexTipoin:
+    security: true
+    credentials:
+      - [admin, usuario]
+  insertTipoin:
+    security: true
+    credentials:
+      - [admin, usuario]
+  createtipoin:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  edittipoin:
+    security: true
+    credentials:
+      - [admin, usuario]
+  updatetipoin:
+    security: true
+    credentials:
+      - [admin, usuario]
+  deleteTipoin:
+    security: true 
+  deleteSelectTipoin:
+    security: true
+  verTipoin:
+    security: true
+  reporttipoIn:
+    security: true    
+    credentials:
+      - [admin]         
+      
    
+proveedor:
+  indexProv:
+    security: true
+    credentials:
+      - [admin, cajero]
+  insertProv:
+    security: true
+  createProv:
+    security: true 
+  editProv:
+    security: true 
+  updateProv:
+    security: true
+  deleteProv:
+    security: true 
+  deleteSelectProv:
+    security: true
+  verProv:
+    security: true
+  reporteProv:
+    security: true
+  indexCiudad:
+    security: true
+    credentials:
+      - [admin, cajero]
+  insertCiudad:
+    security: true
+  createCiudad:
+    security: true 
+  editCiudad:
+    security: true 
+  updateCiudad:
+    security: true
+  deleteCiudad:
+    security: true 
+  deleteSelectCiudad:
+    security: true
+  verCiudad:
+    security: true
+  reporteCiudad:
+    security: true
+      
+    
+
+  

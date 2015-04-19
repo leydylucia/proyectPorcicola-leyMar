@@ -27,10 +27,11 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
+                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
                 $ids = array(
                     insumoTableClass::ID => $id
                 );
-$this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
+
                 $data = array(
                     insumoTableClass::DESC_INSUMO => $desc_insumo,
                     insumoTableClass::PRECIO => $precio,
@@ -41,12 +42,16 @@ $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
                 );
 
                 insumoTableClass::update($ids, $data);
+                routing::getInstance()->redirect('insumo', 'indexInsumo');
+            }else{
+                
+            routing::getInstance()->redirect('insumo', 'indexInsumo'); 
             }
 
-            routing::getInstance()->redirect('insumo', 'indexInsumo');
         } catch (PDOException $exc) {
+            
+            routing::getInstance()->forward('insumo', 'editInsumo');
             session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
     
@@ -96,7 +101,7 @@ $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
 
         if ($flag === true) {
             request::getInstance()->setMethod('GET');
-            routing::getInstance()->forward('insumo', 'updateInsumo');
+            routing::getInstance()->forward('insumo', 'editInsumo');
         }
     }
 

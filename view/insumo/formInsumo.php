@@ -5,6 +5,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
 
 
 
@@ -32,6 +33,7 @@
         <?php endif ?>
 
   
+            
         <div class="form-group <?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true)) === true) ? 'has-error has-feedback' : '' ?>">
             <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('describe_product') ?>:</label>
             <div class="col-xs-9">
