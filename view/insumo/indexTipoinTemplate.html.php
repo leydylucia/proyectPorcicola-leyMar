@@ -52,22 +52,22 @@ use mvc\request\requestClass as request ?>
 
 
             <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteFiltersTipoin') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
-            <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-            <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+<!--            <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ></?php echo i18n::__('report') ?></button>
+            <a href="</?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>"class="btn btn-info btn-xs"></?php echo i18n::__('printOut') ?></a>-->
         </div>
         <!--reporte con filtro-->
-        <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--        <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
+                        <h4 class="modal-title" id="myModalLabel"></?php echo i18n::__('report') ?></h4>
                     </div>
 
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>">
+                        <form class="form-horizontal" role="form" id="report" method="POST" action="</?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>">
                             <div class="form-group">
-                                <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('typeProd') ?></label>
+                                <label for="filtertipoInsumo" class="col-sm-2 control-label"></?php echo i18n::__('typeProd') ?></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_insumo">
                                 </div>
@@ -77,12 +77,12 @@ use mvc\request\requestClass as request ?>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report')?></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"></?php echo i18n::__('cancel') ?></button>
+                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"></?php echo i18n::__('report')?></button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!--fin reporte con filtro-->
         <!--modal en ajax para filtrar-->
         <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
