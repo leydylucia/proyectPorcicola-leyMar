@@ -149,6 +149,9 @@ dictionary:
     control:                   Control
     
     new_delivery:              Nuevo Parto
+    language:                  Idioma
+    session:                   Sesión
+
     
     
     

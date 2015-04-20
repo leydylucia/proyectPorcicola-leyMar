@@ -839,4 +839,91 @@ tipoVenta_reporte:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
   
- 
+ ##--------------------------Control Peso----------------------------##
+control_index:
+  url:    /control/index
+  param:  { module: control, action: index, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_insert:
+  url:    /control/insertar
+  param:  { module: control, action: insert, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_create:
+  url:    /control/crear
+  param:  { module: control, action: create, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+
+control_edit:
+  url:    /control/editar
+  param:  { module: control, action: edit, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_update:
+  url:    /control/actualizar
+  param:  { module: control, action: update, format: json }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_delete:
+  url:    /control/eliminar
+  param:  { module: control, action: delete, format: json }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    
+control_deleteSelect:
+  url:    /control/eliminarSeleccion
+  param:  { module: control, action: deleteSelect, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    
+control_ver:
+  url:    /control/ver
+  param:  { module: control, action: ver, format: html }
+  load:
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_reporte:
+  url:    /control/reporte
+  param:  { module: control, action: report, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/controlBaseTableClass.php
+    - model/controlTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+control_traduccion:
+  url:    /traduccion4
+  param:  { module: control, action: traductor, format: html }
+         

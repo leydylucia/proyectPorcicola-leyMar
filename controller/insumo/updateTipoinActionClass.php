@@ -25,7 +25,8 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
         $ids = array(
         tipoInsumoTableClass::ID => $id
         );
-
+        
+         $this->Validate($desc_tipoIn);
         $data = array(
         tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn,
            
@@ -41,4 +42,36 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
     }
   }
 
+ private function Validate($desc_tipoIn) {
+        $flag = false;
+        if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {
+            session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => tipoInsumoTableClass::DESC_TIPOIN_LENGTH)));
+            $flag = true;
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, TRUE), TRUE);
+        }
+
+        if (!ereg("^[A-Z a-z_]*$", $desc_tipoIn)) {
+            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_tipoIn)));
+            $flag = true;
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, TRUE), TRUE);
+        }
+
+
+        if ($desc_tipoIn === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true), true);
+        }
+
+
+
+
+
+        if ($flag === true) {
+            request::getInstance()->setMethod('GET');
+            routing::getInstance()->forward('insumo', 'editTipoin');
+        }
+    }
+
 }
+

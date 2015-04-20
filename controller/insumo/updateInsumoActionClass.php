@@ -42,20 +42,19 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
                 );
 
                 insumoTableClass::update($ids, $data);
-                routing::getInstance()->redirect('insumo', 'indexInsumo');
-            }else{
-                
-            routing::getInstance()->redirect('insumo', 'indexInsumo'); 
-            }
+                routing::getInstance()->redirect('insumo', 'editInsumo');
+            } else {
 
+                routing::getInstance()->redirect('insumo', 'editInsumo');
+            }
         } catch (PDOException $exc) {
-            
+
             routing::getInstance()->forward('insumo', 'editInsumo');
             session::getInstance()->setFlash('exc', $exc);
         }
     }
-    
-     static public function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
+
+    private function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
         $flag = false;
         if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
             session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO_LENGTH)));

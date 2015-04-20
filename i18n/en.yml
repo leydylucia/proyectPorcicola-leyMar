@@ -132,6 +132,9 @@ dictionary:
     control:                   Control
 
     new_delivery:              New delivery
+    language:                  Language
+    session:                   Session
+
  
 
 

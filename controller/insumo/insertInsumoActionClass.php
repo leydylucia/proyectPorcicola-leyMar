@@ -43,7 +43,7 @@ class insertInsumoActionClass extends controllerClass implements controllerActio
 
 
 
-            $this->defineView('insert', 'insumo', session::getInstance()->getFormatOutput());
+            $this->defineView('insertInsumo', 'insumo', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

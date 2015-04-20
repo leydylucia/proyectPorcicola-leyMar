@@ -13,13 +13,15 @@ class controlBaseTableClass extends tableBaseClass {
   private $created_at;
   private $updated_at;
   private $deleted_at;
+  private $peso_cerdo;
   private $empleado_id;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  const EMPLEADO_ID = 'empelado_id';
+  const PESO_CERDO = 'peso_cerdo';
+  const EMPLEADO_ID = 'empleado_id';
   
   function getId() {
     return $this->id;
@@ -35,6 +37,10 @@ class controlBaseTableClass extends tableBaseClass {
 
   function getDeleted_at() {
     return $this->deleted_at;
+  }
+
+  function getPeso_cerdo() {
+    return $this->peso_cerdo;
   }
 
   function getEmpleado_id() {
@@ -57,11 +63,15 @@ class controlBaseTableClass extends tableBaseClass {
     $this->deleted_at = $deleted_at;
   }
 
+  function setPeso_cerdo($peso_cerdo) {
+    $this->peso_cerdo = $peso_cerdo;
+  }
+
   function setEmpleado_id($empleado_id) {
     $this->empleado_id = $empleado_id;
   }
 
- 
+   
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
@@ -152,4 +162,3 @@ class controlBaseTableClass extends tableBaseClass {
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-

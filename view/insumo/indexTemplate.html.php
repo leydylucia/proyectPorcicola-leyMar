@@ -28,18 +28,7 @@
 <div class="container container-fluid">
     <div style="margin-bottom: 10px; margin-top: 30px">
 
-        <!--cambio de idioma-->
-        <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'traductorInsumo') ?>" method="POST">
-
-            <select name="language" onchange="$('#frmTraductor').submit()">
-                <option <?php echo (confing::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español </option>
-                <option <?php echo (confing::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English </ option>
-
-            </select>
-            <input type="hidden"  name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
-        </form> 
-    </div>
-    <!--fin cambio de idioma-->
+       
 
     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'insertInsumo') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
     <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
@@ -194,7 +183,7 @@
 
             <table class="table table-bordered table-striped table-condensed mitabla">
                 <thead>
-                    <tr>
+                    <tr class="active">
                         <th><input type="checkbox" id="chkAll"></th>
                         <th><?php echo i18n::__('describe_product') ?></th>
                         <th><?php echo i18n::__('prise') ?></th>

@@ -12,6 +12,7 @@
 <?php $correo = proveedorTableClass::CORREO ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $ciudad_id = proveedorTableClass::CIUDAD_ID ?>
+<?php $fecha = proveedorTableClass::CREATED_AT ?>
 
 <!--titulo-->
 <div class="container container-fluid">
@@ -24,15 +25,7 @@
 <div class="container container-fluid">
   <div style="margin-bottom: 10px; margin-top: 30px">
 
-    <!--cambio de idioma-->
-    <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'traductor') ?>" method="POST">
-      <select name="language" onchange="$('#frmTraductor').submit()">
-        <option <?php echo (config::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español</option>
-        <option <?php echo (config::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English</option>            
-      </select>
-      <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
-    </form>    
-    <!--fin cambio de idioma-->
+   
 
 
     <!-- FILTROS -->
@@ -133,7 +126,7 @@
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'deleteSelectProv') ?>" method="POST">
       <table class="table table-bordered table-responsive table-striped table-condensed mitabla">
         <thead>
-          <tr>
+          <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('name') ?></th>
             <th><?php echo i18n::__('lastname') ?></th>
@@ -141,7 +134,9 @@
             <th><?php echo i18n::__('email') ?></th>
             <th><?php echo i18n::__('telephone') ?></th>
             <th><?php echo i18n::__('city_id') ?></th>
+            <th><?php echo i18n::__('date') ?></th>
             <th><?php echo i18n::__('actions') ?></th>
+            
           </tr>
         </thead>
         <tbody>
@@ -154,6 +149,7 @@
               <td><?php echo $proveedor->$correo ?></td>
               <td><?php echo $proveedor->$telefono ?></td>
               <td><?php echo ciudadTableClass::getNameCiudad($proveedor->$ciudad_id) ?></td>
+              <td><?php echo $proveedor->$fecha ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'verProv', array(proveedorTableClass::ID => $proveedor->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'editProv', array(proveedorTableClass::ID => $proveedor->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>

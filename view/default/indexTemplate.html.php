@@ -20,21 +20,7 @@
 
 </div>
 <!--fintitulo-->
-<!--cambio de idioma-->
-<div class="container container-fluid">
-    <div style="margin-bottom: 10px; margin-top: 30px">
-        <!--        cambio de idioma-->
-        <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('default', 'traductor') ?>" method="POST">
 
-            <select name="language" onchange="$('#frmTraductor').submit()">
-                <option <?php echo (confing::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español </option>
-                <option <?php echo (confing::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English </option>
-
-            </select>
-            <input type="hidden"  name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
-        </form> 
-    </div>
-    <!--fin cambio de idioma-->
 
     <div class="container container-fluid">
 

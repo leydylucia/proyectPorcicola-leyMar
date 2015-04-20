@@ -21,15 +21,7 @@
 <div class="container container-fluid">
   <div style="margin-bottom: 10px; margin-top: 30px">
 
-    <!--cambio de idioma-->
-    <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'traductorCiudad') ?>" method="POST">
-      <select name="language" onchange="$('#frmTraductor').submit()">
-        <option <?php echo (config::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español</option>
-        <option <?php echo (config::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English</option>            
-      </select>
-      <input type="hidden" name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
-    </form>    
-    <!--fin cambio de idioma-->
+   
 
 
     <!-- FILTROS -->
@@ -88,7 +80,7 @@
 
       <table class="table table-bordered table-responsive table-striped table-condensed mitabla">
         <thead>
-          <tr>
+          <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('name_city') ?></th>
             <th><?php echo i18n::__('name_dept') ?></th>
