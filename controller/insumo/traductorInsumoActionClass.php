@@ -1,5 +1,12 @@
 <?php
 
+//use mvc\interfaces\controllerActionInterface;
+//use mvc\controller\controllerClass;
+//use mvc\config\configClass as config;
+//use mvc\request\requestClass as request;
+//use mvc\routing\routingClass as routing;
+//use mvc\session\sessionClass as session;
+//use mvc\i18n\i18nClass as i18n;
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
@@ -11,38 +18,26 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class traductorInsumoActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      //if (request::getInstance()->isMethod('POST')) {
-        
-//        echo '<pre>';
-//        print_r($_SERVER);
-//        echo '</pre>';
-//        exit();
-        $language = request::getInstance()->getGet('language');
-        $PATH_INFO = request::getInstance()->getGet('PATH_INFO');
-        
-        if (request::getInstance()->hasGet('QUERY_STRING')) {
-          $QUERY_STRING = html_entity_decode(request::getInstance()->getGet('QUERY_STRING'));
+    public function execute() {
+
+        try {
+            if (request::getInstance()->isMethod('POST') === true) {
+                $language = request::getInstance()->getPost('language');
+                $PATH_INFO = request::getInstance()->getServer('PATH_INFO');
+                session::getInstance()->setDefaultCulture($language);
+                $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
+                header('location: ' . $dir);
+            } else {
+                routing::getInstance()->redirect('insumo', 'indexInsumo');
+            }
+        } catch (PDOException $exc) {
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
-        
-        session::getInstance()->setDefaultCulture($language);
-//        config::setDefaultCulture($language);
-        $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
-        $dir .= (isset($QUERY_STRING)) ? '?' . $QUERY_STRING : '';
-        header('Location: ' . $dir);
-      //} else {
-        //routing::getInstance()->redirect('default', 'index');
-      //}
-    } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
     }
-  }
 
 }

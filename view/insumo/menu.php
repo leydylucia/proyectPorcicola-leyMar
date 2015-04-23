@@ -30,9 +30,10 @@
         <span class="caret"></span></a>
       <ul class="dropdown-menu">
 
-          ->
+        
       <li><a  href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>"><i class=""aria-label="Left Align">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <?php echo i18n::__('closing session') ?></i>
+           </i>
+            <li><a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><?php echo i18n::__('user') ?></a></li>
 </button></a></li>
       </ul>
     </li>
@@ -55,13 +56,21 @@
 <!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
        <li><a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>"><?php echo i18n::__('type_product') ?></a></li>
        <li><a  href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('product') ?></a></li>
-       <li><a  href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('weight control') ?></a></li>
+    
       </ul>
     </li>
     
-    <ul class="nav nav-tabs">
-      <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>"><?php echo i18n::__('delivery') ?></a></li>
-    </ul>
+     <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown" href="<?php  echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>">archivo
+        <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+<!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
+       <li><a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'indexTipov') ?>"><?php echo i18n::__('type sale') ?></a></li>
+       <li><a  href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('weight control') ?></a></li>
+        <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>"><?php echo i18n::__('delivery') ?></a></li>
+      </ul>
+    </li>
+  
     
  <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><i class="glyphicon glyphicon-user"> <?php echo session::getInstance()->getUserName() ?></i></a></li>
@@ -69,8 +78,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18n::__('language') ?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'traductorInsumo', array('language' => 'es', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img class="img-responsive"  id="imgespanol" src="" alt=" "></a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'traductorInsumo', array('language' => 'en', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img class="img-responsive"  id="imgingles" src="" alt=" "></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'traductor', array('language' => 'es', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img class="img-responsive"  id="imgespanol" src="" alt=" "></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'traductor', array('language' => 'en', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')))) ?>"><img class="img-responsive"  id="imgingles" src="" alt=" "></a></li>
             </ul>
           </li>
         </ul>

@@ -12,7 +12,8 @@
 
 <div class="container container-fluid">
 
-  <a href="http://www.porcicolatapasco.com/index.php/insumo/index"><?php echo i18n::__('return') ?> </a>
+
+        <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/insumo"><?php echo i18n::__('return') ?> </a>
 
     </div>
 
@@ -43,9 +44,8 @@
                             <td><?php echo $insumo->$precio ?></td>
                              <tr >
                             <th><?php echo i18n::__('type_product') ?></th>
-                             <td><?php echo tipoInsumoTableClass::getNameTipoin($insumo->$tipoInsumo) ?></td>
                             
-                            <!--<td><!?php echo $insumo-> $tipoInsumo ?></td>-->
+                            <td><?php echo $insumo-> $tipoInsumo ?></td>
                              <tr >
                             <th><?php echo i18n::__('date_manufacture') ?></th>
                             
@@ -58,7 +58,7 @@
                             <tr >
                             <th><?php echo i18n::__('provisioner') ?></th>
                             
-                           <td><?php echo proveedorTableClass::getNameProveedor($insumo->$proveedorId) ?></td>
+                            <td><?php echo $insumo->  $proveedorId ?></td>
                              <tr>
                             <th><?php echo i18n::__('date_creation') ?></th>
                             

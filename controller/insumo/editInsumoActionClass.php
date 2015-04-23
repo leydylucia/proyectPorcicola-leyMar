@@ -20,8 +20,6 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
     public function execute() {
         try {
             if (request::getInstance()->hasRequest(insumoTableClass::ID)) {
-                
-                
                 $fields = array(
                     insumoTableClass::ID,
                     insumoTableClass::DESC_INSUMO,
@@ -45,7 +43,6 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                 );
                 $this->objTipoin = tipoinsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-
                 $fieldsProveedor = array(
                     proveedorTableClass::ID,
                     proveedorTableClass::NOMBRE
@@ -68,7 +65,5 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
             routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
-    
-    
 
 }

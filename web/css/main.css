@@ -49,8 +49,14 @@ body {
 }
 
 h1{
-    text-shadow: rgb(0,0,150) 3px 3px 9px;/*5PX ES EL RADIO Y SE PUEDE AUMENTAR Y LOS DOS 3PX ES INTENCIDAD*/
+    //text-shadow: rgb(0,0,150) 3px 3px 9px;/*5PX ES EL RADIO Y SE PUEDE AUMENTAR Y LOS DOS 3PX ES INTENCIDAD*/
     font: bold 50px agencifb, sans-serif;
+
+}
+
+h2{
+    //text-shadow: rgb(0,0,150) 3px 3px 9px;/*5PX ES EL RADIO Y SE PUEDE AUMENTAR Y LOS DOS 3PX ES INTENCIDAD*/
+    font: bold 25px agencifb, sans-serif;
 
 }
 

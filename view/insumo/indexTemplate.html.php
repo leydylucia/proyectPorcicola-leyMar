@@ -28,7 +28,7 @@
 <div class="container container-fluid">
     <div style="margin-bottom: 10px; margin-top: 30px">
 
-       
+        
 
     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'insertInsumo') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
     <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
@@ -39,9 +39,9 @@
     <!--filtros-->
     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
     <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-  <!--target_new para abrir una nueva ventana-->
-    <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
-
+    
+        <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+   
 </div>
 
 <!--filtro con reporte-->
@@ -67,15 +67,12 @@
                             <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
                         </div>
                     </div>  
-                    <!--foranea-->
-                             <div class="form-group">
-                                  <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                    <!--             <div class="form-group">
+                                  <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
                                   <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
                                   </div>
-                                </div> 
-                    
-                    
+                                </div> -->
                     <div class="form-group">
                         <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
                         <div class="col-sm-10">
@@ -101,7 +98,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
+                <button type="button" onclick="$('#report').submit()" class="btn btn-warnig"><?php echo i18n::__('report') ?></button>
             </div>
         </div>
     </div>
@@ -129,7 +126,7 @@
                             <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
                         </div>
                     </div>  
-<!--                                <div class="form-group">
+                    <!--             <div class="form-group">
                                   <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
                                   <div class="col-sm-10">
                                     <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
@@ -258,11 +255,10 @@
     </div>
 </div>
 
-<!--formulario eliminado individual-->
+
 <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'deleteInsumo') ?>" method="POST">
     <input type="hidden" id="idDelete" name="<?php echo insumoTableClass::getNameField(insumoTableClass::ID, true) ?>">
 </form>
-<!--fin formulario eliminado individual-->
 
 <!--eliminado masivo en ajax-->
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -274,7 +270,7 @@
             </div>
             <div class="modal-body">
 
-                <?php i18n::__('confirmDeleteMasivo') ?> <?php echo $insumo->$descInsumo ?>
+               
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -283,5 +279,5 @@
         </div>
     </div>
 </div>
-<!--fin eliminado masivo en ajax-->
+
 </div>

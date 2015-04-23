@@ -7,7 +7,7 @@
 <div class="container container-fluid">
     <div class="page-header titulo">
         <h1>Editar Insumo</h1>  
-      <?php echo $objInsumo[0]->$descInsumo ?>
+        <h2> <?php echo $objInsumo[0]->$descInsumo ?></h2>
     </div>
     
 </div>

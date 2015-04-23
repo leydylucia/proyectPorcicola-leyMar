@@ -122,7 +122,9 @@
             <?php if(session::getInstance()->hasCredential('admin')): //and session::getInstance()->hasCredential('emple')): ?>
             <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objInsumo)) ? 'update' : 'register')) ?>">
             <?php endif ?>
-            <a href="http://www.porcicolatapasco.com/index.php/insumo/index"><?php echo i18n::__('return') ?> </a>
+            
+            <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('return') ?> </a>
+            
 
 
 
