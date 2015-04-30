@@ -16,6 +16,10 @@ namespace mvc\view {
     static public function includeHandlerMessage() {
       include_once configClass::getPathAbsolute() . 'libs/vendor/view/handlerMessage.php';
     }
+    
+    static public function getMessageError($key) {
+      include_once configClass::getPathAbsolute() . 'libs/vendor/view/messageError.php';
+    }
 
     static public function includePartial($partial, $variables = null) {
       if ($variables !== null and is_array($variables)) {

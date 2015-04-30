@@ -5,7 +5,7 @@ namespace mvc\model\table {
   use mvc\interfaces\tableInterface;
   use mvc\model\modelClass as model;
   use mvc\config\configClass as config;
-  use mvc\camelCase\camelCaseClass as camelCase;
+  use mvc\session\sessionClass as session;
 
   /**
    * Clase general para las tablas el cual define el CRUD
@@ -218,7 +218,7 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-//echo $sql
+
         return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {
         throw $exc;
