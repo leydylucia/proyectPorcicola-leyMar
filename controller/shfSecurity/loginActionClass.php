@@ -21,6 +21,7 @@ class loginActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->isMethod('POST')) {
         $usuario = request::getInstance()->getPost('inputUser');
         $password = request::getInstance()->getPost('inputPassword');
+
         if (($objUsuario = usuarioTableClass::verifyUser($usuario, $password)) !== false) {
           hook\security\securityHookClass::login($objUsuario);
           if (request::getInstance()->hasPost('chkRememberMe') === true) {
