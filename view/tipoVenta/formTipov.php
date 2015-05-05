@@ -1,12 +1,21 @@
+<?php
 
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\session\sessionClass as session ?>
+<?php
+use mvc\request\requestClass as request ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\view\viewClass as view ?>
+
 
 <?php $id = tipovTableClass::ID ?>
 <?php  $desc_tipoV= tipovTableClass::DESC_TIPOV  ?>
 
 
-
+<?php view::includeHandlerMessage() ?>
 <div class="container">
     <form  role="form" class="form-horizontal" method="post" action="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', ((isset($objTipoV)) ? 'updateTipov' : 'createTipov' )) ?>">
   <?php if(isset($objTipoV) == true): ?>

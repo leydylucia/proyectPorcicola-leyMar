@@ -52,10 +52,11 @@ class editSacrificioVentaActionClass extends controllerClass implements controll
 //                $this->objHojaV = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 
                 $this->defineView('edit', 'sacrificioVenta', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
-                //session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+                
                 // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
             }
         } catch (PDOException $exc) {
 

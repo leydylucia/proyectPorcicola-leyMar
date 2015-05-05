@@ -28,10 +28,11 @@ class editTipoInActionClass extends controllerClass implements controllerActionI
         );
         $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipoin', 'insumo', session::getInstance()->getFormatOutput());
-        session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
+        
         
       } else {
         routing::getInstance()->redirect('insumo', 'indexTipoin');
+        session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
       }
 
     } catch (PDOException $exc) {

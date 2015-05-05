@@ -11,7 +11,8 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo
+ * 
  */
 class updateInsumoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -27,7 +28,7 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
-                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
+                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
                 $ids = array(
                     insumoTableClass::ID => $id
                 );
@@ -44,7 +45,7 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
                 insumoTableClass::update($ids, $data);
                 routing::getInstance()->redirect('insumo', 'editInsumo');
             } else {
-
+session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
                 routing::getInstance()->redirect('insumo', 'editInsumo');
             }
         } catch (PDOException $exc) {

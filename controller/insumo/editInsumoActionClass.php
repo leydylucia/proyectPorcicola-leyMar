@@ -53,11 +53,12 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                 $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor, 'ASC');
 
                 $this->defineView('edit', 'insumo', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
-                //session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+                
 
                 // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('insumo', 'indexInsumo');
+                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
             }
         } catch (PDOException $exc) {
 

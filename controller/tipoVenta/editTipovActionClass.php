@@ -17,21 +17,22 @@ class editTipovActionClass extends controllerClass implements controllerActionIn
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(tipovTableClass::ID)) {
+      if (request::getInstance()->hasGet(tipovTableClass::ID)) {
         $fields = array(
         tipovTableClass::ID,
         tipovTableClass::DESC_TIPOV,
           
         );
         $where = array(
-        tipovTableClass::ID => request::getInstance()->getRequest(tipovTableClass::ID)
+        tipovTableClass::ID => request::getInstance()->getGet(tipovTableClass::ID)
         );
         $this->objTipoV= tipovTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipov', 'tipoVenta', session::getInstance()->getFormatOutput());
-        session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
+        
         
       } else {
         routing::getInstance()->redirect('tipoVenta', 'indexTipov');
+        session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
       }
 
     } catch (PDOException $exc) {
