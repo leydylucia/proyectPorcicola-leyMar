@@ -25,8 +25,9 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
         $ids = array(
         tipoInsumoTableClass::ID => $id
         );
-        
+        //validaciones
          $this->Validate($desc_tipoIn);
+         //fin validacion
         $data = array(
         tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn,
            
@@ -69,6 +70,7 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
 
         if ($flag === true) {
             request::getInstance()->setMethod('GET');
+            request::getInstance()->addParamGet(array(tipoInsumoTableClass::ID => request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::ID, true))));
             routing::getInstance()->forward('insumo', 'editTipoin');
         }
     }

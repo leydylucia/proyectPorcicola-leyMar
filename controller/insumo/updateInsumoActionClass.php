@@ -100,6 +100,7 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
 
         if ($flag === true) {
             request::getInstance()->setMethod('GET');
+            request::getInstance()->addParamGet(array(insumoTableClass::ID => request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID, true))));
             routing::getInstance()->forward('insumo', 'editInsumo');
         }
     }

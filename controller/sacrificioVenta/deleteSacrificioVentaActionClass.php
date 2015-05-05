@@ -15,30 +15,30 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author leydy lucia castillo mosquera
  */
-class deleteInsumoActionClass extends controllerClass implements controllerActionInterface {
-    /*  * @var $ids=> declara con que va a borrar
+class deleteSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
+    /*     * @var $ids=> declara con que va a borrar
      * @var  $this->arrayAjax que el dato que va a la vista es de tipo ajax* */
 
     public function execute() {
         try {
             if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
-                $id = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID, true));
+                $id = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true));
 
                 $ids = array(
-                    insumoTableClass::ID => $id
+                    sacrificiovTableClass::ID => $id
                 );
-                insumoTableClass::delete($ids, true); /* el true es para el borrado logico  en bd false si no lo tiene */
+                sacrificiovTableClass::delete($ids, true); /* el true es para el borrado logico false si no lo tiene */
                 //routing::getInstance()->redirect('depto', 'index');
                 $this->arrayAjax = array(
                     'code' => 200,
                     'msg' => 'la eliminacion fue exitosa'
                 );
-                $this->defineView('deleteInsumo', 'insumo', session::getInstance()->getFormatOutput());
+                $this->defineView('deleteSacrificioVenta', 'sacrificioVenta', session::getInstance()->getFormatOutput());
                 session::getInstance()->setSuccess('el registro se elimino con exito'); /* mensaje de exito */
                 // log::register('eliminar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
-                routing::getInstance()->redirect('insumo', 'index');
+                routing::getInstance()->redirect('sacrificioVenta', 'index');
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

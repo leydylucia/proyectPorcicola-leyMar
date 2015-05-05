@@ -10,7 +10,7 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
- *
+ *@class deleteSelectInsumoActionClass borrado en masa
  * @author leydy lucia castillo mosquera
  */
 class deleteSelectInsumoActionClass extends controllerClass implements controllerActionInterface {

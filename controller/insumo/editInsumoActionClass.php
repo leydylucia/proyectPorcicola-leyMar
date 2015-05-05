@@ -19,7 +19,7 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
 
     public function execute() {
         try {
-            if (request::getInstance()->hasRequest(insumoTableClass::ID)) {
+            if (request::getInstance()->hasGet(insumoTableClass::ID)) {
                 $fields = array(
                     insumoTableClass::ID,
                     insumoTableClass::DESC_INSUMO,
@@ -30,7 +30,7 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                     insumoTableClass::PROVEEDOR_ID
                 );
                 $where = array(
-                    insumoTableClass::ID => request::getInstance()->getRequest(insumoTableClass::ID)
+                    insumoTableClass::ID => request::getInstance()->getGet(insumoTableClass::ID)
                 );
                 $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, null, $where);
                 //estos campo son para llamar las foraneas
@@ -53,7 +53,7 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                 $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor, 'ASC');
 
                 $this->defineView('edit', 'insumo', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
-                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+                //session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
 
                 // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
@@ -67,3 +67,6 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
     }
 
 }
+
+
+//echo '$ ' . number_format($precio, 0, ',', '.');

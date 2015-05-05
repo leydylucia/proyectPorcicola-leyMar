@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of credencialBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
 class sacrificiovBaseTableClass extends tableBaseClass {
 
@@ -15,17 +15,14 @@ class sacrificiovBaseTableClass extends tableBaseClass {
     private $deletedAt;
     private $valor;
     private $tipo_venta_id;
-    private $peso_kg;
     private $id_cerdo;
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
-    const VALOR = 'desc_raza';
-    const TIPO_VENTA_ID= 80;
-    const PESO_KG = 'precio';
-    const PESO_KG_LENGTH=6;
+    const VALOR = 'valor';
+    const TIPO_VENTA_ID= 'tipo_venta_id';
     const ID_CERDO= 'id_cerdo';
  
 
@@ -51,10 +48,6 @@ class sacrificiovBaseTableClass extends tableBaseClass {
 
     function getTipo_venta_id() {
         return $this->tipo_venta_id;
-    }
-
-    function getPeso_kg() {
-        return $this->peso_kg;
     }
 
     function getId_cerdo() {
@@ -85,15 +78,11 @@ class sacrificiovBaseTableClass extends tableBaseClass {
         $this->tipo_venta_id = $tipo_venta_id;
     }
 
-    function setPeso_kg($peso_kg) {
-        $this->peso_kg = $peso_kg;
-    }
-
     function setId_cerdo($id_cerdo) {
         $this->id_cerdo = $id_cerdo;
     }
 
-        /**
+            /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)
      *

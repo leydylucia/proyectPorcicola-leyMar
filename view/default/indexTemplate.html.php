@@ -115,9 +115,9 @@
                 <form id="frmDeleteAll" id ="filterForm"action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
 
 
-                    <table class="table table-bordered table-striped table-condensed">
+                    <table class="table table-bordered table-striped table-condensed mitabla">
                         <thead>
-                            <tr>
+                            <tr class="active">
                                 <th><input type="checkbox" id="chkAll"></th>
                                 <th><?php echo i18n::__('user') ?></th>
                                 <th><?php echo i18n::__('date') ?></th>
@@ -126,10 +126,10 @@
                         </thead>
                         <tbody>
                             <?php foreach ($objUsuario as $usuario): ?> 
-                                <tr >
+                                <tr class="text-info bg-info">
                                     <td><input type="checkbox" name="chk[]" value="<?php echo $usuario->$id ?>"></td>
                                     <td><?php echo $usuario->$usu ?></td>
-                                    <td><?php echo $usuario->$fecha ?></td>
+                                    <td><?php echo date('d-m-Y h:i:s a', strtotime($usuario->$fecha)) ?></td>
                                     <td>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'ver', array(usuarioTableClass::ID => $usuario->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'edit', array(usuarioTableClass::ID => $usuario->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>

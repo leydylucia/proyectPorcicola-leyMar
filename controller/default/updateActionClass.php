@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
@@ -27,6 +27,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             usuarioTableClass::ID => $id
         );
 
+        $this->Validate($user, $pass1, $pass2);
+        
         $data = array(
             usuarioTableClass::USER => $usuario,
             usuarioTableClass::PASSWORD => $password
@@ -41,5 +43,35 @@ class updateActionClass extends controllerClass implements controllerActionInter
       routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
+private function Validate($user, $pass1, $pass2) {
+        $flag = false;
+        if (strlen($user) > usuarioTableClass::USER_LENGTH) {
+            session::getInstance()->setError(i18n::__(00004, null, 'errors', array('%user%' => $user, '%caracteres%' => usuarioTableClass::USER_LENGTH)));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
+        }
+        
+         if (!ereg("^[A-Z a-z_]*$", $user)) {//validacion de tan solo letras
+            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $user)));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE), TRUE);
+        }
+        
+          if ($user === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
+        }
+
+        if ($pass1 !== $pass2) {
+            session::getInstance()->setError(i18n::__(00005, null, 'errors'));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true), true);
+        }
+        if ($flag === true) {
+            request::getInstance()->setMethod('GET');
+            routing::getInstance()->forward('default', 'insert');
+        }
+    }
 
 }

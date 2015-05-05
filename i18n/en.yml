@@ -134,6 +134,11 @@ dictionary:
     new_delivery:              New delivery
     language:                  Language
     session:                   Session
+    
+    #sacrificio venta#
+    Sacrifice Sale:           Sacrifice Sale
+    sale:                     Sale
+    pig:                      Pig
 
  
 

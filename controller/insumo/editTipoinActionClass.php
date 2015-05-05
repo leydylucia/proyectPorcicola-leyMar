@@ -17,14 +17,14 @@ class editTipoInActionClass extends controllerClass implements controllerActionI
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(tipoInsumoTableClass::ID)) {
+      if (request::getInstance()->hasGet(tipoInsumoTableClass::ID)) {
         $fields = array(
         tipoInsumoTableClass::ID,
         tipoInsumoTableClass::DESC_TIPOIN,
           
         );
         $where = array(
-        tipoInsumoTableClass::ID => request::getInstance()->getRequest(tipoInsumoTableClass::ID)
+        tipoInsumoTableClass::ID => request::getInstance()->getGet(tipoInsumoTableClass::ID)
         );
         $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipoin', 'insumo', session::getInstance()->getFormatOutput());

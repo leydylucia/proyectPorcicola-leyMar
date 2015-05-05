@@ -24,15 +24,13 @@
 <?php $proveedorId = proveedorTableClass::ID ?><!--manejo de foranea para traer datos-->
 <?php $nombre = proveedorTableClass::NOMBRE ?>
 
+<?php view::includeHandlerMessage() ?>
 
-
-<div class="container">
     <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', ((isset($objInsumo)) ? 'updateInsumo' : 'createInsumo')) ?>">
         <?php if (isset($objInsumo) == true): ?>
             <input name="<?php echo insumoTableClass::getNameField(insumoTableClass::ID, true) ?>" value="<?php echo $objInsumo[0]->$id ?>" type="hidden">
         <?php endif ?>
 
-  
             
         <div class="form-group <?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true)) === true) ? 'has-error has-feedback' : '' ?>">
             <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('describe_product') ?>:</label>
@@ -47,7 +45,7 @@
         <div class="form-group <?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? 'has-error has-feedback' : '' ?>">
             <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('prise') ?>:</label>
             <div class="col-xs-9">
-                <input id="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="form-control" value="<?php echo ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?><?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) : '' ?>" type="text" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">
+                <input id="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="form-control" value="<?php echo ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?><?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) : '' ?>" type="number_format" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">
                 <?php if (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true): ?>
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 <?php endif ?>
@@ -129,5 +127,4 @@
 
 
     </form>
-</div>
 

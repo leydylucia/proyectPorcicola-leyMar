@@ -927,3 +927,107 @@ control_traduccion:
   url:    /traduccion4
   param:  { module: control, action: traductor, format: html }
          
+#---------------------------------sacrificioVenta-------------------------------#
+sacrificioVenta_index:
+  url:    /sacrificioVenta/index
+  param:  { module: sacrificioVenta, action: indexSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+   
+
+sacrificioVenta_insert:
+  url:    /sacrificioVenta/insertar
+  param:  { module: sacrificioVenta, action: insertSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+
+sacrificioVenta_create:
+  url:    /sacrificioVenta/crear
+  param:  { module: sacrificioVenta, action: createSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+sacrificioVenta_edit:
+  url:    /sacrificioVenta/editar
+  param:  { module: sacrificioVenta, action: editSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+
+
+sacrificioVenta_update:
+  url:    /sacrificioVenta/actualizar
+  param:  { module: sacrificioVenta, action: updateSacrificioVenta, format: html }
+  load:
+   - model/base/sacrificiovBaseTableClass.php
+   - model/sacrificiovTableClass.php
+   - model/base/tipovBaseTableClass.php
+   - model/tipovTableClass.php
+   
+    
+sacrificioVenta_delete:
+  url:    /sacrificioVenta/eliminar
+  param:  { module: sacrificioVenta, action: deleteSacrificioVenta, format: json }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+   
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+
+    
+sacrificioVenta_deleteSelect:
+  url:    /sacrificioVenta/eliminarSeleccion
+  param:  { module: sacrificioVenta, action: deleteSelectSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+   
+    
+sacrificioVenta_ver:
+  url:    /sacrificioVenta/ver
+  param:  { module: sacrificioVenta, action: verSacrificioVenta, format: html }
+  load:
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    
+  
+  
+    
+sacrificioVenta_deleteFilters:
+  url:    /borrar_filtros_sacrificioVenta
+  param:  { module: sacrificioVenta, action: deleteFilters, format: html }
+  
+sacrificioVenta_traduccion:
+  url:    /traduccion1
+  param:  { module: sacrificioVenta, action: traductorSacrificioVenta, format: html }  
+  
+sacrificioVenta_reporte:
+  url:    /sacrificioVenta/reporte
+  param:  { module: sacrificioVenta, action: reportSacrificioVenta, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php

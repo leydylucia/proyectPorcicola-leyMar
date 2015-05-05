@@ -26,21 +26,7 @@ use mvc\request\requestClass as request ?>
 
 </div>
 <!--fintitulo-->
-<!--cambio de idioma-->
-<div class="container container-fluid">
-    <div style="margin-bottom: 10px; margin-top: 30px">
-        <!--        cambio de idioma-->
-        <form id="frmTraductor" action="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'traductorTipov') ?>" method="POST">
 
-            <select name="language" onchange="$('#frmTraductor').submit()">
-                <option <?php echo (confing::getDefaultCulture() == 'es') ? 'selected' : '' ?> value="es">Español </option>
-                <option <?php echo (confing::getDefaultCulture() == 'en') ? 'selected' : '' ?> value="en">English </option>
-
-            </select>
-            <input type="hidden"  name="PATH_INFO" value="<?php echo request::getInstance()->getServer('PATH_INFO') ?>">
-        </form> 
-    </div>
-    <!--fin cambio de idioma-->
 
     <div class="container container-fluid">
 
@@ -138,9 +124,9 @@ use mvc\request\requestClass as request ?>
             <div class="table-responsive">
                 <form id="frmDeleteAll" id ="filterForm"action="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'deleteSelectTipov') ?>" method="POST">
 
-                    <table class="table table-bordered table-striped table-condensed">
+                    <table class="table table-bordered table-striped table-condensed mitabla">
                         <thead>
-                            <tr>
+                            <tr class="active">
                                 <th><input type="checkbox" id="chkAll"></th>
                                 <th><?php echo i18n::__('describe_typeProduct') ?></th>
                                 <th><?php echo i18n::__('date') ?></th>
@@ -149,10 +135,10 @@ use mvc\request\requestClass as request ?>
                         </thead>
                         <tbody>
 <?php foreach ($objTipoV as $tipoV): ?> 
-                                <tr >
+                                <tr class="text-info bg-info">
                                     <td><input type="checkbox" name="chk[]" value="<?php echo $tipoV->$id ?>"></td>
                                     <td><?php echo $tipoV->$desc_tipoV ?></td>
-                                    <td><?php echo $tipoV->$fecha ?></td>
+                                    <td><?php echo date('d-m-Y h:i:s a', strtotime($tipoV->$fecha)) ?></td>
                                     <td>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'verTipov', array(tipovTableClass::ID => $tipoV->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                         <a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'editTipov', array(tipovTableClass::ID => $tipoV->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>

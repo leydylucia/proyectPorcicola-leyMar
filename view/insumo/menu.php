@@ -68,6 +68,7 @@
        <li><a href="<?php echo routing::getInstance()->getUrlWeb('tipoVenta', 'indexTipov') ?>"><?php echo i18n::__('type sale') ?></a></li>
        <li><a  href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('weight control') ?></a></li>
         <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>"><?php echo i18n::__('delivery') ?></a></li>
+         <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>"><?php echo i18n::__('sacrifice') ?></a></li>
       </ul>
     </li>
   

@@ -126,8 +126,9 @@ dictionary:
     information:              Informacion
     Date:                     fecha
     #sacrificio#
-    sacrifice:                sacrificio
+    sacrifice:                sacrificio 
     type sale:                tipo venta
+    pig:                      cerdo
     
     closing session:          cierre de sesion
 
@@ -151,7 +152,11 @@ dictionary:
     new_delivery:              Nuevo Parto
     language:                  Idioma
     session:                   Sesión
-
+  
+    #sacrificio venta#
+    Sacrifice Sale:           Sacrificio Venta
+    sale:                     Valor
+    
     
     
     

@@ -36,19 +36,8 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
-//if(!is_numeric($precio)){
-//    throw new PDOException(i18n::__(10001, null, 'errors')) ;
-//}
-                //validaciones
-                //caracteres especiales
-//                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_insumo) == true) {
-//                    throw new PDOException(i18n::__(10002, null, 'errors'));//falta poner en diccionario el error adecuado
-//                }
-                //           insumoTableClass::Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
-                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);
-//                if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
-//                    throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => insumoTableClass::DESC_INSUMO_LENGTH)), 00001);
-//                }
+
+                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*$this->validate para validar campos*/
 
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
@@ -76,6 +65,8 @@ class createInsumoActionClass extends controllerClass implements controllerActio
         }
     }
 
+    
+    /* @ function para validar campos de formulario*/
     static public function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
         $flag = false;
         if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
@@ -84,7 +75,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
         }
 
-        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {
+        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {//validacion de tan solo letras
             session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
             $flag = true;
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);

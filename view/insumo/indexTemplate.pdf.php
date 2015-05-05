@@ -32,10 +32,10 @@ foreach ($objInsumo as $insumo) {
     $pdf->Cell(20, 10, utf8_decode($insumo->$id), 1);
     $pdf->Cell(40, 10, utf8_decode($insumo->$descInsumo), 1);
     $pdf->Cell(40, 10, utf8_decode($insumo->$precio), 1);
-    $pdf->Cell(40, 10, utf8_decode($insumo->$tipoInsumo), 1);
+    $pdf->Cell(40, 10, utf8_decode(tipoInsumoTableClass::getNameTipoin($insumo->$tipoInsumo)), 1);
     $pdf->Cell(40, 10, utf8_decode($insumo->$fechaFabricacion), 1);
     $pdf->Cell(40, 10, utf8_decode($insumo->$fechaVencimiento), 1);
-    $pdf->Cell(40, 10, utf8_decode($insumo->$proveedorId), 1);
+    $pdf->Cell(40, 10, utf8_decode(proveedorTableClass::getNameProveedor($insumo->$proveedorId)), 1);
 
     $pdf->Ln();
 }

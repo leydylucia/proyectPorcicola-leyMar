@@ -2,15 +2,15 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
 <!--@var $descInsumo para definir que campo voy a modificar-->
-<?php $descInsumo = insumoTableClass::DESC_INSUMO ?>
+<?php $valor = sacrificiovTableClass::VALOR ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Editar Insumo</h1>  
-        <h2> <?php echo $objInsumo[0]->$descInsumo ?></h2>
+        <h1>Editar sacrificio</h1>  
+        <h2> <?php echo $objSacrificioV[0]->$valor ?></h2>
     </div>
 <!--fintitulo-->
-<?php view::includePartial('insumo/formInsumo', array('objInsumo' => $objInsumo, 'descInsumo' => $descInsumo,'objTipoin' => $objTipoin,'objProv'=>$objProv )) ?>
+<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array('objSacrificioV' => $objSacrificioV, 'valor' => $valor, 'objTipoV' => $objTipoV)) ?>
 
 
 </div>

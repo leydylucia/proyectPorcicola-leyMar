@@ -12,7 +12,7 @@ use hook\log\logHookClass as log; /* linea de la bitacora */
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo <leydylucia@hotmail.com>
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
@@ -27,6 +27,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 //          echo $user.'-'.$pass1.'-'.$pass2;
 //           exit();   //esto es para imprimir la informacion
                 $this->Validate($user, $pass1, $pass2);
+                
                 $data = array(
                     usuarioTableClass::USER => $user,
                     usuarioTableClass::PASSWORD => md5($pass1)
@@ -71,6 +72,18 @@ class createActionClass extends controllerClass implements controllerActionInter
         $flag = false;
         if (strlen($user) > usuarioTableClass::USER_LENGTH) {
             session::getInstance()->setError(i18n::__(00004, null, 'errors', array('%user%' => $user, '%caracteres%' => usuarioTableClass::USER_LENGTH)));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
+        }
+        
+         if (!ereg("^[A-Z a-z_]*$", $user)) {//validacion de tan solo letras
+            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $user)));
+            $flag = true;
+            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE), TRUE);
+        }
+        
+          if ($user === '') {// validacion de campo vacio
+            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
             $flag = true;
             session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
         }
