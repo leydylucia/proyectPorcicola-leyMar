@@ -179,7 +179,8 @@ COMMIT;
 --  Records of "usuario" admin - 123
 -- ----------------------------
 BEGIN;
-INSERT INTO "usuario" (user_name, password, actived, last_login_at) VALUES ('admin', '202cb962ac59075b964b07152d234b70', 't', null);
+INSERT INTO "usuario" (user_name, password, actived) VALUES ('admin', '202cb962ac59075b964b07152d234b70', 't');
+INSERT INTO "usuario" (user_name, password, actived) VALUES ('system', '1234567890', 'f');
 COMMIT;
 
 -- ----------------------------
