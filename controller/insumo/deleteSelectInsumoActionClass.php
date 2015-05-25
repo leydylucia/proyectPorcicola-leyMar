@@ -12,16 +12,17 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *@class deleteSelectInsumoActionClass borrado en masa
  * @author leydy lucia castillo mosquera
+ *  @category modulo insumo
  */
 class deleteSelectInsumoActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    try {/*se grago el and resquest etc..*/
+    try {
       if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk'))  {
           
           
         
-        $idsToDelete = request::getInstance()->getPost('chk');
+        $idsToDelete = request::getInstance()->getPost('chk');/*@ $idsToDelete para el borrado en masa y chk para la seleccion*/
         
         
         foreach ($idsToDelete as $id) {

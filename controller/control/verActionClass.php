@@ -22,6 +22,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           controlTableClass::ID,
           controlTableClass::PESO_CERDO,
           controlTableClass::EMPLEADO_ID,
+          controlTableClass::HOJA_VIDA,
           controlTableClass::CREATED_AT
       );
       $where = array(
@@ -30,11 +31,8 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $this->objControl = controlTableClass::getAll($fields, true, null, null, null, nULL, $where);
       $this->defineView('ver', 'control', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

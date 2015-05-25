@@ -14,6 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author leydy lucia castillo moaquera
+ *  @category modulo insumo
  */
 class editInsumoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -33,8 +34,9 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                     insumoTableClass::ID => request::getInstance()->getGet(insumoTableClass::ID)
                 );
                 $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, null, $where);
+                
                 //estos campo son para llamar las foraneas
-                $fields = array(
+                $fields = array(/*foranea de tipo insumo*/
                     tipoInsumoTableClass::ID,
                     tipoInsumoTableClass::DESC_TIPOIN
                 );
@@ -43,7 +45,7 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                 );
                 $this->objTipoin = tipoinsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-                $fieldsProveedor = array(
+                $fieldsProveedor = array(/*foranea proveedor*/
                     proveedorTableClass::ID,
                     proveedorTableClass::NOMBRE
                 );

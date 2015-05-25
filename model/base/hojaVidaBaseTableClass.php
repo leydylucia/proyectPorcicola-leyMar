@@ -14,12 +14,11 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   private $updated_at;
   private $deleted_at;
   private $genero;
-  private $edad;
+  private $fecha_nacimiento;
   private $estado_id;
   private $lote_id;
-  private $parto_id;
   private $raza_id;
-  private $id_peso;
+  private $id_madre;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
@@ -27,13 +26,11 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   const DELETED_AT = 'deleted_at';
   const GENERO = 'genero';
   const GENERO_LENGTH = 1;
-  const EDAD = 'edad';
-  const EDAD_LENGTH = 8;
+  const FECHA_NACIMIENTO = 'fecha_nacimiento';
   const ESTADO_ID = 'estado_id';
   const LOTE_ID = 'lote_id';
-  const PARTO_ID = 'parto_id';
   const RAZA_ID = 'raza_id';
-  const ID_PESO = 'id_peso';
+  const ID_MADRE = 'id_madre';
 
   function getId() {
     return $this->id;
@@ -54,9 +51,9 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   function getGenero() {
     return $this->genero;
   }
-
-  function getEdad() {
-    return $this->edad;
+  
+  function getFecha_nacimiento() {
+    return $this->fecha_nacimiento;
   }
 
   function getEstado_id() {
@@ -67,16 +64,12 @@ class hojaVidaBaseTableClass extends tableBaseClass {
     return $this->lote_id;
   }
 
-  function getParto_id() {
-    return $this->parto_id;
-  }
-
   function getRaza_id() {
     return $this->raza_id;
   }
 
-  function getId_peso() {
-    return $this->id_peso;
+  function getId_madre() {
+    return $this->id_madre;
   }
 
   function setId($id) {
@@ -98,9 +91,9 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   function setGenero($genero) {
     $this->genero = $genero;
   }
-
-  function setEdad($edad) {
-    $this->edad = $edad;
+  
+  function setFecha_nacimiento($fecha_nacimiento) {
+    $this->fecha_nacimiento = $fecha_nacimiento;
   }
 
   function setEstado_id($estado_id) {
@@ -111,16 +104,12 @@ class hojaVidaBaseTableClass extends tableBaseClass {
     $this->lote_id = $lote_id;
   }
 
-  function setParto_id($parto_id) {
-    $this->parto_id = $parto_id;
-  }
-
   function setRaza_id($raza_id) {
     $this->raza_id = $raza_id;
   }
 
-  function setId_peso($id_peso) {
-    $this->id_peso = $id_peso;
+  function setId_madre($id_madre) {
+    $this->id_madre = $id_madre;
   }
 
     
@@ -163,7 +152,7 @@ class hojaVidaBaseTableClass extends tableBaseClass {
    * Método para insertar en una tabla usuario
    *
    * @param array $data Array asociativo donde las claves son los nombres de
-   * los campos y su valor sería el valor a insertar. Ejemplo:
+   * los campos y su valor  sería el valor a insertar. Ejemplo:
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return PDOException|boolean
    */

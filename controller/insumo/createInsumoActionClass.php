@@ -14,6 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * @category modulo insumo
  */
 class createInsumoActionClass extends controllerClass implements controllerActionInterface {
     /* public function execute inicializa las variables 
@@ -37,7 +38,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
 
-                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*$this->validate para validar campos*/
+                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
 
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
@@ -75,11 +76,11 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
         }
 
-        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {//validacion de tan solo letras
-            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);
-        }
+//        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {//validacion de tan solo letras
+//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);
+//        }
 
         if (!is_numeric($precio)) {//validacion de numeros
             session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));

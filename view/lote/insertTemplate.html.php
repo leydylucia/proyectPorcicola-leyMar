@@ -1,19 +1,22 @@
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
+<?php mvc\view\viewClass::includePartial('insumo/menu') ?>
+<?php
 
-<form method="post" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'create') ?>">
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\view\viewClass as view ?>
 
-   
-    <?php echo i18n::__('desc_lote') ?>:
-    
 
-    <input type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>">
-    
-     <?php echo i18n::__('ubicacion') ?>:
-    
+<?php $lote = loteTableClass::ID ?>
+<!--titulo-->
+<div class="container container-fluid">
+  <div class="page-header titulo">
+    <h1><?php echo i18n::__('new_batch') ?></h1> 
+  </div>
 
-    <input type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>">
-    
-    <input type="submit" value="<?php echo i18n::__('register') ?>">
+</div>
+<!--fintitulo-->
 
-</form>
+<?php view::includePartial('lote/formLote') ?>
+

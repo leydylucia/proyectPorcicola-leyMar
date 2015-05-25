@@ -15,6 +15,7 @@ class controlBaseTableClass extends tableBaseClass {
   private $deleted_at;
   private $peso_cerdo;
   private $empleado_id;
+  private $hoja_vida_id;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
@@ -22,7 +23,9 @@ class controlBaseTableClass extends tableBaseClass {
   const DELETED_AT = 'deleted_at';
   const PESO_CERDO = 'peso_cerdo';
   const EMPLEADO_ID = 'empleado_id';
-  
+  const HOJA_VIDA = 'hoja_vida_id';
+
+
   function getId() {
     return $this->id;
   }
@@ -45,6 +48,10 @@ class controlBaseTableClass extends tableBaseClass {
 
   function getEmpleado_id() {
     return $this->empleado_id;
+  }
+  
+  function getHoja_vida_id() {
+    return $this->hoja_vida_id;
   }
 
   function setId($id) {
@@ -71,6 +78,9 @@ class controlBaseTableClass extends tableBaseClass {
     $this->empleado_id = $empleado_id;
   }
 
+  function setHoja_vida_id($empleado_id) {
+    $this->empleado_id = $hoja_vida_id;
+  }
    
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

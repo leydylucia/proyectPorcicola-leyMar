@@ -1,33 +1,53 @@
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
 
-<?php $idDepto = deptoTableClass::ID ?>
-<?php $nomDepto = deptoTableClass::NOM_DEPTO ?>
+<?php
+
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\session\sessionClass as session ?>
+<?php
+use mvc\request\requestClass as request ?>
+<?php
+use mvc\view\viewClass as view ?>
+
+<?php $id = loteTableClass::ID ?>
+<?php $desc_lote = loteTableClass::DESC_LOTE ?>
+<?php $ubicacion = loteTableClass::UBICACION ?>
 
 
 <!--esto es boostrap no te el olvides de cerrar el div-->
-<div class="container"><!--en form tan solo se agrega el role y class para hacer boostrap-->
-    <form  role="form" class="form-horizontal" method="post" action="<?php echo routing::getInstance()->getUrlWeb('depto', ((isset($objDepto)) ? 'update' : 'create' )) ?>">
-  <?php if(isset($objDepto) == true): ?>
-  <input name="<?php echo DeptoTableClass::getNameField(DeptoTableClass::ID,true) ?>" value="<?php echo $objDepto[0]->$idDepto ?>" type="hidden">
+<form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('lote', ((isset($objLote)) ? 'update' : 'create')) ?>">
+  <?php if (isset($objLote) == true): ?>
+    <input name="<?php echo loteTableClass::getNameField(loteTableClass::ID, true) ?>" value="<?php echo $objLote[0]->$id ?>" type="hidden">
   <?php endif ?>
-    
-    
-        <div class="form-group">
-            <label for="nom_depto" class="control-label col-xs-3"><?php echo i18n::__('nom_depto') ?>:</label>
-
-            <div class="col-xs-9"><input id="nom_depto" class="form-control" value="<?php echo ((isset($objDepto) == true) ? $objDepto[0]->$nomDepto : '') ?>" type="text" name="<?php echo deptoTableClass::getNameField(deptoTableClass::NOM_DEPTO, true) ?>">
-        </div>
+  <div class="container"><!--en form tan solo se agrega el role y class para hacer boostrap-->
 
 
-        <br>
- 
- <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objDepto)) ? 'update' : 'register')) ?>">
- 
- <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/depto"><?php echo i18n::__('volver') ?> </a>
- 
+    <?php view::includeHandlerMessage() ?>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true) ? 'has-error has-feedback' : '' ?>">
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('desc_lot') ?>:</label>
+      <div class="col-xs-9">
+        <input id="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" class="form-control" value="<?php echo ((isset($objLote) == true) ? $objLote[0]->$desc_lote : '') ?><?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) : '' ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>">
+        <?php if (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <?php endif ?>
+      </div>
+    </div>
 
 
-    </form>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::UBICACION, true)) === true) ? 'has-error has-feedback' : '' ?>">
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('location') ?>:</label>
+      <div class="col-xs-9">
+        <input id="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="form-control" value="<?php echo ((isset($objLote) == true) ? $objLote[0]->$ubicacion : '') ?><?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::UBICACION, true)) === true) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) : '' ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>">
+        <?php if (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::UBICACION, true)) === true): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <?php endif ?>
+      </div>
+    </div>
+
+    <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objLote)) ? 'update' : 'register')) ?>">
+
+    <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+</form>
 </div>
-

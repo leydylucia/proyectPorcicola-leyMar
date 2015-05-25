@@ -10,7 +10,7 @@
 <div class="container container-fluid">
 
 
-        <a href="http://localhost/proyecto/web/index.php/sacrificioVenta"><?php echo i18n::__('return') ?> </a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>"><?php echo i18n::__('return') ?> </a>
 
     </div>
 

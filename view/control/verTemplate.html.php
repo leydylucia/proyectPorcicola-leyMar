@@ -9,7 +9,7 @@
 <div class="container container-fluid">
 
 
-  <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+  <button type="button" class="btn btn-info btn-xs" > <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
 
 </div>
 
@@ -17,21 +17,21 @@
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-condensed">
       <thead>
-        <tr>
+        <tr class="active">
 
           <th>Datos Contro Peso</th>
 </tr>        
       </thead>
       <tbody>
       <?php foreach ($objControl as $control): ?> 
-          <tr>
+          <tr class="info">
             <th><?php echo i18n::__('pig weight') ?></th>
             <td><?php echo $control->$peso_cerdo ?></td>
-          <tr>
+          <tr class="active">
 
             <th><?php echo i18n::__('employee') ?></th>
             <td><?php echo empleadoTableClass::getNameEmpleado($control->$empleado_id) ?></td>
-          <tr>
+          <tr class="info">
             <th><?php echo i18n::__('date_creation') ?></th>
             <td><?php echo $control->$created_at ?></td>
 

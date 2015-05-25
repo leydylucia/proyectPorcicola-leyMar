@@ -1,14 +1,23 @@
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\session\sessionClass as session ?>
-<?php use mvc\request\requestClass as request ?>
-<?php use mvc\view\viewClass as view ?>
+<?php
+
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\session\sessionClass as session ?>
+<?php
+use mvc\request\requestClass as request ?>
+<?php
+use mvc\view\viewClass as view ?>
+
 
 <?php $id = controlTableClass::ID ?>
 <?php $peso_cerdo = controlTableClass::PESO_CERDO ?>
 <?php $empleado_id_c = controlTableClass::EMPLEADO_ID ?>
 <?php $empleado_id = empleadoTableClass::ID ?>
-<?php $nombre = empleadoTableClass::NOMBRE ?><!--manejo de foranea para traer datos-->
+<?php $nombre = empleadoTableClass::NOMBRE ?>
+<?php $hoja_vida_id_h = controlTableClass::HOJA_VIDA ?>
+<?php $hoja_vida_id = hojaVidaTableClass::ID ?><!--manejo de foranea para traer datos-->
 
 
 
@@ -19,8 +28,24 @@
   <?php endif ?>
   <div class="container"><!--en form tan solo se agrega el role y class para hacer boostrap-->
 
-
     <?php view::includeHandlerMessage() ?>
+    
+    <div class="form-group">
+      <label for="#" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
+
+      <div class="col-xs-9">
+        <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::HOJA_VIDA, TRUE); ?>">
+          <option>Seleccione Id Cerdo</option>
+          <?php foreach ($objHojaVida as $hojaVida): ?>
+            <option <?php echo (isset($objControl[0]->$hoja_vida_id_h) and $objControl[0]->$hoja_vida_id_h == $hojaVida->$hoja_vida_id) ? 'selected' : '' ?> value="<?php echo $hojaVida->$hoja_vida_id ?>">
+              <?php echo $hojaVida->$hoja_vida_id ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+    </div>
+
+
     <div class="form-group <?php echo (session::getInstance()->hasFlash(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo controlTableClass::getNameField(controlTableClass::PESO_CERDO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig weight') ?>:</label>
       <div class="col-xs-9">
@@ -31,17 +56,17 @@
       </div>
     </div>
 
-    
-<div class="form-group">
+
+    <div class="form-group">
       <label for="#" class="control-label col-xs-3"><?php echo i18n::__('employee') ?>:</label>
 
       <div class="col-xs-9">
-        <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, TRUE); ?>">
+        <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, TRUE); ?>">
           <option>Seleccione Empleado</option>
           <?php foreach ($objEmpleado as $empleado): ?>
-          <option <?php echo (isset($objEmpleado[0]->$empleado_id_c) === true and $objControl[0]->$$empleado_id_c == $empleado->$empleado_id) ? 'selected' : '' ?> value="<?php echo $empleado->$empleado_id ?>">
-          <?php  echo $empleado->$nombre ?>
-          </option>
+            <option <?php echo (isset($objControl[0]->$empleado_id_c) === true and $objControl[0]->$empleado_id_c == $empleado->$empleado_id) ? 'selected' : '' ?> value="<?php echo $empleado->$empleado_id ?>">
+              <?php echo $empleado->$nombre ?>
+            </option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -52,5 +77,5 @@
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objControl)) ? 'update' : 'register')) ?>">
 
     <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('return') ?> </a>
-</div>
+  </div>
 </form>

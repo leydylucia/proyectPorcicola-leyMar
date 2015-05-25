@@ -19,7 +19,7 @@ $pdf->Cell(40, 5, utf8_decode("EMPLEADO"), 1);
 $pdf->Ln();
 
 foreach ($objControl as $control) {
-  $pdf->Cell(20, 10, utf8_decode($controlr->$id), 1);
+  $pdf->Cell(20, 10, utf8_decode($control->$id), 1);
   $pdf->Cell(40, 10, utf8_decode($control->$peso_cerdo), 1);
   $pdf->Cell(40, 10, utf8_decode($control->$empleado_id), 1);
   $pdf->Ln();

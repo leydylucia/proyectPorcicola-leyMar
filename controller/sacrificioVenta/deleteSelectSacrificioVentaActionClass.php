@@ -12,6 +12,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author leydy lucia castillo mosquera
+ * * @category sacrificio venta
  */
 class deleteSelectSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
 

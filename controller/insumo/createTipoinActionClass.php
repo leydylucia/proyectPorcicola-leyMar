@@ -13,6 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * * @category modulo insumo
  */
 class createTipoinActionClass extends controllerClass implements controllerActionInterface {
     /* public function execute inicializa las variable 
@@ -26,21 +27,14 @@ class createTipoinActionClass extends controllerClass implements controllerActio
 
                 $desc_tipoIn = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true));
 
-//validaciones
-                //caracteres especiales
-                if (ereg("^{a-zA-Z0-9}{3,20}$", $desc_tipoIn) == true) {
-                    throw new PDOException(i18n::__(10002, null, 'errors')); //falta poner en diccionario el error adecuado
-                }
-                //caracteres especiales
-                if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {
-                    throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => tipoInsumoTableClass::DESC_TIPOIN_LENGTH)), 00001);
-                }
 
 
-                $this->Validate($desc_tipoIn);
+                $this->Validate($desc_tipoIn);/*@ $this->validate para validar campos*/
+
+                
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
-                    tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn
+                    tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn 
                 );
                 tipoInsumoTableClass::insert($data);
 
@@ -56,6 +50,7 @@ class createTipoinActionClass extends controllerClass implements controllerActio
             routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
+     /* @ function para validar campos de formulario*/
         private function Validate($desc_tipoIn) {
         $flag = false;
         if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {
@@ -64,7 +59,7 @@ class createTipoinActionClass extends controllerClass implements controllerActio
             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, TRUE), TRUE);
         }
 
-        if (!ereg("^[A-Z a-z_]*$", $desc_tipoIn)) {
+        if (!ereg("^[A-Z a-z_]*$", $desc_tipoIn)) {/*validacion de letras o string*/
             session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_tipoIn)));
             $flag = true;
             session::getInstance()->setFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, TRUE), TRUE);

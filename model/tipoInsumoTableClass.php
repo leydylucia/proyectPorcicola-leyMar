@@ -10,6 +10,7 @@ use mvc\config\configClass as config;
  * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
 class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
+    /*funcion getTotalPages para el paginado*/
       public static function getTotalPages($lines,$where) {
     try {
       $sql = 'SELECT count('.tipoInsumoTableClass::ID .') AS cantidad ' .  
@@ -33,7 +34,7 @@ class tipoInsumoTableClass extends tipoInsumoBaseTableClass {
       throw $exc;
     }
   }
-  
+  /* funcion getNameTipoin para las foraneas*/
  public static function getNameTipoin($id) {
     try {
       $sql = 'SELECT ' . tipoInsumoTableClass::DESC_TIPOIN . ' AS desc_tipoin  '

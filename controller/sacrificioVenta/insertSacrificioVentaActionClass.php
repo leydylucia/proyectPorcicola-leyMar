@@ -13,6 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  * @var $this->objInsumo para pasar variable a la vista
  * 
  * @author leydy lucia castillo
+ * * @category sacrificio venta
  */
 class insertSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
 
@@ -32,14 +33,14 @@ class insertSacrificioVentaActionClass extends controllerClass implements contro
             );
             $this->objTipoV = tipovTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-//            $fieldsCerdo = array(
-//                hojaVidaTableClass::ID,
-//                hojaVidaTableClass::ID_PESO
-//            );
-//            $orderByCerdo = array(
-//                hojaVidaTableClass::ID_PESO
-//            );
-//            $this->objHojaV = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+            $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
+                hojaVidaTableClass::ID,
+            );
+            $orderByCerdo = array(
+                hojaVidaTableClass::ID
+            );
+            $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+
 
 
 

@@ -24,7 +24,7 @@ use mvc\view\viewClass as view ?>
 
                 <?php view::includeHandlerMessage() ?>
         <div class="form-group <?php echo (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name_city') ?>:</label>
+            <label for="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('describe_typeProduct') ?>:</label>
             <div class="col-xs-9">
                 <input id="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="form-control" value="<?php echo ((isset($objTipoin) == true) ? $objTipoin[0]->$desc_tipoIn : '') ?><?php echo (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true) ? request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) : '' ?>" type="text" name="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>">
 <?php if (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true): ?>

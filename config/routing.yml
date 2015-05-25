@@ -305,7 +305,7 @@ ciudad_deleteFilters:
   url:    /borrar_filtros_ciudad
   param:  { module: proveedor, action: deleteFiltersCiudad, format: html }        
 
- ##--------------------------lote----------------------------##
+  ##--------------------------lote----------------------------##
 lote_index:
   url:    /lote/index
   param:  { module: lote, action: index, format: html }
@@ -362,9 +362,24 @@ lote_deleteSelect:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
 
+lote_ver:
+  url:    /lote/ver
+  param:  { module: lote, action: ver, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+
 lote_reporte:
   url:    /lote/reporte
   param:  { module: lote, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+  
+lote_deleteFilters:
+  url:    /borrar_filtros_lote
+  param:  { module: lote, action: deleteFilters, format: html }
  ##--------------------------Estado----------------------------##
 raza_index:
   url:    /raza/index
@@ -419,13 +434,16 @@ raza_reporte:
   url:    /raza/reporte
   param:  { module: raza, action: report, format: pdf }
   
-   ##--------------------------Parto----------------------------##
+##--------------------------Parto----------------------------##
 parto_index:
   url:    /parto/index
   param:  { module: parto, action: index, format: html }
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    
 
 parto_insert:
   url:    /parto/insertar
@@ -433,6 +451,8 @@ parto_insert:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_create:
   url:    /parto/crear
@@ -440,13 +460,8 @@ parto_create:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
-
-parto_create:
-  url:    /parto/crear
-  param:  { module: parto, action: create, format: html }
-  load:
-    - model/base/partoBaseTableClass.php
-    - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_edit:
   url:    /parto/editar
@@ -454,6 +469,8 @@ parto_edit:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_update:
   url:    /parto/actualizar
@@ -461,6 +478,8 @@ parto_update:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_delete:
   url:    /parto/eliminar
@@ -468,6 +487,8 @@ parto_delete:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_deleteSelect:
   url:    /parto/eliminarSeleccion
@@ -475,10 +496,24 @@ parto_deleteSelect:
   load:
     - model/base/partoBaseTableClass.php
     - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 parto_reporte:
   url:    /parto/reporte
   param:  { module: parto, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/partoBaseTableClass.php
+    - model/partoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+  
+  
+parto_deleteFilters:
+  url:    /borrar_filtros_parto
+  param:  { module: parto, action: deleteFilters, format: html }
+ 
  
    ##--------------------------Proveedor----------------------------##
 proveedor_index:
@@ -766,21 +801,21 @@ insumo_reporte:
 ##-------------------------------------------TIPO VENTA--------------------##
 tipoVenta_index:
   url:    /tipoVenta/index
-  param:  { module: tipoVenta, action: indexTipov, format: html }
+  param:  { module: sacrificioVenta, action: indexTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
 
 tipoVenta_insert:
   url:    /tipoVenta/insertar
-  param:  { module: tipoVenta, action: insertTipov, format: html }
+  param:  { module: sacrificioVenta, action: insertTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
 
 tipoVenta_create:
   url:    /tipoVenta/crear
-  param:  { module: tipoVenta, action: createTipov, format: html }
+  param:  { module: sacrificioVenta, action: createTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
@@ -790,56 +825,56 @@ tipoVenta_create:
     
 tipoVenta_edit:
   url:    /tipoVenta/editar
-  param:  { module: tipoVenta, action: editTipov, format: html }
+  param:  { module: sacrificioVenta, action: editTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
 
 tipoVenta_update:
   url:    /tipoVenta/actualizar
-  param:  { module: tipoVenta, action: updateTipov, format: html }
+  param:  { module: sacrificioVenta, action: updateTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
 
 tipoVenta_delete:
   url:    /tipoVenta/eliminar
-  param:  { module: tipoVenta, action: deleteTipov, format: json }
+  param:  { module: sacrificioVenta, action: deleteTipov, format: json }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
 
 tipoVenta_deleteSelect:
   url:    /tipoVenta/eliminarSeleccion
-  param:  { module: tipoVenta, action: deleteSelectTipov, format: html }
+  param:  { module: sacrificioVenta, action: deleteSelectTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
     
 tipoVenta_ver:
   url:    /tipoVenta/ver
-  param:  { module: tipoVenta, action: verTipov, format: html }
+  param:  { module: sacrificioVenta, action: verTipov, format: html }
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
     
 tipoVenta_deleteFilters:
   url:    /borrar_filtros_tipov
-  param:  { module: tipoVenta, action: deleteFiltersTipov, format: html }
+  param:  { module: sacrificioVenta, action: deleteFiltersTipov, format: html }
   
 tipoVenta_traduccion:
   url:    /traduccion_tipov
-  param:  { module: tipoVenta, action: traductorTipov, format: html }  
+  param:  { module: sacrificioVenta, action: traductorTipov, format: html }  
 
 tipoVenta_reporte:
   url:    /tipoVenta/reporte_tipov
-  param:  { module: tipoVenta, action: reportTipov, format: pdf }
+  param:  { module: sacrificioVenta, action: reportTipov, format: pdf }
   load:  
     - libs/fpdf/fpdf.php
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
   
- ##--------------------------Control Peso----------------------------##
+  ##--------------------------Control Peso----------------------------##
 control_index:
   url:    /control/index
   param:  { module: control, action: index, format: html }
@@ -855,6 +890,8 @@ control_insert:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
 
@@ -864,6 +901,8 @@ control_create:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
 
@@ -874,6 +913,8 @@ control_edit:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
 
@@ -883,6 +924,8 @@ control_update:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
 
@@ -892,6 +935,8 @@ control_delete:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
     
@@ -901,8 +946,11 @@ control_deleteSelect:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    
     
 control_ver:
   url:    /control/ver
@@ -910,8 +958,11 @@ control_ver:
   load:
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+
 
 control_reporte:
   url:    /control/reporte
@@ -920,12 +971,15 @@ control_reporte:
     - libs/fpdf/fpdf.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    
+control_deleteFilters:
+  url:    /borrar_filtros_control
+  param:  { module: control, action: deleteFilters, format: html }
 
-control_traduccion:
-  url:    /traduccion4
-  param:  { module: control, action: traductor, format: html }
          
 #---------------------------------sacrificioVenta-------------------------------#
 sacrificioVenta_index:
@@ -946,6 +1000,8 @@ sacrificioVenta_insert:
     - model/sacrificiovTableClass.php
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 
 sacrificioVenta_create:
   url:    /sacrificioVenta/crear
@@ -967,6 +1023,8 @@ sacrificioVenta_edit:
     - model/sacrificiovTableClass.php
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
 #    - model/bitacoraTableClass.php
@@ -1031,3 +1089,770 @@ sacrificioVenta_reporte:
     - model/sacrificiovTableClass.php
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
+    
+    #---------------------------------Vacunacion-------------------------------#
+vacunacion_index:
+  url:    /vacunacion/index
+  param:  { module: vacunacion, action: indexVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    
+
+vacunacion_insert:
+  url:    /vacunacion/insertar
+  param:  { module: vacunacion, action: insertVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    
+
+vacunacion_create:
+  url:    /vacunacion/crear
+  param:  { module: vacunacion, action: createVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+vacunacion_edit:
+  url:    /vacunacion/editar
+  param:  { module: vacunacion, action: editVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+
+
+vacunacion_update:
+  url:    /vacunacion/actualizar
+  param:  { module: vacunacion, action: updateVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    
+vacunacion_delete:
+  url:    /vacunacion/eliminar
+  param:  { module: vacunacion, action: deleteVacunacion, format: json }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+
+    
+vacunacion_deleteSelect:
+  url:    /vacunacion/eliminarSeleccion
+  param:  { module: vacunacion, action: deleteSelectVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    
+vacunacion_ver:
+  url:    /vacunacion/ver
+  param:  { module: vacunacion, action: verVacunacion, format: html }
+  load:
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    
+    
+  
+  
+    
+vacunacion_deleteFilters:
+  url:    /borrar_filtros_vacunacion
+  param:  { module: vacunacion, action: deleteFilters, format: html }
+  
+vacunacion_traduccion:
+  url:    /traduccion_vacunacion
+  param:  { module: vacunacion, action: traductorVacunacion, format: html }  
+  
+vacunacion_reporte:
+  url:    /vacunacion/reporte
+  param:  { module: vacunacion, action: reportVacunacion, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/vacunacionBaseTableClass.php
+    - model/vacunacionTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    
+    ##--------------------------Empleado----------------------------##
+empleado_index:
+  url:    /empleado/index
+  param:  { module: empleado, action: index, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+empleado_insert:
+  url:    /empleado/insertar
+  param:  { module: empleado, action: insert, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+    
+empleado_create:
+  url:    /empleado/crear
+  param:  { module: empleado, action: create, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+
+empleado_edit:
+  url:    /empleado/editar
+  param:  { module: empleado, action: edit, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+empleado_update:
+  url:    /empleado/actualizar
+  param:  { module: empleado, action: update, format: json }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+empleado_delete:
+  url:    /empleado/eliminar
+  param:  { module: empleado, action: delete, format: json }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+empleado_deleteSelect:
+  url:    /empleado/eliminarSeleccion
+  param:  { module: empleado, action: deleteSelect, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+empleado_ver:
+  url:    /empleado/ver
+  param:  { module: empleado, action: ver, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+empleado_reporte:
+  url:    /empleado/reporte
+  param:  { module: empleado, action: report, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+empleado_deleteFilters:
+  url:    /borrar_filtros_empleado
+  param:  { module: empleado, action: deleteFilters, format: html }
+
+    
+ ##--------------------------Hoja Vida----------------------------##
+animal_index:
+  url:    /animal/index
+  param:  { module: animal, action: index, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+animal_insert:
+  url:    /animal/insertar
+  param:  { module: animal, action: insert, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+animal_create:
+  url:    /animal/crear
+  param:  { module: animal, action: create, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+animal_edit:
+  url:    /animal/editar
+  param:  { module: animal, action: edit, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+animal_update:
+  url:    /animal/actualizar
+  param:  { module: animal, action: update, format: json }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+animal_delete:
+  url:    /animal/eliminar
+  param:  { module: animal, action: delete, format: json }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+animal_deleteSelect:
+  url:    /animal/eliminarSeleccion
+  param:  { module: animal, action: deleteSelect, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+animal_ver:
+  url:    /animal/ver
+  param:  { module: animal, action: ver, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+animal_reporte:
+  url:    /animal/reporte
+  param:  { module: animal, action: report, format: pdf }
+  load:  
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    
+animal_deleteFilters:
+  url:    /borrar_filtros_animal
+  param:  { module: animal, action: deleteFilters, format: html }    
+    
+##--------------------------Entrada Bodega----------------------------##
+entrada_index:
+  url:    /entrada/index
+  param:  { module: entrada, action: indexEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+entrada_insert:
+  url:    /entrada/insertar
+  param:  { module: entrada, action: insertEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+entrada_create:
+  url:    /entrada/crear
+  param:  { module: entrada, action: createEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+
+entrada_edit:
+  url:    /entrada/editar
+  param:  { module: entrada, action: editEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+entrada_update:
+  url:    /entrada/actualizar
+  param:  { module: entrada, action: updateEn, format: json }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+entrada_delete:
+  url:    /entrada/eliminar
+  param:  { module: entrada, action: deleteEn, format: json }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    
+    
+entrada_deleteSelect:
+  url:    /entrada/eliminarSeleccion
+  param:  { module: entrada, action: deleteSelectEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    
+    
+entrada_ver:
+  url:    /entrada/ver
+  param:  { module: entrada, action: verEn, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+
+entrada_reporte:
+  url:    /entrada/reporte
+  param:  { module: entrada, action: reportEn, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+
+
+entrada_deleteFilters:
+  url:    /borrar_filtros_entrada
+  param:  { module: entrada, action: deleteFiltersEn, format: html }
+  
+  
+##--------------------------Detalle Entrada Bodega----------------------------##
+detalle_index:
+  url:    /detalle/index
+  param:  { module: entrada, action: indexDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+
+detalle_insert:
+  url:    /detalle/insertar
+  param:  { module: entrada, action: insertDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+
+detalle_create:
+  url:    /detalle/crear
+  param:  { module: entrada, action: createDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+
+
+detalle_edit:
+  url:    /detalle/editar
+  param:  { module: entrada, action: editDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+
+detalle_update:
+  url:    /detalle/actualizar
+  param:  { module: entrada, action: updateDetalle, format: json }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+
+detalle_delete:
+  url:    /detalle/eliminar
+  param:  { module: entrada, action: deleteDetalle, format: json }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+    
+detalle_deleteSelect:
+  url:    /detalle/eliminarSeleccion
+  param:  { module: entrada, action: deleteSelectDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+    
+detalle_ver:
+  url:    /detalle/ver
+  param:  { module: entrada, action: verDetalle, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+
+
+detalle_reporte:
+  url:    /detalle/reporte
+  param:  { module: entrada, action: reportDetalle, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+
+
+detalle_deleteFilters:
+  url:    /borrar_filtros_entrada
+  param:  { module: entrada, action: deleteFiltersDetalle, format: html }
+  
+
+##--------------------------Credencial----------------------------##
+credencial_index:
+  url:    /credencial/index
+  param:  { module: credencial, action: index, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_insert:
+  url:    /credencial/insertar
+  param:  { module: credencial, action: insert, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_create:
+  url:    /credencial/crear
+  param:  { module: credencial, action: create, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_edit:
+  url:    /credencial/editar
+  param:  { module: credencial, action: edit, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+  
+
+credencial_update:
+  url:    /credencial/actualizar
+  param:  { module: credencial, action: update, format: json }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_delete:
+  url:    /credencial/eliminar
+  param:  { module: credencial, action: delete, format: json }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_deleteSelect:
+  url:    /credencial/eliminarSeleccion
+  param:  { module: credencial, action: deleteSelect, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_ver:
+  url:    /credencial/ver
+  param:  { module: credencial, action: ver, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+
+credencial_reporte:
+  url:    /credencial/reporte
+  param:  { module: credencial, action: report, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_deleteFilters:
+  url:    /borrar_filtros_credencial
+  param:  { module: credencial, action: deleteFilters, format: html }    
+
+   #----------------------usuario-credencial -------------------#
+   
+usuarioCredencial_index:
+  url:    /usuarioCredencial/index
+  param:  { module: usuarioCredencial, action: indexUsuarioCredencial, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php  
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+    
+
+usuarioCredencial_insert:
+  url:    /usuarioCredencial/insertar
+  param:  { module: usuarioCredencial, action: insertUsuarioCredencial, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php    
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+    
+
+usuarioCredencial_create:
+  url:    /usuarioCredencial/crear
+  param:  { module: usuarioCredencial, action: createUsuarioCredencial, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php     
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+    
+usuarioCredencial_edit:
+  url:    /usuarioCredencial/editar
+  param:  { module: usuarioCredencial, action: editUsuarioCredencial, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php      
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php  
+
+usuarioCredencial_update:
+  url:    /usuarioCredencial/actualizar
+  param:  { module: usuarioCredencial, action: updateUsuarioCredencial, format: json }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php       
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+
+    
+
+usuarioCredencial_ver:
+  url:    /usuarioCredencial/ver
+  param:  { module: usuarioCredencial, action: verUsuarioCredencial, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php       
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+
+usuarioCredencial_reporte:
+  url:    /usuarioCredencial/reporte
+  param:  { module: credencial, action: reportUsuarioCredencial, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php  
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+usuarioCredencial_deleteFilters:
+  url:    /borrar_filtros_usuarioCredencial
+  param:  { module: usuarioCredencial, action: deleteFiltersUsuarioCredencial, format: html }      

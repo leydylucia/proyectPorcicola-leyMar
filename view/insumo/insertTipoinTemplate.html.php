@@ -5,7 +5,7 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Nuevo Tipo Insumo</h1>  
+        <h1><?php echo i18n::__('New_typeProduct')?></h1>  
     </div>
     
 </div>

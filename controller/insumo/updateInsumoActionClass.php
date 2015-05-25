@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *
+ *@category modulo insumo
  * @author leydy lucia castillo
  * 
  */
@@ -54,7 +54,7 @@ session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* m
             session::getInstance()->setFlash('exc', $exc);
         }
     }
-
+/*@ funcion para validar campos*/
     private function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
         $flag = false;
         if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {

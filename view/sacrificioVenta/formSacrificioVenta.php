@@ -15,7 +15,8 @@
 <?php $tipoVenta = tipovTableClass::ID ?>
 <?php $desc_tipoV = tipovTableClass::DESC_TIPOV ?><!--manejo de foranea para traer datos-->
 
-<?php $idCerdo = sacrificiovTableClass::ID_CERDO ?>
+<?php $idCerdo_c = sacrificiovTableClass::ID_CERDO ?>
+<?php $idCerdo = hojaVidaTableClass::ID ?>
 
 <?php view::includeHandlerMessage() ?>
 
@@ -52,33 +53,50 @@
         </div>-->
 
 
+
     <div class="form-group">
-        <label for="<//?php echo proveedorTableClass::getNameField(proveedorTableClass::ID,true)?>" class="control-label col-xs-3"><?php echo i18n::__('type sale') ?>:</label>
+        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('type_sale') ?>:</label>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE); ?>">
-                <option>Seleccione tipo Venta</option>
-                <?php  foreach ($objTipoV as $tipoV): ?>
-                    <option <?php  echo (isset($objSacrificioV[0]->$tipoVenta_v) === true and $objSacrificioV[0]->$tipoVenta_v == $tipoV->$tipoVenta) ? 'selected' : '' ?> value="<?php  echo $tipoV->$tipoVenta ?>">
-                        <?php  echo $tipoV->$desc_tipoV ?>
+                <option>Seleccione tipo venta</option>
+<?php foreach ($objTipoV as $tipoV): ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (isset($objSacrificioV[0]->$tipoVenta_v) === true and $objSacrificioV[0]->$tipoVenta_v == $tipoV->$tipoVenta) ? 'selected' : '' ?> value="<?php echo $tipoV->$tipoVenta ?>"><!--validacion para traer dato  de foranea en editar-->
+    <?php echo $tipoV->$desc_tipoV ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
-                <?php  endforeach; ?>
+<?php endforeach; ?>
             </select>
         </div>
     </div>
+    
+<div class="form-group">
+        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('type_sale') ?>:</label>
 
-
-
-
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
         <div class="col-xs-9">
-            <input id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" class="form-control" value="<?php echo ((isset($objSacrificioV) == true) ? $objSacrificioV[0]->$idCerdo : '') ?><?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : '' ?>" type="text" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>">
-            <?php if (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true): ?>
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            <?php endif ?>
+            <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>">
+                <option>Seleccione Cerdo</option>
+<?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (isset($objHojaVida[0]->$idCerdo_c) === true and $objHojaVida[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
+    <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
+                    </option>
+<?php endforeach; ?>
+            </select>
         </div>
-    </div>
+    </div>    
+
+
+
+
+<!--
+    <div class="form-group </?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="</?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" class="control-label col-xs-3"></?php echo i18n::__('pig') ?>:</label>
+        <div class="col-xs-9">
+            <input id="</?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" class="form-control" value="</?php echo ((isset($objSacrificioV) == true) ? $objSacrificioV[0]->$idCerdo : '') ?></?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : '' ?>" type="text" name="</?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>">
+            </?php if (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true): ?>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </?php endif ?>
+        </div>
+    </div>-->
 
 
 

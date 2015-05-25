@@ -10,8 +10,8 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *
- * @author Leydy Lucia Castillo  <leydylucia@hotmail.com.com>
+ *@category modulo insumo
+ * @author Leydy Lucia Castillo  <leydylucia@hotmail.com>
  */
 class verInsumoActionClass extends controllerClass implements controllerActionInterface {
 

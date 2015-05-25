@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *
+ *@category modulo insumo
  *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class updateTipoinActionClass extends controllerClass implements controllerActionInterface {
@@ -42,7 +42,7 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
       routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
-
+/*@ funcion para validar campos*/
  private function Validate($desc_tipoIn) {
         $flag = false;
         if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {

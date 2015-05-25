@@ -21,7 +21,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         $id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::ID, true));
         $peso_cerdo = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true));
-        $empleado_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true));
+        $control_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true));
+        $hoja_vida_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true));
 
 
         $this->Validate($peso_cerdo);
@@ -32,7 +33,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         $data = array(
             controlTableClass::PESO_CERDO => $peso_cerdo,
-                //      controlTableClass::EMPLEADO_ID => $empleado_id,
+            controlTableClass::EMPLEADO_ID => $control_id,
+            controlTableClass::HOJA_VIDA => $hoja_vida_id
         );
 
         controlTableClass::update($ids, $data);
@@ -66,7 +68,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
     if ($luz === true) {
       request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('control', 'insert');
+      request::getInstance()->addParamGet(array(controlTableClass::ID => request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::ID, true))));
+      routing::getInstance()->forward('control', 'edit');
     }
   }
 

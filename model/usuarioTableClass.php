@@ -6,8 +6,7 @@ use mvc\config\myConfigClass as config;
 /**
  * Description of usuarioTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
- */
+ * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>*/
 class usuarioTableClass extends usuarioBaseTableClass {
 
   public static function verifyUser($usuario, $password) {
@@ -53,7 +52,7 @@ class usuarioTableClass extends usuarioBaseTableClass {
     }
   }
   
-  
+ /*funcion para el paginado*/ 
   public static function getTotalPages($lines,$where) {
     try {
       $sql = 'SELECT count('.usuarioTableClass::ID .') AS cantidad ' .  

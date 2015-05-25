@@ -12,9 +12,8 @@
 
 <div class="container container-fluid">
 
-
-        <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/insumo"><?php echo i18n::__('return') ?> </a>
-
+     <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('return') ?> </a></button>
+    
     </div>
 
 
@@ -23,7 +22,7 @@
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
-                    <tr>
+                    <tr class="info">
                         
                         <th>datos de insumo</th>
                            
@@ -33,12 +32,12 @@
                 </thead>
                 <tbody>
                      <?php foreach ($objInsumo as $insumo): ?> 
-                        <tr >
+                    <tr class="active">
                             <th><?php echo i18n::__('describe_product') ?></th>
                             
                             <td><?php echo $insumo->$descInsumo ?></td>
                             
-                             <tr >
+                    <tr class="info">
                             <th><?php echo i18n::__('prise') ?></th>
                             
                             <td><?php echo $insumo->$precio ?></td>
@@ -46,7 +45,7 @@
                             <th><?php echo i18n::__('type_product') ?></th>
                             
                             <td><?php echo $insumo-> $tipoInsumo ?></td>
-                             <tr >
+                             <tr class="info">
                             <th><?php echo i18n::__('date_manufacture') ?></th>
                             
                             <td><?php echo $insumo-> $fechaFabricacion ?></td>
@@ -55,11 +54,11 @@
                             
                             <td><?php echo $insumo-> $fechaVencimiento ?></td>
                              <tr >
-                            <tr >
+                            <tr class="info">
                             <th><?php echo i18n::__('provisioner') ?></th>
                             
                             <td><?php echo $insumo->  $proveedorId ?></td>
-                             <tr>
+                             <tr class="active">
                             <th><?php echo i18n::__('date_creation') ?></th>
                             
                             <td><?php echo $insumo->$created_at ?></td>

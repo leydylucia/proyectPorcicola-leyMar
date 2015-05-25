@@ -14,15 +14,14 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * @category sacrificio venta
  */
 class createSacrificioventaActionClass extends controllerClass implements controllerActionInterface {
     /* public function execute inicializa las variables 
-     * @var $desc_insumo=> descripcion insumo
-     * @var $precio=> precio
-     * @var $tipoInsumo=> id tipo insumo
-     * @var $fechaFabricacion=> fecha fabricacion
-     * @var $fechaVencimiento=> fecha vencimiento
-     * @var $proveedorId =>id del proveedor
+     * @var $valor=> valor
+     * @var $tipoVenta=> tipo venta
+     * @var $idCerdo=> id cerdo
+     
      * ** */
 
     public function execute() {
@@ -34,7 +33,7 @@ class createSacrificioventaActionClass extends controllerClass implements contro
                 $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
 
 
-                $this->Validate($valor,$idCerdo);
+                $this->Validate($valor,$idCerdo);/*@ $this->validate para validar campos*/
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
@@ -57,7 +56,7 @@ class createSacrificioventaActionClass extends controllerClass implements contro
             //routing::getInstance()->forward('shfSecurity', 'exception');    
         }
     }
-
+/* @ function para validar campos de formulario*/
     static public function Validate($valor,$idCerdo) {
         $flag = false;
         

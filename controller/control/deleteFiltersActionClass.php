@@ -15,19 +15,16 @@ use mvc\i18n\i18nClass as i18n;
  */
 class deleteFiltersActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        try {
-            if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-                session::getInstance()->deleteAttribute('defaultIndexFilters');
-            }
-            routing::getInstance()->redirect('control', 'index');
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            echo '<br>';
-            echo '<pre>';
-            print_r($exc->getTrace());
-            echo '</pre>';
-        }
+  public function execute() {
+    try {
+      if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+        session::getInstance()->deleteAttribute('defaultIndexFilters');
+      }
+      routing::getInstance()->redirect('control', 'index');
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

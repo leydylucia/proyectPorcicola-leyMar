@@ -11,33 +11,32 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Alexandra Florez
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(deptoTableClass::ID)) {
+      if (request::getInstance()->hasGet(loteTableClass::ID)) {
         $fields = array(
-            deptoTableClass::ID,
-            deptoTableClass::NOM_DEPTO,
-          
+            loteTableClass::ID,
+            loteTableClass::DESC_LOTE,
+            loteTableClass::UBICACION
         );
-        $where = array(
-            deptoTableClass::ID => request::getInstance()->getRequest(deptoTableClass::ID)
-        );
-        $this->objDepto = deptoTableClass::getAll($fields, true, null, null, null, null, $where);
-        $this->defineView('edit', 'depto', session::getInstance()->getFormatOutput());
-      } else {
-        routing::getInstance()->redirect('depto', 'index');
-      }
 
+        $where = array(
+            loteTableClass::ID => request::getInstance()->getGet(loteTableClass::ID)
+        );
+        $this->objLote = loteTableClass::getAll($fields, true, null, null, null, null, $where);
+
+        $this->defineView('edit', 'lote', session::getInstance()->getFormatOutput());
+        //session::getInstance()->setSuccess('El registro se modifico exitosamente');
+      } else {
+        routing::getInstance()->redirect('lote', 'index');
+      }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

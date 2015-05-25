@@ -10,10 +10,18 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *
+ *@category modulo sacrificio venta
  * @author leydy lucia castillo mosquera
  */
 class updateSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
+    
+     /* public function execute inicializa las variables 
+     * @var $valor=> valor
+     * @var $tipoVenta=> tipo venta
+     * @var $idCerdo=> id cerdo
+      * @var $id=> id de la tabla
+     
+     * ** */
 
     public function execute() {
         try {
@@ -25,7 +33,7 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
                 $id = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true));
                 
                 
-                $this->Validate($valor, $idCerdo);
+                $this->Validate($valor, $idCerdo);/*@ $this->validate para validar campos*/
                 $ids = array(
                     sacrificiovTableClass::ID => $id
                 );
@@ -48,7 +56,7 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
             session::getInstance()->setFlash('exc', $exc);
         }
     }
-
+/* @ function para validar campos de formulario*/
 static public function Validate($valor,$idCerdo) {
         $flag = false;
         

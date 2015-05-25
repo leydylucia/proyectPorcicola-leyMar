@@ -9,15 +9,16 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /*
- * DESCRIPCION DE LA CLASE
- * @autor Alexandra Marcela Florez
+ * DESCRIPCION DE LA CLASE reportTipoInActionClass
+ * @autor leydy lucia castillo mosquera
+ * * @category insumo
  */
 
 class reportTipoInActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
-            /* filtros */
+            /* reporte con filtros */
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');

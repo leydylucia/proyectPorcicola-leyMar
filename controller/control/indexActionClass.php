@@ -28,22 +28,26 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         if (isset($filter['control']) and $filter['control'] !== null and $filter['control'] !== '') {
           $where[controlTableClass::PESO_CERDO] = $filter['control'];
         }
-        if (isset($filter['Date']) and $filter['Date'] !== null and $filter['Date'] !== '') {
+        if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
           $where[controlTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['Date']))
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
+//                        date(config::getFormatTimestamp(), strtotime($filter['Date2']))
+              $filter['Date1'],
+              $filter['Date2']
           );
         }
         /* para mantener filtro con paginado */
-        session::getInstance()->setAttribute('defaultIndexFilters', $where);
-      } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-        $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//        session::getInstance()->setAttribute('defaultIndexFilters', $where);
+//      } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+//        $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//      }
       }
-
 
       $fields = array(
           controlTableClass::ID,
           controlTableClass::PESO_CERDO,
           controlTableClass::EMPLEADO_ID,
+          controlTableClass::HOJA_VIDA,
           controlTableClass::CREATED_AT
       );
       $orderBy = array(
@@ -72,11 +76,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objControl = controlTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'control', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

@@ -27,24 +27,33 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           partoTableClass::NUM_HEMBRAS,
           partoTableClass::NUM_MACHOS,
           partoTableClass::FECHA_MONTADA,
-          partoTableClass::ID_PADRE
+          partoTableClass::ID_PADRE,
+          partoTableClass::HOJA_VIDA_ID
           
         );
         $where = array(
             partoTableClass::ID => request::getInstance()->getRequest(partoTableClass::ID)
         );
         $this->objParto = partoTableClass::getAll($fields, true, null, null, null, null, $where);
+        
+        // para editar foraneas tabla estado
+        $fields = array(
+        hojaVidaTableClass::ID
+        );
+        $orderBy = array(
+            hojaVidaTableClass::ID
+        );
+        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
+        //fin
+        
         $this->defineView('edit', 'parto', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('parto', 'index');
       }
 
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

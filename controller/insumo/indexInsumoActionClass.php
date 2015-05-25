@@ -12,10 +12,17 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+ * @category modulo insumo
 
  */
 class indexInsumoActionClass extends controllerClass implements controllerActionInterface {
 
+    /**
+     * Description of ejemploClass
+     *
+     * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+     * 
+     */
     public function execute() {
         try {
             /* filtros */
@@ -29,9 +36,13 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 if (isset($filter['Precio']) and $filter['Precio'] !== null and $filter['Precio'] !== '') {
                     $where[insumoTableClass::PRECIO] = $filter['Precio'];
                 }
-//         if (isset($filter['Tipo_insumo']) and $filter['Tipo_insumo'] !== null and $filter['Tipo_insumo'] !== '') {
-//          $where[insumoTableClass::TIPO_INSUMO_ID] = $filter['Tipo_insumo'];
-//        }
+                if (isset($filter['Tipo_insumo']) and $filter['Tipo_insumo'] !== null and $filter['Tipo_insumo'] !== '') {
+                    $where[insumoTableClass::TIPO_INSUMO_ID] = $filter['Tipo_insumo'];
+                }
+
+                if (isset($filter['Proveedor']) and $filter['Proveedor'] !== null and $filter['Proveedor'] !== '') {
+                    $where[insumoTableClass::PROVEEDOR_ID] = $filter['Proveedor'];
+                }
                 if (isset($filter['Fecha_fabricacion']) and $filter['Fecha_fabricacion'] !== null and $filter['Fecha_fabricacion'] !== '') {
                     $where[insumoTableClass::FECHA_FABRICACION] = $filter['Fecha_fabricacion'];
                 }
@@ -71,29 +82,59 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 insumoTableClass::DESC_INSUMO
             );
 
-            $page = 0;
+            $page = 0; /* paginado */
             if (request::getInstance()->hasGet('page')) {
                 $this->page = request::getInstance()->getGet('page');
                 $page = request::getInstance()->getGet('page') - 1;
                 $page = $page * config::getRowGrid();
             }
-            /*             * para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
+            /* para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
              * *getTotalPages => se encuentra en insumoTables class
              * * @var $where => para sostener el filtro con el paginado  */
             $this->cntPages = insumoTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
 
 
-            /** @var $where => para filtros
-             * *@var $page => para el paginado
-             * *@var $fileds => para declarar los cmpos de la table en la bd
+            /**
+             *  
+             * @var $where => para filtros
+             * @var $page => para el paginado
+             * @var $fileds => para declarar los campos de la table en la bd
              * @var $orderBy => ordernar por el campo deseado
-             *  true=> es el borrado logico si lo tienes en la bd pones true sino false
-             * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
+             *  true=> es el borrado logico si lo tienes en la bd pones true 
+             * sino false
+             * ASC => es la forma como se va a ordenar si de forma ascendente o 
+             * desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
-             * @var $this->objInsumo para enviar los datos a la vista      */
+             * @var $this->objInsumo para enviar los datos a la vista      
+             *
+             * */
             $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
-            $this->defineView('index', 'insumo', session::getInstance()->getFormatOutput());
+
+
+            $fields = array(
+                tipoInsumoTableClass::ID,
+                tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $orderBy = array(
+                tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $this->objTipoin = tipoInsumoTableClass::getAll($fields, false, $orderBy, 'ASC');
+
+            $fieldsProveedor = array(/* foranea proveedor */
+                proveedorTableClass::ID,
+                proveedorTableClass::NOMBRE
+            );
+            $orderByProvedor = array(
+                proveedorTableClass::NOMBRE
+            );
+            $this->objProv = proveedorTableClass::getAll($fieldsProveedor, true, $orderByProvedor, 'ASC');
+
+
+
+
+            $this->defineView('index', 'insumo', session::getInstance()
+                            ->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

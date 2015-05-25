@@ -14,6 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author leydy lucia castillo moaquera
+ * * @category sacrificio venta
  */
 class editSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
 
@@ -30,8 +31,8 @@ class editSacrificioVentaActionClass extends controllerClass implements controll
                     sacrificiovTableClass::ID => request::getInstance()->getGet(sacrificiovTableClass::ID)
                 );
                 $this->objSacrificioV = sacrificiovTableClass::getAll($fields, true, null, null, null, null, $where);
-                
-                
+
+
                 //estos campo son para llamar las foraneas
                 $fieldsa = array(
                     tipovTableClass::ID,
@@ -42,17 +43,17 @@ class editSacrificioVentaActionClass extends controllerClass implements controll
                 );
                 $this->objTipoV = tipovTableClass::getAll($fieldsa, true, $orderBy, 'ASC');
 
-//                $fieldsCerdo = array(
-//                    hojaVidaTableClass::ID,
-//                    hojaVidaTableClass::ID_PESO
-//                );
-//                $orderByCerdo = array(
-//                    hojaVidaTableClass::ID_PESO
-//                );
-//                $this->objHojaV = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+                $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
+                    hojaVidaTableClass::ID,
+                );
+                $orderByCerdo = array(
+                    hojaVidaTableClass::ID
+                );
+                $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+
 
                 $this->defineView('edit', 'sacrificioVenta', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
-                
+
                 // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');

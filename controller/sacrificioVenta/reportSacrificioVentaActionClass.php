@@ -12,6 +12,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+ * * @category sacrificio venta
  * @var $filter para hacer filtros,$where
  */
 class reportSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
@@ -53,12 +54,7 @@ class reportSacrificioVentaActionClass extends controllerClass implements contro
 
 
 
-            /*             * para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
-             * *getTotalPages => se encuentra en insumoTables class
-             * * @var $where => para sostener el filtro con el paginado  */
-
-            // $page = request::getInstance()->getGet('page');
-
+           
 
             /** @var $where => para filtros
              * *@var $page => para el paginado

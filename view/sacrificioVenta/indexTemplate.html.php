@@ -17,7 +17,7 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1><?php echo i18n::__('Sacrifice Sale') ?></h1>  
+        <h1><?php echo i18n::__('Sacrifice_Sale') ?></h1>  
     </div>
 
 </div>
@@ -122,7 +122,7 @@
                     <tr class="active">
                         <th><input type="checkbox" id="chkAll"></th>
                         <th><?php echo i18n::__('sale') ?></th>
-                        <th><?php echo i18n::__('type sale') ?></th>
+                        <th><?php echo i18n::__('type_sale') ?></th>
                         <th><?php echo i18n::__('pig') ?></th>
                         <th><?php echo i18n::__('date') ?></th>
                         <th><?php echo i18n::__('action') ?></th>
@@ -143,7 +143,7 @@
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'editSacrificioVenta', array(sacrificiovTableClass::ID => $sacrificio->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
 
                                 <!--eliminado individual con ajax-->
-                                <a href="#" data-target="#myModalDelete<?php echo $sacrificio->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs">Eliminar</a>
+                                <a href="#" data-target="#myModalDelete<?php echo $sacrificio->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('Delete') ?></a>
                             </td>
                         </tr>
 

@@ -11,7 +11,8 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+  *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * @category usuario
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
 

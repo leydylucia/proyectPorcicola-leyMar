@@ -17,14 +17,24 @@ class insertActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-    
+      if (session::getInstance()->hasAttribute('form_' . partoTableClass::getNameTable())) {
+        $this->parto = session::getInstance()->getAttribute('form_' . partoTableClass::getNameTable());
+      }
+      // para editar foraneas tabla estado
+        $fields = array(
+        hojaVidaTableClass::ID
+        );
+        $orderBy = array(
+            hojaVidaTableClass::ID
+        );
+        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
+        //fin
+        
+      
       $this->defineView('insert', 'parto', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

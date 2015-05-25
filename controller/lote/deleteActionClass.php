@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author leydy lucia castillo mosquera
+ * @author Alexandra Florez
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -19,21 +19,21 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
-        $id = request::getInstance()->getPost(deptoTableClass::getNameField(deptoTableClass::ID, true));
-        
+        $id = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true));
+
         $ids = array(
-            deptoTableClass::ID => $id
+            loteTableClass::ID => $id
         );
-        deptoTableClass::delete($ids, true);/*el true es para el borrado logico false si no lo tiene*/
-        //routing::getInstance()->redirect('depto', 'index');
-        $this->arrayAjax=array(
-           'code'=>200,
-           'msg' =>'la eliminacion fue exitosa'
-            
+        loteTableClass::delete($ids, true); /* el true es para el borrado logico false si no lo tiene */
+        //routing::getInstance()->redirect('parto', 'index');
+        $this->arrayAjax = array(
+            'code' => 200,
+            'msg' => 'la eliminacion fue exitosa'
         );
-        $this->defineView('delete', 'depto',session::getInstance()->getFormatOutput());
+        $this->defineView('delete', 'lote', session::getInstance()->getFormatOutput());
+        session::getInstance()->setSuccess('Registro Exitoso');
       } else {
-        routing::getInstance()->redirect('depto', 'index');
+        routing::getInstance()->redirect('lote', 'index');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

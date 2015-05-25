@@ -15,46 +15,43 @@
 <?php endif ?>
 
 
-        <div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('user') ?>:</label>
 
-            <div class="col-xs-9"><input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="form-control" value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$usuario : '');
-echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) === true) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) : '' ?>" type="text" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>">    </div>
+  <div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('user') ?>:</label>
+        <div class="col-xs-9">
+            <!--<input id="</?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="form-control" value="</?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$usuario : '') ?></?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) === true) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) : '' ?>" type="text" name="</?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>">-->
+             <input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) : ((isset($objUsuario) == true) ? $objUsuario[0]->$usuario : '') ?>" type="text" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>">
 <?php if (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true)) === true): ?>
-
-            <spam class="glyphicon glyphicon-remove form-control-feedback"></spam><!--para que aparesca el color rojo en el input-->
-<?php endif ?><!--fijarse en el value hay una condicion que escoje el flash del controller-->
-        </div>
-            
-            
-
-        <div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_1' ?>" class="control-label col-xs-3"><?php echo i18n::__('pass') ?>:</label>
-
-            <div class="col-xs-9"><input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_1' ?>" class="form-control" value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_1' ?>">    </div>
-<?php if (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true): ?>
-
-            <spam class="glyphicon glyphicon-remove form-control-feedback"></spam><!--para que aparesca el color rojo en el input-->
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 <?php endif ?>
         </div>
+    </div>  
 
-            
-            
-            
-        <div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" class="control-label col-xs-3"><?php echo i18n::__('pass2') ?>:</label>
 
-            <div class="col-xs-9"><input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" class="form-control" value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>">    </div>
+<div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_1' ?>" class="control-label col-xs-3"><?php echo i18n::__('pass2') ?>:</label>
+        <div class="col-xs-9">
+            <input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) .'1' ?>" class="form-control" value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$password : '') ?><?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true).'_1') : '' ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) .'_1' ?>">
 <?php if (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true): ?>
-
-            <spam class="glyphicon glyphicon-remove form-control-feedback"></spam><!--para que aparesca el color rojo en el input-->
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 <?php endif ?>
         </div>
+    </div>             
 
 
 
-
-
+            
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" class="control-label col-xs-3"><?php echo i18n::__('pass2') ?>:</label>
+        <div class="col-xs-9">
+            <input id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) .'_2' ?>" class="form-control" value="<?php echo ((isset($objUsuario) == true) ? $objUsuario[0]->$password : '') ?><?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true).'_2') : '' ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) .'_2' ?>">
+<?php if (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true)) === true): ?>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+<?php endif ?>
+        </div>
+    </div>          
+        
+   
         <br>
         <br>
 

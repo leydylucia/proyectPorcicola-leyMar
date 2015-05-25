@@ -14,6 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author leydy lucia castillo mosquera
+ * * @category modulo insumo
  */
 class deleteInsumoActionClass extends controllerClass implements controllerActionInterface {
     /*  * @var $ids=> declara con que va a borrar

@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  * @var $this->objInsumo para pasar variable a la vista
- * 
+ * @category moudulo insumo
  * @author leydy lucia castillo
  */
 class insertInsumoActionClass extends controllerClass implements controllerActionInterface {
@@ -23,7 +23,7 @@ class insertInsumoActionClass extends controllerClass implements controllerActio
                 $this->insumo = session::getInstance()->getAttribute('form_' . insumoTableClass::getNameTable());
             }
             /* fields para foraneas */
-            $fields = array(
+            $fields = array(/*foranea tipo insumo*/
                 tipoInsumoTableClass::ID,
                 tipoInsumoTableClass::DESC_TIPOIN
             );
@@ -32,7 +32,7 @@ class insertInsumoActionClass extends controllerClass implements controllerActio
             );
             $this->objTipoin = tipoinsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-            $fieldsProveedor = array(
+            $fieldsProveedor = array(/*foranea proveedor*/
                 proveedorTableClass::ID,
                 proveedorTableClass::NOMBRE
             );

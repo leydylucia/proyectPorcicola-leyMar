@@ -56,11 +56,11 @@ class insumoTableClass extends insumoBaseTableClass {
     public static function getNameInsumo($id) {
         try {
             $sql = 'SELECT ' . insumoTableClass::DESC_INSUMO . ' As desc_insumo '
-                    . insumoTableClass::FECHA_FABRICACION . ' As fecha_fabricacion '
-                    . insumoTableClass::FECHA_VENCIMIENTO . ' As fecha_vencimiento '
-                    . insumoTableClass::PRECIO . ' As precio '
-                    . insumoTableClass::PROVEEDOR_ID . ' As proveedor '
-                    . insumoTableClass::TIPO_INSUMO_ID . ' As tipo_insumo '
+//                    . insumoTableClass::FECHA_FABRICACION . ' As fecha_fabricacion '
+//                    . insumoTableClass::FECHA_VENCIMIENTO . ' As fecha_vencimiento '
+//                    . insumoTableClass::PRECIO . ' As precio '
+//                    . insumoTableClass::PROVEEDOR_ID . ' As proveedor '
+//                    . insumoTableClass::TIPO_INSUMO_ID . ' As tipo_insumo '
                     . ' FROM ' . insumoTableClass::getNameTable() . '  '
                     . ' WHERE ' . insumoTableClass::ID . ' = :id';
             $params = array(

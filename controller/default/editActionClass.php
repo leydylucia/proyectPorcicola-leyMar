@@ -12,26 +12,28 @@ use hook\log\logHookClass as log;/*linea de la bitacora*/
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo<leydylucia@hotmail.com>
+ * @category usuario
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(usuarioTableClass::ID)) {
+      if (request::getInstance()->hasGet(usuarioTableClass::ID)) {
         $fields = array(
             usuarioTableClass::ID,
             usuarioTableClass::USER,
             usuarioTableClass::PASSWORD
         );
         $where = array(
-            usuarioTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
+            usuarioTableClass::ID => request::getInstance()->getGet(usuarioTableClass::ID)
         );
         $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
         log::register('editar',  usuarioTableClass::getNameTable());//linea de bitacora
       } else {
         routing::getInstance()->redirect('default', 'index');
+        session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
       }
 //      if (request::getInstance()->isMethod('POST')) {
 //

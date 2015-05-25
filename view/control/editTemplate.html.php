@@ -7,4 +7,4 @@
 <?php $control = controlTableClass::PESO_CERDO ?>
 <h1>EDITAR CONTROL PESO      <small><?php echo $objControl[0]->$control ?></small>    </h1>
 
-<?php view::includePartial('control/formControl', array('objControl' => $objControl, 'peso_cerdo' => $control,'objEmpleado' => $objEmpleado)) ?>
+<?php view::includePartial('control/formControl', array('objControl' => $objControl, 'peso_cerdo' => $control,'objEmpleado' => $objEmpleado, 'objHojaVida' => $objHojaVida)) ?>

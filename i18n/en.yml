@@ -7,6 +7,8 @@ dictionary:
     pass2:                        verify the password
     register:                     Register
     update:                       Update
+    New User:                     New User
+    Edit User:                    Edit User
     #usuario credencial#
     tableUsucred:                 Table user
     date:                         Date
@@ -17,6 +19,7 @@ dictionary:
     #lote#  
     desc_lot:                     Description Lot
     location:                     Location
+    new_batch:                    New Batch
     #ciudad#
     name_city:                    Name City
     dept_id:                      Identification the Departament
@@ -82,12 +85,19 @@ dictionary:
     date_manufacture:          date_manufacture
     date_conquering:           date_conquering
     provisioner:               provisioner
-    delete filter:                Delete Filter
+    delete filter:             Delete Filter
+    New Product:                New Product
+    Edit Product:                Edit Product
 #tipoInsumo#
     describe_typeProduct:      Descripcion Tipo 
+    New_typeProduct:           New typeProduct             
+    Edit_typeProduct:          Edit typeProduct
+     
     
 #tipo venta#
     describe:                  describe
+    New_typeSale:              New type Sale
+    Edit_typeSale:             Edit type Sale
     #botones#
     new:                       new 
     Delete:                    delete
@@ -110,7 +120,12 @@ dictionary:
     Date:                     Date
     #sacrificio#
     sacrifice:                sacrifice
-    type sale:                type Sale
+    type_sale:                type Sale
+    Sacrifice_Sale:           Sacrifice Sale
+    sale:                     Sale
+    pig:                      Pig
+    New_Sacrifice:            New Sacrifice
+    Edit_Sacrifice:           Edit Sacrifice
     
     closing session:          closing session
 
@@ -135,11 +150,48 @@ dictionary:
     language:                  Language
     session:                   Session
     
-    #sacrificio venta#
-    Sacrifice Sale:           Sacrifice Sale
-    sale:                     Sale
-    pig:                      Pig
+    
+   
 
+    #vacunacion#
+    Dose:                    Dose
+    Time:                    Time
+    Vaccination:             Vaccination
+    New_Vaccination:         New Vaccination
+    Edit_Vaccination:        Edit Vaccination
+    
+      #Empleado#
+    name_user:                 Name User
+    type_id:                   Type Identification
+    empleyeed:                 Employeed
+    new_employeed:             New Employeed
+    
+    #Genero"ANIMAL"#
+    genre:                     Genre
+    batch:                     Batch
+    state:                     State
+    race:                      Race
+    mother:                    Mother
+    new_curriculum vitae:      New Curriculum Vitae
+    curriculum vitae:          curriculum vitae
+    
+    #Entrada Bodega#
+    cellar entry:              Cellar Entry
+    detail:                    Detail
+    new_cellar_entry:          New Cellar Entry
+    cellar_entry:              Cellar Entry
+    
+    
+     #Credencial#
+    credential:                Credential
+    new_credential:            New Credential
+    
+     #usuarioCredencial#
+    UserCredential:           UserCredential
+    New_userCredential:       New_userCredential
+    Edit_userCredential:       Edit_userCredential
+    
+    
  
 
 
@@ -161,6 +213,7 @@ dictionary:
     00003:                     Los datos de usuario y contrseña son inválidos.
     00004:                     El usuario %user% excede los %caracteres% caracteres maximos permitidos.
     00005:                     Las contraseñas son diferentes.
+    23505:                     el sistema no  permite tener un mismo nombre  debe cambiarlo
 #    00001:  Lo que buscas no existe
 #    10001:  Existe un error en la definición de los includes
 #    10002:  No hay definido un ambito (dev o prod) para la aplicación

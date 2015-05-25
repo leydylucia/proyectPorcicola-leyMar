@@ -6,7 +6,7 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Editar Tipo Insumo</h1>  
+        <h1><?php echo i18n::__('Edit_typeProduct')?></h1>  
         <h2> <?php echo $objTipoin[0]->$desc_tipoIn ?></h2>
     </div>
     

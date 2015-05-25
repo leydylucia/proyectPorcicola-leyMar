@@ -6,11 +6,11 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Editar sacrificio</h1>  
+        <h1><?php echo i18n::__('Edit_Sacrifice')?></h1>  
         <h2> <?php echo $objSacrificioV[0]->$valor ?></h2>
     </div>
 <!--fintitulo-->
-<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array('objSacrificioV' => $objSacrificioV, 'valor' => $valor, 'objTipoV' => $objTipoV)) ?>
+<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array('objSacrificioV' => $objSacrificioV, 'valor' => $valor, 'objTipoV' => $objTipoV,'objHojaVida'=>$objHojaVida)) ?>
 
 
 </div>

@@ -7,6 +7,8 @@ dictionary:
     pass2:                        Verifique la contraseña
     register:                     Registro
     update:                       actualizacion
+    New User:                     Nuevo Usuario
+    Edit User:                    Editar Usuario
     #usuario credencial#
     tableUsucred:                 Tabla usuario
     date:                         fecha
@@ -15,8 +17,9 @@ dictionary:
     #DEPTO#
     name_dept:                    Nombre departamento
     #lote#  
-    desc_lot:                     Description Lot
-    location:                     ubicacion
+    desc_lot:                     Descripción Lote
+    location:                     Ubicación
+    new_batch:                    Nuevo Lote
     #ciudad#
     name_city:                    Nombre ciudad
     dept_id:                      Identificacion del departamento
@@ -84,6 +87,8 @@ dictionary:
     date_manufacture:          fecha de fabricacion
     date_conquering:           fecha de vencimiento
     provisioner:               proveedor
+    New Product:                   Nuevo Producto
+    Edit Product:                  Editar Producto
     ###########
     date_creation:             fecha de creacion
     #mensajes en ajax#
@@ -101,9 +106,15 @@ dictionary:
     
 
  #tipoInsumo#
-    describe_typeProduct:      Descripcion Tipo 
+    describe_typeProduct:      Descripcion Tipo Insumo 
+    New_typeProduct:                   Nuevo Tipo Insumo
+    Edit_typeProduct:                  Editar Tipo Insumo 
+    
     #tipo venta#
     describe:                  Descripcion
+    type_sale:                tipo venta
+    New_typeSale:             Nuevo Tipo Venta
+    Edit_typeSale:            Editar Tipo Venta
     #botones#
     new:                       Nuevo  
     Delete:                    Elimiar
@@ -127,8 +138,12 @@ dictionary:
     Date:                     fecha
     #sacrificio#
     sacrifice:                sacrificio 
-    type sale:                tipo venta
     pig:                      cerdo
+    New_Sacrifice:            Nuevo Sacrificio
+    Edit_Sacrifice:           Editar Sacrificio
+    Sacrifice_Sale:           Sacrificio Venta
+    sale:                     Valor
+    
     
     closing session:          cierre de sesion
 
@@ -142,6 +157,7 @@ dictionary:
     number of males:           Numero de machos
     date mounted:              Fecha montada  
     id the father:             Identicacion Padre
+    new_delivery:              Nuevo Parto
     
     #Control Peso#
     pig weight:                Peso Cerdo               
@@ -149,15 +165,48 @@ dictionary:
     weight control:            Control Peso
     control:                   Control
     
-    new_delivery:              Nuevo Parto
+ #Idiomas#
     language:                  Idioma
     session:                   Sesión
   
-    #sacrificio venta#
-    Sacrifice Sale:           Sacrificio Venta
-    sale:                     Valor
+  
     
+    #vacunacion#
+    Dose:                    Dosis
+    Time:                    Hora
+    Vaccination:             Vacunacion
+    New_Vaccination:         Nueva Vacunacion
+    Edit_Vaccination:        Editar Vacunacion
     
+    #Empleado#
+    name_user:                 Nombre Usuario
+    type_id:                   Tipo Identificacion
+    empleyeed:                 Empleado
+    new_employeed:             Nuevo Empleado
+
+    #Genero"ANIMAL"#
+    genre:                     Genero
+    batch:                     Lote
+    state:                     Estado
+    race:                      Raza
+    mother:                    Madre
+    new_curriculum vitae:      Nueva Hoja de Vida
+    curriculum vitae:          Hoja de Vida
+    
+    #Entrada Bodega#
+    cellar entry:              Entrada Bodega
+    detail:                    Detalle
+    new_cellar_entry:          Nueva entrada de Bodega
+
+    #Credencial#
+    credential:                Credencial
+    new_credential:            Nueva Credencial
+    
+    #usuarioCredencial#
+    UserCredential:           UsuarioCredencial
+    New_userCredential:       Nuevo Usuario Credencial
+    Edit_userCredential:      Editar Usuario Credencial
+
     
     
     ##errores##
@@ -181,6 +230,7 @@ dictionary:
     00006:                     El insumo %insumo% excede los %caracteres% caracteres maximos permitidos.
     10001:                     Hay campos que deben ser numericos
     10002:                     tan solo se permiten letras en este campo
+    23505:                     el sistema no  permite tener un mismo nombre  debe cambiarlo
 #    00001:  Lo que buscas no existe
 #    10001:  Existe un error en la definición de los includes
 #    10002:  No hay definido un ambito (dev o prod) para la aplicación

@@ -13,6 +13,8 @@ use hook\log\logHookClass as log; /* linea de la bitacora */
  * Description of ejemploClass
  *
  * @author leydy lucia castillo <leydylucia@hotmail.com>
+ * @category usuario
+ * 
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
@@ -76,11 +78,11 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
         }
         
-         if (!ereg("^[A-Z a-z_]*$", $user)) {//validacion de tan solo letras
-            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $user)));
-            $flag = true;
-            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE), TRUE);
-        }
+//         if (!ereg("^[A-Z a-z_]*$", $user)) {//validacion de tan solo letras
+//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $user)));
+//            $flag = true;
+//            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE), TRUE);
+//        }
         
           if ($user === '') {// validacion de campo vacio
             session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
@@ -88,6 +90,12 @@ class createActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
         }
 
+//         if ($user === $user) {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__(23505, null, 'errors', array('%user%' => $user)));
+//            $flag = true;
+//            session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
+//        }
+        
         if ($pass1 !== $pass2) {
             session::getInstance()->setError(i18n::__(00005, null, 'errors'));
             $flag = true;
@@ -95,6 +103,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
         if ($flag === true) {
             request::getInstance()->setMethod('GET');
+            //request::getInstance()->addParamGet(array(usuarioTableClass::ID => request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true))));
             routing::getInstance()->forward('default', 'insert');
         }
     }

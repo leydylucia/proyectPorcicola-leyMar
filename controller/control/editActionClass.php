@@ -30,14 +30,24 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $this->objControl = controlTableClass::getAll($fields, true, null, null, null, null, $where);
         
         // para editar foraneas
-        $fields = array(
+        $fieldsA = array(
             empleadoTableClass::ID,
             empleadoTableClass::NOMBRE
         );
-        $orderBy = array(
+        $orderByA = array(
             empleadoTableClass::NOMBRE
         );
-        $this->objEmpleado = empleadoTableClass::getAll($fields, true, $orderBy, 'ASC');
+        $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
+        //fin
+        
+        // para editar foraneas
+        $fields = array(
+        hojaVidaTableClass::ID
+        );
+        $orderBy = array(
+            hojaVidaTableClass::ID
+        );
+        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
         //fin
         $this->defineView('edit', 'control', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('El registro se modifico exitosamente');
@@ -45,11 +55,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         routing::getInstance()->redirect('control', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

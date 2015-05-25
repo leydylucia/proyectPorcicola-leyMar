@@ -5,7 +5,7 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1>Nuevo Sacrificio</h1>  
+        <h1><?php echo i18n::__('New_Sacrifice')?></h1>  
     </div>
     
 </div>
@@ -13,5 +13,5 @@
 
 
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array( 'objTipoV' => $objTipoV))?>
+<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array( 'objTipoV' => $objTipoV, 'objHojaVida' => $objHojaVida))?>
 

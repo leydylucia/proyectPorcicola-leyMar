@@ -3,23 +3,30 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of credencialBaseTableClass
+ * Description of vacunacionBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
-class credencialBaseTableClass extends tableBaseClass {
+class vacunacionBaseTableClass extends tableBaseClass {
 
     private $id;
     private $createdAt;
     private $updatedAt;
     private $deletedAt;
-   
+    private $dosis;
+    private $hora;
+    private $insumo_id;
+    private $id_cerdo;
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
-    
+    const DOSIS='dosis';
+    const DOSIS_LENGTH = 6;
+    const HORA='hora';
+    const INSUMO_ID='insumo_id';
+    const ID_CERDO= 'id_cerdo';
 
     function getId() {
         return $this->id;
@@ -35,6 +42,22 @@ class credencialBaseTableClass extends tableBaseClass {
 
     function getDeletedAt() {
         return $this->deletedAt;
+    }
+
+    function getDosis() {
+        return $this->dosis;
+    }
+
+    function getHora() {
+        return $this->hora;
+    }
+
+    function getInsumo_id() {
+        return $this->insumo_id;
+    }
+
+    function getId_cerdo() {
+        return $this->id_cerdo;
     }
 
     function setId($id) {
@@ -53,7 +76,23 @@ class credencialBaseTableClass extends tableBaseClass {
         $this->deletedAt = $deletedAt;
     }
 
-        
+    function setDosis($dosis) {
+        $this->dosis = $dosis;
+    }
+
+    function setHora($hora) {
+        $this->hora = $hora;
+    }
+
+    function setInsumo_id($insumo_id) {
+        $this->insumo_id = $insumo_id;
+    }
+
+    function setId_cerdo($id_cerdo) {
+        $this->id_cerdo = $id_cerdo;
+    }
+
+            
         /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)

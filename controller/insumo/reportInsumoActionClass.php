@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *
+ ** @category insumo
  * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
  * @var $filter para hacer filtros,$where
  */
@@ -18,7 +18,7 @@ class reportInsumoActionClass extends controllerClass implements controllerActio
 
   public function execute() {
      try {
-            /* filtros */
+            /* reporte con filtros */
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
@@ -67,12 +67,7 @@ class reportInsumoActionClass extends controllerClass implements controllerActio
 
           
          
-            /**para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
-             * *getTotalPages => se encuentra en insumoTables class
-            * * @var $where => para sostener el filtro con el paginado  */
            
-            // $page = request::getInstance()->getGet('page');
-
 
             /** @var $where => para filtros
              * *@var $page => para el paginado

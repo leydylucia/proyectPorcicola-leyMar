@@ -21,13 +21,15 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         $peso_cerdo = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true));
         $empleado_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true));
-
+        $hoja_vida_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true));
+        
 
         $this->Validate($peso_cerdo);
 
         $data = array(
             controlTableClass::PESO_CERDO => $peso_cerdo,
-            controlTableClass::EMPLEADO_ID => $empleado_id
+            controlTableClass::EMPLEADO_ID => $empleado_id,
+            controlTableClass::HOJA_VIDA => $hoja_vida_id
         );
 
         controlTableClass::insert
