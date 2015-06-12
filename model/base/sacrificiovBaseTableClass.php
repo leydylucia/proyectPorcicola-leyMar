@@ -16,6 +16,7 @@ class sacrificiovBaseTableClass extends tableBaseClass {
     private $valor;
     private $tipo_venta_id;
     private $id_cerdo;
+   
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
@@ -24,9 +25,10 @@ class sacrificiovBaseTableClass extends tableBaseClass {
     const VALOR = 'valor';
     const TIPO_VENTA_ID= 'tipo_venta_id';
     const ID_CERDO= 'id_cerdo';
- 
+    
 
-    function getId() {
+
+        function getId() {
         return $this->id;
     }
 

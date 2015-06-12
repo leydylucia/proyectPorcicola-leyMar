@@ -11,7 +11,10 @@
 <?php $id = sacrificiovTableClass::ID ?>
 <?php $valor = sacrificiovTableClass::VALOR ?>
 <?php $tipoVenta = sacrificiovTableClass::TIPO_VENTA_ID ?>
+<?php $tipoVenta_t = tipovTableClass::ID?>
+<?php $descripcion = tipovTableClass::DESC_TIPOV?>
 <?php $idCerdo = sacrificiovTableClass::ID_CERDO?>
+<?php $cerdo = hojaVidaTableClass::ID ?>
 <?php $fecha = sacrificiovTableClass::CREATED_AT?>
 
 <!--titulo-->
@@ -60,7 +63,29 @@
                         </div>
                     </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
                  
-
+             <div class="form-group">
+                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
+                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                     <?php foreach ($objTipoV as $venta): ?>
+                                        <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>     
+                    
+            <div class="form-group">
+                            <label for="filterCerdo" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
+                                    <option value=""><?php echo i18n::__('pig') ?></option>
+                                     <?php foreach ($objHojaVida as $hojaVida): ?>
+                                        <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>             
                    
                 </form>
             </div>
@@ -89,6 +114,31 @@
                             <input type="text" class="form-control" id="filter[valor]" name="filter[valor]" placeholder="valor">
                         </div>
                     </div>  
+                    
+                    <div class="form-group">
+                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
+                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                     <?php foreach ($objTipoV as $venta): ?>
+                                        <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                     <div class="form-group">
+                            <label for="filterCerdo" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
+                                    <option value=""><?php echo i18n::__('pig') ?></option>
+                                     <?php foreach ($objHojaVida as $hojaVida): ?>
+                                        <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>             
+                   
                    
                     <div class="form-group">
                         <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>

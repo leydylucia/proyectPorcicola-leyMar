@@ -14,7 +14,7 @@ $pdf = new FPDF('l', 'mm', 'letter');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(100);
-$pdf->Cell(10, 50, utf8_decode('INSUMO'), 100, 10, 'C');
+$pdf->Cell(10, 80, utf8_decode('INSUMO'), 100, 10, 'C');
 $pdf->Image(routing::getInstance()->getUrlImg('prueba.jpg'), 50, 8,200);/*200 ancho*/
 
 $pdf->Ln(10);

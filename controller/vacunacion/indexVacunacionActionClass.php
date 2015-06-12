@@ -36,6 +36,9 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
                 if (isset($filter['hora']) and $filter['hora'] !== null and $filter['hora'] !== '') {
                     $where[vacunacionTableClass::HORA] = $filter['hora'];
                 }
+                 if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
+                    $where[vacunacionTableClass::INSUMO_ID] = $filter['Insumo'];
+                }
 
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[vacunacionTableClass::CREATED_AT] = array(

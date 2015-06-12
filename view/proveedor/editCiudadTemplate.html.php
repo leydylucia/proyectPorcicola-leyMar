@@ -10,6 +10,6 @@
     </div>
  
 
-<?php view::includePartial('proveedor/formCiudad', array('objCiudad' => $objCiudad, 'nom_ciudad' => $ciudad,'objDepto' => $objDepto)) ?>
+<?php view::includePartial('proveedor/formCiudad', array('objCiudad' => $objCiudad, 'ciudad' => $ciudad,'objDepto' => $objDepto)) ?>
 
 

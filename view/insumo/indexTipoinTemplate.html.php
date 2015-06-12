@@ -82,7 +82,7 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>">
                         <div class="form-group">
-                            <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type sale') ?></label>
+                            <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_tipo_insumo">
                             </div>

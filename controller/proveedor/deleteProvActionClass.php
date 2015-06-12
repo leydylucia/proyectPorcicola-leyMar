@@ -9,11 +9,18 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ * Description of deleteCiudadActionClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
  */
 class deleteProvActionClass extends controllerClass implements controllerActionInterface {
+  
+   /* public function execute inicializa las variables 
+     * @return $id=> identificacion de la ciudad (bigInt)
+     * @return $ids=> declara con cual id va a borras
+     * @return $this=> es el que lleva los datos a la vista
+     * Todas estos datos se pasan en la variable @var $data 
+     * ** */
 
   public function execute() {
     try {
@@ -26,6 +33,8 @@ class deleteProvActionClass extends controllerClass implements controllerActionI
         );
         proveedorTableClass::delete($ids, true);/*el true es para el borrado logico false si no lo tiene*/
         //routing::getInstance()->redirect('parto', 'index');
+        
+        /** @var $this->arrayAjax pasa los datos a la vista, es de tipo Ajax**/
         $this->arrayAjax=array(
            'code'=>200,
            'msg' =>'la eliminacion fue exitosa'
@@ -37,11 +46,8 @@ class deleteProvActionClass extends controllerClass implements controllerActionI
         routing::getInstance()->redirect('proveedor', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

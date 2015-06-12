@@ -11,7 +11,8 @@ use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
- * Description of ejemploClass
+ * Description of editInsumoActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  *
  * @author leydy lucia castillo moaquera
  *  @category modulo insumo

@@ -9,7 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ Description of deleteTipoInActionClass esta clase sirve para eliminar datos individuales
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  *  @category modulo insumo

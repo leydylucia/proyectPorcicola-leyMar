@@ -9,7 +9,7 @@
         <h2> <?php echo $objUsuario[0]->$usuario ?></h2>
     </div>
 <!--fintitulo-->
-
+<?PHP view::includeHandlerMessage() ?>
 <?php view::includePartial('default/formUser', array('objUsuario' => $objUsuario, 'usuario' => $usuario)) ?>
 
 

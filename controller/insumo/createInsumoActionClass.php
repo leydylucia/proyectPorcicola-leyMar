@@ -4,6 +4,7 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
+use mvc\validator\insumoValidatorClass as validator; /* linea para llamar validaciones */
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
@@ -11,19 +12,21 @@ use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
- * Description of ejemploClass
+ *  Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * @category modulo insumo
  */
 class createInsumoActionClass extends controllerClass implements controllerActionInterface {
     /* public function execute inicializa las variables 
-     * @var $desc_insumo=> descripcion insumo
-     * @var $precio=> precio
-     * @var $tipoInsumo=> id tipo insumo
-     * @var $fechaFabricacion=> fecha fabricacion
-     * @var $fechaVencimiento=> fecha vencimiento
-     * @var $proveedorId =>id del proveedor
+     * @return $desc_insumo=> descripcion insumo (string)
+     * @return $precio=> precio (numerico)
+     * @return $tipoInsumo=> id tipo insumo (bigint)
+     * @return $fechaFabricacion=> fecha fabricacion(date)
+     * @return $fechaVencimiento=> fecha vencimiento(date)
+     * @return $proveedorId =>id del proveedor (bigint)
+     * todas estos datos se pasa en la varible @var $data
      * ** */
 
     public function execute() {
@@ -38,8 +41,8 @@ class createInsumoActionClass extends controllerClass implements controllerActio
                 $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
 
-                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
-
+//                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
+                validator::validateInsert(); /* para validar los campos de la tabla se redirije al validator */
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
@@ -66,56 +69,54 @@ class createInsumoActionClass extends controllerClass implements controllerActio
         }
     }
 
-    
-    /* @ function para validar campos de formulario*/
-    static public function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
-        $flag = false;
-        if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO_LENGTH)));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
-        }
-
-//        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {//validacion de tan solo letras
-//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
+    /* @ function para validar campos de formulario */
+//    static public function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
+//        $flag = false;
+//        if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {
+//            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_insumo, '%caracteres%' => insumoTableClass::DESC_INSUMO_LENGTH)));
 //            $flag = true;
-//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
 //        }
-
-        if (!is_numeric($precio)) {//validacion de numeros
-            session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
-        }
-
-        if ($desc_insumo === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
-        }
-
-        if ($precio === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
-        }
-        if ($fechaFabricacion === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true), true);
-        }
-        if ($fechaVencimiento === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true), true);
-        }
-
-
-
-        if ($flag === true) {
-            request::getInstance()->setMethod('GET');
-            routing::getInstance()->forward('insumo', 'insertInsumo');
-        }
-    }
-
+//
+////        if (!ereg("^[A-Z a-z_]*$", $desc_insumo)) {//validacion de tan solo letras
+////            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_insumo)));
+////            $flag = true;
+////            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, TRUE), TRUE);
+////        }
+//
+//        if (!is_numeric($precio)) {//validacion de numeros
+//            session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
+//        }
+//
+//        if ($desc_insumo === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true), true);
+//        }
+//
+//        if ($precio === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true), true);
+//        }
+//        if ($fechaFabricacion === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true), true);
+//        }
+//        if ($fechaVencimiento === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true), true);
+//        }
+//
+//
+//
+//        if ($flag === true) {
+//            request::getInstance()->setMethod('GET');
+//            routing::getInstance()->forward('insumo', 'insertInsumo');
+//        }
+//    }
 }

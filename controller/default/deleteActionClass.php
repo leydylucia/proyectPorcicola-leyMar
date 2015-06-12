@@ -2,17 +2,18 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\myConfigClass as config;
+//use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+  Description of deleteActionClass esta clase sirve para eliminar datos individuales
  *
- * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category usuario
+ * @author leydy lucia castillo mosquera
+ * * @category modulo default "usuario"
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
     /*     * @var $ids=> declara con que va a borrar

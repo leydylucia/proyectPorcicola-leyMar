@@ -9,10 +9,9 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
+ Description of traductorActionClass esta clase sirve para realizar la traduccion del sistema
+ *@category modulo default"usuario"
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category usuario
  */
 class traductorActionClass extends controllerClass implements controllerActionInterface {
 

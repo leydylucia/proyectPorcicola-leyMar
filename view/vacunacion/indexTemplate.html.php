@@ -12,6 +12,8 @@
 <?php $dosis = vacunacionTableClass::DOSIS ?>
 <?php $hora = vacunacionTableClass::HORA ?>
 <?php $insumoId = vacunacionTableClass::INSUMO_ID ?>
+<?php $insumo = insumoTableClass::ID?>
+<?php $descripcion = insumoTableClass::DESC_INSUMO?>
 <?php $idCerdo = vacunacionTableClass::ID_CERDO ?>
 <?php $fecha = vacunacionTableClass::CREATED_AT ?>
 <!--titulo-->
@@ -99,6 +101,18 @@
                             <input type="text" class="form-control" id="filter[hora]" name="filter[hora]" placeholder="hora">
                         </div>
                     </div>  
+                    
+<!--                     <div class="form-group">
+                            <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterInsumo" name="filter[Insumo]">
+                                    <option value=""><?php echo i18n::__('describe_product') ?></option>
+                                     <?php foreach ($objInsumo as $producto): ?>
+                                        <option value="<?php echo $producto -> $insumo ?>"><?php echo $producto -> $descripcion?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>-->
                    
 
                     <div class="form-group">

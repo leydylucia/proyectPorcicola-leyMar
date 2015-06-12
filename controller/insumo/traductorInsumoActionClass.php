@@ -1,12 +1,6 @@
 <?php
 
-//use mvc\interfaces\controllerActionInterface;
-//use mvc\controller\controllerClass;
-//use mvc\config\configClass as config;
-//use mvc\request\requestClass as request;
-//use mvc\routing\routingClass as routing;
-//use mvc\session\sessionClass as session;
-//use mvc\i18n\i18nClass as i18n;
+
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
@@ -16,7 +10,7 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ Description of traductorInsumoActionClass esta clase sirve para realizar la traduccion del sistema
  *@category modulo insumo
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */

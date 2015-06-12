@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of indexTipoInActionClass trae datos para visualizarlos en vista indextemplated
  *
   @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * @category modulo insumo
@@ -43,7 +43,10 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
             }
 
 
-
+/**@var $fields trae los campos de model
+ * @var $orderBy ordena con el tipo de datos seleccionado
+ * @var page paginado
+ */
 
             $fields = array(
                 tipoInsumoTableClass::ID,

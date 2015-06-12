@@ -7,7 +7,7 @@ namespace mvc\session {
   /**
    * Description of sessionClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class sessionClass implements sessionInterface {
 
@@ -292,11 +292,11 @@ namespace mvc\session {
     public function hasDefaultCulture() {
       return $this->hasAttribute('mvcDefaultCulture');
     }
-
+    
     public function setDefaultCulture($default_culture) {
       $this->setAttribute('mvcDefaultCulture', $default_culture);
     }
-
+    
     public function getDefaultCulture() {
       return $this->getAttribute('mvcDefaultCulture');
     }

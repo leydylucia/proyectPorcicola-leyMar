@@ -11,13 +11,13 @@ use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
- * Description of ejemploClass
+  Description of deleteInsumoActionClass esta clase sirve para eliminar datos individuales
  *
  * @author leydy lucia castillo mosquera
  * * @category modulo insumo
  */
 class deleteInsumoActionClass extends controllerClass implements controllerActionInterface {
-    /*  * @var $ids=> declara con que va a borrar
+    /* * @var $ids=> declara con que id va a borrar
      * @var  $this->arrayAjax que el dato que va a la vista es de tipo ajax* */
 
     public function execute() {
@@ -30,7 +30,7 @@ class deleteInsumoActionClass extends controllerClass implements controllerActio
                     insumoTableClass::ID => $id
                 );
                 insumoTableClass::delete($ids, true); /* el true es para el borrado logico  en bd false si no lo tiene */
-                //routing::getInstance()->redirect('depto', 'index');
+                
                 $this->arrayAjax = array(
                     'code' => 200,
                     'msg' => 'la eliminacion fue exitosa'

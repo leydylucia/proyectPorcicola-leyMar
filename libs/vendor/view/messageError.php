@@ -5,3 +5,4 @@
   <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError($key) ?>
 </div>
 <?php endif ?>
+

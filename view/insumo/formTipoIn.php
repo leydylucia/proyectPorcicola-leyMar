@@ -23,10 +23,20 @@ use mvc\view\viewClass as view ?>
                 <?php endif ?>
 
                 <?php view::includeHandlerMessage() ?>
+            
+            
+             <?php if (session::getInstance()->hasError('inputDescTipoIn')): ?><!--inicio de validaciones-->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescTipoIn') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?><!--fin de validaciones-->
+
+    
         <div class="form-group <?php echo (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true) ? 'has-error has-feedback' : '' ?>">
             <label for="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('describe_typeProduct') ?>:</label>
             <div class="col-xs-9">
-                <input id="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="form-control" value="<?php echo ((isset($objTipoin) == true) ? $objTipoin[0]->$desc_tipoIn : '') ?><?php echo (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true) ? request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) : '' ?>" type="text" name="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>">
+                <input id="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>" class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDescTipoIn') or request::getInstance()->hasPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true))) ? request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) : ((isset($objTipoin[0])) ? $objTipoin[0]->$desc_tipoIn : '') ?>" type="text" name="<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>">
 <?php if (session::getInstance()->hasFlash(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)) === true): ?>
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 <?php endif ?>

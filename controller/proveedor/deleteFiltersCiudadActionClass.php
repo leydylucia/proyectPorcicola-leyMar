@@ -9,9 +9,9 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
-  @author Alexandra Florez
+ * Description of deleteFiltersCiudadClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
  */
 class deleteFiltersCiudadActionClass extends controllerClass implements controllerActionInterface {
 

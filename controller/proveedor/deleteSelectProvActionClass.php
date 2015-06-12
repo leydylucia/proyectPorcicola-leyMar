@@ -4,16 +4,23 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
-
 use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
+
 /**
- * Description of ejemploClass
- *
- * @author leydy lucia castillo mosquera
+ * Description of deleteSelectProvActionClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
  */
 class deleteSelectProvActionClass extends controllerClass implements controllerActionInterface {
+  
+  /**
+   * * @return $idsToDelete => permite hacer un borrado masivo con el checkList 
+     * Todas estos datos se pasan en la variable @var $data 
+   * * 
+  **/
+  
 
   public function execute() {
     try {/*se grago el and resquest etc..*/
@@ -40,11 +47,8 @@ class deleteSelectProvActionClass extends controllerClass implements controllerA
         routing::getInstance()->redirect('proveedor', 'indexProv');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

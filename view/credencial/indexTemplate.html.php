@@ -1,23 +1,13 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?> 
-<?php
-
-use mvc\view\viewClass as view ?> 
-<?php
-
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as config ?>
-<?php
-use mvc\request\requestClass as request ?>
-
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
 
 <?php $id = credencialTableClass::ID ?>
 <?php $nombre = credencialTableClass::NOMBRE ?>
 <?php $fecha = credencialTableClass::CREATED_AT ?>
-
 
 <!--titulo-->
 <div class="container container-fluid">
@@ -50,6 +40,7 @@ use mvc\request\requestClass as request ?>
                   <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+             </div>
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
@@ -87,6 +78,7 @@ use mvc\request\requestClass as request ?>
                   <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+               
 
             </form>
           </div>
@@ -132,7 +124,7 @@ use mvc\request\requestClass as request ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $credencial->$id ?>"></td>
               <td><?php echo $credencial->$nombre ?></td>
-              <td><?php echo $credencial->$fecha ?></td>
+              <td><?php echo date('d-m-Y h:i:s a', strtotime($credencial->$fecha)) ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'ver', array(credencialTableClass::ID => $credencial->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'edit', array(credencialTableClass::ID => $credencial->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
@@ -202,3 +194,6 @@ use mvc\request\requestClass as request ?>
 
   </select><?php echo i18n::__('off') ?> <?php echo $cntPages ?>
 </div>
+
+
+

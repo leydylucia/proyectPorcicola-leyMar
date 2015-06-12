@@ -36,7 +36,13 @@ use mvc\view\viewClass as view ?>
         <input name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID, true) ?>" value="<?php echo $objVacunacion[0]->$id ?>" type="hidden">
             <?php endif ?>
 
-
+   <?php if(session::getInstance()->hasError('inputDosis')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDosis') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+  
     <div class="form-group <?php echo (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true)) === true) ? 'has-error has-feedback' : '' ?>">
         <label for="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Dose') ?>:</label>
         <div class="col-xs-9">
@@ -46,6 +52,13 @@ use mvc\view\viewClass as view ?>
 <?php endif ?>
         </div>
     </div>
+    
+     <?php if(session::getInstance()->hasError('inputHora')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHora') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?>
 
     <div class="form-group <?php echo (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) === true) ? 'has-error has-feedback' : '' ?>">
         <label for="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Time') ?>:</label>
@@ -82,7 +95,7 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE) ?>" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE); ?>">
                 <option>Seleccione Cerdo</option>
 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objHojaVida[0]->$idCerdo_c) === true and $objHojaVida[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (isset($objVacunacion[0]->$idCerdo_c) === true and $objVacunacion[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
     <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
 <?php endforeach; ?>
@@ -111,9 +124,9 @@ use mvc\view\viewClass as view ?>
 
 
     <!--linea para poner seguridad-->
-<?php if (session::getInstance()->hasCredential('admin')): //and session::getInstance()->hasCredential('emple')):  ?>
+<!--</?php if (session::getInstance()->hasCredential('admin')): //and session::getInstance()->hasCredential('emple')):  ?>-->
         <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objVacunacion)) ? 'update' : 'register')) ?>">
-<?php endif ?>
+</?php endif ?>
 
         <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>"><?php echo i18n::__('return') ?> </a></button>
 

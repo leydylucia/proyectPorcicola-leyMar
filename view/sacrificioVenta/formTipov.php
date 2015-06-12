@@ -22,6 +22,13 @@ use mvc\view\viewClass as view ?>
         <input name="<?php echo tipovTableClass::getNameField(tipovTableClass::ID,true) ?>" value="<?php echo $objTipoV[0]->$id ?>" type="hidden">
   <?php endif ?>
    
+         <?php if(session::getInstance()->hasError('inputDescTipoV')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescTipoV') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+  
     
         <div class="form-group">
             <label for="desc_tipoIn" class="control-label col-xs-3"><?php echo i18n::__('describe') ?>:</label>

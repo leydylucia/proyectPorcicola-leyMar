@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\empleadoValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -28,7 +29,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $correo = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true));
         $telefono = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, true));
         
-        $this->Validate($nombre, $apellido, $direccion, $correo, $telefono);
+//        $this->Validate($nombre, $apellido, $direccion, $correo, $telefono);
+        
+        validator::validateEdit();
 
         $ids = array(
             empleadoTableClass::ID => $id
@@ -48,91 +51,91 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         session::getInstance()->setSuccess('Registro Exitoso');
 
-        routing::getInstance()->redirect('empleado', 'edit');
+        routing::getInstance()->redirect('empleado', 'index');
       } else {
-        routing::getInstance()->redirect('empleado', 'edit');
+        routing::getInstance()->redirect('empleado', 'index');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('empleado', 'edit');
+      routing::getInstance()->redirect('empleado', 'update');
       session::getInstance()->setFlash('exc', '$exc');
     }
   }
 
   // VALIDACIONES
- private function Validate($nombre, $apellido, $direccion, $correo, $telefono) {
-    $bono = false;
-    if (strlen($nombre) > empleadoTableClass::NOMBRE_LENGTH) {
-      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => empleadoTableClass::NOMBRE_LENGTH)));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
-    }
-
-    if (strlen($apellido) > empleadoTableClass::APELLIDO_LENGTH) {
-      session::getInstance()->setError(i18n::__('errorLengthLastName', null, 'default', array('%apellido%' => empleadoTableClass::APELLIDO_LENGTH)));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE), TRUE);
-    }
-
-    if ($direccion > empleadoTableClass::DIRECCION_LENGTH) {
-      session::getInstance()->setError(i18n::__('errorAdress', null, 'default', array('%direccion%' => empleadoTableClass::DIRECCION_LENGTH)));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE), TRUE);
-    }
-
-    if (!is_numeric($telefono)) {
-      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE), TRUE);
-    }
-
-    if (!preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}', $correo)) {
-      session::getInstance()->setError(i18n::__('errorMail', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE), TRUE);
-    }
-
-    if (!ereg("^[A-Z a-z_]*$", $nombre)) {
-      session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $nombre)));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
-    }
-
-    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
-    if ($nombre === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
-    }
-
-    if ($apellido === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE), TRUE);
-    }
-
-    if ($direccion === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE), TRUE);
-    }
-
-    if ($correo === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE), TRUE);
-    }
-
-    if ($telefono === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bono = true;
-      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE), TRUE);
-    }
-
-    if ($bono === true) {
-      request::getInstance()->setMethod('GET');
-      request::getInstance()->addParamGet(array(empleadoTableClass::ID => request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::ID, true))));
-      routing::getInstance()->forward('empleado', 'edit');
-    }
-  }
+// private function Validate($nombre, $apellido, $direccion, $correo, $telefono) {
+//    $bono = false;
+//    if (strlen($nombre) > empleadoTableClass::NOMBRE_LENGTH) {
+//      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => empleadoTableClass::NOMBRE_LENGTH)));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
+//    }
+//
+//    if (strlen($apellido) > empleadoTableClass::APELLIDO_LENGTH) {
+//      session::getInstance()->setError(i18n::__('errorLengthLastName', null, 'default', array('%apellido%' => empleadoTableClass::APELLIDO_LENGTH)));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE), TRUE);
+//    }
+//
+//    if ($direccion > empleadoTableClass::DIRECCION_LENGTH) {
+//      session::getInstance()->setError(i18n::__('errorAdress', null, 'default', array('%direccion%' => empleadoTableClass::DIRECCION_LENGTH)));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE), TRUE);
+//    }
+//
+//    if (!is_numeric($telefono)) {
+//      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE), TRUE);
+//    }
+//
+//    if (!preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}', $correo)) {
+//      session::getInstance()->setError(i18n::__('errorMail', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE), TRUE);
+//    }
+//
+//    if (!ereg("^[A-Z a-z_]*$", $nombre)) {
+//      session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $nombre)));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
+//    }
+//
+//    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
+//    if ($nombre === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE), TRUE);
+//    }
+//
+//    if ($apellido === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE), TRUE);
+//    }
+//
+//    if ($direccion === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE), TRUE);
+//    }
+//
+//    if ($correo === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE), TRUE);
+//    }
+//
+//    if ($telefono === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bono = true;
+//      session::getInstance()->setFlash(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE), TRUE);
+//    }
+//
+//    if ($bono === true) {
+//      request::getInstance()->setMethod('GET');
+//      request::getInstance()->addParamGet(array(empleadoTableClass::ID => request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::ID, true))));
+//      routing::getInstance()->forward('empleado', 'edit');
+//    }
+//  }
 
 }

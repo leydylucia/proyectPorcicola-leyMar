@@ -1,12 +1,12 @@
 <?php
 
 use mvc\model\modelClass as model;
-use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 
 /**
  * Description of recordarMeTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class recordarMeTableClass extends recordarMeBaseTableClass {
 
@@ -30,7 +30,7 @@ class recordarMeTableClass extends recordarMeBaseTableClass {
   public static function getUserAndPassword($ip_address, $hash) {
     try {
       $sql = 'SELECT ' . usuarioTableClass::getNameField(usuarioTableClass::ID) . ' AS id_usuario,
-                  ' . usuarioTableClass::getNameField(usuarioTableClass::USER) . ' AS usuario,
+                  ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' AS usuario,
                   ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' AS credencial
               FROM ' . usuarioTableClass::getNameTable() . ' INNER JOIN ' . recordarMeTableClass::getNameTable() . ' ON ' . usuarioTableClass::getNameField(usuarioTableClass::ID) . ' = ' . recordarMeTableClass::getNameField(recordarMeTableClass::USUARIO_ID) . '
                    INNER JOIN ' . usuarioCredencialTableClass::getNameTable() . ' ON ' . usuarioTableClass::getNameField(usuarioTableClass::ID) . ' = ' . usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID) . '
@@ -38,7 +38,7 @@ class recordarMeTableClass extends recordarMeBaseTableClass {
               WHERE ' . recordarMeBaseTableClass::getNameField(recordarMeTableClass::IP_ADDRESS) . ' = :ip_address
               AND ' . recordarMeBaseTableClass::getNameField(recordarMeTableClass::HASH_COOKIE) . ' = :hash
               AND ' . usuarioBaseTableClass::getNameField(usuarioBaseTableClass::DELETED_AT) . ' IS NULL
-              AND ' . usuarioBaseTableClass::getNameField(usuarioBaseTableClass::ACTIVED) . ' = :actived
+              AND ' . usuarioBaseTableClass::getNameField(usuarioBaseTableClass::ESTADO) . ' = :actived
               AND ' . credencialTableClass::getNameField(credencialTableClass::DELETED_AT) . ' IS NULL';
       $params = array(
           ':ip_address' => $ip_address,

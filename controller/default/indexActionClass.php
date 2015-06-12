@@ -2,17 +2,18 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\myConfigClass as config;
+//use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of indexActionClass trae datos para visualizarlos en vista indextemplated
  *
-  @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category usuario
+ * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+ * @category modulo default "usuario"
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 

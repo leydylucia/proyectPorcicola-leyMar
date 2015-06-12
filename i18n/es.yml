@@ -133,7 +133,7 @@ dictionary:
     hoja de vida:              hoja de vida
     printOut:                  imprimir
     report:                    Reporte
-    Error:                         Error
+    Error:                     Error
     information:              Informacion
     Date:                     fecha
     #sacrificio#
@@ -206,8 +206,17 @@ dictionary:
     UserCredential:           UsuarioCredencial
     New_userCredential:       Nuevo Usuario Credencial
     Edit_userCredential:      Editar Usuario Credencial
-
     
+    #salida bodega#
+    Hold_Out:                Salida Bodega 
+    New_Hold_Out:            Nueva Salida Bodega
+    Edit_Hold_Out:           Editar Salida Bodega
+
+    #detalle Salida bodega#
+    Output_detail_winery:    Detalle Salida Bodega
+    Output_edit_detail_winery: Editar Detalle Salida Bodega
+    Output_detail_new_winery :  Nuevo Detalle Salida Bodega
+    quantity:                  Cantidad
     
     ##errores##
     errorLength:             este campo excede la longitud

@@ -26,7 +26,7 @@ class updateTipovActionClass extends controllerClass implements controllerAction
         $id = request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::ID, true));
         $desc_tipoV= request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
        
-         $this->Validate($desc_tipoV);
+//         $this->Validate($desc_tipoV);
         
         $ids = array(
         tipovTableClass::ID => $id
@@ -49,34 +49,34 @@ class updateTipovActionClass extends controllerClass implements controllerAction
       echo '</pre>';
     }
   }
-  private function Validate($desc_tipoV) {
-        $flag = false;
-        if (strlen($desc_tipoV) > tipovTableClass::DESC_TIPOV_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_tipoV, '%caracteres%' => tipovTableClass::DESC_TIPOV_LENGTH)));
-            $flag = true;
-            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true), true);
-        }
-
-        if (!ereg("^[A-Z a-z_]*$", $desc_tipoV)) {
-            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_tipoV)));
-            $flag = true;
-            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, TRUE), TRUE);
-        }
-
-       
-        if ($desc_tipoV === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true), true);
-        }
-
-       
-
-
-        if ($flag === true) {
-            request::getInstance()->setMethod('GET');
-            request::getInstance()->addParamGet(array(tipovTableClass::ID => request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::ID, true))));
-            routing::getInstance()->forward('sacrificioVenta', 'editTipov');
-        }
-    }
+//  private function Validate($desc_tipoV) {
+//        $flag = false;
+//        if (strlen($desc_tipoV) > tipovTableClass::DESC_TIPOV_LENGTH) {
+//            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $desc_tipoV, '%caracteres%' => tipovTableClass::DESC_TIPOV_LENGTH)));
+//            $flag = true;
+//            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true), true);
+//        }
+//
+//        if (!ereg("^[A-Z a-z_]*$", $desc_tipoV)) {
+//            session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $desc_tipoV)));
+//            $flag = true;
+//            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, TRUE), TRUE);
+//        }
+//
+//       
+//        if ($desc_tipoV === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true), true);
+//        }
+//
+//       
+//
+//
+//        if ($flag === true) {
+//            request::getInstance()->setMethod('GET');
+//            request::getInstance()->addParamGet(array(tipovTableClass::ID => request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::ID, true))));
+//            routing::getInstance()->forward('sacrificioVenta', 'editTipov');
+//        }
+//    }
 }

@@ -1,7 +1,8 @@
 <?php
 
 use mvc\model\modelClass as model;
-use mvc\config\myConfigClass as config;
+//use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 
 /**
  * Description of usuarioCredencialTableClass
@@ -13,13 +14,13 @@ class usuarioCredencialTableClass extends usuarioCredencialBaseTableClass {
    public static function getTotalPages($lines, $where) {
         try {
             $sql = 'SELECT count(' . usuarioCredencialTableClass::ID . ') AS cantidad ' ./*DEJAR ESPACIO EN EL AND BETWEEN Y NULL*/
-                    ' FROM ' . usuarioCredencialTableClass::getNameTable() ;
+                    ' FROM ' . usuarioCredencialTableClass::getNameTable();
             if (is_array($where) === true) {
                 foreach ($where as $field => $value) {
                     if (is_array($value)) {
-                        $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'");
+                        $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'");
                     } else {
-                        $sql = $sql . ' AND ' . $field . '=' . ((is_numeric($value)) ? $value : "'$value'") . '';
+                        $sql = $sql . ' WHERE ' . $field . '=' . ((is_numeric($value)) ? $value : "'$value'") . '';
                     }
                 }
             }

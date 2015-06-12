@@ -25,6 +25,13 @@
         <input name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" value="<?php echo $objSacrificioV[0]->$id ?>" type="hidden">
     <?php endif ?>
 
+         <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+  
 
     <div class="form-group <?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::VALOR, true)) === true) ? 'has-error has-feedback' : '' ?>">
         <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::VALOR, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('sale') ?>:</label>
@@ -70,13 +77,13 @@
     </div>
     
 <div class="form-group">
-        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('type_sale') ?>:</label>
+        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>">
                 <option>Seleccione Cerdo</option>
 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objHojaVida[0]->$idCerdo_c) === true and $objHojaVida[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (isset($objSacrificioV[0]->$idCerdo_c) === true and $objSacrificioV[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
     <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
 <?php endforeach; ?>

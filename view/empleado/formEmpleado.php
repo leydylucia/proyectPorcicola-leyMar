@@ -1,15 +1,9 @@
 
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\session\sessionClass as session ?>
-<?php
-use mvc\request\requestClass as request ?>
-<?php
-use mvc\view\viewClass as view ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
 
 <?php $id = empleadoTableClass::ID ?>
 <?php $nombre = empleadoTableClass::NOMBRE ?>
@@ -128,7 +122,8 @@ use mvc\view\viewClass as view ?>
 
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objEmpleado)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+    <a class="btn btn-info btn-sm" href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+    
 </form>
 </div>
 

@@ -9,11 +9,20 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
- */
+ * Description of editProvClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
+ **/
+
 class editActionClass extends controllerClass implements controllerActionInterface {
+  
+  /* public function execute inicializa las variables 
+     * @return $fields=> son los campos que trae de la base de datos
+     * @return $this=> es el que lleva los datos a la vista
+     * @return $where=>
+     * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+     * Todas estos datos se pasan en la variable @var $data 
+     * ** */
 
   public function execute() {
     try {
@@ -33,6 +42,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             empleadoTableClass::ID => request::getInstance()->getGet(empleadoTableClass::ID)
         );
         $this->objEmpleado = empleadoTableClass::getAll($fields, true, null, null, null, null, $where);
+        
         // para editar foraneas
         $fieldsA = array(
             usuarioTableClass::ID,

@@ -138,7 +138,78 @@ proveedor:
     security: true
   reporteCiudad:
     security: true
-      
+
+usuarioCredencial:
+  indexUsuarioCredencial:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insertUsuarioCredencial:
+    security: true
+    credentials:
+      - [admin, usuario]
+  createUsuarioCredencial:
+    security: true 
+  editUsuarioCredencial:
+    security: true 
+  update:
+    security: true
+  deleteUsuarioCredencial:
+    security: true 
+  deleteSelectUsuarioCredencial:
+    security: true
+  verUsuarioCredencial:
+    security: true
+  reporteUsuarioCredencial:
+    security: true      
     
+credencial:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true    
+ 
+empleado:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true    
+        
 
   

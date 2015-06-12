@@ -9,7 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+  Description of deleterSelectTipoInActionClass esta clase sirve para eliminar datos en masa
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  *  @category modulo insumo
@@ -19,7 +19,7 @@ class deleteSelectTipoinActionClass extends controllerClass implements controlle
     public function execute() {
         try {/* se grago el and resquest etc.. */
             if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
-
+                /* @var $idsToDelete  es para borrar id masivo con el checlist"chk" */
                 $idsToDelete = request::getInstance()->getPost('chk');
 
                 foreach ($idsToDelete as $id) {

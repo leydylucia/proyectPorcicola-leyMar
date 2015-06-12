@@ -20,7 +20,7 @@
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
-                    <tr>
+                    <tr class="active">
                    
                         <th>Datos</th>
                         
@@ -28,12 +28,12 @@
                 </thead>
                 <tbody>
                 <?php foreach ($objUsuario as $usuario): ?>  
-                        <tr >
+                    <tr class="info" >
                            <th><?php echo i18n::__('user') ?></th>
                             
                             <td><?php echo $usuario->$usu ?></td>
                             
-                             <tr >
+                    <tr class="active">
                             <th><?php echo i18n::__('date_creation') ?></th>
                             
                             <td><?php echo $usuario->$created_at ?></td>

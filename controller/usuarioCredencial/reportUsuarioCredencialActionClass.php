@@ -64,7 +64,7 @@ class reportUsuarioCredencialActionClass extends controllerClass implements cont
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
-            $this->objUsuarioCredencial = usuarioCredencialTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+            $this->objUsuarioCredencial = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
 
             //estos campo son para llamar las foraneas
             $fields = array(/* foranea de usuario */

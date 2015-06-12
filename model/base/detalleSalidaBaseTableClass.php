@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of credencialBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author leydy lucia castillo<leydylucia@hotmail.com>
  */
 class detalleSalidaBaseTableClass extends tableBaseClass {
 
@@ -14,18 +14,16 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
     private $updatedAt;
     private $deletedAt;
     private $cantidad;
-    private $valor;
     private $salida_bodega_id;
-    private $id_cerdo;
+    private $insumo_id;
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
     const CANTIDAD = 'cantidad';
-    const VALOR = 'valor';
-    const SALIDA_BODEGA_ID='salida_bodega_id';
-    const ID_CERDO= 'id_cerdo';
+    const SALIDA_BODEGA_ID = 'salida_bodega_id';
+    const INSUMO_ID = 'insumo_id';
 
     function getId() {
         return $this->id;
@@ -47,16 +45,12 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
         return $this->cantidad;
     }
 
-    function getValor() {
-        return $this->valor;
-    }
-
     function getSalida_bodega_id() {
         return $this->salida_bodega_id;
     }
 
-    function getId_cerdo() {
-        return $this->id_cerdo;
+    function getInsumo_id() {
+        return $this->insumo_id;
     }
 
     function setId($id) {
@@ -79,19 +73,14 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
         $this->cantidad = $cantidad;
     }
 
-    function setValor($valor) {
-        $this->valor = $valor;
-    }
-
     function setSalida_bodega_id($salida_bodega_id) {
         $this->salida_bodega_id = $salida_bodega_id;
     }
 
-    function setId_cerdo($id_cerdo) {
-        $this->id_cerdo = $id_cerdo;
+    function setInsumo_id($insumo_id) {
+        $this->insumo_id = $insumo_id;
     }
 
-    
         /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)
@@ -110,7 +99,7 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
      * @return string
      */
     public static function getNameTable() {
-        return 'detalle_salidaB';
+        return 'detalle_salida';
     }
 
     /**
@@ -175,4 +164,3 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
     }
 
 }
-

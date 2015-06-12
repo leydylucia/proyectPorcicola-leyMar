@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 /**
- * Description of ejemploClass
+  Description of deleterSelectInsumoActionClass esta clase sirve para eliminar datos en masa
  *@class deleteSelectInsumoActionClass borrado en masa
  * @author leydy lucia castillo mosquera
  *  @category modulo insumo
@@ -21,7 +21,7 @@ class deleteSelectInsumoActionClass extends controllerClass implements controlle
       if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk'))  {
           
           
-        
+   /*@var $idsToDelete  es para borrar id masivo con el checlist"chk"*/    
         $idsToDelete = request::getInstance()->getPost('chk');/*@ $idsToDelete para el borrado en masa y chk para la seleccion*/
         
         

@@ -8,7 +8,7 @@ namespace mvc\cache {
   /**
    * Description of cacheManagerClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class cacheManagerClass {
 

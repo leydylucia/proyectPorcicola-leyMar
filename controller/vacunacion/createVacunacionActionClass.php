@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\vacunacionValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 //use hook\log\logHookClass as log; /* linea de la bitacora */
@@ -34,8 +35,8 @@ class createVacunacionActionClass extends controllerClass implements controllerA
                 $idCerdo = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true));
 
 
-                $this->Validate($dosis, $hora,$insumoId); /* @ $this->validate para validar campos */
-
+//                $this->Validate($dosis, $hora,$insumoId); /* @ $this->validate para validar campos */
+                validator::validateInsert();
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     vacunacionTableClass::DOSIS => $dosis,
@@ -61,40 +62,40 @@ class createVacunacionActionClass extends controllerClass implements controllerA
 
     /* @ function para validar campos de formulario */
 
-    private function Validate($dosis, $hora, $insumoId) {
-        $flag = false;
-        if (strlen($dosis) > vacunacionTableClass::DOSIS_LENGTH) {
-            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $dosis, '%caracteres%' => vacunacionTableClass::DOSIS_LENGTH)));
-            $flag = true;
-            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true), true);
-        }
-
-
-
-
-        if ($dosis === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true), true);
-        }
-
-        if ($hora === '') {// validacion de campo vacio
-            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-            $flag = true;
-            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true), true);
-        }
-
-//        if ($insumoId === '') {// validacion de campo vacio
+//    private function Validate($dosis, $hora, $insumoId) {
+//        $flag = false;
+//        if (strlen($dosis) > vacunacionTableClass::DOSIS_LENGTH) {
+//            session::getInstance()->setError(i18n::__('errorLength', null, 'default', array('%insumo%' => $dosis, '%caracteres%' => vacunacionTableClass::DOSIS_LENGTH)));
+//            $flag = true;
+//            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true), true);
+//        }
+//
+//
+//
+//
+//        if ($dosis === '') {// validacion de campo vacio
 //            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
 //            $flag = true;
-//            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, true), true);
+//            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true), true);
 //        }
-
-
-        if ($flag === true) {
-            request::getInstance()->setMethod('GET');
-            routing::getInstance()->forward('vacunacion', 'insertVacunacion');
-        }
-    }
+//
+//        if ($hora === '') {// validacion de campo vacio
+//            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//            $flag = true;
+//            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true), true);
+//        }
+//
+////        if ($insumoId === '') {// validacion de campo vacio
+////            session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+////            $flag = true;
+////            session::getInstance()->setFlash(vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, true), true);
+////        }
+//
+//
+//        if ($flag === true) {
+//            request::getInstance()->setMethod('GET');
+//            routing::getInstance()->forward('vacunacion', 'insertVacunacion');
+//        }
+//    }
 
 }

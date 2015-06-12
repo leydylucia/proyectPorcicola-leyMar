@@ -9,10 +9,9 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
-  *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category usuario
+ * Description of verInsumoActionClass  sirve para ver un dato en la grilla
+ *@category modulo default"usuario"
+ * @author Leydy Lucia Castillo  <leydylucia@hotmail.com>
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
 

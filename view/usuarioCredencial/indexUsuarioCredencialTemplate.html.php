@@ -37,45 +37,45 @@
 
 
     <!--filtros-->
-    <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'deleteFiltersUsuarioCredencial') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
+    <a href="<?php //echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'deleteFiltersUsuarioCredencial') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
 
-        <!--<a href="</?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'reportUsuarioCredencial') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>-->
+        <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'reportUsuarioCredencial') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
 
 </div>
 
   <!--filtro con reporte-->
-<!--    <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"></?php echo i18n::__('report') ?></h4>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form" id="report" method="POST" action="</?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'reportUsuarioCredencial') ?>">
+                    <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'reportUsuarioCredencial') ?>">
                         <div class="form-group">
-                            <label for="filterUsuario" class="col-sm-2 control-label"></?php echo i18n::__('user') ?></label>
+                            <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterUsuario" name="filter[Usuario]">
-                                    <option value=""></?php echo i18n::__('user') ?></option>
-                                     </?php foreach ($objUsuario as $user): ?>
-                                        <option value="</?php echo $user->$usuario_u ?>"></?php echo $user->$desUsuario ?></option>
-                                     </?php endforeach; ?>
+                                    <option value=""><?php echo i18n::__('user') ?></option>
+                                     <?php foreach ($objUsuario as $user): ?>
+                                        <option value="<?php echo $user->$usuario_u ?>"><?php echo $user->$desUsuario ?></option>
+                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
                     
                     
                      <div class="form-group">
-                            <label for="filterCredencial" class="col-sm-2 control-label"></?php echo i18n::__('credential') ?></label>
+                            <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credential') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterCredencial" name="filter[Credencial]">
-                                    <option value=""></?php echo i18n::__('credential') ?></option>
-                                     </?php foreach ($objCredencial as $cred): ?>
-                                        <option value="</?php echo $cred->$credencial_c ?>"></?php echo $cred->$nombre ?></option>
-                                     </?php endforeach; ?>
+                                    <option value=""><?php echo i18n::__('credential') ?></option>
+                                     <?php foreach ($objCredencial as $cred): ?>
+                                        <option value="<?php echo $cred->$credencial_c ?>"><?php echo $cred->$nombre ?></option>
+                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -84,12 +84,12 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"></?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#report').submit()" class="btn btn-warnig"></?php echo i18n::__('report') ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+                    <button type="button" onclick="$('#report').submit()" class="btn btn-warnig"><?php echo i18n::__('report') ?></button>
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 <!--filtros-->
 <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -113,7 +113,7 @@
                                 </select>
                             </div>
                         </div>
-                    
+               
                     
                      <div class="form-group">
                             <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credential') ?></label>
@@ -193,7 +193,7 @@
        
         <!--paginado-->
         <div class="text-right">
-            página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'indexUsuarioCredencial') ?>')">
+            <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'indexUsuarioCredencial') ?>')">
                 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                     <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
@@ -201,7 +201,7 @@
 
 
 
-            </select>de <?php echo $cntPages ?>
+            </select><?php echo $cntPages ?>
 
         </div>
         <!--fin paginado-->

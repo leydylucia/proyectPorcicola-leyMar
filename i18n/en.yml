@@ -191,6 +191,17 @@ dictionary:
     New_userCredential:       New_userCredential
     Edit_userCredential:       Edit_userCredential
     
+    #salida bodega#
+    Hold_Out:                Hold Out
+    New_Hold_Out:            New Hold Out
+    Edit_Hold_Out:            Edit Hold Out
+    
+    #detalle Salida bodega#
+    Output_detail_winery:    Output detail winery
+    Output_edit_detail_winery: Output edit detail winery
+    Output_detail_new_winery : Output detail new winery 
+    quantity:                 quantity
+    
     
  
 

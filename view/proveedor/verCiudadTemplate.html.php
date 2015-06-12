@@ -8,7 +8,7 @@
 <div class="container container-fluid">
 
 
-  <a href="http://localhost/proyecto/web/index.php/ciudad"><?php echo i18n::__('return') ?> </a>
+  <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>"><?php echo i18n::__('return') ?> </a>
   <br>
   <br>
 

@@ -14,18 +14,14 @@ class salidaBodegaBaseTableClass extends tableBaseClass {
     private $updatedAt;
     private $deletedAt;
     private $empleado_id;
-    private $tipo_doc_id;
-    private $id_cerdo;
+   
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
     const EMPLEADO_ID = 'empleado_id';
-    const TIPO_DOC_ID = 'tipo_doc_id';
-    const ID_CERDO= 'id_cerdo';
-
-
+   
     function getId() {
         return $this->id;
     }
@@ -44,14 +40,6 @@ class salidaBodegaBaseTableClass extends tableBaseClass {
 
     function getEmpleado_id() {
         return $this->empleado_id;
-    }
-
-    function getTipo_doc_id() {
-        return $this->tipo_doc_id;
-    }
-
-    function getId_cerdo() {
-        return $this->id_cerdo;
     }
 
     function setId($id) {
@@ -74,13 +62,8 @@ class salidaBodegaBaseTableClass extends tableBaseClass {
         $this->empleado_id = $empleado_id;
     }
 
-    function setTipo_doc_id($tipo_doc_id) {
-        $this->tipo_doc_id = $tipo_doc_id;
-    }
-
-    function setId_cerdo($id_cerdo) {
-        $this->id_cerdo = $id_cerdo;
-    }
+    
+    
 
         /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato

@@ -8,16 +8,26 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
+
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
- */
+ * Description of editProvClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
+ **/
+
 class editProvActionClass extends controllerClass implements controllerActionInterface {
 
+  /* public function execute inicializa las variables 
+     * @return $fields=> son los campos que trae de la base de datos
+     * @return $this=> es el que lleva los datos a la vista
+     * @return $where=>
+     * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+     * Todas estos datos se pasan en la variable @var $data 
+     * ** */
+  
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(proveedorTableClass::ID)) {
+      if (request::getInstance()->hasGet(proveedorTableClass::ID)) {
         $fields = array(
             proveedorTableClass::ID,
             proveedorTableClass::NOMBRE,
@@ -29,30 +39,27 @@ class editProvActionClass extends controllerClass implements controllerActionInt
         );
 
         $where = array(
-            proveedorTableClass::ID => request::getInstance()->getRequest(proveedorTableClass::ID)
+            proveedorTableClass::ID => request::getInstance()->getGet(proveedorTableClass::ID)
         );
         $this->objProveedor = proveedorTableClass::getAll($fields, true, null, null, null, null, $where);
         // para editar foraneas
-         $fields = array(
+        $fields = array(
             ciudadTableClass::ID,
             ciudadTableClass::NOM_CIUDAD
-            );
-            $orderBy = array(
-           ciudadTableClass::NOM_CIUDAD
-            );
-            $this->objCiudad = ciudadTableClass::getAll($fields, true , $orderBy,'ASC');
-            //fin
+        );
+        $orderBy = array(
+            ciudadTableClass::NOM_CIUDAD
+        );
+        $this->objCiudad = ciudadTableClass::getAll($fields, true, $orderBy, 'ASC');
+        //fin
         $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());
-        session::getInstance()->setSuccess('El registro se modifico exitosamente');
+        //session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {
         routing::getInstance()->redirect('proveedor', 'indexProv');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

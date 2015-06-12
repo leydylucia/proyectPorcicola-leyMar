@@ -2,7 +2,8 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\myConfigClass as config;
+//use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
@@ -10,10 +11,11 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
- * Description of ejemploClass
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  *
- * @author leydy lucia castillo<leydylucia@hotmail.com>
- * @category usuario
+ * @author leydy lucia castillo moaquera
+ *  @category modulo default "usuario"
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
 

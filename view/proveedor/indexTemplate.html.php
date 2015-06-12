@@ -1,9 +1,17 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php use mvc\routing\routingClass as routing ?> 
-<?php use mvc\view\viewClass as view ?> 
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\config\configClass as config ?>
-<?php use mvc\request\requestClass as request ?>
+<?php
+
+use mvc\routing\routingClass as routing ?> 
+<?php
+
+use mvc\view\viewClass as view ?> 
+<?php
+
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\config\configClass as config ?>
+<?php
+use mvc\request\requestClass as request ?>
 
 <?php $id = proveedorTableClass::ID ?>
 <?php $nombre = proveedorTableClass::NOMBRE ?>
@@ -12,6 +20,8 @@
 <?php $correo = proveedorTableClass::CORREO ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $ciudad_id = proveedorTableClass::CIUDAD_ID ?>
+<?php $ciudad_id_p = ciudadTableClass::ID ?>
+<?php $nom_ciudad = ciudadTableClass::NOM_CIUDAD ?>
 <?php $fecha = proveedorTableClass::CREATED_AT ?>
 
 <!--titulo-->
@@ -25,7 +35,7 @@
 <div class="container container-fluid">
   <div style="margin-bottom: 10px; margin-top: 30px">
 
-   
+
 
 
     <!-- FILTROS -->
@@ -53,6 +63,18 @@
               </div>  
 
               <div class="form-group">
+                <label for="filterciudad" class="col-sm-2 control-label"><?php echo i18n::__('name_city') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterciudad" name="filter[ciudad]">
+                    <option value=""><?php echo i18n::__('city') ?></option>
+<?php foreach ($objCiudad as $ciudad): ?>
+                      <option value="<?php echo $ciudad->$ciudad_id_p ?>"><?php echo $ciudad->$nom_ciudad ?></option>
+<?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                 <div class="col-sm-10">
                   <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
@@ -70,7 +92,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- REPORTE CON FILTROS -->
     <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -136,12 +158,12 @@
             <th><?php echo i18n::__('city_id') ?></th>
             <th><?php echo i18n::__('date') ?></th>
             <th><?php echo i18n::__('actions') ?></th>
-            
+
           </tr>
         </thead>
         <tbody>
 <?php foreach ($objProveedor as $proveedor): ?>
-          <tr class="text-info bg-info">
+            <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $proveedor->$id ?>"></td>
               <td><?php echo $proveedor->$nombre ?></td>
               <td><?php echo $proveedor->$apellido ?></td>
@@ -149,7 +171,7 @@
               <td><?php echo $proveedor->$correo ?></td>
               <td><?php echo $proveedor->$telefono ?></td>
               <td><?php echo ciudadTableClass::getNameCiudad($proveedor->$ciudad_id) ?></td>
-              <td><?php echo $proveedor->$fecha ?></td>
+              <td><?php echo date('d-m-Y h:i:s a', strtotime($proveedor->$fecha)) ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'verProv', array(proveedorTableClass::ID => $proveedor->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'editProv', array(proveedorTableClass::ID => $proveedor->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>

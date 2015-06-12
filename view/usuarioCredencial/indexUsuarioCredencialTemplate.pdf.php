@@ -16,7 +16,7 @@ $pdf->Image(routing::getInstance()->getUrlImg('prueba.jpg'), 50, 8,200);/*200 an
 
 $pdf->Ln(10);
 
-$pdf->Cell(20, 5, utf8_decode("ID"), 1);
+//$pdf->Cell(20, 5, utf8_decode("ID"), 1);
 $pdf->Cell(40, 5, utf8_decode("USUARIO"), 1);
 $pdf->Cell(40, 5, utf8_decode("CREDENCIAL"), 1);
 

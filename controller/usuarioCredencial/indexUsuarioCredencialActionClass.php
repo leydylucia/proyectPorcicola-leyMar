@@ -16,13 +16,13 @@ use mvc\i18n\i18nClass as i18n;
 
  */
 class indexUsuarioCredencialActionClass extends controllerClass implements controllerActionInterface {
-    
+
     /**
-    * Description of ejemploClass
-    *
-    * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
-    * 
-    */
+     * Description of ejemploClass
+     *
+     * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+     * 
+     */
     public function execute() {
         try {
             /* filtros */
@@ -57,16 +57,16 @@ class indexUsuarioCredencialActionClass extends controllerClass implements contr
 
 
             $fields = array(
-            usuarioCredencialTableClass::ID,
-            usuarioCredencialTableClass::USUARIO_ID,
-            usuarioCredencialTableClass::CREDENCIAL_ID,
-            usuarioCredencialTableClass::CREATED_AT
+                usuarioCredencialTableClass::ID,
+                usuarioCredencialTableClass::USUARIO_ID,
+                usuarioCredencialTableClass::CREDENCIAL_ID,
+                usuarioCredencialTableClass::CREATED_AT
             );
             $orderBy = array(
-            usuarioCredencialTableClass::USUARIO_ID
+                usuarioCredencialTableClass::USUARIO_ID
             );
 
-            $page = 0; /*paginado*/
+            $page = 0; /* paginado */
             if (request::getInstance()->hasGet('page')) {
                 $this->page = request::getInstance()->getGet('page');
                 $page = request::getInstance()->getGet('page') - 1;
@@ -92,30 +92,29 @@ class indexUsuarioCredencialActionClass extends controllerClass implements contr
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      
              *
-             **/
-            $this->objUsuarioCredencial = usuarioCredencialTableClass::getAll($fields, false, $orderBy,'ASC', config::getRowGrid(), $page, $where);
-            
+             * */
+            $this->objUsuarioCredencial = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+
             //estos campo son para llamar las foraneas
-                $fields = array(/* foranea de usuario */
-                    usuarioTableClass::ID,
-                    usuarioTableClass::USER
-                );
-                $orderBy = array(
-                    usuarioTableClass::USER
-                );
-                $this->objUsuario = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
+            $fields = array(/* foranea de usuario */
+                usuarioTableClass::ID,
+                usuarioTableClass::USER
+            );
+            $orderBy = array(
+                usuarioTableClass::USER
+            );
+            $this->objUsuario = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-                $fieldsCredencial = array(/* foranea credencial */
-                    credencialTableClass::ID,
-                    credencialTableClass::NOMBRE
-                );
-                $orderByCredencial = array(
-                    credencialTableClass::NOMBRE
-                );
-                $this->objCredencial = credencialTableClass::getAll($fieldsCredencial, true, $orderByCredencial, 'ASC');
+            $fieldsCredencial = array(/* foranea credencial */
+                credencialTableClass::ID,
+                credencialTableClass::NOMBRE
+            );
+            $orderByCredencial = array(
+                credencialTableClass::NOMBRE
+            );
+            $this->objCredencial = credencialTableClass::getAll($fieldsCredencial, true, $orderByCredencial, 'ASC');
 
-            $this->defineView('indexUsuarioCredencial', 'usuarioCredencial', session::getInstance()
-                    ->getFormatOutput());
+            $this->defineView('indexUsuarioCredencial', 'usuarioCredencial', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

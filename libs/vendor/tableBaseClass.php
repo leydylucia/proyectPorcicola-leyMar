@@ -5,12 +5,12 @@ namespace mvc\model\table {
   use mvc\interfaces\tableInterface;
   use mvc\model\modelClass as model;
   use mvc\config\configClass as config;
-  use mvc\session\sessionClass as session;
+//  use mvc\session\sessionClass as session;
 
   /**
    * Clase general para las tablas el cual define el CRUD
    *
-   * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class tableBaseClass implements tableInterface {
 
@@ -136,7 +136,7 @@ namespace mvc\model\table {
       }
     }
 
-    /**
+   /**
      * Método para leer todos los registros de una tabla
      *
      * @param string $table Nombre de la tabla
@@ -180,6 +180,16 @@ namespace mvc\model\table {
           $flag = false;
         }
 
+        /**
+         * array(
+         *    campo => valor,
+         *    campo => array(
+         *      fecha1,
+         *      fecha2
+         *    ),
+         *    0 => valorSQL
+         * )
+         */
         if (is_array($where) === true) {
           foreach ($where as $field => $value) {
             if (is_array($value)) {
@@ -191,10 +201,18 @@ namespace mvc\model\table {
               }
             } else {
               if ($flag === false) {
-                $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' WHERE ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
                 $flag = true;
               } else {
-                $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' AND ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
               }
             }
           }
@@ -218,8 +236,18 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-
-        return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+        
+        
+    
+      
+//      print_r($sql);
+//          exit();
+        //SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE prueva% OR ubicacion LIKE %prueva% OR ubicacion LIKE %prueva ORDER BY lote.id ASC LIMIT 5 OFFSET 0
+       // SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE villa% OR ubicacion LIKE %villa% OR ubicacion LIKE %villa AND ORDER BY lote.id ASC LIMIT 5 OFFSET 0
+        
+          
+          return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+      
       } catch (\PDOException $exc) {
         throw $exc;
       }

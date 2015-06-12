@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\tipoVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log;/*linea de la bitacora*/
 /**
@@ -28,9 +29,8 @@ class createTipovActionClass extends controllerClass implements controllerAction
                 $desc_tipoV = request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
 
 
-                if (strlen($desc_tipoV) > tipovTableClass::DESC_TIPOV_LENGTH) {
-                    throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => tipovTableClass::DESC_TIPOV_LENGTH)), 00001);
-                }
+
+                validator::validateInsert();
 
                 $data = array(
                     tipovTableClass::DESC_TIPOV => $desc_tipoV
@@ -44,13 +44,9 @@ class createTipovActionClass extends controllerClass implements controllerAction
                 routing::getInstance()->redirect('sacrificioVenta', 'indexTipoV');
             }
         } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
-//            session::getInstance()->setFlash('exc', $exc);
-//            routing::getInstance()->forward('shfSecurity', 'exception');
+     
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
     }
 

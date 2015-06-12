@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of insertInsumoActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de insertar datos
  * @var $this->objInsumo para pasar variable a la vista
  * @category moudulo insumo
  * @author leydy lucia castillo

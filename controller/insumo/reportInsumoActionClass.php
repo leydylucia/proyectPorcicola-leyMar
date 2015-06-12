@@ -9,8 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- ** @category insumo
+  Description of reportInsumoActionClass esta clase sirve para realizar los reportes
+ * ** @category insumo
  * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
  * @var $filter para hacer filtros,$where
  */

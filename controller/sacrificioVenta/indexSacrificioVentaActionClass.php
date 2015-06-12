@@ -27,7 +27,13 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
                 if (isset($filter['valor']) and $filter['valor'] !== null and $filter['valor'] !== '') {
                     $where[sacrificiovTableClass::VALOR] = $filter['valor'];
                 }
-               
+                if (isset($filter['Tipo_venta']) and $filter['Tipo_venta'] !== null and $filter['Tipo_venta'] !== '') {
+                    $where[sacrificiovTableClass::TIPO_VENTA_ID] = $filter['Tipo_venta'];
+                }
+                 if (isset($filter['Cerdo']) and $filter['Cerdo'] !== null and $filter['Cerdo'] !== '') {
+                    $where[sacrificiovTableClass::ID_CERDO] = $filter['Cerdo'];
+                }
+
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[sacrificiovTableClass::CREATED_AT] = array(
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
@@ -80,6 +86,25 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
             $this->objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+            //estos campo son para llamar las foraneas
+            $fieldsa = array(
+                tipovTableClass::ID,
+                tipovTableClass::DESC_TIPOV
+            );
+            $orderBy = array(
+                tipovTableClass::DESC_TIPOV
+            );
+            $this->objTipoV = tipovTableClass::getAll($fieldsa, true, $orderBy, 'ASC');
+
+            $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
+                hojaVidaTableClass::ID,
+            );
+            $orderByCerdo = array(
+                hojaVidaTableClass::ID
+            );
+            $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+
+
             $this->defineView('index', 'sacrificioVenta', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

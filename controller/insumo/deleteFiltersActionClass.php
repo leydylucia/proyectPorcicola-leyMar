@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of deleterFilterActionClass esta clase sirve para eliminar filtros
+ * 
  *
   @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * @category modulo insumo

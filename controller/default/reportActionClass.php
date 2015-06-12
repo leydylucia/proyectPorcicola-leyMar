@@ -2,16 +2,17 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\myConfigClass as config;
+//use mvc\config\myConfigClass as config;
+use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /*
- * DESCRIPCION DE LA CLASE
-  *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category usuario
+Description of reportActionClass esta clase sirve para realizar los reportes
+ * @autor leydy lucia castillo mosquera
+ * * @category default "usuario"
  */
 
 class reportActionClass extends controllerClass implements controllerActionInterface {

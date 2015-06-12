@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of verTipoInActionClass  sirve para ver un dato en la grilla
  *@category modulo insumo
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */

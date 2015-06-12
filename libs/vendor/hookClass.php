@@ -8,7 +8,7 @@ namespace mvc\hook {
   /**
    * Description of hookClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class hookClass {
 
