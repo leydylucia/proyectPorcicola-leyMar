@@ -55,7 +55,7 @@ use mvc\view\viewClass as view ?>
 
         <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objTipoin)) ? 'update' : 'register')) ?>">
 
-        <a href="http://www.porcicolatapasco.com/index.php/tipoInsumo/index"><?php echo i18n::__('return') ?> </a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>"><?php echo i18n::__('return') ?> </a>
 
 
 
