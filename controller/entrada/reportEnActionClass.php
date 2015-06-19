@@ -22,12 +22,13 @@ class reportEnActionClass extends controllerClass implements controllerActionInt
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-                 if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-                    $where[entradaTableClass::EMPLEADO_ID] = $filter['nombre'];
-                }
-                if (isset($filter['nombre2']) and $filter['nombre2'] !== null and $filter['nombre2'] !== '') {
-                    $where[entradaTableClass::PROVEEDOR_ID] = $filter['nombre2'];
-                }
+                 
+        if (isset($filter['empleado']) and $filter['empleado'] !== null and $filter['empleado'] !== '') {
+          $where[entradaTableClass::EMPLEADO_ID] = $filter['empleado'];
+        }
+        if (isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== '') {
+          $where[entradaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
+        }
 
                 
                 /* para mantener filtro con paginado */

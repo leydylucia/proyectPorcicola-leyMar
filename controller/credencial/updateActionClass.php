@@ -39,12 +39,12 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         session::getInstance()->setSuccess('Registro Exitoso');
 
-        routing::getInstance()->redirect('credencial', 'edit');
+        routing::getInstance()->redirect('credencial', 'index');
       } else {
-        routing::getInstance()->redirect('credencial', 'edit');
+        routing::getInstance()->redirect('credencial', 'index');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('credencial', 'edit');
+      routing::getInstance()->redirect('credencial', 'update');
       session::getInstance()->setFlash('exc', '$exc');
     }
   }

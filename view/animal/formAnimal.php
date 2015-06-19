@@ -1,15 +1,9 @@
 
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\session\sessionClass as session ?>
-<?php
-use mvc\request\requestClass as request ?>
-<?php
-use mvc\view\viewClass as view ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
 
 <?php $id = hojaVidaTableClass::ID ?>
 <?php $genero = hojaVidaTableClass::GENERO ?>
@@ -49,7 +43,7 @@ use mvc\view\viewClass as view ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('date_birth') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo ((isset($objHojaVida) == true) ? $objHojaVida[0]->$fecha_nacimiento : '') ?><?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) : '' ?>" type="date" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>">
+        <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo ((isset($objHojaVida) == true) ? $objHojaVida[0]->$fecha_nacimiento : '') ?><?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) : '' ?>" type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>">
         <?php if (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>

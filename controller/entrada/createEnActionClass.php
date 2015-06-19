@@ -22,7 +22,8 @@ class createEnActionClass extends controllerClass implements controllerActionInt
         $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
         $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
         
-
+      //  $this->Validate($empleado_id, $proveedor_id); 
+        
         $data = array(
             entradaTableClass::EMPLEADO_ID => $empleado_id,
             entradaTableClass::PROVEEDOR_ID => $proveedor_id
@@ -43,8 +44,8 @@ class createEnActionClass extends controllerClass implements controllerActionInt
     }
   }
 
-//  // VALIDACIONES
-//  private function Validate($nombre, $apellido, $direccion, $correo, $telefono) {
+  // VALIDACIONES
+//  private function Validate($empleado_id, $proveedor_id) {
 //    $bono = false;
 //    if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
 //      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => proveedorTableClass::NOMBRE_LENGTH)));

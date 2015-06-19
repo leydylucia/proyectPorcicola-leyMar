@@ -9,9 +9,9 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
+ * Description of deleteActionClass
  * @author Alexandra Florez
+ * 
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -33,7 +33,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
         $this->defineView('delete', 'control', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('Registro Exitoso');
       } else {
-        routing::getInstance()->redirect('control', 'index');
+        routing::getInstance()->redirect('detalle', 'index');
       }
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

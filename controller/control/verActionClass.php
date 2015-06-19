@@ -19,17 +19,18 @@ class verActionClass extends controllerClass implements controllerActionInterfac
     try {
 
       $fields = array(
-          controlTableClass::ID,
-          controlTableClass::PESO_CERDO,
-          controlTableClass::EMPLEADO_ID,
-          controlTableClass::HOJA_VIDA,
-          controlTableClass::CREATED_AT
+          detalleEntradaTableClass::ID,
+          detalleEntradaTableClass::CANTIDAD,
+          detalleEntradaTableClass::VALOR,
+          detalleEntradaTableClass::ENTRADA_BODEGA_ID,
+          detalleEntradaTableClass::INSUMO_ID,
+          detalleEntradaTableClass::CREATED_AT
       );
       $where = array(
-          controlTableClass::ID => request::getInstance()->getRequest(controlTableClass::ID)
+          detalleEntradaTableClass::ID => request::getInstance()->getRequest(cdetalleEntradaTableClass::ID)
       );
-      $this->objControl = controlTableClass::getAll($fields, true, null, null, null, nULL, $where);
-      $this->defineView('ver', 'control', session::getInstance()->getFormatOutput());
+      $this->objDetalle = detalleEntradaTableClass::getAll($fields, true, null, null, null, nULL, $where);
+      $this->defineView('ver', 'detalle', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

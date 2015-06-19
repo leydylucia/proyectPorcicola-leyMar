@@ -38,7 +38,7 @@ config::setUrlBase('http://www.porcicolatapasco.com/');
 
 //config::setUrlBase('http://localhost/proyectPorcicola-leyMar/web/');
 
-config::setScope('prod'); // dev//prod
+config::setScope('dev'); // dev//prod
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');
@@ -74,7 +74,10 @@ config::setCookieDomain('http://www.porcicolatapasco.com/');
 //config::setCookieDomain('http://localhost/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
-config::setDefaultModule('default');
+//config::setDefaultModule('default');
+//config::setDefaultAction('index');
+
+config::setDefaultModule('paginaPrincipal');
 config::setDefaultAction('index');
 
 config::setDefaultModuleSecurity('shfSecurity');

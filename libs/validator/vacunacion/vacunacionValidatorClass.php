@@ -55,44 +55,24 @@ namespace mvc\validator {
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
-        //-------------------------------campo desc insumo-----------------------------
+        //-------------------------------campo dosis-----------------------------
           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::DESC_INSUMO, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::DOSIS, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputDescInsumo', true);/*input usuario biene del formulario*/
-        session::getInstance()->setError('el campo descripcion insumo no puede estar vacio', 'inputDescInsumo');
+        session::getInstance()->setFlash('inputDosis', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo dosis no puede estar vacio', 'inputDosis');
         } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::DESC_INSUMO, true))) > \vacunacionTableClass::DESC_INSUMO_LENGTH) {
+        else if(strlen(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::DOSIS, true))) > \vacunacionTableClass::DOSIS_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputDescInsumo', true);
-        session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescInsumo');
+        session::getInstance()->setFlash('inputDosis', true);
+        session::getInstance()->setError('la dosis digitada es mayor en cantidad de caracteres a lo permitido', 'inputDosis');
       } 
-      //------------------------------------campo precio---------------------
+      //------------------------------------campo hora---------------------
         //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::PRECIO, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::HORA, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputPrecio', true);/*input usuario biene del formulario*/
-        session::getInstance()->setError('el campo no puede estar vacio', 'inputPrecio');
-        } //----solo numeros----      
-       else if (!is_numeric(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::PRECIO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputPrecio', true);
-        session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputPrecio');
-      } 
-       //------------------------------------campo fecha fabricacion---------------------
-        //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::FECHA_FABRICACION, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputFechaFabricacion', true);/*input usuario biene del formulario*/
-        session::getInstance()->setError('el campo fecha fabricacion no puede estar vacio', 'inputFechaFabricacion');
-        } 
-        
-        //------------------------------------campo fecha vencimiento---------------------
-        //----campo nulo----
-    if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::FECHA_VENCIMIENTO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputFechaVencimiento', true);/*input usuario biene del formulario*/
-        session::getInstance()->setError('el campo fecha vencimiento no puede estar vacio', 'inputFechaVencimiento');
+        session::getInstance()->setFlash('inputHora', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo hora no puede estar vacio', 'inputHora');
         } 
       
         

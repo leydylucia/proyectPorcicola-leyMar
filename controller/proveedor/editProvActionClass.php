@@ -42,6 +42,7 @@ class editProvActionClass extends controllerClass implements controllerActionInt
             proveedorTableClass::ID => request::getInstance()->getGet(proveedorTableClass::ID)
         );
         $this->objProveedor = proveedorTableClass::getAll($fields, true, null, null, null, null, $where);
+        
         // para editar foraneas
         $fields = array(
             ciudadTableClass::ID,

@@ -42,7 +42,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           partoTableClass::ID,
           partoTableClass::FECHA_NACIMIENTO,
           partoTableClass::NUM_NACIDOS,
-          partoTableClass::NUM_NACIDOS,
+          partoTableClass::NUM_VIVOS,
           partoTableClass::NUM_MUERTOS,
           partoTableClass::NUM_HEMBRAS,
           partoTableClass::NUM_MACHOS,

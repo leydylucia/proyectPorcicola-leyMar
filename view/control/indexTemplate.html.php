@@ -75,7 +75,7 @@ use mvc\request\requestClass as request ?>
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Filtros</h4>
+            <h4 class="modal-title" id="myModalLabel">Reporte</h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="report" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('control', 'report') ?>">
@@ -97,7 +97,7 @@ use mvc\request\requestClass as request ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="button" onclick="$('#report').submit()" class="btn btn-primary">Filtrar</button>
+            <button type="button" onclick="$('#report').submit()" class="btn btn-warning">Reporte</button>
           </div>
         </div>
       </div>

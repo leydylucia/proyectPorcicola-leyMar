@@ -32,7 +32,12 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescInsumo', true);
         session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescInsumo');
-      } 
+      } //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::DESC_INSUMO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDescInsumo', true);
+//        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputDescInsumo');
+//      } 
       //------------------------------------campo precio---------------------
         //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
@@ -93,7 +98,12 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescInsumo', true);
         session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescInsumo');
-      } 
+      } //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::DESC_INSUMO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDescInsumo', true);
+//        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputDescInsumo');
+//      } 
       //------------------------------------campo precio---------------------
         //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {

@@ -23,23 +23,23 @@ class insertDetalleSalidaActionClass extends controllerClass implements controll
             if (session::getInstance()->hasAttribute('form_' . detalleSalidaTableClass::getNameTable())) {
                 $this->detalleSalida = session::getInstance()->getAttribute('form_' . detalleSalidaTableClass::getNameTable());
             }
-         //estos campo son para llamar las foraneas
-                $fields = array(/* foranea salidaBodega */
-                    salidaBodegaTableClass::ID,
-                );
-                $orderBy = array(
-                    salidaBodegaTableClass::ID,
-                );
-                $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC');
+            //estos campo son para llamar las foraneas
+            $fields = array(/* foranea salidaBodega */
+                salidaBodegaTableClass::ID,
+            );
+            $orderBy = array(
+                salidaBodegaTableClass::ID,
+            );
+            $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-                $fieldsInsumo = array(/* foranea insumo */
+            $fieldsInsumo = array(/* foranea insumo */
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO
-                );
-                $orderByInsumo = array(
+            );
+            $orderByInsumo = array(
                 insumoTableClass::DESC_INSUMO
-                );
-                $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+            );
+            $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
 
 
 

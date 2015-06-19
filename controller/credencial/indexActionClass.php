@@ -9,11 +9,15 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ * Description of indexProvActionClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo credencial
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $where=> se encuentra nulo para entrar en la sentencia getAll
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {
@@ -53,19 +57,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      /* para mantener filtro con paginado,@var $where=>filtro */
+      /* para mantener filtro con paginado,@var $where=> para sostener el filtro con el paginado
+       * getTotalPages => se encuentra en proveedorTablesclass
+       * @var $this para enviar al cntPages"contador de pagina" a la vista 
+       *  */
       $this->cntPages = credencialTableClass::getTotalPages(config::getRowGrid(), $where);
       //$page = request::getInstance()->getGet('page');
 
 
-      /** @var $where => para filtros
-       * *@var $page => para el paginado
-       * *@var $fileds => para declarar los cmpos de la table en la bd
-       * @var $orderBy => ordernar por el campo deseado
-       *  true=> es el borrado logico si lo tienes en la bd pones true sino false
-       * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
+      /*       * * @return $filter=> es que hace el filtro de los campos de la base de datos
+       * @return $fields=> son los campos que trae de la base de datos
+       * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+       * @param true Descriptiontrue=> es el borrado logico si lo tienes en la bd pones true sino false
+       * ASC => es la forma como se va a ordenar si de forma ascendente o desendente 
        * config::getRowGrid()=> va con el paginado y hace una funcion
        * @var $this->objInsumo para enviar los datos a la vista      */
+      
       $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'credencial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

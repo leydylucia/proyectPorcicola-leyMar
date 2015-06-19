@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\animalValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -28,7 +29,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id_madre = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, true));
 
 
-        $this->Validate($genero, $id_madre);
+ //       $this->Validate($genero, $id_madre);
+        
+        validator::validateEdit();
 
         $ids = array(
             hojaVidaTableClass::ID => $id
@@ -58,43 +61,43 @@ class updateActionClass extends controllerClass implements controllerActionInter
   }
 
   // VALIDACIONES
-  private function Validate($genero, $id_madre) {
-    $je = false;
-    if (strlen($genero) > hojaVidaTableClass::GENERO_LENGTH) {
-      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => hojaVidaTableClass::GENERO_LENGTH)));
-      $je = true;
-      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
-    }
-
-    if (!is_numeric($id_madre)) {
-      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
-      $je = true;
-      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, TRUE), TRUE);
-    }
-
-    if (!ereg("^[A-Z a-z_]*$", $genero)) {
-      session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $genero)));
-      $je = true;
-      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
-    }
-
-    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
-    if ($genero === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $je = true;
-      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
-    }
-
-    if ($id_madre === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $je = true;
-      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, TRUE), TRUE);
-    }
-    if ($je === true) {
-      request::getInstance()->setMethod('GET');
-      request::getInstance()->addParamGet(array(hojaVidaTableClass::ID => request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID, true))));
-      routing::getInstance()->forward('animal', 'edit');
-    }
-  }
+//  private function Validate($genero, $id_madre) {
+//    $je = false;
+//    if (strlen($genero) > hojaVidaTableClass::GENERO_LENGTH) {
+//      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => hojaVidaTableClass::GENERO_LENGTH)));
+//      $je = true;
+//      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
+//    }
+//
+//    if (!is_numeric($id_madre)) {
+//      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
+//      $je = true;
+//      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, TRUE), TRUE);
+//    }
+//
+//    if (!ereg("^[A-Z a-z_]*$", $genero)) {
+//      session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $genero)));
+//      $je = true;
+//      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
+//    }
+//
+//    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
+//    if ($genero === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $je = true;
+//      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, TRUE), TRUE);
+//    }
+//
+//    if ($id_madre === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $je = true;
+//      session::getInstance()->setFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, TRUE), TRUE);
+//    }
+//    if ($je === true) {
+//      request::getInstance()->setMethod('GET');
+//      request::getInstance()->addParamGet(array(hojaVidaTableClass::ID => request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID, true))));
+//      routing::getInstance()->forward('animal', 'edit');
+//    }
+//  }
 
 }

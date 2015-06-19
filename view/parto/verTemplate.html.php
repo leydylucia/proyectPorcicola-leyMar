@@ -38,7 +38,7 @@ use mvc\i18n\i18nClass as i18n ?>
         </tr>        
       </thead>
       <tbody>
-        <tr><?php foreach ($objHojaVida as $parto): ?> </tr>
+        <tr><?php foreach ($objParto as $parto): ?> </tr>
           <tr>
             <th><?php echo i18n::__('date_birth') ?></th>
 

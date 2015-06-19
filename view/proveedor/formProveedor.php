@@ -29,7 +29,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?><?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(ProveedorTableClass::NOMBRE, true)) === true) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) : '' ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>">
+        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?><?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) : '' ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>">
         <?php if (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>

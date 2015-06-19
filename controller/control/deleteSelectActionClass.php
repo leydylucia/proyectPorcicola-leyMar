@@ -1,7 +1,7 @@
 <?php
 
-use mvc\interfaces\controllerActionInterface;
-use mvc\controller\controllerClass;
+use mvc\interfaces\detalleEntradalerActionInterface;
+use mvc\detalleEntradaler\detalleEntradalerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\session\sessionClass as session;
@@ -26,18 +26,18 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
 
         foreach ($idsToDelete as $id) {
           $ids = array(
-              controlTableClass::ID => $id
+              detalleEntradaTableClass::ID => $id
           );
-          controlTableClass::delete($ids, true);
+          detalleEntradaTableClass::delete($ids, true);
         }
         /* session para  mensaje */
         session::getInstance()->setSuccess('elementos eliminados');
 //        session::getInstance()->setSucces();
 
 
-        routing::getInstance()->redirect('control', 'index');
+        routing::getInstance()->redirect('detalle', 'index');
       } else {
-        routing::getInstance()->redirect('control', 'index');
+        routing::getInstance()->redirect('detalle', 'index');
       }
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

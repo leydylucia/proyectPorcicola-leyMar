@@ -5,18 +5,15 @@
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
 
-<?php $id = detalleEntradaTableClass::ID ?>
-<?php $cantidad = detalleEntradaTableClass::CANTIDAD ?>
-<?php $valor = detalleEntradaTableClass::VALOR ?>
-<?php $entrada_bodega_id = detalleEntradaTableClass::ENTRADA_BODEGA_ID ?>
-<?php $lote_id = detalleEntradaTableClass::LOTE_ID ?>
-<?php $insumo_id = detalleEntradaTableClass::INSUMO_ID ?>
-<?php $fecha = detalleEntradaTableClass::CREATED_AT ?>
+<?php $id = entradaTableClass::ID ?>
+<?php $empleado_id = entradaTableClass::EMPLEADO_ID ?>
+<?php $proveedor_id = entradaTableClass::PROVEEDOR_ID ?>
+<?php $fecha = entradaTableClass::CREATED_AT ?>
 
 <!--titulo-->
 <div class="container container-fluid">
   <div class="page-header titulo">
-    <h1><?php echo i18n::__('entry') ?></h1>  
+    <h1><?php echo i18n::__('cellar entry') ?></h1>  
   </div>
 </div>
 <!--fintitulo-->
@@ -37,17 +34,17 @@
           </div>
 
           <div class="modal-body">
-            <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexDetalle') ?>">
+            <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>">
               <div class="form-group">
-                <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
+                <label for="filterempleado" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                  <input type="text" class="form-control" id="filter[empleado]" name="filter[empleado]" placeholder="empleado">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
               <div class="form-group">
-                <label for="filternombre2" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
+                <label for="filterproveedor" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre2]" name="filter[nombre2]" placeholder="nombre2">
+                  <input type="text" class="form-control" id="filter[proveedor]" name="filter[proveedor]" placeholder="proveedor">
                 </div>
               </div>  
 
@@ -80,17 +77,17 @@
           </div>
 
           <div class="modal-body">
-            <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'reportDetalle') ?>">
+            <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'reportEn') ?>">
               <div class="form-group">
-                <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
+                <label for="filterempleado" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                  <input type="text" class="form-control" id="filter[empleado]" name="filter[empleado]" placeholder="empleado">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
               <div class="form-group">
-                <label for="filternombre2" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
+                <label for="filterproveedor" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre2]" name="filter[nombre2]" placeholder="nombre2">
+                  <input type="text" class="form-control" id="filter[proveedor]" name="filter[proveedor]" placeholder="proveedor">
                 </div>
               </div>  
 
@@ -109,12 +106,12 @@
     <!--FIN REPORTE-->
 
     <div style="margin-bottom: 10px; margin-top: 30px">
-      <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'insertDetalle') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'insertEn') ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
       <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filter') ?></button>
-      <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexDetalle') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
       <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport"><?php echo i18n::__('report') ?></button>
-      <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'reportDetalle') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+      <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'reportEn') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
     </div>
 
 
@@ -123,42 +120,35 @@
     <div class="container table-responsive"><!--esto es boostrap que no se te el olvides de cerrar el div-->
     </div>
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'deleteSelectEn') ?>" method="POST">
-      <table class="table table-bordered table-responsive table-striped table-condensed mitabla">
-        <thead>
+      <table class="table table-bordered table-responsive table-striped table-condensed mitabla">  
+      <thead>
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('employee') ?></th>
             <th><?php echo i18n::__('supplier') ?></th>
             <th><?php echo i18n::__('date') ?></th>
-            <th><?php echo i18n::__('supplier') ?></th>
-            <th><?php echo i18n::__('date') ?></th>
-            <th><?php echo i18n::__('employee') ?></th>
             <th><?php echo i18n::__('actions') ?></th>
 
           </tr>
-        </thead>po
+        </thead>
         <tbody>
-<?php foreach ($objDetalle as $detalle): ?>
+<?php foreach ($objEntrada as $entrada): ?>
             <tr class="text-info bg-info">
-              <td><input type="checkbox" name="chk[]" value="<?php echo $detalle->$id ?>"></td>
-              <td><?php echo $detalle->$cantidad ?></td>
-              <td><?php echo $detalle->$valor ?></td>
-              <td><?php echo entradaTableClass::getNameEntrada($detalle->$entrada_bodega_id) ?></td>
-              <td><?php echo loteTableClass::getNameLote($detalle->$lote_id) ?></td>
-              <td><?php echo insumoTableClass::getNameInsumo($detalle->$insumo_id) ?></td>
-              <td><?php echo $detalle->$fecha ?></td>
+              <td><input type="checkbox" name="chk[]" value="<?php echo $entrada->$id ?>"></td>
+              <td><?php echo empleadoTableClass::getNameEmpleado($entrada->$empleado_id) ?></td>
+              <td><?php echo proveedorTableClass::getNameProveedor($entrada->$proveedor_id) ?></td>
+              <td><?php echo $entrada->$fecha ?></td>
               <td>
-                <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'verDetalle', array(entradaTableClass::ID => $entrada->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
-                <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'editDetalle', array(entradaTableClass::ID => $entrada->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'verEn', array(entradaTableClass::ID => $entrada->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'editEn', array(entradaTableClass::ID => $entrada->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
                 
-
                 <!--eliminado individual con ajax-->
-                <a href="#" data-target="#myModalDelete<?php echo $detalle->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
-                <a href="<//?php echo routing::getInstance()->getUrlWeb('entrada', 'indexDetalle', array(detalleEntradaTableClass::ID => $entrada->$id)) ?>" class="btn btn-success btn-xs"><?php echo i18n::__('detail') ?></a>
+                <a href="#" data-target="#myModalDelete<?php echo $entrada->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'index', array (detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true) => $entrada->$id))?>" class="btn btn-info btn-xs"><?php echo i18n::__('detail') ?></a>
               </td>
             </tr>
 
-          <div class="modal fade" id="myModalDelete<?php echo $detalle->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal fade" id="myModalDelete<?php echo $entrada->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -167,11 +157,11 @@
                 </div>
                 <div class="modal-body">
                   <!--pára que imprima el id en cada ventana-->
-          <?php i18n::__('confirmDelete') ?> <?php echo $detalle->$cantidad ?>
+          <?php i18n::__('confirmDelete') ?> <?php echo $entrada->$id ?>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                  <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $detalle->$id ?>, '<?php echo detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('entrada', 'deleteDetalle') ?>')"><?php echo i18n::__('delete') ?></button>
+                  <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $entrada->$id ?>, '<?php echo entradaTableClass::getNameField(entradaTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('entrada', 'deleteEn') ?>')"><?php echo i18n::__('delete') ?></button>
                 </div>
               </div>
             </div>
@@ -185,7 +175,7 @@
 
 
 <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'deleteEn') ?>" method="POST">
-  <input type="hidden" id="idDelete" name="<?php echo detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID, true) ?>">
+  <input type="hidden" id="idDelete" name="<?php echo entradaTableClass::getNameField(entradaTableClass::ID, true) ?>">
 </form>
 
 <!--eliminado masivo en ajax-->
@@ -210,7 +200,7 @@
 
 
 <div class="text-right">
-<?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexDetalle') ?>')">
+<?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 

@@ -13,50 +13,38 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Alexandra Florez
  */
-class insertDetalleActionClass extends controllerClass implements controllerActionInterface {
+class insertActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
       if (session::getInstance()->hasAttribute('form_' . detalleEntradaTableClass::getNameTable())) {
         $this->detalle = session::getInstance()->getAttribute('form_' . detalleEntradaTableClass::getNameTable());
       }
+      
       /* fields para foraneas */
       $fields = array(
-          entradaTableClass::ID
+          entradaTableClass::ID,
       );
       $orderBy = array(
           entradaTableClass::ID
       );
       $this->objEntrada = entradaTableClass::getAll($fields, true, $orderBy, 'ASC');
-
+      
       /* fields para foraneas */
-      $fieldsA = array(
-          loteTableClass::ID,
-          loteTableClass::DESC_LOTE
-      );
-      $orderByA = array(
-          loteTableClass::DESC_LOTE
-      );
-      $this->objLote = loteTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
-
-      /* fields para foraneas */
-      $fieldsT = array(
+      $fieldsE = array(
           insumoTableClass::ID,
           insumoTableClass::DESC_INSUMO
       );
-      $orderByT = array(
+      $orderByE = array(
           insumoTableClass::DESC_INSUMO
       );
-      $this->objInsumo = insumoTableClass::getAll($fieldsT, true, $orderByT, 'ASC');
+      $this->objInsumo = insumoTableClass::getAll($fieldsE, true, $orderByE, 'ASC');
 
 
-      $this->defineView('insertDetalle', 'entrada', session::getInstance()->getFormatOutput());
+      $this->defineView('insert', 'detalle', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

@@ -69,7 +69,7 @@ class installerClass {
 //            $gbd = new PDO($dsn);
             try {
              $sql = "";
-            $file = fopen('../sql/leydy.sql', 'r');
+            $file = fopen('../sql/proyecto_porciola.sql', 'r');
             while(!feof($file)){
               $sql .= fgets($file);
             }

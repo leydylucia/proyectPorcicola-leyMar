@@ -131,7 +131,7 @@
 
                 <!--eliminado individual con ajax-->
                 <a href="#" data-target="#myModalDelete<?php echo $credencial->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
-              </td>
+              </td> 
             </tr>
 
           <div class="modal fade" id="myModalDelete<?php echo $credencial->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -157,7 +157,7 @@
       </table>  
     </form>
   </div>
-</div>
+</
 
 
 <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('credencial', 'delete') ?>" method="POST">

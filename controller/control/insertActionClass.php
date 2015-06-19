@@ -29,9 +29,9 @@ class insertActionClass extends controllerClass implements controllerActionInter
           empleadoTableClass::NOMBRE
       );
       $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
-
-
-      // para editar foraneas
+      
+      
+      /* fields para foraneas */
       $fields = array(
           hojaVidaTableClass::ID,
       );
@@ -39,9 +39,9 @@ class insertActionClass extends controllerClass implements controllerActionInter
           hojaVidaTableClass::ID
       );
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-      //fin
 
 
+      
       $this->defineView('insert', 'control', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

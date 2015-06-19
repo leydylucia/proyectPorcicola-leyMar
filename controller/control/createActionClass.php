@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\controlValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -24,7 +25,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         $hoja_vida_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true));
         
 
-        $this->Validate($peso_cerdo);
+      //  $this->Validate($peso_cerdo);
+        
+      validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
 
         $data = array(
             controlTableClass::PESO_CERDO => $peso_cerdo,
@@ -48,24 +51,24 @@ class createActionClass extends controllerClass implements controllerActionInter
   }
 
   // VALIDACIONESS
-  private function Validate($peso_cerdo) {
-    if (!is_numeric($peso_cerdo)) {
-      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
-      $luz = true;
-      session::getInstance()->setFlash(controlTableClass::getNameField(controlTableClass::PESO_CERDO, TRUE), TRUE);
-    }
-
-    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
-    if ($peso_cerdo === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $luz = true;
-      session::getInstance()->setFlash(controlTableClass::getNameField(controlTableClass::PESO_CERDO, TRUE), TRUE);
-    }
-
-    if ($luz === true) {
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('control', 'insert');
-    }
-  }
+//  private function Validate($peso_cerdo) {
+//    if (!is_numeric($peso_cerdo)) {
+//      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
+//      $luz = true;
+//      session::getInstance()->setFlash(controlTableClass::getNameField(controlTableClass::PESO_CERDO, TRUE), TRUE);
+//    }
+//
+//    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
+//    if ($peso_cerdo === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $luz = true;
+//      session::getInstance()->setFlash(controlTableClass::getNameField(controlTableClass::PESO_CERDO, TRUE), TRUE);
+//    }
+//
+//    if ($luz === true) {
+//      request::getInstance()->setMethod('GET');
+//      routing::getInstance()->forward('control', 'insert');
+//    }
+//  }
 
 }

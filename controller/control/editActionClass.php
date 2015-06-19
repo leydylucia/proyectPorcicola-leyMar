@@ -21,7 +21,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $fields = array(
             controlTableClass::ID,
             controlTableClass::PESO_CERDO,
-            controlTableClass::EMPLEADO_ID
+            controlTableClass::EMPLEADO_ID,
+            controlTableClass::HOJA_VIDA
         );
 
         $where = array(
@@ -29,26 +30,27 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objControl = controlTableClass::getAll($fields, true, null, null, null, null, $where);
         
-        // para editar foraneas
-        $fieldsA = array(
-            empleadoTableClass::ID,
-            empleadoTableClass::NOMBRE
-        );
-        $orderByA = array(
-            empleadoTableClass::NOMBRE
-        );
-        $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
-        //fin
+        /* fields para foraneas */
+      $fieldsA = array(
+          empleadoTableClass::ID,
+          empleadoTableClass::NOMBRE
+      );
+      $orderByA = array(
+          empleadoTableClass::NOMBRE
+      );
+      $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
+      
+      
+      /* fields para foraneas */
+      $fields = array(
+          hojaVidaTableClass::ID,
+      );
+      $orderBy = array(
+          hojaVidaTableClass::ID
+      );
+      $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
         
-        // para editar foraneas
-        $fields = array(
-        hojaVidaTableClass::ID
-        );
-        $orderBy = array(
-            hojaVidaTableClass::ID
-        );
-        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-        //fin
+        
         $this->defineView('edit', 'control', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {

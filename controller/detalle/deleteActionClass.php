@@ -19,28 +19,26 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
-        $id = request::getInstance()->getPost(estadoTableClass::getNameField(estadoTableClass::ID, true));
+        $id = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID, true));
         
-        $ids = array(
-            estadoTableClass::ID => $id
+        $ids =  array(
+            detalleEntradaTableClass::ID => $id
         );
-        estadoTableClass::delete($ids, true);/*el true es para el borrado logico false si no lo tiene*/
-        //routing::getInstance()->redirect('depto', 'index');
+        detalleEntradaTableClass::delete($ids, true);/*el true es para el borrado logico false si no lo tiene*/
+        //routing::getInstance()->redirect('parto', 'index');
         $this->arrayAjax=array(
            'code'=>200,
            'msg' =>'la eliminacion fue exitosa'
             
         );
-        $this->defineView('delete', 'estado',session::getInstance()->getFormatOutput());
+        $this->defineView('delete', 'detalle',session::getInstance()->getFormatOutput());
+        session::getInstance()->setSuccess('Registro Exitoso');
       } else {
-        routing::getInstance()->redirect('estado', 'index');
+        routing::getInstance()->redirect('detalle', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

@@ -26,7 +26,6 @@ class createProvActionClass extends controllerClass implements controllerActionI
      * Todas estos datos se pasan en la variable @var $data 
      * ** */
   
-
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -52,8 +51,7 @@ class createProvActionClass extends controllerClass implements controllerActionI
             proveedorTableClass::CIUDAD_ID => $ciudad_id,
         );
 
-        proveedorTableClass::insert
-                ($data);
+        proveedorTableClass::insert($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
 

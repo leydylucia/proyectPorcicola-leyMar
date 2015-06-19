@@ -35,7 +35,7 @@ $pdf->Cell(40,5,  utf8_decode("FECHA NACIMIENTO"),1);
   $pdf->Cell(40,5,  utf8_decode("CERDO"),1);
     $pdf->Ln();
   
-  foreach ($objHojaVida as $parto){
+  foreach ($objParto as $parto){
   $pdf->Cell(20,10,  utf8_decode($parto->$id),1);
   $pdf->Cell(40,10,  utf8_decode($parto->$fecha_nacimiento),1);
   $pdf->Cell(40,10,  utf8_decode($parto->$num_nacidos),1);

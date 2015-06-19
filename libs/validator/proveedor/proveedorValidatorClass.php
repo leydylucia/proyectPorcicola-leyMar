@@ -14,7 +14,7 @@ namespace mvc\validator {
   class proveedorValidatorClass extends validatorClass {
     public static function validateInsert() {
       $flag = false;
-//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloNumeros = "/^[[:digit:]]+$/";
       $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
@@ -158,22 +158,22 @@ namespace mvc\validator {
       
       //------------------------------------campo documento---------------------
         //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El documento del proveedor es requerido', 'inputDocumento');
-      } //----solo numeros----
-        
-        else if (!is_numeric(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))) > \proveedorTableClass::DOCUMENTO_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
-      } //----datos duplicados----
+//      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El documento del proveedor es requerido', 'inputDocumento');
+//      } //----solo numeros----
+//        
+//        else if (!is_numeric(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))) > \proveedorTableClass::DOCUMENTO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+//      } //----datos duplicados----
 //        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputUser', true);
@@ -230,11 +230,11 @@ namespace mvc\validator {
         session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
       }//-------------------------------campo ciudad-----------------------------
           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::ID_CIUDAD, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('selectCiudad', true);
-        session::getInstance()->setError('La ciudad del proveedor es requerido', 'selectCiudad');
-        }
+//      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::ID_CIUDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('selectCiudad', true);
+//        session::getInstance()->setError('La ciudad del proveedor es requerido', 'selectCiudad');
+//        }
       
     //-------------------------------campo telefono-----------------------------
           //----campo nulo----

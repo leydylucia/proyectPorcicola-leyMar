@@ -35,18 +35,20 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
                 $cantidad = trim(request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, true)));
                 $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
-                
+
 
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
-               
+
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     detalleSalidaTableClass::CANTIDAD => $cantidad,
                     detalleSalidaTableClass::SALIDA_BODEGA_ID => $salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
-                    
                 );
+                
+               
+                
                 detalleSalidaTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
@@ -63,5 +65,4 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
         }
     }
 
-    
 }

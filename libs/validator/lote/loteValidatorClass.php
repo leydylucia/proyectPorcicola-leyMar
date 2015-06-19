@@ -9,7 +9,7 @@ namespace mvc\validator {
   /**
    * Description of manoObraValidatorClass
    *
-   * @author @author Alexandra Florez
+   * @author Alexandra Florez <alexaflorez88@hotmail.com>
    */
   class loteValidatorClass extends validatorClass {
     public static function validateInsert() {
@@ -19,33 +19,34 @@ namespace mvc\validator {
       $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-
-      //-------------------------------campo desc_lote-----------------------------
+      
+      //-------------------------------campo descripcion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDesc', true);
-        session::getInstance()->setError('La descripcion del lote es requerido', 'inputDesc');
+        session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
       } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))) > \loteTableClass::UBICACION_LENGTH) {
+        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))) > \loteTableClass::DESC_LOTE_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('El campo digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
+        session::getInstance()->setFlash('inputDesc', true);
+        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
       }
-
-      //-------------------------------campo ubicacion-----------------------------
+//      //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+//      } 
+//      
+      
+       //-------------------------------campo ubicacion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputUbicacion', true);
         session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true))) > \loteTableClass::UBICACION_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
-      }
-      
+      } 
       
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
@@ -53,9 +54,9 @@ namespace mvc\validator {
         routing::getInstance()->forward('lote', 'insert');
       }
     }
-      
-
-     public static function validateEdit() {
+  
+  
+  public static function validateEdit() {
       $flag = false;
       
 //      $soloNumeros = "/^[[:digit:]]+$/";
@@ -63,33 +64,32 @@ namespace mvc\validator {
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      //-------------------------------campo desc_lote-----------------------------
+      //-------------------------------campo descripcion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDesc', true);
-        session::getInstance()->setError('La descripcion del lote es requerido', 'inputDesc');
-      } 
-      //----solo numeros----
-        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true)))) {
+        session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))) > \loteTableClass::DESC_LOTE_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
-      } 
+        session::getInstance()->setFlash('inputDesc', true);
+        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
+      }
+//      //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+//      } 
       
       
-      //-------------------------------campo ubicacion-----------------------------
+       //-------------------------------campo ubicacion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputUbicacion', true);
         session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
-      } 
-      //----solo numeros----
-        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
       } 
        
       //-------------------------------condiccion de bandera true-----------------------------
@@ -99,7 +99,8 @@ namespace mvc\validator {
         routing::getInstance()->forward('lote', 'edit');
       
       }
-    }  
+    }
+       
     
     
     public static function validateEditMas() {
@@ -110,31 +111,33 @@ namespace mvc\validator {
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      //-------------------------------campo desc_lote-----------------------------
+      //-------------------------------campo descripcion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDesc', true);
-        session::getInstance()->setError('La descripcion del lote es requerido', 'inputDesc');
+        session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
       } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))) > \loteTableClass::UBICACION_LENGTH) {
+        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))) > \loteTableClass::DESC_LOTE_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('El campo digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
+        session::getInstance()->setFlash('inputDesc', true);
+        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
       }
-
-      //-------------------------------campo ubicacion-----------------------------
+      //----solo permitir letras----
+        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::DESC_LOTE, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } 
+      
+      
+       //-------------------------------campo ubicacion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputUbicacion', true);
         session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true))) > \loteTableClass::UBICACION_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
-      }
+      } 
 
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {

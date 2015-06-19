@@ -28,7 +28,7 @@ use mvc\view\viewClass as view ?>
 
 <?php view::includeHandlerMessage() ?>
 
-<form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', ((isset($objInsumo)) ? 'updateDetalleSalida' : 'createDetalleSalida')) ?>">
+<form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', ((isset($objDetalleSalida)) ? 'updateDetalleSalida' : 'createDetalleSalida')) ?>">
 
 
     <?php if (isset($objDetalleSalida) == true): ?>

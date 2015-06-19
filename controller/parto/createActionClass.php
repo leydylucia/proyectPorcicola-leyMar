@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\partoValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -40,7 +41,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         $id_padre = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::ID_PADRE, true));
         $hoja_vida_id = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::HOJA_VIDA_ID, true));
 
-        $this->Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos); /*@ $this->validate para validar campos*/
+  //      $this->Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos); /*@ $this->validate para validar campos*/
+        
+        validator::validateInsert(); /*para validas los campos de la tabla y se redirige al validator*/
         
         /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
         $data = array(
@@ -70,44 +73,44 @@ class createActionClass extends controllerClass implements controllerActionInter
   }
 
    /* @ function para validar campos de formulario*/
-  private function Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos) {
-    $bon = false;
-    
-    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
-    if ($num_nacidos === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bon = true;
-      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, TRUE), TRUE);
-    }
-
-    if ($num_vivos === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bon = true;
-      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_VIVOS, TRUE), TRUE);
-    }
-
-    if ($num_muertos === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bon = true;
-      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_MUERTOS, TRUE), TRUE);
-    }
-
-    if ($num_hembras === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bon = true;
-      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_HEMBRAS, TRUE), TRUE);
-    }
-
-    if ($num_machos === '') {
-      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-      $bon = true;
-      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_MACHOS, TRUE), TRUE);
-    }
-
-    if ($bon === true) {
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('parto', 'insert');
-    }
-  }
+//  private function Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos) {
+//    $bon = false;
+//    
+//    // VALIDACIONES PARA NO ACEPTAR CAMPOS VACIOS
+//    if ($num_nacidos === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bon = true;
+//      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, TRUE), TRUE);
+//    }
+//
+//    if ($num_vivos === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bon = true;
+//      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_VIVOS, TRUE), TRUE);
+//    }
+//
+//    if ($num_muertos === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bon = true;
+//      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_MUERTOS, TRUE), TRUE);
+//    }
+//
+//    if ($num_hembras === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bon = true;
+//      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_HEMBRAS, TRUE), TRUE);
+//    }
+//
+//    if ($num_machos === '') {
+//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
+//      $bon = true;
+//      session::getInstance()->setFlash(partoTableClass::getNameField(partoTableClass::NUM_MACHOS, TRUE), TRUE);
+//    }
+//
+//    if ($bon === true) {
+//      request::getInstance()->setMethod('GET');
+//      routing::getInstance()->forward('parto', 'insert');
+//    }
+//  }
 
 }

@@ -10,11 +10,21 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\credencialValidatorClass as validator;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ * Description of createProvActionClass
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo proveedor
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
+  
+  /* public function execute inicializa las variables 
+     * @return $nombre=> nombre del proveedor (string)
+     * @return $apellido=> apellido del proveedor (string)
+     * @return $direccion=> direccion del proveedor (string)
+     * @return $correo=> correo del proveedor (string)
+     * @return $telefono=> telefono del proveedor (string)
+     * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
+     * Todas estos datos se pasan en la variable @var $data 
+     * ** */
 
   public function execute() {
     try {
@@ -25,7 +35,8 @@ class createActionClass extends controllerClass implements controllerActionInter
        //$this->Validate($nombre);
         
          validator::validateInsert(); /*para validas los campos de la tabla y se redirige al validator*/
-
+        
+        /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
         $data = array(
             credencialTableClass::NOMBRE => $nombre,
         );
@@ -39,7 +50,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('credencial', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
+      routing::getInstance()->redirect('credencial', 'insert');
       session::getInstance()->setFlash('exc', '$exc');
     }
   }

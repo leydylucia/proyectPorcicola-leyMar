@@ -218,6 +218,10 @@ dictionary:
     Output_detail_new_winery :  Nuevo Detalle Salida Bodega
     quantity:                  Cantidad
     
+    # paginaPrincipal# 
+    welcome:               BIENBENIDO
+    
+    
     ##errores##
     errorLength:             este campo excede la longitud
     errorNumeric:            este campo solo es numerico

@@ -11,7 +11,10 @@ homepage:
 #  load:
       
 
-       
+paginaPrincipal:
+    url:    /paginaPrincipal
+    param:  { module: paginaPrincipal, action: index, format: html }
+    
 
 ##-------------------------- shfSecurity --------------------------##
 shfSecurity_index:
@@ -2002,7 +2005,7 @@ detalleSalida_insert:
 
 detalleSalida_create:
   url:    /detalleSalida/crear
-  param:  { module: detalleSalida, action: createdetalleSalida, format: html }
+  param:  { module: detalleSalida, action: createDetalleSalida, format: html }
   load:
     - model/base/detalleSalidaBaseTableClass.php
     - model/detalleSalidaTableClass.php

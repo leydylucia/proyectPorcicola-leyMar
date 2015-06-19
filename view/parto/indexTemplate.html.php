@@ -54,7 +54,7 @@ use mvc\request\requestClass as request ?>
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>">
               <div class="form-group">
-                <label for="filternacidos" class="col-sm-2 control-label"><?php echo i18n::__('number_born') ?></label>
+                <label for="filternacidos" class="col-sm-2 control-label"><?php echo i18n::__('num_born') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filter[nacidos]" name="filter[nacidos]" placeholder="nacidos">
                 </div>
@@ -97,7 +97,7 @@ use mvc\request\requestClass as request ?>
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('parto', 'report') ?>">
               <div class="form-group">
-                <label for="filternacidos" class="col-sm-2 control-label"><?php echo i18n::__('number_born') ?></label>
+                <label for="filternacidos" class="col-sm-2 control-label"><?php echo i18n::__('num_born') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filter[nacidos]" name="filter[nacidos]" placeholder="nacidos">
                 </div>
