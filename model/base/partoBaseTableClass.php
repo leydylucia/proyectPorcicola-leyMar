@@ -21,6 +21,7 @@ class partoBaseTableClass extends tableBaseClass {
   private $num_machos;
   private $fecha_montada;
   private $id_padre;
+  private $hoja_vida_id;
   
 
   const ID = 'id';
@@ -35,8 +36,11 @@ class partoBaseTableClass extends tableBaseClass {
   const NUM_HEMBRAS= 'num_hembras';
   const NUM_MACHOS = 'num_machos';
   const FECHA_MONTADA = 'fecha_montada';
+  const FECHA_MONTADA_LENGTH = 10;
   const ID_PADRE = 'id_padre';
-  
+  const HOJA_VIDA_ID = 'hoja_vida_id';
+
+
   function getId() {
     return $this->id;
   }
@@ -83,6 +87,10 @@ class partoBaseTableClass extends tableBaseClass {
 
   function getId_padre() {
     return $this->id_padre;
+  }
+  
+  function getHoja_vida_id() {
+    return $this->hoja_vida_id;
   }
 
   function setId($id) {
@@ -131,6 +139,10 @@ class partoBaseTableClass extends tableBaseClass {
 
   function setId_padre($id_padre) {
     $this->id_padre = $id_padre;
+  }
+  
+  function setHoja_vida_id($hoja_vida_id) {
+    $this->hoja_vida_id = $hoja_vida_id;
   }
 
     

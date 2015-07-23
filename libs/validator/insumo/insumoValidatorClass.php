@@ -72,6 +72,14 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputFechaVencimiento', true);/*input usuario biene del formulario*/
         session::getInstance()->setError('el campo fecha vencimiento no puede estar vacio', 'inputFechaVencimiento');
         } 
+        
+    //------------------------------------campo proveedor---------------------
+        //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PROVEEDOR_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputProveedor', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo proveedor no puede estar vacio', 'inputProveedor');
+        }     
       
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');

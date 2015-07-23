@@ -13,7 +13,7 @@ class entradaBaseTableClass extends tableBaseClass {
   private $created_at;
   private $updated_at;
   private $deleted_at;
-  private $empleado;
+  private $empleado_id;
   private $proveedor_id;
 
   const ID = 'id';
@@ -21,7 +21,7 @@ class entradaBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   const EMPLEADO_ID = 'empleado_id';
-  const PROVEEDOR = 'proveedor_id';
+  const PROVEEDOR_ID = 'proveedor_id';
  
   
   function getId() {
@@ -41,7 +41,7 @@ class entradaBaseTableClass extends tableBaseClass {
   }
 
   function getEmpleado() {
-    return $this->empleado;
+    return $this->empleado_id;
   }
 
   function getProveedor_id() {
@@ -65,7 +65,7 @@ class entradaBaseTableClass extends tableBaseClass {
   }
 
   function setEmpleado($empleado) {
-    $this->empleado = $empleado;
+    $this->empleado_id = $empleado_id;
   }
 
   function setProveedor_id($proveedor_id) {

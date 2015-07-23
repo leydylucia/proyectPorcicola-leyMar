@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of ejemploClass
@@ -29,7 +30,7 @@ class editTipovActionClass extends controllerClass implements controllerActionIn
         );
         $this->objTipoV= tipovTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipov', 'sacrificioVenta', session::getInstance()->getFormatOutput());
-        
+        log::register('editar', tipovTableClass::getNameTable()); //linea de bitacora
         
       } else {
         routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');

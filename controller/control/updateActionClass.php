@@ -42,7 +42,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         controlTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro Exitoso');
+        session::getInstance()->setSuccess('Registro se modifico con Exitoso');
 
         routing::getInstance()->redirect('control', 'index');
       } else {

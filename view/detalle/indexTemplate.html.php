@@ -131,10 +131,10 @@
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $detalle->$id ?>"></td>
               <td><?php echo $detalle->$cantidad ?></td>
-              <td><?php echo $detalle->$valor ?></td>
+              <td><?php echo '$' . number_format($detalle->$valor, 0, ',', '.');  ?></td>
               <td><?php echo entradaTableClass::getNameEntrada($detalle->$entrada_bodega_id) ?></td>
               <td><?php echo insumoTableClass::getNameInsumo($detalle->$insumo_id) ?></td>
-              <td><?php echo $detalle->$fecha ?></td>
+              <td><?php echo date('d-m-Y h:i:s a', strtotime($detalle->$fecha))  ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'ver', array(detalleEntradaTableClass::ID => $detalle->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'edit', array(detalleEntradaTableClass::ID => $detalle->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>

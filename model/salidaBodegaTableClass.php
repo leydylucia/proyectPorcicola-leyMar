@@ -10,17 +10,16 @@ use mvc\config\configClass as config;
  * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
 class salidaBodegaTableClass extends salidaBodegaBaseTableClass {
-     
-    /**
-   * Método para el paginado
-   *
-   * @var $where para mantener el filtro y va al controller
-   
-   */
 
+    /**
+     * Método para el paginado
+     *
+     * @var $where para mantener el filtro y va al controller
+
+     */
     public static function getTotalPages($lines, $where) {
         try {
-            $sql = 'SELECT count(' . salidaBodegaTableClass::ID . ') AS cantidad ' ./*DEJAR ESPACIO EN EL AND BETWEEN Y NULL*/
+            $sql = 'SELECT count(' . salidaBodegaTableClass::ID . ') AS cantidad ' . /* DEJAR ESPACIO EN EL AND BETWEEN Y NULL */
                     ' FROM ' . salidaBodegaTableClass::getNameTable() .
                     ' WHERE ' . salidaBodegaTableClass::DELETED_AT . ' is NULL ';
             if (is_array($where) === true) {
@@ -41,13 +40,13 @@ class salidaBodegaTableClass extends salidaBodegaBaseTableClass {
             throw $exc;
         }
     }
- /**
-   * Método public static function getNameInsumo($id)  para foreanea
-   *
-   * 
-   
-   */
-    
+
+    /**
+     * Método public static function getNameInsumo($id)  para foreanea
+     *
+     * 
+
+     */
     public static function getNameSalidaBodega($id) {
         try {
             $sql = 'SELECT ' . salidaBodegaTableClass::EMPLEADO_ID . ' As empleado '
@@ -69,6 +68,39 @@ class salidaBodegaTableClass extends salidaBodegaBaseTableClass {
             throw $exc;
         }
     }
-  
-}
+//
+//    public static function getNameSalida($id) {
+//        try {
+//            $sql = 'SELECT ' . salidaBodegaTableClass::ID . ' As id  '
+//                    . '  FROM ' . salidaBodegaTableClass::getNameTable() . '  '
+//                    . '  WHERE ' . salidaBodegaTableClass::ID . ' = :id';
+//            $params = array(
+//                ':id' => $id
+//            );
+//            $answer = model::getInstance()->prepare($sql);
+//            $answer->execute($params);
+//            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//            return $answer[0]->id;
+//        } catch (Exception $exc) {
+//            throw $exc;
+//        }
+//    }
+//
+//    public static function getNameBodega($id) {
+//        try {
+//            $sql = 'SELECT ' . salidaBodegaTableClass::CREATED_AT . ' As fecha  '
+//                    . '  FROM ' . salidaBodegaTableClass::getNameTable() . '  '
+//                    . '  WHERE ' . salidaBodegaTableClass::ID . ' = :id';
+//            $params = array(
+//                ':id' => $id
+//            );
+//            $answer = model::getInstance()->prepare($sql);
+//            $answer->execute($params);
+//            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//            return $answer[0]->fecha;
+//        } catch (Exception $exc) {
+//            throw $exc;
+//        }
+//    }
 
+}

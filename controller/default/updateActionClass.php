@@ -43,9 +43,12 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 );
 
                 usuarioTableClass::update($ids, $data);
-            }
+                session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
+                routing::getInstance()->redirect('default', 'index');
+            }else{
 
             routing::getInstance()->redirect('default', 'index');
+            }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

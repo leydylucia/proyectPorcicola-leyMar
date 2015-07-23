@@ -36,10 +36,11 @@ class updateUsuarioCredencialActionClass extends controllerClass implements cont
                 );
 
                 usuarioCredencialTableClass::update($ids, $data);
-                routing::getInstance()->redirect('usuarioCredencial', 'editUsuarioCredencial');
-            } else {
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-                routing::getInstance()->redirect('usuarioCredencial', 'editUsuarioCredencial');
+                routing::getInstance()->redirect('usuarioCredencial', 'indexUsuarioCredencial');
+            } else {
+                
+                routing::getInstance()->redirect('usuarioCredencial', 'indexUsuarioCredencial');
             }
         } catch (PDOException $exc) {
 

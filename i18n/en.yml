@@ -126,6 +126,7 @@ dictionary:
     pig:                      Pig
     New_Sacrifice:            New Sacrifice
     Edit_Sacrifice:           Edit Sacrifice
+    unit_measure:             unit_measure
     
     closing session:          closing session
 
@@ -182,9 +183,13 @@ dictionary:
     cellar_entry:              Cellar Entry
     
     
-     #Credencial#
+      #Credencial#
     credential:                Credential
     new_credential:            New Credential
+    cant:                      Amount
+    value:                     Value
+    detail_entry:              Detail Entry
+    new_detail_entry:          New Detail Entry
     
      #usuarioCredencial#
     UserCredential:           UserCredential

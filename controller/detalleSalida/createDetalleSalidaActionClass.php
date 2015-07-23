@@ -7,7 +7,6 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
@@ -33,10 +32,12 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
             if (request::getInstance()->isMethod('POST')) {
 
                 $cantidad = trim(request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, true)));
-                $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+//                $salida_bodega = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+                $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, TRUE));
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
 
-
+//                echo $salida_bodega;
+//                exit();
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
 
 
@@ -46,14 +47,13 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
                     detalleSalidaTableClass::SALIDA_BODEGA_ID => $salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
                 );
-                
-               
-                
+
+
                 detalleSalidaTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', detalleSalidaTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
+//                log::register('insertar', detalleSalidaTableClass::getNameTable()); //linea de bitacora
+                routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida',array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID,true) => $salida_bodega));//redireccionamiento para sostener el id
             } else {
                 routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
             }

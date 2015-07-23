@@ -13,10 +13,9 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
   private $created_at;
   private $updated_at;
   private $deleted_at;
-  private $catidad;
+  private $cantidad;
   private $valor;
   private $entrada_bodega_id;
-  private $lote_id;
   private $insumo_id;
 
   const ID = 'id';
@@ -26,7 +25,6 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
   const CANTIDAD= 'cantidad';
   const VALOR = 'valor';
   const ENTRADA_BODEGA_ID = 'entrada_bodega_id';
-  const LOTE_ID = 'lote_id';
   const INSUMO_ID = 'insumo_id';
   
   function getId() {
@@ -45,8 +43,8 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
     return $this->deleted_at;
   }
 
-  function getCatidad() {
-    return $this->catidad;
+  function getCantidad() {
+    return $this->cantidad;
   }
 
   function getValor() {
@@ -55,10 +53,6 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
 
   function getEntrada_bodega_id() {
     return $this->entrada_bodega_id;
-  }
-
-  function getLote_id() {
-    return $this->lote_id;
   }
 
   function getInsumo_id() {
@@ -81,8 +75,8 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
     $this->deleted_at = $deleted_at;
   }
 
-  function setCatidad($catidad) {
-    $this->catidad = $catidad;
+  function setCantidad($cantidad) {
+    $this->cantidad = $catidad;
   }
 
   function setValor($valor) {
@@ -91,10 +85,6 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
 
   function setEntrada_bodega_id($entrada_bodega_id) {
     $this->entrada_bodega_id = $entrada_bodega_id;
-  }
-
-  function setLote_id($lote_id) {
-    $this->lote_id = $lote_id;
   }
 
   function setInsumo_id($insumo_id) {

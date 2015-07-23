@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\validator\vacunacionValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log; /* linea de la bitacora */
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of ejemploClass
@@ -47,7 +47,7 @@ class createVacunacionActionClass extends controllerClass implements controllerA
                 vacunacionTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
+                 log::register('insertar', vacunacionTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('vacunacion', 'indexVacunacion');
             } else {
                 routing::getInstance()->redirect('vacunacion', 'indexVacunacion');

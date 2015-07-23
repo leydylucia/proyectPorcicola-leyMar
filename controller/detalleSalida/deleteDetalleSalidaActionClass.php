@@ -37,7 +37,7 @@ class deleteDetalleSalidaActionClass extends controllerClass implements controll
                 );
                 $this->defineView('deleteDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput());
                 session::getInstance()->setSuccess('el registro se elimino con exito'); /* mensaje de exito */
-                // log::register('eliminar',  detalleSalidaTableClass::getNameTable());//linea de bitacora
+//                 log::register('eliminar',  detalleSalidaTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
             }

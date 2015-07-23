@@ -50,11 +50,11 @@ class editDetalleSalidaActionClass extends controllerClass implements controller
                 insumoTableClass::DESC_INSUMO
                 );
                 $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
-
+                $this->id_salida_bodega =  request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));/*manda el id a la vista*/
                 $this->defineView('editDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
 
 
-                // log::register('editar',  detalleSalidaTableClass::getNameTable());//linea de bitacora
+//                 log::register('editar',  detalleSalidaTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */

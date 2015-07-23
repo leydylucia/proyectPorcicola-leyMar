@@ -6,9 +6,10 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\usuarioCredencialValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log; /* linea de la bitacora */
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of ejemploClass
@@ -33,7 +34,7 @@ class createUsuarioCredencialActionClass extends controllerClass implements cont
 
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
 
-
+                validator::validateInsert();
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                 usuarioCredencialTableClass::USUARIO_ID => $usuario,
@@ -43,7 +44,7 @@ class createUsuarioCredencialActionClass extends controllerClass implements cont
                 usuarioCredencialTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
+                 log::register('insertar', usuarioCredencialTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('usuarioCredencial', 'indexUsuarioCredencial');
             } else {
                 routing::getInstance()->redirect('usuarioCredencial', 'indexUsuarioCredencial');

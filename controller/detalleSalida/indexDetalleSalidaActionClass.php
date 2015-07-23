@@ -25,6 +25,8 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
      */
     public function execute() {
         try {
+
+
             /* filtros */
             $where = null; /* where se encuentra nulo para entrar en la sentencia getall */
             if (request::getInstance()->hasPost('filter')) {
@@ -62,6 +64,7 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * @var page paginado
              */
 
+      
             $fields = array(
                 detalleSalidaTableClass::ID,
                 detalleSalidaTableClass::CANTIDAD,
@@ -83,10 +86,16 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * @return $this para enviar al cntPages"contador de pagina" a la vista 
              * *getTotalPages => se encuentra en insumoTables class
              * * @var $where => para sostener el filtro con el paginado  */
-            $this->cntPages =  detalleSalidaTableClass::getTotalPages(config::getRowGrid(), $where);
+            $this->cntPages = detalleSalidaTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
 
-
+            $where = null;
+            if (request::getInstance()->hasGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) {
+                $this->detalleSalidaId = $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+                $where = array(
+                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $detalleSalidaId
+                );
+            }
             /**
              *  
              * @var $where => para filtros
@@ -103,28 +112,41 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * */
             $this->objDetalleSalida = detalleSalidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
-           //estos campo son para llamar las foraneas
-                $fields = array(/* foranea salidaBodega */
-                    salidaBodegaTableClass::ID,
-                );
-                $orderBy = array(
-                    salidaBodegaTableClass::ID,
-                );
-                $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC');
+            //estos campo son para llamar las foraneas
+            $fields = array(/* foranea salidaBodega */
+                salidaBodegaTableClass::ID,
+                salidaBodegaTableClass::CREATED_AT,
+                salidaBodegaTableClass::EMPLEADO_ID
+            );
+            $orderBy = array(
+                salidaBodegaTableClass::ID,
+            );
+            $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-                $fieldsInsumo = array(/* foranea insumo */
+            $fieldsInsumo = array(/* foranea insumo */
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO
-                );
-                $orderByInsumo = array(
+            );
+            $orderByInsumo = array(
                 insumoTableClass::DESC_INSUMO
-                );
-                $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
-
-
-
-            $this->defineView('indexDetalleSalida', 'detalleSalida', session::getInstance()
-                            ->getFormatOutput());
+            );
+            $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+//ECHO $id_salida_bodega;
+//            if(request::getInstance()->hasPost('filter')){
+////                     $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+//                     $detalleSalidaId = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+//                   
+//                     $detalle = array(
+//detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID) => $detalleSalidaId
+//);
+//                     print_r($detalleSalidaId);
+//
+//                     $this->defineView('indexDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput(), $detalle);
+//                print_r($detalle);
+//                }else{
+            $this->detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+            $this->defineView('indexDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput());
+//            }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

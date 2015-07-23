@@ -27,6 +27,10 @@ class reportSacrificioVentaActionClass extends controllerClass implements contro
                 if (isset($filter['valor']) and $filter['valor'] !== null and $filter['valor'] !== '') {
                     $where[sacrificiovTableClass::VALOR] = $filter['valor'];
                 }
+                
+                if (isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== '') {
+                    $where[sacrificiovTableClass::CANTIDAD] = $filter['cantidad'];
+                }
 
                 if (isset($filter['Tipo_venta']) and $filter['Tipo_venta'] !== null and $filter['Tipo_venta'] !== '') {
                     $where[sacrificiovTableClass::TIPO_VENTA_ID] = $filter['Tipo_venta'];
@@ -54,6 +58,8 @@ class reportSacrificioVentaActionClass extends controllerClass implements contro
                 sacrificiovTableClass::ID,
                 sacrificiovTableClass::VALOR,
                 sacrificiovTableClass::TIPO_VENTA_ID,
+                sacrificiovTableClass::CANTIDAD,
+                sacrificiovTableClass::UNIDAD_MEDIDA,
                 sacrificiovTableClass::ID_CERDO,
             );
             $orderBy = array(

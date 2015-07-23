@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\tipoVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -27,6 +28,7 @@ class updateTipovActionClass extends controllerClass implements controllerAction
         $desc_tipoV= request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
        
 //         $this->Validate($desc_tipoV);
+           validator::validateEdit();
         
         $ids = array(
         tipovTableClass::ID => $id
@@ -36,11 +38,15 @@ class updateTipovActionClass extends controllerClass implements controllerAction
         tipovTableClass::DESC_TIPOV => $desc_tipoV,
            
         );
+      
 
        tipovTableClass::update($ids, $data);
-      }
+       session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
+       routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
+      }else{
 
       routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
+      }
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

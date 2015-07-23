@@ -32,10 +32,13 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
+        
         log::register('editar',  usuarioTableClass::getNameTable());//linea de bitacora
+   
       } else {
         routing::getInstance()->redirect('default', 'index');
         session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+        
       }
 //      if (request::getInstance()->isMethod('POST')) {
 //

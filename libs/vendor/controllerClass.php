@@ -14,6 +14,7 @@ namespace mvc\controller {
     private $view;
     private $module;
     private $format;
+//    private $variable;
     protected $arg;
 
     public function __construct() {
@@ -28,6 +29,7 @@ namespace mvc\controller {
       $this->view = $view . 'Template';
       $this->module = $module;
       $this->format = $format;
+//      $this->variable = $variable;
     }
 
     public function renderView() {

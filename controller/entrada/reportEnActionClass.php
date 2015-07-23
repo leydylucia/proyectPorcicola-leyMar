@@ -66,6 +66,28 @@ class reportEnActionClass extends controllerClass implements controllerActionInt
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
             $this->objEntrada = entradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+            
+             /* fields para foraneas */
+      $fieldsE = array(
+          empleadoTableClass::ID,
+          empleadoTableClass::NOMBRE
+      );
+      $orderByE = array(
+          empleadoTableClass::NOMBRE
+      );
+      $this->objEmpleado = empleadoTableClass::getAll($fieldsE, true, $orderByE, 'ASC');
+
+
+      /* fields para foraneas */
+      $fields = array(
+          proveedorTableClass::ID,
+          proveedorTableClass::NOMBRE
+      );
+      $orderBy = array(
+          proveedorTableClass::NOMBRE
+      );
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
+
 
             $this->defineView('index', 'entrada', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

@@ -132,7 +132,14 @@ namespace mvc\view {
                     case 'html':
                         header(configClass::getHeaderHtml());
                         include_once configClass::getPathAbsolute() . 'libs/vendor/view/head.php';
-                        include_once configClass::getPathAbsolute() . "view/$module/$template.html.php";
+//                        if (is_array($variable)) {
+//                            
+//                            include_once configClass::getPathAbsolute() .
+//                                    "view/$module/$template.html.php" .
+//                                    self::genVariables($variable);
+//                        } else {
+                            include_once configClass::getPathAbsolute() . "view/$module/$template.html.php";
+//                        }
                         include_once configClass::getPathAbsolute() . 'libs/vendor/view/foot.php';
                         break;
                     case 'json':
@@ -161,6 +168,24 @@ namespace mvc\view {
                         break;
                 }
             }
+        }
+        
+        
+        /**
+         *
+         * @param array $variables
+         * @return boolean|string
+         */
+        static function genVariables($variables) {
+            $answer = false;
+            if (is_array($variables)) {
+                $answer = '?';
+                foreach ($variables as $key => $value) {
+                    $answer .= $key . '=' . $value . '&';
+                }
+                $answer = substr($answer, 0, (strlen($answer) - 1));
+            }
+            return $answer;
         }
 
     }

@@ -143,13 +143,14 @@ dictionary:
     Edit_Sacrifice:           Editar Sacrificio
     Sacrifice_Sale:           Sacrificio Venta
     sale:                     Valor
+    unit_measure:             Unidad Medida
     
     
     closing session:          cierre de sesion
 
  #Parto#
     delivery:                  Parto
-    date of birth:             Fecha Nacimiento
+    date_of_birth:             Fecha Nacimiento
     number born:               Numero de nacidos
     number of live:            Numero de vivos
     body count:                Numero de muertos
@@ -198,9 +199,14 @@ dictionary:
     detail:                    Detalle
     new_cellar_entry:          Nueva entrada de Bodega
 
+    
     #Credencial#
     credential:                Credencial
     new_credential:            Nueva Credencial
+    cant:                      Cantidad
+    value:                     Valor
+    detail_entry:              Detalle entrada 
+    new_detail_entry:          Nuevo Detalle Entrada
     
     #usuarioCredencial#
     UserCredential:           UsuarioCredencial

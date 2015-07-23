@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
  * Description of ejemploClass
@@ -56,7 +56,7 @@ class editVacunacionActionClass extends controllerClass implements controllerAct
                 $this->defineView('edit', 'vacunacion', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
 
 
-                // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
+                 log::register('editar',  vacunacionTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('vacunacion', 'indexVacunacion');
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */

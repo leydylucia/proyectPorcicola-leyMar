@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+//use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
  *  Description of editTipoInActionClass trae datos cuando tiene foraneas y cumplir con
@@ -31,6 +32,8 @@ class editTipoInActionClass extends controllerClass implements controllerActionI
         $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipoin', 'insumo', session::getInstance()->getFormatOutput());
         
+        
+//        log::register('editar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
         
       } else {
         routing::getInstance()->redirect('insumo', 'indexTipoin');

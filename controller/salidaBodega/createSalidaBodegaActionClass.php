@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log; /* linea de la bitacora */
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of ejemploClass
@@ -41,7 +41,7 @@ class createSalidaBodegaActionClass extends controllerClass implements controlle
                 salidaBodegaTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
+                 log::register('insertar', salidaBodegaTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('salidaBodega', 'indexSalidaBodega');
             } else {
                 routing::getInstance()->redirect('salidaBodega', 'indexSalidaBodega');

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of ejemploClass
@@ -34,6 +35,7 @@ class deleteTipovActionClass extends controllerClass implements controllerAction
         );
         $this->defineView('deleteTipov', 'sacrificioVenta',session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('el registro se elimino con exito');/*mensaje de exito*/
+        log::register('eliminar', tipovTableClass::getNameTable()); //linea de bitacora
       } else {
         routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
       }

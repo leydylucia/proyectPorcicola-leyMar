@@ -6,10 +6,10 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
-//use mvc\validator\sacrificioVentaValidatorClass as validator;
+use mvc\validator\sacrificioVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log; /* linea de la bitacora */
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  *  Description of createActionClass esta clase sirve para 
@@ -24,7 +24,7 @@ class createSacrificioventaActionClass extends controllerClass implements contro
      * @return $tipoVenta=> tipo venta
      * @return $idCerdo=> id cerdo
      * * todas estos datos se pasa en la varible @var $data
-     
+
      * ** */
 
     public function execute() {
@@ -34,21 +34,25 @@ class createSacrificioventaActionClass extends controllerClass implements contro
                 $valor = trim(request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::VALOR, true)));
                 $tipoVenta = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
                 $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
-
-
+                $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
+                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true));
 //                $this->Validate($valor,$idCerdo);/*@ $this->validate para validar campos*/
-//                validator::validateInsert();
+                validator::validateInsert();
+
 
                 /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     sacrificiovTableClass::VALOR => $valor,
                     sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
-                    sacrificiovTableClass::ID_CERDO => $idCerdo
+                    sacrificiovTableClass::ID_CERDO => $idCerdo,
+                    sacrificiovTableClass::CANTIDAD => $cantidad,
+                    sacrificiovTableClass::UNIDAD_MEDIDA => $unidad_medida,
                 );
+
                 sacrificiovTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', insumoTableClass::getNameTable()); //linea de bitacora
+                 log::register('insertar', sacrificiovTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
@@ -60,7 +64,8 @@ class createSacrificioventaActionClass extends controllerClass implements contro
             //routing::getInstance()->forward('shfSecurity', 'exception');    
         }
     }
-/* @ function para validar campos de formulario*/
+
+    /* @ function para validar campos de formulario */
 //    static public function Validate($valor,$idCerdo) {
 //        $flag = false;
 //        

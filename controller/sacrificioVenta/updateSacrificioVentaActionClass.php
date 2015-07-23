@@ -11,17 +11,16 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of ejemploClass
- *@category modulo sacrificio venta
+ * @category modulo sacrificio venta
  * @author leydy lucia castillo mosquera
  */
 class updateSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
-    
-     /* public function execute inicializa las variables 
+    /* public function execute inicializa las variables 
      * @var $valor=> valor
      * @var $tipoVenta=> tipo venta
      * @var $idCerdo=> id cerdo
-      * @var $id=> id de la tabla
-     
+     * @var $id=> id de la tabla
+
      * ** */
 
     public function execute() {
@@ -32,10 +31,11 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
                 $tipoVenta = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
                 $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
                 $id = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true));
-                
-                
+                $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
+                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true));
+
 //                $this->Validate($valor, $idCerdo);/*@ $this->validate para validar campos*/
-//                validator::validateEdit();
+                validator::validateEdit();
                 $ids = array(
                     sacrificiovTableClass::ID => $id
                 );
@@ -44,13 +44,16 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
                     sacrificiovTableClass::VALOR => $valor,
                     sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
                     sacrificiovTableClass::ID_CERDO => $idCerdo,
+                    sacrificiovTableClass::CANTIDAD => $cantidad,
+                    sacrificiovTableClass::UNIDAD_MEDIDA => $unidad_medida,
                 );
 
                 sacrificiovTableClass::update($ids, $data);
-                routing::getInstance()->redirect('sacrificioVenta', 'editSacrificioVenta');
+                session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
+                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
             } else {
 
-                routing::getInstance()->redirect('sacrificioVenta', 'editSacrificioVenta');
+                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
             }
         } catch (PDOException $exc) {
 
@@ -58,7 +61,8 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
             session::getInstance()->setFlash('exc', $exc);
         }
     }
-/* @ function para validar campos de formulario*/
+
+    /* @ function para validar campos de formulario */
 //static public function Validate($valor,$idCerdo) {
 //        $flag = false;
 //        

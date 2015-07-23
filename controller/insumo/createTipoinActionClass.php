@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\validator\tipoInsumoValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log;/*linea de la bitacora*/
 /**
  *  Description of createActionClass esta clase sirve para 
  *  el create carge datos de la tabla y cumple con la funcion de insertar
@@ -42,7 +42,7 @@ class createTipoinActionClass extends controllerClass implements controllerActio
                 tipoInsumoTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                // log::register('insertar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
+                 log::register('insertar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('insumo', 'indexTipoin');
             } else {
                 routing::getInstance()->redirect('insumo', 'indexTipoin');

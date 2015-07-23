@@ -53,22 +53,27 @@ namespace mvc\validator {
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
-           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::VALOR, true)))) {
+         //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::DESC_TIPOV, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputValor', true);/*input usuario biene del formulario*/
-        session::getInstance()->setError('el campo valor no puede estar vacio', 'inputValor');
-        }  //----solo numeros----      
-       else if (!is_numeric(request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::VALOR, true)))) {
+        session::getInstance()->setFlash('inputDescTipoV', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo descripcion no puede estar vacio', 'inputDescTipoV');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::DESC_TIPOV, true))) > \tipovTableClass::DESC_TIPOV_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputValor', true);
-        session::getInstance()->setError('El campo Valor no permite letras, solo numeros', 'inputValor');
+        session::getInstance()->setFlash('inputDescTipoV', true);
+        session::getInstance()->setError('el tipo venta digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescTipoV');
+      } //----solo permitir letras----
+        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::DESC_TIPOV, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputDescTipoIn', true);
+        session::getInstance()->setError('el campo descripcion tipo venta no permite numeros, solo letras', 'inputDescTipoIn');
       } 
         
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
         request::getInstance()->addParamGet(array(\tipovTableClass::ID => request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::ID, true))));
-        routing::getInstance()->forward('sacrificioVenta', 'editSacrificioVenta');
+        routing::getInstance()->forward('sacrificioVenta', 'editTipov');
       }
     }
   }

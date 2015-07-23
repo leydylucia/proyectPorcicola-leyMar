@@ -58,10 +58,11 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
                 );
 
                 insumoTableClass::update($ids, $data);
-                routing::getInstance()->redirect('insumo', 'editInsumo');
-            } else {
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-                routing::getInstance()->redirect('insumo', 'editInsumo');
+                routing::getInstance()->redirect('insumo', 'indexInsumo');
+            } else {
+                
+                routing::getInstance()->redirect('insumo', 'indexInsumo');
             }
         } catch (PDOException $exc) {
 

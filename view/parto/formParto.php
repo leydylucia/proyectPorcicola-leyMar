@@ -29,9 +29,9 @@
 
     <?php view::includeHandlerMessage() ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-      <label for="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name') ?>:</label>
+      <label for="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('date_of_birth') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo ((isset($objParto) == true) ? $objParto[0]->$fecha_nacimiento : '') ?><?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) === true) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) : '' ?>" type="text" name="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>">
+        <input id="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo ((isset($objParto) == true) ? $objParto[0]->$fecha_nacimiento : '') ?><?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) === true) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) : '' ?>" type="date" name="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true) ?>">
         <?php if (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_NACIMIENTO, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>
@@ -39,7 +39,7 @@
     </div>
     
     <div class="form-group <?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) === true) ? 'has-error has-feedback' : '' ?>">
-      <label for="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name') ?>:</label>
+      <label for="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('number born') ?>:</label>
       <div class="col-xs-9">
         <input id="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="form-control" value="<?php echo ((isset($objParto) == true) ? $objParto[0]->$num_nacidos : '') ?><?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) === true) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) : '' ?>" type="text" name="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>">
         <?php if (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) === true): ?>
@@ -91,7 +91,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('date_pregnancy') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true) ?>" class="form-control" value="<?php echo ((isset($objParto) == true) ? $objParto[0]->$fecha_montada : '') ?><?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) === true) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) : '' ?>" type="text" name="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true) ?>">
+        <input id="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true) ?>" class="form-control" value="<?php echo ((isset($objParto) == true) ? $objParto[0]->$fecha_montada : '') ?><?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) === true) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) : '' ?>" type="date" name="<?php echo partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true) ?>">
         <?php if (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::FECHA_MONTADA, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>

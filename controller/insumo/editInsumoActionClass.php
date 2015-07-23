@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
  * Description of editInsumoActionClass trae datos cuando tiene foraneas y cumplir con
@@ -58,7 +58,7 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
                 $this->defineView('edit', 'insumo', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
                 
 
-                // log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
+                 log::register('editar',  insumoTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('insumo', 'indexInsumo');
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */

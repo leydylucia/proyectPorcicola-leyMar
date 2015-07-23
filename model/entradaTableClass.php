@@ -7,7 +7,7 @@ use mvc\config\configClass as config;
 /**
  * Description of credencialTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Alexandra Florez 
  */
 class entradaTableClass extends entradaBaseTableClass {
   

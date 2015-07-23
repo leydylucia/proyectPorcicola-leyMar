@@ -115,6 +115,9 @@ default_delete:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 default_deleteFilters:
   url:    /borrar_filtros_usuario
@@ -142,74 +145,7 @@ default_reporte:
 ##-------------------------- EJEMPLO --------------------------##
 ##---------------------------USUARIO CREDENCIAL----------------##
 
-##--------------------------DEPTO----------------------------##
-depto_index:
-  url:    /depto/index
-  param:  { module: depto, action: indexDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
 
-depto_insert:
-  url:    /depto/insertar
-  param:  { module: depto, action: insertDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-
-depto_create:
-  url:    /depto/crear
-  param:  { module: depto, action: createDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-    
-depto_edit:
-  url:    /depto/editar
-  param:  { module: depto, action: editDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-
-depto_update:
-  url:    /depto/actualizar
-  param:  { module: depto, action: updateDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-
-depto_delete:
-  url:    /depto/eliminar
-  param:  { module: depto, action: deleteDepto, format: json }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-
-depto_deleteSelect:
-  url:    /depto/eliminarSeleccion
-  param:  { module: depto, action: deleteSelectDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-    
-depto_ver:
-  url:    /depto/ver
-  param:  { module: depto, action: verDepto, format: html }
-  load:
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-    
-depto_reporte:
-  url:    /depto/reporte
-  param:  { module: depto, action: reportDepto, format: pdf }
-  load:  
-    - libs/fpdf/fpdf.php
-    - model/base/deptoBaseTableClass.php
-    - model/deptoTableClass.php
-   
-depto_traduccion:
-  url:  traduccion4
-  param:  { module: depto, action: traductorDepto, format: html }
     
     ##--------------------------ciudad----------------------------##
 ciudad_index:
@@ -240,6 +176,9 @@ ciudad_create:
     - model/ciudadTableClass.php
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/ciudad/ciudadValidatorClass.php
     
 ciudad_edit:
@@ -250,6 +189,9 @@ ciudad_edit:
     - model/ciudadTableClass.php
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 
 ciudad_update:
@@ -271,6 +213,9 @@ ciudad_delete:
     - model/ciudadTableClass.php
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
  
 ciudad_ver:
@@ -332,6 +277,9 @@ lote_create:
   load:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/lote/loteValidatorClass.php
 
 lote_edit:
@@ -340,6 +288,9 @@ lote_edit:
   load:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 lote_update:
   url:    /lote/actualizar
@@ -355,6 +306,9 @@ lote_delete:
   load:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 lote_deleteSelect:
   url:    /lote/eliminarSeleccion
@@ -381,59 +335,7 @@ lote_reporte:
 lote_deleteFilters:
   url:    /borrar_filtros_lote
   param:  { module: lote, action: deleteFilters, format: html }
- ##--------------------------Estado----------------------------##
-raza_index:
-  url:    /raza/index
-  param:  { module: raza, action: index, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
 
-raza_insert:
-  url:    /raza/insertar
-  param:  { module: raza, action: insert, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_create:
-  url:    /raza/crear
-  param:  { module: raza, action: create, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_edit:
-  url:    /raza/editar
-  param:  { module: raza, action: edit, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_update:
-  url:    /raza/actualizar
-  param:  { module: raza, action: update, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_delete:
-  url:    /raza/eliminar
-  param:  { module: raza, action: delete, format: json }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_deleteSelect:
-  url:    /raza/eliminarSeleccion
-  param:  { module: raza, action: deleteSelect, format: html }
-  load:
-    - model/base/razaBaseTableClass.php
-    - model/razaTableClass.php
-
-raza_reporte:
-  url:    /raza/reporte
-  param:  { module: raza, action: report, format: pdf }
   
    ##--------------------------Parto----------------------------##
 parto_index:
@@ -463,6 +365,9 @@ parto_create:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/parto/partoValidatorClass.php
 
 parto_edit:
@@ -473,6 +378,9 @@ parto_edit:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 parto_ver:
   url:    /parto/ver
@@ -501,6 +409,9 @@ parto_delete:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 parto_deleteSelect:
   url:    /parto/eliminarSeleccion
@@ -553,6 +464,9 @@ proveedor_create:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/proveedor/proveedorValidatorClass.php
 
 
@@ -564,6 +478,9 @@ proveedor_edit:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 proveedor_update:
   url:    /proveedor/actualizar
@@ -584,6 +501,9 @@ proveedor_delete:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 
 proveedor_deleteSelect:
@@ -658,6 +578,9 @@ tipoInsumo_edit:
   load:
     - model/base/tipoInsumoBaseTableClass.php
     - model/tipoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 tipoInsumo_update:
   url:    /tipoInsumo/actualizar
@@ -673,6 +596,9 @@ tipoInsumo_delete:
   load:
     - model/base/tipoInsumoBaseTableClass.php
     - model/tipoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 tipoInsumo_deleteSelect:
   url:    /tipoInsumo/eliminarSeleccion
@@ -754,9 +680,9 @@ insumo_edit:
     - model/tipoInsumoTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 
 insumo_update:
@@ -774,9 +700,9 @@ insumo_delete:
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
     
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
     
 insumo_deleteSelect:
@@ -842,9 +768,9 @@ tipoVenta_create:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
     - libs/validator/tipoVenta/tipoVentaValidatorClass.php
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 tipoVenta_edit:
   url:    /tipoVenta/editar
@@ -852,6 +778,9 @@ tipoVenta_edit:
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 tipoVenta_update:
   url:    /tipoVenta/actualizar
@@ -867,6 +796,9 @@ tipoVenta_delete:
   load:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 tipoVenta_deleteSelect:
   url:    /tipoVenta/eliminarSeleccion
@@ -929,6 +861,10 @@ control_create:
     - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    - libs/validator/control/controlValidatorClass.php
 
 
 control_edit:
@@ -941,6 +877,9 @@ control_edit:
     - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 control_update:
   url:    /control/actualizar
@@ -952,6 +891,7 @@ control_update:
     - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - libs/validator/control/controlValidatorClass.php
 
 control_delete:
   url:    /control/eliminar
@@ -963,6 +903,9 @@ control_delete:
     - model/hojaVidaTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 control_deleteSelect:
   url:    /control/eliminarSeleccion
@@ -1036,8 +979,8 @@ sacrificioVenta_create:
     - model/sacrificiovTableClass.php
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
-#    - model/base/hojaVidaBaseTableClass.php
-#    - model/hojaVidaTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1053,9 +996,9 @@ sacrificioVenta_edit:
     - model/tipovTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 
 sacrificioVenta_update:
@@ -1064,7 +1007,7 @@ sacrificioVenta_update:
   load:
    - model/base/sacrificiovBaseTableClass.php
    - model/sacrificiovTableClass.php
-#   - libs/validator/sacrificioVenta/sacrificioVentaValidatorClass
+   - libs/validator/sacrificioVenta/sacrificioVentaValidatorClass.php
    
    
     
@@ -1074,10 +1017,9 @@ sacrificioVenta_delete:
   load:
     - model/base/sacrificiovBaseTableClass.php
     - model/sacrificiovTableClass.php
-   
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
     
 sacrificioVenta_deleteSelect:
@@ -1172,9 +1114,9 @@ vacunacion_edit:
     - model/insumoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 
 vacunacion_update:
@@ -1191,9 +1133,9 @@ vacunacion_delete:
   load:
     - model/base/vacunacionBaseTableClass.php
     - model/vacunacionTableClass.php
-#    - hooks/logHookClass.php
-#    - model/base/bitacoraBaseTableClass.php
-#    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
     
 vacunacion_deleteSelect:
@@ -1272,6 +1214,9 @@ empleado_create:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/empleado/empleadoValidatorClass.php
 
 
@@ -1285,6 +1230,9 @@ empleado_edit:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 empleado_update:
   url:    /empleado/actualizar
@@ -1308,6 +1256,9 @@ empleado_delete:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 empleado_deleteSelect:
   url:    /empleado/eliminarSeleccion
@@ -1387,6 +1338,9 @@ animal_create:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/animal/animalValidatorClass.php
 
 animal_edit:
@@ -1401,6 +1355,9 @@ animal_edit:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 animal_update:
   url:    /animal/actualizar
@@ -1428,6 +1385,9 @@ animal_delete:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 animal_deleteSelect:
   url:    /animal/eliminarSeleccion
@@ -1479,6 +1439,10 @@ entrada_index:
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
 
@@ -1600,135 +1564,152 @@ entrada_deleteFilters:
 ##--------------------------Detalle Entrada Bodega----------------------------##
 detalle_index:
   url:    /detalle/index
-  param:  { module: entrada, action: indexDetalle, format: html }
+  param:  { module: detalle, action: index, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
     
 
 detalle_insert:
   url:    /detalle/insertar
-  param:  { module: entrada, action: insertDetalle, format: html }
+  param:  { module: detalle, action: insert, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 
 detalle_create:
   url:    /detalle/crear
-  param:  { module: entrada, action: createDetalle, format: html }
+  param:  { module: detalle, action: create, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 
 detalle_edit:
   url:    /detalle/editar
-  param:  { module: entrada, action: editDetalle, format: html }
+  param:  { module: detalle, action: edit, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 
 detalle_update:
   url:    /detalle/actualizar
-  param:  { module: entrada, action: updateDetalle, format: json }
+  param:  { module: detalle, action: update, format: json }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 
 detalle_delete:
   url:    /detalle/eliminar
-  param:  { module: entrada, action: deleteDetalle, format: json }
+  param:  { module: detalle, action: delete, format: json }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
     
 detalle_deleteSelect:
   url:    /detalle/eliminarSeleccion
-  param:  { module: entrada, action: deleteSelectDetalle, format: html }
+  param:  { module: detalle, action: deleteSelect, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
     
 detalle_ver:
   url:    /detalle/ver
-  param:  { module: entrada, action: verDetalle, format: html }
+  param:  { module: detalle, action: ver, format: html }
   load:
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 
 detalle_reporte:
   url:    /detalle/reporte
-  param:  { module: entrada, action: reportDetalle, format: pdf }
+  param:  { module: detalle, action: report, format: pdf }
   load:  
     - libs/fpdf/fpdf.php
     - model/base/entradaBaseTableClass.php
     - model/entradaTableClass.php
     - model/base/detalleEntradaBaseTableClass.php
     - model/detalleEntradaTableClass.php
-    - model/base/loteBaseTableClass.php
-    - model/loteTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 
 detalle_deleteFilters:
   url:    /borrar_filtros_entrada
-  param:  { module: entrada, action: deleteFiltersDetalle, format: html }
-  
+  param:  { module: detalle, action: deleteFilters, format: html }
 
 ##--------------------------Credencial----------------------------##
 credencial_index:
@@ -1845,7 +1826,11 @@ usuarioCredencial_create:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
     - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php    
+    - model/usuarioTableClass.php
+    - libs/validator/usuarioCredencial/usuarioCredencialValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 usuarioCredencial_edit:
   url:    /usuarioCredencial/editar
@@ -1857,6 +1842,9 @@ usuarioCredencial_edit:
     - model/credencialTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php  
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 usuarioCredencial_update:
   url:    /usuarioCredencial/actualizar
@@ -1867,7 +1855,8 @@ usuarioCredencial_update:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
     - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php    
+    - model/usuarioTableClass.php
+    - libs/validator/usuarioCredencial/usuarioCredencialValidatorClass.php
 
     
 
@@ -1907,6 +1896,8 @@ usuarioCredencial_deleteFilters:
     - model/salidaBodegaTableClass.php  
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/detalleSalidaBaseTableClass.php
+    - model/detalleSalidaTableClass.php
     
     
 
@@ -1929,6 +1920,9 @@ salidaBodega_create:
     - model/salidaBodegaTableClass.php     
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
     
 salidaBodega_edit:
@@ -1939,6 +1933,9 @@ salidaBodega_edit:
     - model/salidaBodegaTableClass.php      
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
    
 
 salidaBodega_update:
@@ -1956,6 +1953,9 @@ salidaBodega_delete:
   load:
     - model/base/salidaBodegaBaseTableClass.php
     - model/salidaBodegaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     
 salidaBodega_deleteSelect:
   url:    /salidaBodega/eliminarSeleccion
@@ -1990,6 +1990,8 @@ detalleSalida_index:
     - model/salidaBodegaTableClass.php 
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
 
 detalleSalida_insert:
   url:    /detalleSalida/insertar
@@ -2013,9 +2015,9 @@ detalleSalida_create:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
   
 
 detalleSalida_edit:
@@ -2051,7 +2053,6 @@ detalleSalida_delete:
   load:
     - model/base/detalleSalidaBaseTableClass.php
     - model/detalleSalidaTableClass.php
-    
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
 #    - model/bitacoraTableClass.php

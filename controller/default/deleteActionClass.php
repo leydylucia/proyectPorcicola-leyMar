@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
   Description of deleteActionClass esta clase sirve para eliminar datos individuales
@@ -36,6 +37,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
                 );
                 $this->defineView('delete', 'default', session::getInstance()->getFormatOutput());
                 session::getInstance()->setSuccess('el registro se elimino con exito'); /* mensaje de exito */
+                log::register('eliminar',  usuarioTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('default', 'index');
             }

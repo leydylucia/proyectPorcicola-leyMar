@@ -40,11 +40,14 @@ class updateTipoinActionClass extends controllerClass implements controllerActio
         tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn,
            
         );
+        session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
 
+        routing::getInstance()->redirect('insumo', 'indexTipoin');
        tipoInsumoTableClass::update($ids, $data);
-      }
-
+      }else{
+      
       routing::getInstance()->redirect('insumo', 'indexTipoin');
+      }
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

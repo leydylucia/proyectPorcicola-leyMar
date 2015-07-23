@@ -32,29 +32,32 @@ class updateDetalleSalidaActionClass extends controllerClass implements controll
 
                 $id = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true));
                 $cantidad = trim(request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, true)));
-                $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+
+                $id_salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
-                
+
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
-           
+
+
 
                 $ids = array(
                     detalleSalidaTableClass::ID => $id
                 );
-/**@var $data recorre los datos de la tabla en model
- 
- */
+                /*                 * @var $data recorre los datos de la tabla en model
+
+                 */
                 $data = array(
                     detalleSalidaTableClass::CANTIDAD => $cantidad,
-                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $salida_bodega,
+                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $id_salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
-                    
                 );
-
                 detalleSalidaTableClass::update($ids, $data);
-                routing::getInstance()->redirect('detalleSalida', 'editDetalleSalida');
+
+                session::getInstance()->setSuccess('El registro se modificó exitosamente'); /* mensaje de exito 'detalle_salida_salida_bodega_id' => 6*/
+                routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $id_salida_bodega));/*request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true)) => $id_salida_bodega*/
             } else {
-                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+                session::getInstance()->setError('Error de edición');
                 routing::getInstance()->redirect('detalleSalida', 'editDetallesalida');
             }
         } catch (PDOException $exc) {
@@ -64,5 +67,4 @@ class updateDetalleSalidaActionClass extends controllerClass implements controll
         }
     }
 
-    
 }

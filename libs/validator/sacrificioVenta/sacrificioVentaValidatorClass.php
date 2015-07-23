@@ -21,7 +21,7 @@ namespace mvc\validator {
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
-       //-------------------------------campo desc insumo-----------------------------
+       //-------------------------------campo valor-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::VALOR, true)))) {
         $flag = true;
@@ -34,12 +34,42 @@ namespace mvc\validator {
         session::getInstance()->setError('El campo Valor no permite letras, solo numeros', 'inputValor');
       } 
      
+            //-------------------------------campo cantidad-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo cantidad no puede estar vacio', 'inputCantidad');
+        }  //----solo numeros----      
+       else if (!is_numeric(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);
+        session::getInstance()->setError('El campo cantidad no permite letras, solo numeros', 'inputCantidad');
+      } 
+      //-------------------------------campo unidad medida-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo unidad medida no puede estar vacio', 'inputUnidadMedida');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))) > \sacrificiovTableClass::UNIDAD_MEDIDA_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);
+        session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputUnidadMedida');
+      } //----solo permitir letras----
+        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);
+        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputUnidadMedida');
+      } 
       
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
         routing::getInstance()->forward('sacrificioVenta', 'insertSacrificioVenta');
       }
     }
+    
     
     public static function validateEdit() {
        $flag = false;
@@ -49,7 +79,8 @@ namespace mvc\validator {
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
-           //----campo nulo----
+      //-------------------------------campo valor-----------------------------
+          //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::VALOR, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);/*input usuario biene del formulario*/
@@ -60,6 +91,37 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('El campo Valor no permite letras, solo numeros', 'inputValor');
       } 
+     
+            //-------------------------------campo cantidad-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo cantidad no puede estar vacio', 'inputCantidad');
+        }  //----solo numeros----      
+       else if (!is_numeric(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);
+        session::getInstance()->setError('El campo cantidad no permite letras, solo numeros', 'inputCantidad');
+      } 
+      //-------------------------------campo unidad medida-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);/*input usuario biene del formulario*/
+        session::getInstance()->setError('el campo unidad medida no puede estar vacio', 'inputUnidadMedida');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))) > \sacrificiovTableClass::UNIDAD_MEDIDA_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);
+        session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputUnidadMedida');
+      } //----solo permitir letras----
+        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputUnidadMedida', true);
+        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputUnidadMedida');
+      } 
+      
         
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');

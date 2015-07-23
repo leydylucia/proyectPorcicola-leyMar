@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-//use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
  * Description of ejemploClass
@@ -37,7 +37,7 @@ class deleteSacrificioVentaActionClass extends controllerClass implements contro
                 );
                 $this->defineView('deleteSacrificioVenta', 'sacrificioVenta', session::getInstance()->getFormatOutput());
                 session::getInstance()->setSuccess('el registro se elimino con exito'); /* mensaje de exito */
-                // log::register('eliminar',  insumoTableClass::getNameTable());//linea de bitacora
+                 log::register('eliminar',  sacrificiovTableClass::getNameTable());//linea de bitacora
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'index');
             }

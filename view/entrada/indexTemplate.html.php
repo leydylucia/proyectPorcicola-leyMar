@@ -7,6 +7,8 @@
 
 <?php $id = entradaTableClass::ID ?>
 <?php $empleado_id = entradaTableClass::EMPLEADO_ID ?>
+<?php $empleado_id_e = empleadoTableClass::ID?>
+<?php $nombre_em = empleadoTableClass::NOMBRE?>
 <?php $proveedor_id = entradaTableClass::PROVEEDOR_ID ?>
 <?php $fecha = entradaTableClass::CREATED_AT ?>
 
@@ -90,6 +92,18 @@
                   <input type="text" class="form-control" id="filter[proveedor]" name="filter[proveedor]" placeholder="proveedor">
                 </div>
               </div>  
+              
+               <div class="form-group">
+                <label for="filterempleado" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterempleado" name="filter[empleado]">
+                    <option value=""><?php echo i18n::__('employee') ?></option>
+<?php foreach ($objEmpleado as $empleado): ?>
+                      <option value="<?php echo $empleado->$empleado_id_e ?>"><?php echo $empleado->$nombre_em ?></option>
+<?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
 
             </form>
           </div>

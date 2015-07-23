@@ -8,10 +8,6 @@ use mvc\routing\routingClass as routing ?>
 use mvc\view\viewClass as view ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as confing ?>
-<?php
-use mvc\request\requestClass as request ?>
 
 
 <?php $id = salidaBodegaTableClass::ID ?>
@@ -121,6 +117,7 @@ use mvc\request\requestClass as request ?>
 
                                     <!--eliminado individual con ajax-->
                                     <a href="#" data-target="#myModalDelete<?php echo $salidaBodega->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('Delete') ?></a>
+                                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID,true) => $salidaBodega->$id)) ?>" class="btn btn-default btn-xs">Detalle</a>
                                 </td>
                             </tr>
 

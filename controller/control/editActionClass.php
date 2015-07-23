@@ -17,7 +17,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(controlTableClass::ID)) {
+      if (request::getInstance()->hasGet(controlTableClass::ID)) {
         $fields = array(
             controlTableClass::ID,
             controlTableClass::PESO_CERDO,
@@ -26,7 +26,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
 
         $where = array(
-            controlTableClass::ID => request::getInstance()->getRequest(controlTableClass::ID)
+            controlTableClass::ID => request::getInstance()->getGet(controlTableClass::ID)
         );
         $this->objControl = controlTableClass::getAll($fields, true, null, null, null, null, $where);
         

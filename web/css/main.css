@@ -40,13 +40,14 @@ body {
 }
 
 .boton1{
-    background: -webkit-linear-gradient(top,#ffccff,#ccffff);
-    background: -webkit-linear-gradient(top,#ffccff,#ccffff);
+    background: -webkit-linear-gradient(top,#F8F8FF,#ccffff);
+    background: -webkit-linear-gradient(top,#F8F8FF,#ccffff);
     width: 98%;
 }
 
 .imagen{
     width: 100%;
+    margin-top:0px;
     
 
 }

@@ -38,7 +38,7 @@ config::setUrlBase('http://www.porcicolatapasco.com/');
 
 //config::setUrlBase('http://localhost/proyectPorcicola-leyMar/web/');
 
-config::setScope('dev'); // dev//prod
+config::setScope('prod'); // dev//prod
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');

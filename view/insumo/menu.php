@@ -18,7 +18,7 @@ use mvc\session\sessionClass as session ?>
 <div class="container container-fluid imagen"  >      
     <div class="row">
         <div class="col-lg-12 " id="prueba">          
-            <img class="img-responsive" src="<?php echo routing::getInstance()->getUrlImg('prueba.jpg') ?>" alt="test">
+            <img class="img-responsive" src="<?php echo routing::getInstance()->getUrlImg('fondopasto.jpg') ?>" alt="test">
         </div>
     </div>
 </div>    

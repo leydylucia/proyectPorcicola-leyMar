@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\validator\tipoVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
-//use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log;/*linea de la bitacora*/
 /**
  * Description of ejemploClass
  *@category modulo sacrificio venta
@@ -38,7 +38,7 @@ class createTipovActionClass extends controllerClass implements controllerAction
                 tipovTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-               // log::register('insertar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
+                log::register('insertar', tipovTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'indexTipoV');

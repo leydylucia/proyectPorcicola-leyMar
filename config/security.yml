@@ -210,6 +210,202 @@ empleado:
     security: true
   reporte:
     security: true    
+    
+paginaPrincipal:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+      
+sacrificioVenta:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true 
+  indexTipov:
+    security: true
+    credentials:
+      - [admin, cajero]
+  insertTipov:
+  security: true
+  createTipov:
+    security: true 
+  editTipov:
+    security: true 
+  updateTipov:
+    security: true
+  deleteTipov:
+    security: true 
+  deleteSelectTipov:
+    security: true
+  verTipov:
+    security: true
+  reportTipov:
+    security: true    
+    
+parto:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true  
+    
+animal:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true   
+    
+lote:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true  
+    
+vacunacion:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true   
+    
+salidaBodega:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true   
+    
+detalleSalida:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+  edit:
+    security: true 
+  update:
+    security: true
+  delete:
+    security: true 
+  deleteSelect:
+    security: true
+  ver:
+    security: true
+  reporte:
+    security: true          
+      
+         
         
 
   
