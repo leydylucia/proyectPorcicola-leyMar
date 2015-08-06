@@ -29,6 +29,7 @@ class verDetalleSalidaActionClass extends controllerClass implements controllerA
                 detalleSalidaTableClass::ID => request::getInstance()->getRequest(detalleSalidaTableClass::ID)
             );
             $this->objDetalleSalida = detalleSalidaTableClass::getAll($fields, true, null, null, null, nULL, $where);
+            $this->detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
             $this->defineView('verDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

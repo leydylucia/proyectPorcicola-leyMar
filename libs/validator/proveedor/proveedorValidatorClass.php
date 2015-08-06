@@ -141,7 +141,13 @@ namespace mvc\validator {
 //        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
 //      }   
           
-
+      //-------------------------------campo ciudad-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::CIUDAD_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCiudad', true);
+        session::getInstance()->setError('La Ciudad del proveedor es requerido', 'inputCiudad');
+        }
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
@@ -278,7 +284,14 @@ namespace mvc\validator {
 //        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
 //      }   
           
-
+       //-------------------------------campo ciudad-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::CIUDAD_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCiudad', true);
+        session::getInstance()->setError('La Ciudad del proveedor es requerido', 'inputCiudad');
+        }
+        
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');

@@ -41,7 +41,12 @@ use mvc\view\viewClass as view ?>
         
         
                             
-         
+      <?php if (session::getInstance()->hasError('inputCantidad')): ?><!--inicio de validaciones-->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?>     
     
 
     <div class="form-group <?php echo (session::getInstance()->hasFlash(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::CANTIDAD, true)) === true) ? 'has-error has-feedback' : '' ?>">
@@ -68,14 +73,19 @@ use mvc\view\viewClass as view ?>
         </div>-->
     </div>
 
-
+<?php if (session::getInstance()->hasError('inputInsumo')): ?><!--inicio de validaciones-->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputInsumo') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?>  
 
    <div class="form-group">
         <label for="<?php echo detallesalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('provisioner') ?>:</label>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, TRUE); ?>">
-                <option>Seleccione insumo</option>
+                 <option value="<?php echo (session::getInstance()->hasFlash('inputInsumo') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$insumoId_p  : '') ?>">Seleccione insumo</option>
                 <?php foreach ($objInsumo as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objDetalleSalida[0]->$insumoId_p) === true and $objDetalleSalida[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><!--validacion para traer dato  de foranea en editar poner tambien un null enel option value=""-->
                         <?php echo $insumo->$descripcion ?><!--validacion para traer dato  de foranea en editar-->

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+//use hook\log\logHookClass as log;
 
 /**
  * Description of deleteCiudadActionClass
@@ -42,6 +43,9 @@ class deleteProvActionClass extends controllerClass implements controllerActionI
         );
         $this->defineView('deleteProv', 'proveedor',session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('Registro Exitoso');
+        
+//        log::register('eliminar', proveedorTableClass::getNameTable()); 
+        
       } else {
         routing::getInstance()->redirect('proveedor', 'index');
       }

@@ -39,11 +39,11 @@ class updateCiudadActionClass extends controllerClass implements controllerActio
         );
         ciudadTableClass::update($ids, $data);
        
-       session::getInstance()->setSuccess('Registro se modifico con exito Exitoso');
+       session::getInstance()->setSuccess('Registro Exitoso');
 
         routing::getInstance()->redirect('proveedor', 'editCiudad');
-      } else{
-          routing::getInstance()->redirect('proveedor', 'editCiudad');
+      } else {
+        routing::getInstance()->redirect('proveedor', 'editCiudad');
       }
     } catch (PDOException $exc) {
       routing::getInstance()->redirect('proveedor', 'editCiudad');

@@ -21,18 +21,32 @@ default:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
     security: true
+    credentials:
+      - [admin, usuario]
     
 insumo:
   indexInsumo:
@@ -57,10 +71,16 @@ insumo:
       - [admin, usuario]
   deleteInsumo:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelectInsumo:
     security: true
+    credentials:
+      - [admin, usuario]
   verInsumo:
     security: true
+    credentials:
+      - [admin, usuario]
   reportInsumo:
     security: true    
     credentials:
@@ -87,10 +107,16 @@ insumo:
       - [admin, usuario]
   deleteTipoin:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelectTipoin:
     security: true
+    credentials:
+      - [admin, usuario]
   verTipoin:
     security: true
+    credentials:
+      - [admin, usuario]
   reporttipoIn:
     security: true    
     credentials:
@@ -104,40 +130,72 @@ proveedor:
       - [admin, cajero]
   insertProv:
     security: true
+    credentials:
+      - [admin, usuario]
   createProv:
     security: true 
+    credentials:
+      - [admin, usuario]
   editProv:
     security: true 
+    credentials:
+      - [admin, usuario]
   updateProv:
     security: true
+    credentials:
+      - [admin, usuario]
   deleteProv:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelectProv:
     security: true
+    credentials:
+      - [admin, usuario]
   verProv:
     security: true
+    credentials:
+      - [admin, usuario]
   reporteProv:
     security: true
+    credentials:
+      - [admin, usuario]
   indexCiudad:
     security: true
     credentials:
       - [admin, cajero]
   insertCiudad:
     security: true
+    credentials:
+      - [admin, usuario]
   createCiudad:
     security: true 
+    credentials:
+      - [admin, usuario]
   editCiudad:
     security: true 
+    credentials:
+      - [admin, usuario]
   updateCiudad:
     security: true
+    credentials:
+      - [admin, usuario]
   deleteCiudad:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelectCiudad:
     security: true
+    credentials:
+      - [admin, usuario]
   verCiudad:
     security: true
+    credentials:
+      - [admin, usuario]
   reporteCiudad:
     security: true
+    credentials:
+      - [admin, usuario]
 
 usuarioCredencial:
   indexUsuarioCredencial:
@@ -150,18 +208,32 @@ usuarioCredencial:
       - [admin, usuario]
   createUsuarioCredencial:
     security: true 
+    credentials:
+      - [admin, usuario]
   editUsuarioCredencial:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   deleteUsuarioCredencial:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelectUsuarioCredencial:
     security: true
+    credentials:
+      - [admin, usuario]
   verUsuarioCredencial:
     security: true
+    credentials:
+      - [admin, usuario]
   reporteUsuarioCredencial:
-    security: true      
+    security: true  
+    credentials:
+      - [admin, usuario]
     
 credencial:
   index:
@@ -174,18 +246,32 @@ credencial:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
-    security: true 
+    security: true
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true    
+    security: true
+    credentials:
+      - [admin, usuario]
  
 empleado:
   index:
@@ -198,18 +284,32 @@ empleado:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true    
+    security: true  
+    credentials:
+      - [admin, usuario]
     
 paginaPrincipal:
   index:
@@ -228,38 +328,68 @@ sacrificioVenta:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
     security: true 
+    credentials:
+      - [admin, usuario]
   indexTipov:
     security: true
     credentials:
       - [admin, cajero]
   insertTipov:
-  security: true
+    security: true
+    credentials:
+      - [admin, usuario]
   createTipov:
     security: true 
+    credentials:
+      - [admin, usuario]
   editTipov:
     security: true 
+    credentials:
+      - [admin, usuario]
   updateTipov:
     security: true
+    credentials:
+      - [admin, usuario]
   deleteTipov:
-    security: true 
+    security: true
+    credentials:
+      - [admin, usuario]
   deleteSelectTipov:
     security: true
+    credentials:
+      - [admin, usuario]
   verTipov:
     security: true
+    credentials:
+      - [admin, usuario]
   reportTipov:
-    security: true    
+    security: true  
+    credentials:
+      - [admin, usuario]
     
 parto:
   index:
@@ -272,18 +402,32 @@ parto:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true  
+    security: true
+    credentials:
+      - [admin, usuario]
     
 animal:
   index:
@@ -296,18 +440,32 @@ animal:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true   
+    security: true 
+    credentials:
+      - [admin, usuario]
     
 lote:
   index:
@@ -320,18 +478,32 @@ lote:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true  
+    security: true 
+    credentials:
+      - [admin, usuario]
     
 vacunacion:
   index:
@@ -343,19 +515,33 @@ vacunacion:
     credentials:
       - [admin, usuario]
   create:
-    security: true 
+    security: true
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true   
+    security: true  
+    credentials:
+      - [admin, usuario]
     
 salidaBodega:
   index:
@@ -368,18 +554,32 @@ salidaBodega:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
+    credentials:
+      - [admin, usuario]
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true   
+    security: true 
+    credentials:
+      - [admin, usuario]
     
 detalleSalida:
   index:
@@ -392,18 +592,144 @@ detalleSalida:
       - [admin, usuario]
   create:
     security: true 
+    credentials:
+      - [admin, usuario]
   edit:
     security: true 
   update:
     security: true
+    credentials:
+      - [admin, usuario]
   delete:
     security: true 
+    credentials:
+      - [admin, usuario]
   deleteSelect:
     security: true
+    credentials:
+      - [admin, usuario]
   ver:
     security: true
+    credentials:
+      - [admin, usuario]
   reporte:
-    security: true          
+    security: true
+    credentials:
+      - [admin, usuario]
+    
+entrada:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  edit:
+    security: true
+    credentials:
+      - [admin, usuario]
+  update:
+    security: true
+    credentials:
+      - [admin, usuario]
+  delete:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin, usuario]
+  ver:
+    security: true
+    credentials:
+      - [admin, usuario]
+  reporte:
+    security: true  
+    credentials:
+      - [admin, usuario]
+    
+detalle:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  edit:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  update:
+    security: true
+    credentials:
+      - [admin, usuario]
+  delete:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin, usuario]
+  ver:
+    security: true
+    credentials:
+      - [admin, usuario]
+  reporte:
+    security: true 
+    credentials:
+      - [admin, usuario]
+    
+control:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  edit:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  update:
+    security: true
+    credentials:
+      - [admin, usuario]
+  delete:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin, usuario]
+  ver:
+    security: true
+    credentials:
+      - [admin, usuario]
+  reporte:
+    security: true  
+    credentials:
+      - [admin, usuario]
       
          
         

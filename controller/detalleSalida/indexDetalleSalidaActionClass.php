@@ -28,7 +28,8 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
 
 
             /* filtros */
-            $where = null; /* where se encuentra nulo para entrar en la sentencia getall */
+            //$where = null; /* where se encuentra nulo para entrar en la sentencia getall */
+            $where[detalleSalidaTableClass::SALIDA_BODEGA_ID] = request::getInstance()->getGet('detalle_salida_salida_bodega_id');
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter'); /* $filter si se encuentra en la vista?? */
 
@@ -59,12 +60,16 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
                 $where = session::getInstance()->getAttribute('defaultIndexFilters');
             }
 
+//            echo '<pre>';
+//            print_r($where);esto es para imprimir filtros
+//            echo '</pre>';
+
             /*             * @var $fields trae los campos de model
              * @var $orderBy ordena con el tipo de datos seleccionado
              * @var page paginado
              */
 
-      
+
             $fields = array(
                 detalleSalidaTableClass::ID,
                 detalleSalidaTableClass::CANTIDAD,
@@ -88,14 +93,25 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * * @var $where => para sostener el filtro con el paginado  */
             $this->cntPages = detalleSalidaTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
-
-            $where = null;
+//            echo '<pre>';
+//            print_r($where);esto es para imprimir filtros
+//            echo '</pre>';
+//            
+//            $where = null;
+//            if (request::getInstance()->hasGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) {
+//                $this->detalleSalidaId = $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+//                $where = array(
+//                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $detalleSalidaId
+//                );
+//            }
+            $where2 = null;
             if (request::getInstance()->hasGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) {
-                $this->detalleSalidaId = $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
-                $where = array(
-                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $detalleSalidaId
+                //$this->objSalidaBodega = $objSalidaBodega = request::getInstance()->getGet(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true));
+                $where2 = array(
+                    salidaBodegaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))
                 );
             }
+            
             /**
              *  
              * @var $where => para filtros
@@ -110,8 +126,15 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * @var $this->objInsumo para enviar los datos a la vista      
              *
              * */
+//            echo '<pre>';esto es para imprimir filtros
+//            print_r($where);
+//            echo '</pre>';
+
             $this->objDetalleSalida = detalleSalidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
+//            echo '<pre>';
+//            print_r($this->objDetalleSalida);esto es para imprimir filtros
+//            echo '</pre>';
             //estos campo son para llamar las foraneas
             $fields = array(/* foranea salidaBodega */
                 salidaBodegaTableClass::ID,
@@ -121,7 +144,7 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
             $orderBy = array(
                 salidaBodegaTableClass::ID,
             );
-            $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC');
+            $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where2);
 
             $fieldsInsumo = array(/* foranea insumo */
                 insumoTableClass::ID,

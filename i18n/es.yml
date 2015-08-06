@@ -52,6 +52,7 @@ dictionary:
     off:                          de
     new_supplier:                 Nuevo Proveedor 
     secure the Eliminate register:  Seguro de eliminar registro
+    Reg.supplier:                 Reg.proveedor
     #insumo#
     desc_prod:                    Descripcion insumo
     price:                        Precio
@@ -89,6 +90,7 @@ dictionary:
     provisioner:               proveedor
     New Product:                   Nuevo Producto
     Edit Product:                  Editar Producto
+    Reg.Product:               Reg.Insumo
     ###########
     date_creation:             fecha de creacion
     #mensajes en ajax#
@@ -141,7 +143,7 @@ dictionary:
     pig:                      cerdo
     New_Sacrifice:            Nuevo Sacrificio
     Edit_Sacrifice:           Editar Sacrificio
-    Sacrifice_Sale:           Sacrificio Venta
+    Sacrifice_Pig:           Sacrificio Cerdo
     sale:                     Valor
     unit_measure:             Unidad Medida
     
@@ -217,6 +219,7 @@ dictionary:
     Hold_Out:                Salida Bodega 
     New_Hold_Out:            Nueva Salida Bodega
     Edit_Hold_Out:           Editar Salida Bodega
+    cellar:                  Bodega
 
     #detalle Salida bodega#
     Output_detail_winery:    Detalle Salida Bodega

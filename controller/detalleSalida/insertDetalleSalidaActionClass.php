@@ -44,6 +44,7 @@ class insertDetalleSalidaActionClass extends controllerClass implements controll
 
             $this->id_salida_bodega =  request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));/*manda el id a la vista*/
             $this->defineView('insertDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput());
+            
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

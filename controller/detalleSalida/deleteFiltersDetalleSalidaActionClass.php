@@ -22,7 +22,12 @@ class deleteFiltersDetalleSalidaActionClass extends controllerClass implements c
             if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
                 session::getInstance()->deleteAttribute('defaultIndexFilters');
             }
-            routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
+            
+            routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true)
+                => request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))
+//               array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true)
+//                => request::getInstance()->getGet(detalleSalidaTableClass::SALIDA_BODEGA_ID)
+            ));
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

@@ -10,7 +10,6 @@
 
 <div class="container container-fluid">
 
-     <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida') ?>"><?php echo i18n::__('return') ?> </a></button>
     
     </div>
 

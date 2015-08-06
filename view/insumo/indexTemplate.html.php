@@ -12,6 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 use mvc\config\configClass as confing ?>
 <?php
 use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 
 <?php $id = insumoTableClass::ID ?>
@@ -124,12 +125,21 @@ use mvc\request\requestClass as request ?>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>">
+
+                        <?php if (session::getInstance()->hasError('inputDescInsumo')): ?><!--inicio de validaciones-->
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescInsumo') ?><!--esta linea para actualizar demas formularios-->
+                            </div>
+                        <?php endif ?> 
+
                         <div class="form-group">
                             <label for="filterDesc_insumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[desc_insumo]" name="filter[insumo]" placeholder="desc_insumo">
+                                <input type="text" class="form-control" id="filter[desc_insumo]" name="<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>" placeholder="desc_insumo">
                             </div>
                         </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+
                         <div class="form-group">
                             <label for="filterprecio" class="col-sm-2 control-label"><?php echo i18n::__('prise') ?></label>
                             <div class="col-sm-10">
@@ -144,9 +154,9 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Tipo_insumo]">
                                     <option value=""><?php echo i18n::__('type_product') ?></option>
-                                     <?php foreach ($objTipoin as $ciudad): ?>
+                                    <?php foreach ($objTipoin as $ciudad): ?>
                                         <option value="<?php echo $ciudad->$idTipoInsumo ?>"><?php echo $ciudad->$desTipoInsumo ?></option>
-                                     <?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -171,16 +181,16 @@ use mvc\request\requestClass as request ?>
                                 <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
                             </div>
                         </div> 
-                        
-                        
-                         <div class="form-group">
+
+
+                        <div class="form-group">
                             <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Proveedor]">
                                     <option value=""><?php echo i18n::__('provisioner') ?></option>
-                                     <?php foreach ($objProv as $proveedor): ?>
+                                    <?php foreach ($objProv as $proveedor): ?>
                                         <option value="<?php echo $proveedor->$idproveedor ?>"><?php echo $proveedor->$nomproveedor ?></option>
-                                     <?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -211,7 +221,7 @@ use mvc\request\requestClass as request ?>
     </div>
     <!--fin de modal filtro-->
 
-<?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
+    <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
 
 
     <div class="container">
@@ -234,7 +244,7 @@ use mvc\request\requestClass as request ?>
                         </tr>        
                     </thead>
                     <tbody>
-<?php foreach ($objInsumo as $insumo): ?> 
+                        <?php foreach ($objInsumo as $insumo): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $insumo->$id ?>"></td>
                                 <td><?php echo $insumo->$descInsumo ?></td>
@@ -262,7 +272,7 @@ use mvc\request\requestClass as request ?>
                                     </div>
                                     <div class="modal-body">
                                         <!--pára que imprima el id en cada ventana-->
-    <?php i18n::__('confirmDelete') ?> <?php echo $insumo->$descInsumo ?>
+                                        <?php i18n::__('confirmDelete') ?> <?php echo $insumo->$descInsumo ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -271,7 +281,7 @@ use mvc\request\requestClass as request ?>
                                 </div>
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
 
 
@@ -281,10 +291,10 @@ use mvc\request\requestClass as request ?>
             <!--paginado-->
             <div class="text-right">
                 página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+                    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+                    <?php endfor; ?>
 
 
 

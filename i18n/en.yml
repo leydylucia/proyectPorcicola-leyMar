@@ -52,7 +52,7 @@ dictionary:
     off:                          off
     new_supplier:                 New supplier
     secure the Eliminate register:  Secure the Eliminate Register
-
+    Reg.supplier:                  Reg.supplier
     #insumo#
     desc_prod:                    Description Product
     price:                        Price
@@ -88,6 +88,7 @@ dictionary:
     delete filter:             Delete Filter
     New Product:                New Product
     Edit Product:                Edit Product
+    Reg.Product:               Reg.Product
 #tipoInsumo#
     describe_typeProduct:      Descripcion Tipo 
     New_typeProduct:           New typeProduct             
@@ -121,7 +122,7 @@ dictionary:
     #sacrificio#
     sacrifice:                sacrifice
     type_sale:                type Sale
-    Sacrifice_Sale:           Sacrifice Sale
+    Sacrifice_Pig:           Sacrifice Pig
     sale:                     Sale
     pig:                      Pig
     New_Sacrifice:            New Sacrifice
@@ -199,7 +200,9 @@ dictionary:
     #salida bodega#
     Hold_Out:                Hold Out
     New_Hold_Out:            New Hold Out
-    Edit_Hold_Out:            Edit Hold Out
+    Edit_Hold_Out:           Edit Hold Out
+    cellar:                  cellar             
+
     
     #detalle Salida bodega#
     Output_detail_winery:    Output detail winery

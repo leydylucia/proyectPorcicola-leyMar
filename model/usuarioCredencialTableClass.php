@@ -24,6 +24,7 @@ class usuarioCredencialTableClass extends usuarioCredencialBaseTableClass {
                     }
                 }
             }
+         
 
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();

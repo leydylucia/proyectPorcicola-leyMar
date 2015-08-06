@@ -8,26 +8,37 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-/*
- * DESCRIPCION DE LA CLASE
- * @autor Alexandra Marcela Florez
+/**
+  Description of reportInsumoActionClass esta clase sirve para realizar los reportes
+ * ** @category insumo
+ * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
+ * @var $filter para hacer filtros,$where
  */
-
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
         try {
-            /* filtros */
+            /* reporte con filtros */
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-                 if (isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== '') {
-                    $where[detalleEntradaTableClass::CANTIDAD] = $filter['cantidad'];
+                if (isset($filter['Cantidad']) and $filter['Cantidad'] !== null and $filter['Cantidad'] !== '') {
+                    $where[detalleEntradaTableClass::CANTIDAD] = $filter['Cantidad'];
                 }
-                
-
-                
+                if (isset($filter['Valor']) and $filter['Valor'] !== null and $filter['Valor'] !== '') {
+                    $where[detalleEntradaTableClass::VALOR] = $filter['Valor'];
+                }
+                if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
+                    $where[detalleEntradaTableClass::INSUMO_ID] = $filter['Insumo'];
+                }
+               
+                if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
+                    $where[proveedorTableClass::CREATED_AT] = array(
+                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
+                        date(config::getFormatTimestamp(), strtotime($filter['Date2'])),
+                    );
+                }
                 /* para mantener filtro con paginado */
                 session::getInstance()->setAttribute('defaultIndexFilters', $where);
             } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
@@ -41,19 +52,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 detalleEntradaTableClass::CANTIDAD,
                 detalleEntradaTableClass::VALOR,
                 detalleEntradaTableClass::ENTRADA_BODEGA_ID,
-                detalleEntradaTableClass::INSUMO_ID
+                detalleEntradaTableClass::INSUMO_ID,
             );
             $orderBy = array(
-                detalleEntradaTableClass::CANTIDAD
+                detalleEntradaTableClass::CANTIDAD,
             );
 
 
 
-            /*             * para mantener filtro con paginado,@var $this para enviar al cntPages"contador de pagina" a la vista 
-             * *getTotalPages => se encuentra en insumoTables class
-             * * @var $where => para sostener el filtro con el paginado  */
-
-            // $page = request::getInstance()->getGet('page');
 
 
             /** @var $where => para filtros
@@ -64,7 +70,26 @@ class reportActionClass extends controllerClass implements controllerActionInter
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
-            $this->objDetalle = detalleEntradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+            $this->objDetalle =detalleEntradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+            
+            //estos campo son para llamar las foraneas
+                $fields = array(/* foranea salidaBodega */
+                    entradaTableClass::ID,
+                );
+                $orderBy = array(
+                    entradaTableClass::ID,
+                );
+                $this->objEntrada = entradaTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+                $fieldsInsumo = array(/* foranea insumo */
+                insumoTableClass::ID,
+                insumoTableClass::DESC_INSUMO
+                );
+                $orderByInsumo = array(
+                insumoTableClass::DESC_INSUMO
+                );
+                $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+
 
             $this->defineView('index', 'detalle', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

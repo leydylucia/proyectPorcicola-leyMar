@@ -25,13 +25,19 @@
 
     <?php view::includeHandlerMessage() ?>
 
-    
+     <?php if (session::getInstance()->hasError('inputEmpleado')): ?><!--inicio de validaciones-->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputEmpleado') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?>
+     
     <div class="form-group">
       <label for="#" class="control-label col-xs-3"><?php echo i18n::__('employee') ?>:</label>
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, TRUE) ?>" name="<?php echo entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, TRUE); ?>">
-          <option>Seleccione Empleado</option>
+          <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$empleado_id_e : '') ?>">Seleccione empleado</option>
           <?php foreach ($objEmpleado as $empleado): ?>
           <option <?php echo (isset($objEntrada[0]->$empleado_id_e) === true and $objEntrada[0]->$empleado_id_e == $empleado->$empleado_id) ? 'selected' : '' ?> value="<?php echo $empleado->$empleado_id ?>">
           <?php  echo $empleado->$nombre_em ?>
@@ -42,13 +48,18 @@
     </div>
 
     
-    
+    <?php if (session::getInstance()->hasError('inputProveedor')): ?><!--inicio de validaciones-->
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputProveedor') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?>
     <div class="form-group">
       <label for="#" class="control-label col-xs-3"><?php echo i18n::__('supplier') ?>:</label>
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, TRUE) ?>" name="<?php echo entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, TRUE); ?>">
-          <option>Seleccione Proveedor</option>
+          <option value="<?php echo (session::getInstance()->hasFlash('inputProveedor') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$proveedor_id_em : '') ?>">Seleccione empleado</option>
           <?php foreach ($objProveedor as $proveedor): ?>
           <option <?php echo (isset($objEntrada[0]->$proveedor_id_em) === true and $objEntrada[0]->$proveedor_id_em == $proveedor->$proveedor_id) ? 'selected' : '' ?> value="<?php echo $proveedor->$proveedor_id ?>">
           <?php  echo $proveedor->$nombre ?>
@@ -70,7 +81,7 @@
 
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objEntrada)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>"><?php echo i18n::__('return') ?> </a>
+    <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs"href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>"><?php echo i18n::__('return') ?> </a></button>
 </form>
 </div>
 

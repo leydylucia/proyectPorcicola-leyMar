@@ -36,47 +36,47 @@ use mvc\request\requestClass as request ?>
 <div class="container container-fluid">
     <div style="margin-bottom: 10px; margin-top: 30px">
 
-        
-        
-        
+
+
+
         <table class="table table-bordered table-striped table-condensed mitabla">
-                    <thead>
-                        <tr class="active">
-                            <th><input type="checkbox" id="chkAll"></th>
-                            <th><?php echo i18n::__('empleyeed') ?></th>
-                            <th><?php echo i18n::__('date') ?></th>
-                            
-
-                        </tr>        
-                    </thead>
-                    <tbody>
-<?php foreach ($objSalidaBodega as $salidaBodega): ?> 
-                            <tr class="text-info bg-info">
-                                <td><input type="checkbox" name="chk[]" value="<?php echo $salidaBodega->$id ?>"></td>
-                              
-                                <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) ?></td>
-                                <td><?php echo date('d-m-Y h:i:s a', strtotime($salidaBodega->$fecha)) ?></td>
-                                
-                            </tr>
-
-<?php endforeach ?>
-                   
+            <thead>
+                <tr class="active">
+                    <th><input type="checkbox" id="chkAll"></th>
+                    <th><?php echo i18n::__('empleyeed') ?></th>
+                    <th><?php echo i18n::__('date') ?></th>
 
 
+                </tr>        
+            </thead>
+            <tbody>
+                <?php foreach ($objSalidaBodega as $salidaBodega): ?> 
+                    <tr class="text-info bg-info">
+                        <td><input type="checkbox" name="chk[]" value="<?php echo $salidaBodega->$id ?>"></td>
 
-                </table>  
-        
-        
+                        <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) ?></td>
+                        <td><?php echo date('d-m-Y h:i:s a', strtotime($salidaBodega->$fecha)) ?></td>
 
-        <!--<a href="<?php // echo routing::getInstance()->getUrlWeb('detalleSalida', 'insertDetalleSalida')  ?>" class="btn btn-success btn-xs"><?php // echo i18n::__('new')  ?></a>-->
+                    </tr>
+
+                <?php endforeach ?>
+
+
+
+
+        </table>  
+
+
+
+        <!--<a href="<?php // echo routing::getInstance()->getUrlWeb('detalleSalida', 'insertDetalleSalida')   ?>" class="btn btn-success btn-xs"><?php // echo i18n::__('new')   ?></a>-->
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'insertDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
-        <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
+        <!--<a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>-->
 
         <button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php echo i18n::__('filter') ?></button>
 
 
         <!--filtros-->
-        <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'deleteFiltersDetalleSalida') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'deleteFiltersDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
 
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'reportDetalleSalida') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
@@ -150,6 +150,13 @@ use mvc\request\requestClass as request ?>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>"><!--aqui poner array para sostener filtro-->
+                         
+                        <?php if (isset($objDetalleSalida) == true): ?>
+                            <!--<input name="<?php // echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" value="<?php // echo $objDetalleSalida[0]->$id ?>" type="hidden">-->
+                            <input type="hidden" value="<?php echo $detalleSalidaId ?>" name="filer[<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, TRUE) ?>]"><!--tipo oculto para foranea-->
+                        <?php endif; ?>
+
+
                         <div class="form-group">
                             <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
@@ -158,17 +165,17 @@ use mvc\request\requestClass as request ?>
                         </div> 
 
 
-                        <div class="form-group">
-                            <label for="filterSalidaBodega" class="col-sm-2 control-label"><?php echo i18n::__('Hold_Out') ?></label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="filterSalidaBodega" name="filter[SalidaBodega]">
-                                    <option value=""><?php echo i18n::__('Hold_Out') ?></option>
-                                    <?php foreach ($objSalidaBodega as $salida): ?>
-                                        <option value="<?php echo $salida->$idSalida_bodega ?>"><?php echo $salida->$idSalida_bodega ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
+                        <!--                        <div class="form-group">
+                                                    <label for="filterSalidaBodega" class="col-sm-2 control-label"><?php echo i18n::__('Hold_Out') ?></label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="filterSalidaBodega" name="filter[SalidaBodega]">
+                                                            <option value=""><?php // echo i18n::__('Hold_Out') ?></option>
+                        <?php // foreach ($objSalidaBodega as $salida): ?>
+                                                                    <option value="<?php // echo $salida->$idSalida_bodega ?>"><?php // echo $salida->$idSalida_bodega ?></option>
+                        <?php // endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
 
                         <div class="form-group">
                             <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
@@ -216,7 +223,7 @@ use mvc\request\requestClass as request ?>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('quantity') ?></th>
-                            <th><?php echo i18n::__('Hold_Out') ?></th>
+<!--                            <th><?php echo i18n::__('Hold_Out') ?></th>-->
                             <th><?php echo i18n::__('describe_product') ?></th>  
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
@@ -228,11 +235,11 @@ use mvc\request\requestClass as request ?>
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalleSalida->$id ?>"></td>
                                 <td><?php echo $detalleSalida->$cantidad ?></td>
-                                <td><?php echo salidaBodegaTableClass::getNameSalidaBodega($detalleSalida->$salida_bodega) ?></td>
+                                <!--<td><?php // echo salidaBodegaTableClass::getNameSalidaBodega($detalleSalida->$salida_bodega) ?></td>-->
                                 <td><?php echo insumoTableClass::getNameInsumo($detalleSalida->$insumo) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($detalleSalida->$fecha)) ?></td>
                                 <td>
-                                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'verDetalleSalida', array(detalleSalidaTableClass::ID => $detalleSalida->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
+                                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'verDetalleSalida', array(detalleSalidaTableClass::ID => $detalleSalida->$id, detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'editDetalleSalida', array(detalleSalidaTableClass::ID => $detalleSalida->$id, detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
 
                                     <!--eliminado individual con ajax-->
@@ -268,7 +275,7 @@ use mvc\request\requestClass as request ?>
             </form>
             <!--paginado-->
             <div class="text-right">
-                página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida') ?>')">
+                página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>')">
                     <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 

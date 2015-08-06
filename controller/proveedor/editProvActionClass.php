@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 
 /**
@@ -55,6 +56,9 @@ class editProvActionClass extends controllerClass implements controllerActionInt
         //fin
         $this->defineView('edit', 'proveedor', session::getInstance()->getFormatOutput());
         //session::getInstance()->setSuccess('El registro se modifico exitosamente');
+      
+        log::register('editar', proveedorTableClass::getNameTable()); 
+        
       } else {
         routing::getInstance()->redirect('proveedor', 'indexProv');
       }

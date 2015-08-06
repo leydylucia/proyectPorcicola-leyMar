@@ -71,13 +71,21 @@ use mvc\view\viewClass as view ?>
         </div>
     </div>
 
+    
+<?php if(session::getInstance()->hasError('inputInsumo')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputInsumo') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?>
+        
 
     <div class="form-group">
         <label for="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('product') ?>:</label>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, TRUE) ?>" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, TRUE); ?>">
-                <option>Seleccione insumo</option>
+            <option value="<?php echo (session::getInstance()->hasFlash('inputInsumo') or request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, true))) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, true)) : ((isset($objVacunacion[0])) ? $objVacunacion[0]->$insumoId_i : '') ?>">Seleccione insumo</option>
 <?php foreach ($objInsumo as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objVacunacion[0]->$insumoId_i) === true and $objVacunacion[0]->$insumoId_i == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><!--validacion para traer dato  de foranea en editar-->
     <?php echo $insumo->$desc_insumo ?><!--validacion para traer dato  de foranea en editar-->
@@ -88,13 +96,21 @@ use mvc\view\viewClass as view ?>
     </div>
 
 
+    
+<?php if(session::getInstance()->hasError('inputCerdo')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCerdo') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?>
+            
 
 <div class="form-group">
         <label for="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE) ?>" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE); ?>">
-                <option>Seleccione Cerdo</option>
+               <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true)) : ((isset($objVacunacion[0])) ? $objVacunacion[0]->$idCerdo_c : '') ?>">Seleccione cerdo</option>
 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objVacunacion[0]->$idCerdo_c) === true and $objVacunacion[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
     <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->

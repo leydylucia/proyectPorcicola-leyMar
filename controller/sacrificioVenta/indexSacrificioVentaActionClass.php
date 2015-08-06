@@ -5,6 +5,7 @@ use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
+use mvc\validator\sacrificioVentaValidatorClass as validator;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
@@ -27,15 +28,28 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
                 if (isset($filter['valor']) and $filter['valor'] !== null and $filter['valor'] !== '') {
                     $where[sacrificiovTableClass::VALOR] = $filter['valor'];
                 }
-                
-                if (isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== '') {
-                    $where[sacrificiovTableClass::CANTIDAD] = $filter['cantidad'];
+
+                if (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true)) and empty(mvc\request\requestClass::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true))) === false) {
+
+                    if (request::getInstance()->isMethod('POST')) {
+                        $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
+
+                        validator::validateFiltroCantidad();
+                        if (isset($cantidad) and $cantidad !== null and $cantidad !== '') {
+                            $where[sacrificiovTableClass::CANTIDAD] = $cantidad;
+                        }
+                    }
                 }
-                
+
+
+//                if (isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== '') {
+//                    $where[sacrificiovTableClass::CANTIDAD] = $filter['cantidad'];
+//                }
+
                 if (isset($filter['Tipo_venta']) and $filter['Tipo_venta'] !== null and $filter['Tipo_venta'] !== '') {
                     $where[sacrificiovTableClass::TIPO_VENTA_ID] = $filter['Tipo_venta'];
                 }
-                 if (isset($filter['Cerdo']) and $filter['Cerdo'] !== null and $filter['Cerdo'] !== '') {
+                if (isset($filter['Cerdo']) and $filter['Cerdo'] !== null and $filter['Cerdo'] !== '') {
                     $where[sacrificiovTableClass::ID_CERDO] = $filter['Cerdo'];
                 }
 
@@ -111,11 +125,12 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 
-
+            
             $this->defineView('index', 'sacrificioVenta', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');
+//            routing::getInstance()->redirect('sacrificioVenta','index');
         }
     }
 

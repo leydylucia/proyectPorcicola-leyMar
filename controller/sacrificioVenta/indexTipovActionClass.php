@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\tipoVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -24,6 +25,19 @@ class indexTipovActionClass extends controllerClass implements controllerActionI
                 $filter = request::getInstance()->getPost('filter');
 
                 // aqui validar datos de filtros
+                
+                
+//                if (request::getInstance()->hasPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true)) and empty(mvc\request\requestClass::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true))) === false) {
+//
+//                    if (request::getInstance()->isMethod('POST')) {
+//                        $descripciontipo = request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
+//
+//                        validator::validateFiltroDescTipo();
+//                        if (isset($descripciontipo) and $descripciontipo !== null and $descripciontipo !== '') {
+//                            $where[tipovTableClass::DESC_TIPOV] = $descripciontipo;
+//                        }
+//                    }
+//                }
 
                 if (isset($filter['tipoVenta']) and $filter['tipoVenta'] !== null and $filter['tipoVenta'] !== '') {
                     $where[tipovTableClass::DESC_TIPOV] = $filter['tipoVenta'];

@@ -79,13 +79,19 @@
       </div>
     </div>
 
-    
+    <?php if(session::getInstance()->hasError('inputCiudad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCiudad') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+  
     <div class="form-group">
       <label for="<//?php echo proveedorTableClass::getNameField(proveedorTableClass::ID,true)?>" class="control-label col-xs-3"><?php echo i18n::__('city_id') ?>:</label>
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE) ?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE); ?>">
-          <option>Seleccione ciudad</option>
+          <option value="<?php echo (session::getInstance()->hasFlash('inputCiudad') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$ciudad_id_p : '') ?>"  type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true) ?>" placeholder="<?php echo i18n::__('city') ?>">Seleccione ciudad</option>
           <?php foreach ($objCiudad as $ciudad): ?>
           <option <?php echo (isset($objProveedor[0]->$ciudad_id_p) === true and $objProveedor[0]->$ciudad_id_p == $ciudad->$ciudad_id) ? 'selected' : '' ?> value="<?php echo $ciudad->$ciudad_id ?>">
           <?php  echo $ciudad->$nom_ciudad ?>

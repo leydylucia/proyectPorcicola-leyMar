@@ -42,7 +42,7 @@ use mvc\view\viewClass as view ?>
 
             <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objTipoV)) ? 'update' : 'register')) ?>">
 
-            <a href="http://localhost/proyectPorcicola-leyMar/web/index.php/tipoVenta"><?php echo i18n::__('return') ?> </a>
+            <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('return') ?> </a> </button>
 
 
 

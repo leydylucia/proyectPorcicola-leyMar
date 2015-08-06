@@ -4,6 +4,7 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
+use mvc\validator\entradaValidatorClass as validator;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
@@ -15,36 +16,36 @@ use mvc\i18n\i18nClass as i18n;
  */
 class createEnActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      if (request::getInstance()->isMethod('POST')) {
+    public function execute() {
+        try {
+            if (request::getInstance()->isMethod('POST')) {
 
-        $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
-        $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
-        
-      //  $this->Validate($empleado_id, $proveedor_id); 
-        
-        $data = array(
-            entradaTableClass::EMPLEADO_ID => $empleado_id,
-            entradaTableClass::PROVEEDOR_ID => $proveedor_id
-        );
+                $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
+                $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
 
-        entradaTableClass::insert
-                ($data);
+                //  $this->Validate($empleado_id, $proveedor_id); 
+                validator::validateInsert();
+                $data = array(
+                    entradaTableClass::EMPLEADO_ID => $empleado_id,
+                    entradaTableClass::PROVEEDOR_ID => $proveedor_id
+                );
 
-        session::getInstance()->setSuccess('Registro Exitoso');
+                entradaTableClass::insert
+                        ($data);
 
-        routing::getInstance()->redirect('entrada', 'indexEn');
-      } else {
-        routing::getInstance()->redirect('entrada', 'indexEn');
-      }
-    } catch (PDOException $exc) {
-      routing::getInstance()->redirect('entrada', 'insertEn');
-      session::getInstance()->setFlash('exc', '$exc');
+                session::getInstance()->setSuccess('Registro Exitoso');
+
+                routing::getInstance()->redirect('entrada', 'indexEn');
+            } else {
+                routing::getInstance()->redirect('entrada', 'indexEn');
+            }
+        } catch (PDOException $exc) {
+            routing::getInstance()->redirect('entrada', 'insertEn');
+            session::getInstance()->setFlash('exc', '$exc');
+        }
     }
-  }
 
-  // VALIDACIONES
+    // VALIDACIONES
 //  private function Validate($empleado_id, $proveedor_id) {
 //    $bono = false;
 //    if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
@@ -119,5 +120,4 @@ class createEnActionClass extends controllerClass implements controllerActionInt
 //      routing::getInstance()->forward('proveedor', 'insertProv');
 //    }
 //  }
-
 }

@@ -9,122 +9,62 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ *  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
+ * @category modulo insumo
+ * @author leydy lucia castillo
+ * 
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      if (request::getInstance()->isMethod('POST')) {
+    public function execute() {
+        try {
+            if (request::getInstance()->isMethod('POST')) {
+                /* public function execute inicializa las variables 
+                 * @return $desc_insumo=> descripcion insumo (string)
+                 * @return $precio=> precio (numerico)
+                 * @return $tipoInsumo=> id tipo insumo (bigint)
+                 * @return $fechaFabricacion=> fecha fabricacion(date)
+                 * @return $fechaVencimiento=> fecha vencimiento(date)
+                 * @return $proveedorId =>id del proveedor (bigint)
+                 * todas estos datos se pasa en la varible @var $data
+                 * ** */
 
-        $id = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID, true));
-        $cantidad = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::CANTIDAD, true));
-        $valor = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, true));
-        $entrada_bodega_id = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));
-        $insumo_id = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::INSUMO_ID, true));
-        
+                $id = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ID, true));
+                $cantidad = trim(request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::CANTIDAD, true)));
+                $valor = trim(request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, true)));
+                $id_entrada_bodega = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));
+                $insumo = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::INSUMO_ID, true));
 
-        $ids = array(
-            detalleEntradaTableClass::ID => $id
-        );
+//                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
 
-        $data = array(
-            detalleEntradaTableClass::CANTIDAD => $cantidad,
-            detalleEntradaTableClass::VALOR => $valor,
-            detalleEntradaTableClass::ENTRADA_BODEGA_ID => $entrada_bodega_id,
-            detalleEntradaTableClass::INSUMO_ID => $insumo_id
-        );
 
-        detalleEntradaTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro Exitoso');
+                $ids = array(
+                    detalleEntradaTableClass::ID => $id
+                );
+                /*                 * @var $data recorre los datos de la tabla en model
 
-        routing::getInstance()->redirect('detalle', 'index');
-      } else {
-        routing::getInstance()->redirect('detalle', 'index');
-      }
-    } catch (PDOException $exc) {
-      routing::getInstance()->redirect('detalle', 'update');
-      session::getInstance()->setFlash('exc', '$exc');
+                 */
+                $data = array(
+                    detalleEntradaTableClass::CANTIDAD => $cantidad,
+                    detalleEntradaTableClass::VALOR => $valor,
+                    detalleEntradaTableClass::ENTRADA_BODEGA_ID => $id_entrada_bodega,
+                    detalleEntradaTableClass::INSUMO_ID => $insumo,
+                );
+                detalleEntradaTableClass::update($ids, $data);
+
+                session::getInstance()->setSuccess('El registro se modificó exitosamente'); /* mensaje de exito 'detalle_salida_salida_bodega_id' => 6 */
+                routing::getInstance()->redirect('detalle', 'index', array(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true) => $id_entrada_bodega)); /* request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::SALIDA_BODEGA_ID, true)) => $id_salida_bodega */
+            } else {
+                session::getInstance()->setError('Error de edición');
+                routing::getInstance()->redirect('detalle', 'edit');
+            }
+        } catch (PDOException $exc) {
+
+            routing::getInstance()->forward('detalle', 'edit');
+            session::getInstance()->setFlash('exc', $exc);
+        }
     }
-  }
-
-//  // VALIDACIONES
-//  private function Validate($nombre, $apellido, $direccion, $correo, $telefono) {
-//    $bono = false;
-//    if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
-//      session::getInstance()->setError(i18n::__('errorLengthName', null, 'default', array('%nombre%' => proveedorTableClass::NOMBRE_LENGTH)));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
-//    }
-//
-//    if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
-//      session::getInstance()->setError(i18n::__('errorLengthLastName', null, 'default', array('%apellido%' => proveedorTableClass::APELLIDO_LENGTH)));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
-//    }
-//
-//    if ($direccion > proveedorTableClass::DIRECCION_LENGTH) {
-//      session::getInstance()->setError(i18n::__('errorAdress', null, 'default', array('%direccion%' => proveedorTableClass::DIRECCION_LENGTH)));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE), TRUE);
-//    }
-//
-//    if (!is_numeric($telefono)) {
-//      session::getInstance()->setError(i18n::__('errorNumeric', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE), TRUE);
-//    }
-//
-//    if (!preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}', $correo)) {
-//      session::getInstance()->setError(i18n::__('errorMail', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE), TRUE);
-//    }
-//
-//    if (!ereg("^[A-Z a-z_]*$", $nombre)) {
-//      session::getInstance()->setError(i18n::__('errorText', null, 'default', array('%texto%' => $nombre)));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
-//    }
-//
-//    if ($nombre === '') {
-//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, TRUE), TRUE);
-//    }
-//
-//    if ($apellido === '') {
-//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, TRUE), TRUE);
-//    }
-//
-//    if ($direccion === '') {
-//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, TRUE), TRUE);
-//    }
-//
-//    if ($correo === '') {
-//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::CORREO, TRUE), TRUE);
-//    }
-//
-//    if ($telefono === '') {
-//      session::getInstance()->setError(i18n::__('errorNull', null, 'default'));
-//      $bono = true;
-//      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, TRUE), TRUE);
-//    }
-//
-//    if ($bono === true) {
-//      request::getInstance()->setMethod('GET');
-//      request::getInstance()->addParamGet(array(proveedorTableClass::ID => request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID, true))));
-//      routing::getInstance()->forward('proveedor', 'editProv');
-//    }
-//  }
 
 }

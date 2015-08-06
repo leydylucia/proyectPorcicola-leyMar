@@ -137,8 +137,11 @@ namespace mvc\routing {
                 $variables = $this->genVariables($action);
                 $action = $routing['param']['action'];
                 header('Location: ' . $this->getUrlWeb($module, $action, $variables));
+                exit();
             } else {
                 header('Location: ' . $this->getUrlWeb($module, $action, $variables));
+                exit();
+                
             }
         }
 

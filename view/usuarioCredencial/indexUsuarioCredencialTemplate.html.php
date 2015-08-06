@@ -37,7 +37,7 @@
 
 
     <!--filtros-->
-    <a href="<?php //echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'deleteFiltersUsuarioCredencial') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
+    <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'deleteFiltersUsuarioCredencial') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
 
         <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'reportUsuarioCredencial') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>

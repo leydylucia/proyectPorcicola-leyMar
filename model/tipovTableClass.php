@@ -25,6 +25,8 @@ class tipovTableClass extends tipovBaseTableClass {
                     }
                 }
             }
+            
+            
             $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);

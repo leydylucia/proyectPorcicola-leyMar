@@ -12,6 +12,8 @@ use mvc\i18n\i18nClass as i18n ?>
 use mvc\config\myConfigClass as confing ?>
 <?php
 use mvc\request\requestClass as request ?>
+<?php
+use mvc\session\sessionClass as session ?>
 
 
 <?php $id = sacrificiovTableClass::ID ?>
@@ -28,7 +30,7 @@ use mvc\request\requestClass as request ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1><?php echo i18n::__('Sacrifice_Sale') ?></h1>  
+        <h1><?php echo i18n::__('Sacrifice_Pig') ?></h1>  
     </div>
 
 </div>
@@ -83,9 +85,9 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
                                     <option value=""><?php echo i18n::__('type_product') ?></option>
-<?php foreach ($objTipoV as $venta): ?>
+                                    <?php foreach ($objTipoV as $venta): ?>
                                         <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
-<?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>     
@@ -95,9 +97,9 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
                                     <option value=""><?php echo i18n::__('pig') ?></option>
-<?php foreach ($objHojaVida as $hojaVida): ?>
+                                    <?php foreach ($objHojaVida as $hojaVida): ?>
                                         <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
-<?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>             
@@ -130,10 +132,17 @@ use mvc\request\requestClass as request ?>
                             </div>
                         </div>  
 
+                        <?php if (session::getInstance()->hasError('inputCantidad')): ?>
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?><!--esta linea para actualizar demas formularios-->
+                            </div>
+                        <?php endif ?>
+
                         <div class="form-group">
                             <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('quantity') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[cantidad]" name="filter[cantidad]" placeholder="cantidad">
+                                <input type="text" class="form-control" id="filter[cantidad]" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true) ?>" placeholder="cantidad">
                             </div>
                         </div> 
 
@@ -142,9 +151,9 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
                                     <option value=""><?php echo i18n::__('type_product') ?></option>
-<?php foreach ($objTipoV as $venta): ?>
+                                    <?php foreach ($objTipoV as $venta): ?>
                                         <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
-<?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -154,9 +163,9 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
                                     <option value=""><?php echo i18n::__('pig') ?></option>
-<?php foreach ($objHojaVida as $hojaVida): ?>
+                                    <?php foreach ($objHojaVida as $hojaVida): ?>
                                         <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
-<?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>             
@@ -182,7 +191,7 @@ use mvc\request\requestClass as request ?>
     </div>
     <!--fin de modal filtro-->
 
-<?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
+    <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
 
 
     <div class="container">
@@ -204,7 +213,7 @@ use mvc\request\requestClass as request ?>
                         </tr>        
                     </thead>
                     <tbody>
-<?php foreach ($objSacrificioV as $sacrificio): ?> 
+                        <?php foreach ($objSacrificioV as $sacrificio): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $sacrificio->$id ?>"></td>
                                 <td><?php echo $sacrificio->$idCerdo ?></td>
@@ -231,7 +240,7 @@ use mvc\request\requestClass as request ?>
                                     </div>
                                     <div class="modal-body">
                                         <!--pára que imprima el id en cada ventana-->
-    <?php i18n::__('confirmDelete') ?> <?php echo $sacrificio->$valor ?>
+                                        <?php i18n::__('confirmDelete') ?> <?php echo $sacrificio->$valor ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -240,7 +249,7 @@ use mvc\request\requestClass as request ?>
                                 </div>
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
 
 
@@ -250,10 +259,10 @@ use mvc\request\requestClass as request ?>
             <!--paginado-->
             <div class="text-right">
                 página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+                    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+                    <?php endfor; ?>
 
 
 

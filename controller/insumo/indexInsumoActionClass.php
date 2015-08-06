@@ -4,6 +4,7 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
+use mvc\validator\insumoValidatorClass as validator;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
@@ -26,13 +27,24 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
     public function execute() {
         try {
             /* filtros */
-            $where = null;/*where se encuentra nulo para entrar en la sentencia getall*/
+            $where = null; /* where se encuentra nulo para entrar en la sentencia getall */
             if (request::getInstance()->hasPost('filter')) {
-                $filter = request::getInstance()->getPost('filter');/*$filter si se encuentra en la vista??*/
+                $filter = request::getInstance()->getPost('filter'); /* $filter si se encuentra en la vista?? */
 
-                if (isset($filter['insumo']) and $filter['insumo'] !== null and $filter['insumo'] !== '') {
-                    $where[insumoTableClass::DESC_INSUMO] = $filter['insumo'];
+                if (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true))) === false) {
+
+                    if (request::getInstance()->isMethod('POST')) {
+                        $descripcion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
+
+                        validator::validateFiltroDescripcion();
+                        if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
+                            $where[insumoTableClass::DESC_INSUMO] = $descripcion;
+                        }
+                    }
                 }
+
+
+
                 if (isset($filter['Precio']) and $filter['Precio'] !== null and $filter['Precio'] !== '') {
                     $where[insumoTableClass::PRECIO] = $filter['Precio'];
                 }
@@ -66,10 +78,10 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                 $where = session::getInstance()->getAttribute('defaultIndexFilters');
             }
 
-/**@var $fields trae los campos de model
- * @var $orderBy ordena con el tipo de datos seleccionado
- * @var page paginado
- */
+            /*             * @var $fields trae los campos de model
+             * @var $orderBy ordena con el tipo de datos seleccionado
+             * @var page paginado
+             */
 
             $fields = array(
                 insumoTableClass::ID,
@@ -115,7 +127,7 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
              * */
             $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
-/*para filtrar foraneas*/
+            /* para filtrar foraneas */
             $fields = array(
                 tipoInsumoTableClass::ID,
                 tipoInsumoTableClass::DESC_TIPOIN
@@ -140,8 +152,9 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
             $this->defineView('index', 'insumo', session::getInstance()
                             ->getFormatOutput());
         } catch (PDOException $exc) {
+            
             session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+            routing::getInstance()->redirect('shfSecurity', 'exception');
         }
     }
 

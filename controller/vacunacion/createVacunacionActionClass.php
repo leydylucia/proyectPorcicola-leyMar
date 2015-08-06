@@ -54,7 +54,7 @@ class createVacunacionActionClass extends controllerClass implements controllerA
             }
         } catch (PDOException $exc) {
 
-            routing::getInstance()->redirect('vacunacion', 'insertvacunacion');
+            routing::getInstance()->redirect('vacunacion', 'insertVacunacion');
             session::getInstance()->setFlash('exc', $exc);
             //routing::getInstance()->forward('shfSecurity', 'exception');    
         }

@@ -5,6 +5,7 @@ use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
+use mvc\validator\vacunacionValidatorClass as validator;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
@@ -29,10 +30,22 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
+                
+                if (request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true)) and empty(mvc\request\requestClass::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true))) === false) {
 
-                if (isset($filter['dosis']) and $filter['dosis'] !== null and $filter['dosis'] !== '') {
-                    $where[vacunacionTableClass::DOSIS] = $filter['dosis'];
+                    if (request::getInstance()->isMethod('POST')) {
+                        $dosis = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true));
+
+                        validator::validateFiltroDosis();
+                        if (isset($dosis) and $dosis !== null and $dosis !== '') {
+                            $where[vacunacionTableClass::DOSIS] = $dosis;
+                        }
+                    }
                 }
+
+//                if (isset($filter['dosis']) and $filter['dosis'] !== null and $filter['dosis'] !== '') {
+//                    $where[vacunacionTableClass::DOSIS] = $filter['dosis'];
+//                }
                 if (isset($filter['hora']) and $filter['hora'] !== null and $filter['hora'] !== '') {
                     $where[vacunacionTableClass::HORA] = $filter['hora'];
                 }
@@ -105,6 +118,7 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');
+//            routing::getInstance()->redirect('vacunacion', 'index');
         }
     }
 

@@ -42,11 +42,15 @@ use mvc\session\sessionClass as session ?>
                     <li><a  href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>"><i class=""aria-label="Left Align">
                             </i>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><?php echo i18n::__('user') ?></a></li>
+                            <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('credential') ?></a></li>
+                            <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('empleyeed') ?></a></li>
+                            <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'indexUsuarioCredencial') ?>"><?php echo i18n::__('UserCredential') ?></a></li>
+
                             </button></a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo i18n::__('supplier') ?>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo i18n::__('Reg.supplier') ?>
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
 
@@ -58,7 +62,7 @@ use mvc\session\sessionClass as session ?>
 
 
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('product') ?>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('Reg.Product') ?>
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
@@ -69,23 +73,32 @@ use mvc\session\sessionClass as session ?>
             </li>
 
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>">archivo
+                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('pig') ?>
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
+                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('batch') ?></a></li>
+                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('curriculum vitae') ?></a></li>
                     <li><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('type_sale') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>"><?php echo i18n::__('sacrifice') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>"><?php echo i18n::__('Vaccination') ?></a></li>
                     <li><a  href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('weight control') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>"><?php echo i18n::__('delivery') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('empleyeed') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('curriculum vitae') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('batch') ?></a></li>
+
+                    
+                    
+
+                    
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('cellar') ?>
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>"><?php echo i18n::__('cellar entry') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('credential') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'indexUsuarioCredencial') ?>"><?php echo i18n::__('UserCredential') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('salidaBodega', 'indexSalidaBodega') ?>"><?php echo i18n::__('Hold_Out') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'indexDetalleSalida') ?>"><?php echo i18n::__('Output_detail_winery') ?></a></li>
                 </ul>
             </li>
 

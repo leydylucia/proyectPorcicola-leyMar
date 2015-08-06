@@ -1,7 +1,11 @@
-function paginador(objeto, url) {
-  window.location.href = url + '?page=' + $(objeto).val();
-}
+//function paginador(objeto, url) {
+//  window.location.href = url + '?page=' + $(objeto).val();
+//}
 
+function paginador(objeto, url) {
+  var first = url.indexOf("?");
+  window.location.href = url + ((first === -1) ? '?' : '&') + 'page=' + $(objeto).val();
+}
 //function confirmarEliminar(id) {
 //  var rsp = confirm("seguro de Eliminar registro");
 //  if (rsp === true) {

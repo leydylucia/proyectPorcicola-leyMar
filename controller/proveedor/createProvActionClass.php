@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\proveedorValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of createProvActionClass
@@ -54,6 +55,8 @@ class createProvActionClass extends controllerClass implements controllerActionI
         proveedorTableClass::insert($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
+        
+        log::register('insertar', proveedorTableClass::getNameTable());
 
         routing::getInstance()->redirect('proveedor', 'indexProv');
       } else {

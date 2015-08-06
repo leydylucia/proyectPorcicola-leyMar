@@ -4,6 +4,7 @@ use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
+use mvc\validator\detalleSalidaValidatorClass as validator;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
@@ -40,7 +41,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
 //                exit();
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
 
-
+                validator::validateInsert();
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     detalleSalidaTableClass::CANTIDAD => $cantidad,
