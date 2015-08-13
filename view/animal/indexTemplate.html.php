@@ -1,25 +1,19 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?> 
-<?php
-
-use mvc\view\viewClass as view ?> 
-<?php
-
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as config ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = hojaVidaTableClass::ID ?>
-<?php $genero = hojaVidaTableClass::GENERO ?>
+<?php $genero_id = hojaVidaTableClass::GENERO_ID ?>
 <?php $fecha_nacimiento = hojaVidaTableClass::FECHA_NACIMIENTO ?>
+<?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
 <?php $estado_id = hojaVidaTableClass::ESTADO_ID ?>
 <?php $lote_id = hojaVidaTableClass::LOTE_ID ?>
 <?php $raza_id = hojaVidaTableClass::RAZA_ID ?>
-<?php $id_madre = hojaVidaTableClass::ID_MADRE ?>
+</?php $id_madre = hojaVidaTableClass::ID_MADRE ?>
 <?php $fecha = hojaVidaTableClass::CREATED_AT ?>
 
 <!--titulo-->
@@ -34,8 +28,6 @@ use mvc\request\requestClass as request ?>
   <div style="margin-bottom: 10px; margin-top: 30px">
 
 
-
-
     <!-- FILTROS -->
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -47,18 +39,40 @@ use mvc\request\requestClass as request ?>
 
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>">
+
+<?php if (session::getInstance()->hasError('inputGenero')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputGenero') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+<?php endif ?> 
+
+              
               <div class="form-group">
                 <label for="filtergenero" class="col-sm-2 control-label"><?php echo i18n::__('genre') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[genero]" name="filter[genero]" placeholder="genero">
+                  <select class="form-control" id="filtergenero" name="filter[genero]">
+                    <option value=""><?php echo i18n::__('genre') ?></option>
+                    <?php foreach ($objGenero as $genero): ?>
+                      <option value="<?php echo $genero->$genero_id_b ?>"><?php echo $genero->$descripcion ?></option>
+<?php endforeach; ?>
+                  </select>
                 </div>
-              </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              <div class="form-group">
-                <label for="filtermadre" class="col-sm-2 control-label"><?php echo i18n::__('mother') ?></label>
+              </div>
+              
+              
+<!--              <div class="form-group">
+                <label for="filtergenero" class="col-sm-2 control-label"></?php echo i18n::__('genre') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filter[genero]" name="</?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, true) ?>" placeholder="genero">
+                </div>
+              </div>    PONER CORCHER  EN NAME filter[insumo]-->
+<!--              <div class="form-group">
+                <label for="filtermadre" class="col-sm-2 control-label"></?php echo i18n::__('mother') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
                 </div>
-              </div>  
+              </div>  -->
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
@@ -96,12 +110,12 @@ use mvc\request\requestClass as request ?>
                   <input type="text" class="form-control" id="filter[genero]" name="filter[genero]" placeholder="genero">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              <div class="form-group">
-                <label for="filtermadre" class="col-sm-2 control-label"><?php echo i18n::__('mother') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
-                </div>
-              </div>  
+              <!--              <div class="form-group">
+                              <label for="filtermadre" class="col-sm-2 control-label"><?php // echo i18n::__('mother')  ?></label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
+                              </div>
+                            </div>  -->
 
             </form>
           </div>
@@ -133,15 +147,16 @@ use mvc\request\requestClass as request ?>
     </div>
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('animal', 'deleteSelect') ?>" method="POST">
       <table class="table table-bordered table-responsive table-striped table-condensed mitabla">  
-      <thead>
+        <thead>
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('genre') ?></th>
+            <th><?php echo i18n::__('name_pig') ?></th>
             <th><?php echo i18n::__('date_birth') ?></th>
             <th><?php echo i18n::__('state') ?></th>
             <th><?php echo i18n::__('batch') ?></th>
             <th><?php echo i18n::__('race') ?></th>
-            <th><?php echo i18n::__('mother') ?></th>
+           <!-- <th></?php echo i18n::__('mother') ?></th> -->
             <th><?php echo i18n::__('date') ?></th>
             <th><?php echo i18n::__('actions') ?></th>
 
@@ -151,12 +166,13 @@ use mvc\request\requestClass as request ?>
 <?php foreach ($objHojaVida as $hojaVida): ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $hojaVida->$id ?>"></td>
-              <td><?php echo $hojaVida->$genero ?></td>
+              <td><?php echo generoTableClass::getNameGenero($hojaVida->$genero_id) ?></td>
+              <td><?php echo $hojaVida->$nombre_cerdo ?></td>
               <td><?php echo $hojaVida->$fecha_nacimiento ?></td>
               <td><?php echo estadoTableClass::getNameEstado($hojaVida->$estado_id) ?></td>
               <td><?php echo loteTableClass::getNameLote($hojaVida->$lote_id) ?></td>
               <td><?php echo razaTableClass::getNameRaza($hojaVida->$raza_id) ?></td>
-              <td><?php echo $hojaVida->$id_madre ?></td>
+            <!-- <td></?php echo hojaVidaTableClass::getNameHojaVida($hojaVida->$id_madre) ?></td> -->
               <td><?php echo $hojaVida->$fecha ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'ver', array(hojaVidaTableClass::ID => $hojaVida->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
@@ -218,7 +234,7 @@ use mvc\request\requestClass as request ?>
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

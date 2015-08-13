@@ -6,6 +6,7 @@
 
 
 <?php $id = ciudadTableClass::ID ?>
+<?php $ciudad = ciudadTableClass::NOM_CIUDAD?>
 <?php $depto_id_c = ciudadTableClass::DEPTO_ID ?>
 <?php $depto_id = deptoTableClass::ID ?>
 <?php $nom_depto = deptoTableClass::NOM_DEPTO ?><!--manejo de foranea para traer datos-->
@@ -20,24 +21,38 @@
 
 
         <?php view::includeHandlerMessage() ?>
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) === true) ? 'has-error has-feedback' : '' ?>">
-      <label for="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name_city') ?>:</label>
+    <?php if(session::getInstance()->hasError('inputCiu')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCiu') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->  
+      
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) === true) ? 'has-error has-feedback' : '' ?>">       
+      <label for="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('city') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>" class="form-control" value="<?php echo ((isset($objCiudad) == true) ? $objCiudad[0]->$ciudad : '') ?><?php echo (session::getInstance()->hasFlash(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) === true) ? request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) : '' ?>" type="text" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>">
-<?php if (session::getInstance()->hasFlash(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) === true): ?>
+        <input id="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) ? request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) : ((isset($objCiudad) == true) ? $objCiudad[0]->$ciudad : '') ?>" type="text" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>">
+        <?php if (session::getInstance()->hasFlash(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-<?php endif ?>
+        <?php endif ?>
       </div>
     </div>
 
 
+      <?php if(session::getInstance()->hasError('inputCiudad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCiudad') ?><!--esta linea para actualizar demas formularios-->
+    </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+  
 
     <div class="form-group">
       <label for="nom_ciudad" class="control-label col-xs-3"><?php echo i18n::__('name_dept') ?>:</label>
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, TRUE) ?>" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, TRUE); ?>">
-          <option>Seleccione Departamento</option>
+          <option value="<?php echo (session::getInstance()->hasFlash('inputCiudad') or request::getInstance()->hasPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true))) ? request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true)) : ((isset($objCiudad[0])) ? $objCiudad[0]->$depto_id_c : '') ?>"  type="text" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true) ?>" placeholder="<?php echo i18n::__('name_dept') ?>">Seleccione Departamento</option>
 <?php foreach ($objDepto as $depto): ?>
             <option <?php echo (isset($objCiudad[0]->$depto_id_c) === true and $objCiudad[0]->$depto_id_c == $depto->$depto_id) ? 'selected' : '' ?> value="<?php echo $depto->$depto_id ?>">
   <?php echo $depto->$nom_depto ?>
@@ -52,7 +67,7 @@
 
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objCiudad)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>"><?php echo i18n::__('return') ?> </a>
+    <a class="btn btn-info" href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>"><?php echo i18n::__('return') ?> </a>
 
 
 

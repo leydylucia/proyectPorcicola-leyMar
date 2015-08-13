@@ -46,8 +46,8 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
 //                if (isset($filter['dosis']) and $filter['dosis'] !== null and $filter['dosis'] !== '') {
 //                    $where[vacunacionTableClass::DOSIS] = $filter['dosis'];
 //                }
-                if (isset($filter['hora']) and $filter['hora'] !== null and $filter['hora'] !== '') {
-                    $where[vacunacionTableClass::HORA] = $filter['hora'];
+                if (isset($filter['Lote']) and $filter['Lote'] !== null and $filter['Lote'] !== '') {
+                    $where[vacunacionTableClass::ID_CERDO] = $filter['Lote'];
                 }
                  if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
                     $where[vacunacionTableClass::INSUMO_ID] = $filter['Insumo'];
@@ -75,7 +75,7 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
             $fields = array(
                 vacunacionTableClass::ID,
                 vacunacionTableClass::DOSIS,
-                vacunacionTableClass::HORA,
+//                vacunacionTableClass::HORA,
                 vacunacionTableClass::INSUMO_ID,
                 vacunacionTableClass::ID_CERDO,
                 vacunacionTableClass::CREATED_AT
@@ -113,6 +113,27 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
              *
              * */
             $this->objVacunacion = vacunacionTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+            
+             $fieldsInsumo = array(/* foranea de  insumo */
+                insumoTableClass::ID,
+                insumoTableClass::DESC_INSUMO
+            );
+            $orderByInsumo = array(
+                insumoTableClass::DESC_INSUMO
+            );
+            $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+
+
+            $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
+                hojaVidaTableClass::ID,
+                hojaVidaTableClass::LOTE_ID,
+            );
+            $orderByCerdo = array(
+                hojaVidaTableClass::LOTE_ID
+            );
+            $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+
+            
             $this->defineView('index', 'vacunacion', session::getInstance()
                             ->getFormatOutput());
         } catch (PDOException $exc) {

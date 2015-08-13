@@ -7,7 +7,7 @@ use mvc\config\configClass as config;
 /**
  * Description of credencialTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Marcela Florez <alexaflorez88@gmail.com>
  */
 class hojaVidaTableClass extends hojaVidaBaseTableClass {
   
@@ -38,7 +38,7 @@ class hojaVidaTableClass extends hojaVidaBaseTableClass {
 
   public static function getNameHojaVida($id) {
     try {
-      $sql = 'SELECT ' . hojaVidaTableClass::ID . ' As nombre '
+      $sql = 'SELECT ' . hojaVidaTableClass::NOMBRE_CERDO . ' As nombre '
              . ' FROM ' . hojaVidaTableClass::getNameTable() . '  '
              . ' WHERE ' . hojaVidaTableClass::ID . ' = :id';
       $params = array(

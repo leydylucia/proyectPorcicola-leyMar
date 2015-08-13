@@ -13,7 +13,6 @@ class insumoBaseTableClass extends tableBaseClass {
   private $updatedAt;
   private $deletedAt;
   private $desc_insumo;
-  private $precio;
   private $tipo_insumo_id;
   private $fecha_fabricacion;
   private $fecha_vencimiento;
@@ -25,7 +24,6 @@ class insumoBaseTableClass extends tableBaseClass {
   const DELETED_AT = 'deleted_at';
   const DESC_INSUMO = 'desc_insumo';
   const DESC_INSUMO_LENGTH = 80;
-  const PRECIO='precio';
   const TIPO_INSUMO_ID='tipo_insumo_id';
   const FECHA_FABRICACION='fecha_fabricacion';
   const FECHA_VENCIMIENTO='fecha_vencimiento';
@@ -50,10 +48,6 @@ class insumoBaseTableClass extends tableBaseClass {
 
   function getDesc_insumo() {
       return $this->desc_insumo;
-  }
-
-  function getPrecio() {
-      return $this->precio;
   }
 
   function getTipo_insumo_id() {
@@ -92,10 +86,6 @@ class insumoBaseTableClass extends tableBaseClass {
       $this->desc_insumo = $desc_insumo;
   }
 
-  function setPrecio($precio) {
-      $this->precio = $precio;
-  }
-
   function setTipo_insumo_id($tipo_insumo_id) {
       $this->tipo_insumo_id = $tipo_insumo_id;
   }
@@ -112,6 +102,7 @@ class insumoBaseTableClass extends tableBaseClass {
       $this->proveedor_id = $proveedor_id;
   }
 
+    
       
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

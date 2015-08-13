@@ -59,7 +59,7 @@ class reportSacrificioVentaActionClass extends controllerClass implements contro
                 sacrificiovTableClass::VALOR,
                 sacrificiovTableClass::TIPO_VENTA_ID,
                 sacrificiovTableClass::CANTIDAD,
-                sacrificiovTableClass::UNIDAD_MEDIDA,
+                sacrificiovTableClass::UNIDAD_MEDIDA_ID,
                 sacrificiovTableClass::ID_CERDO,
             );
             $orderBy = array(

@@ -32,7 +32,7 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
                 $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
                 $id = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true));
                 $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
-                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true));
+                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true));
 
 //                $this->Validate($valor, $idCerdo);/*@ $this->validate para validar campos*/
                 validator::validateEdit();
@@ -45,7 +45,7 @@ class updateSacrificioVentaActionClass extends controllerClass implements contro
                     sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
                     sacrificiovTableClass::ID_CERDO => $idCerdo,
                     sacrificiovTableClass::CANTIDAD => $cantidad,
-                    sacrificiovTableClass::UNIDAD_MEDIDA => $unidad_medida,
+                    sacrificiovTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
                 );
 
                 sacrificiovTableClass::update($ids, $data);

@@ -1,5 +1,3 @@
-
-
 <?php
 
 use mvc\routing\routingClass as routing ?>
@@ -7,19 +5,21 @@ use mvc\routing\routingClass as routing ?>
 use mvc\i18n\i18nClass as i18n ?>
 
 
-<?php $genero = hojaVidaTableClass::GENERO ?>
+<?php $genero_id = hojaVidaTableClass::GENERO_ID ?>
+<?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
 <?php $fecha_nacimiento = hojaVidaTableClass::FECHA_NACIMIENTO ?>
 <?php $estado_id = hojaVidaTableClass::ESTADO_ID ?>
 <?php $lote_id = hojaVidaTableClass::LOTE_ID ?>
 <?php $raza_id = hojaVidaTableClass::RAZA_ID ?>
-<?php $id_madre = hojaVidaTableClass::ID_MADRE ?>
+</?php $id_madre = hojaVidaTableClass::ID_MADRE ?>
 <?php $created_at = hojaVidaTableClass::CREATED_AT ?>
 
 
 <div class="container container-fluid">
 
-
-  <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+  <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <br>
+  <br>
 
 </div>
 
@@ -42,12 +42,15 @@ use mvc\i18n\i18nClass as i18n ?>
           <tr>
             <th><?php echo i18n::__('genre') ?></th>
 
-            <td><?php echo $hojaVida->$genero ?></td>
-
+            <td><?php echo generoTableClass::getNameGenero($hojaVida->$genero_id) ?></td>
           <tr>
             <th><?php echo i18n::__('date_birth') ?></th>
 
             <td><?php echo $hojaVida->$fecha_nacimiento ?></td>
+            <tr>
+            <th><?php echo i18n::__('name_pig') ?></th>
+
+            <td><?php echo $hojaVida->$nombre_cerdo ?></td>
           <tr>
             <th><?php echo i18n::__('state') ?></th>
 
@@ -61,14 +64,14 @@ use mvc\i18n\i18nClass as i18n ?>
 
             <td><?php echo razaTableClass::getNameRaza($hojaVida->$raza_id) ?></td>
           <tr>
-            <th><?php echo i18n::__('mother') ?></th>
+            <th></?php echo i18n::__('mother') ?></th>
 
-            <td><?php echo $hojaVida->$id_madre ?></td>
+             <!-- <td></?php echo $hojaVida->$id_madre ?></td> -->
           <tr>
             <th><?php echo i18n::__('date_creation') ?></th>
             <td><?php echo $hojaVida->$created_at ?></td>
 
-<?php endforeach ?>
+          <?php endforeach ?>
       </tbody>
 
 

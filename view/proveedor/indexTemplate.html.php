@@ -4,6 +4,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = proveedorTableClass::ID ?>
 <?php $nombre = proveedorTableClass::NOMBRE ?>
@@ -41,16 +42,32 @@
 
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>">
+
+<?php if (session::getInstance()->hasError('inputNombre')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+<?php endif ?>
+
               <div class="form-group">
                 <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                  <input type="text" class="form-control" id="filter[nombre]" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" placeholder="nombre">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+
+            <?php if (session::getInstance()->hasError('inputApellido')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+            <?php endif ?>
+
               <div class="form-group">
                 <label for="filterapellido" class="col-sm-2 control-label"><?php echo i18n::__('lastname') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[apellido]" name="filter[apellido]" placeholder="apellido">
+                  <input type="text" class="form-control" id="filter[apellido]" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="apellido">
                 </div>
               </div>  
 
@@ -59,7 +76,7 @@
                 <div class="col-sm-10">
                   <select class="form-control" id="filterciudad" name="filter[ciudad]">
                     <option value=""><?php echo i18n::__('city') ?></option>
-<?php foreach ($objCiudad as $ciudad): ?>
+                    <?php foreach ($objCiudad as $ciudad): ?>
                       <option value="<?php echo $ciudad->$ciudad_id_p ?>"><?php echo $ciudad->$nom_ciudad ?></option>
 <?php endforeach; ?>
                   </select>
@@ -143,7 +160,7 @@
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('name') ?></th>
-            <th><?php echo i18n::__('lastname') ?></th>
+<!--            <th><?php echo i18n::__('lastname') ?></th>-->
             <th><?php echo i18n::__('direction') ?></th>
             <th><?php echo i18n::__('email') ?></th>
             <th><?php echo i18n::__('telephone') ?></th>
@@ -157,8 +174,8 @@
 <?php foreach ($objProveedor as $proveedor): ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $proveedor->$id ?>"></td>
-              <td><?php echo $proveedor->$nombre ?></td>
-              <td><?php echo $proveedor->$apellido ?></td>
+              <td><?php echo $proveedor->$nombre. ' ' . $proveedor->$apellido ?></td>
+<!--              <td><?php echo $proveedor->$apellido ?></td>-->
               <td><?php echo $proveedor->$direccion ?></td>
               <td><?php echo $proveedor->$correo ?></td>
               <td><?php echo $proveedor->$telefono ?></td>
@@ -182,7 +199,7 @@
                 </div>
                 <div class="modal-body">
                   <!--pára que imprima el id en cada ventana-->
-          <?php i18n::__('confirmDelete') ?> <?php echo $proveedor->$nombre ?>
+  <?php i18n::__('confirmDelete') ?> <?php echo $proveedor->$nombre ?>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -224,8 +241,8 @@
 </div>
 
 
-<div class="text-right">
-<?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>')">
+<div class="text-right container container-fluid">
+    <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 

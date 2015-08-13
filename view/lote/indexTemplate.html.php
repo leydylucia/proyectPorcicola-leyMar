@@ -4,6 +4,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = loteTableClass::ID ?>
 <?php $desc_lote = loteTableClass::DESC_LOTE ?>
@@ -22,8 +23,6 @@
   <div style="margin-bottom: 10px; margin-top: 30px">
 
 
-
-
     <!-- FILTROS -->
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -32,21 +31,30 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
+          
+          <?php if (session::getInstance()->hasError('inputDesc')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDesc') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+          <?php endif ?>
 
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>">
               <div class="form-group">
                 <label for="filterdesc_lote" class="col-sm-2 control-label"><?php echo i18n::__('desc_lot') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[desc_lote]" name="filter[desc_lote]" placeholder="descripcion lote">
+                  <input type="text" class="form-control" id="filter[desc_lote]" name="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" placeholder="descripcion lote">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              <div class="form-group">
+              
+              
+<!--              <div class="form-group">
                 <label for="filterubicacion" class="col-sm-2 control-label"><?php echo i18n::__('location') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filter[ubicacion]" name="filter[ubicacion]" placeholder="ubicacion">
                 </div>
-              </div>  
+              </div>  -->
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
@@ -84,12 +92,12 @@
                   <input type="text" class="form-control" id="filter[desc_lote]" name="filter[desc_lote]" placeholder="descripcion lote">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              <div class="form-group">
+<!--              <div class="form-group">
                 <label for="filterubicacion" class="col-sm-2 control-label"><?php echo i18n::__('location') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filter[ubicacion]" name="filter[ubicacion]" placeholder="ubicacion">
                 </div>
-              </div>  
+              </div>  -->
 
             </form>
           </div>
@@ -198,7 +206,7 @@
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

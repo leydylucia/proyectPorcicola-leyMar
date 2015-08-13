@@ -35,13 +35,13 @@ namespace mvc\validator {
                 session::getInstance()->setFlash('inputDosis', true);
                 session::getInstance()->setError('la dosis digitada es mayor en cantidad de caracteres a lo permitido', 'inputDosis');
             }
-            //------------------------------------campo hora---------------------
-            //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::HORA, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputHora', true); /* input usuario biene del formulario */
-                session::getInstance()->setError('el campo hora no puede estar vacio', 'inputHora');
-            }
+//            //------------------------------------campo hora---------------------
+//            //----campo nulo----
+//            if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::HORA, true)))) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputHora', true); /* input usuario biene del formulario */
+//                session::getInstance()->setError('el campo hora no puede estar vacio', 'inputHora');
+//            }
 
             //------------------------------------campo insumo---------------------
             //----campo nulo----
@@ -92,14 +92,14 @@ namespace mvc\validator {
                     session::getInstance()->setFlash('inputDosis', true);
                     session::getInstance()->setError('la dosis digitada es mayor en cantidad de caracteres a lo permitido', 'inputDosis');
                 }
-                //------------------------------------campo hora---------------------
-                //----campo nulo----
-                if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::HORA, true)))) {
-                    $flag = true;
-                    session::getInstance()->setFlash('inputHora', true); /* input usuario biene del formulario */
-                    session::getInstance()->setError('el campo hora no puede estar vacio', 'inputHora');
-                }
-
+//                //------------------------------------campo hora---------------------
+//                //----campo nulo----
+//                if (self::notBlank(request::getInstance()->getPost(\vacunacionTableClass::getNameField(\vacunacionTableClass::HORA, true)))) {
+//                    $flag = true;
+//                    session::getInstance()->setFlash('inputHora', true); /* input usuario biene del formulario */
+//                    session::getInstance()->setError('el campo hora no puede estar vacio', 'inputHora');
+//                }
+//
 
                 if ($flag === true) {
                     //request::getInstance()->setMethod('GET');

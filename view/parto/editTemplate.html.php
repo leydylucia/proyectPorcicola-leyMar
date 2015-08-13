@@ -15,8 +15,6 @@
 </div>
 <!--fintitulo-->
 
-
-
-<?php view::includePartial('parto/formParto', array('objHojaVida' => $objHojaVida)) ?>
+<?php view::includePartial('parto/formParto', array('objParto' => $objParto,'objHojaVida' => $objHojaVida)) ?>
 
 

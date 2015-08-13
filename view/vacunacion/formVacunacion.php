@@ -17,7 +17,7 @@ use mvc\view\viewClass as view ?>
 
 <?php $id = vacunacionTableClass::ID ?>
 <?php $dosis = vacunacionTableClass::DOSIS ?>
-<?php $hora = vacunacionTableClass::HORA?>
+<?php // $hora = vacunacionTableClass::HORA?>
 
 <?php $insumoId_i = vacunacionTableClass::INSUMO_ID?>
 <?php $insumoId = insumoTableClass::ID ?>
@@ -25,13 +25,14 @@ use mvc\view\viewClass as view ?>
 
 <?php $idCerdo_c = vacunacionTableClass::ID_CERDO ?>
 <?php $idCerdo = hojaVidaTableClass::ID ?>
+<?php $lote = hojaVidaTableClass::LOTE_ID ?>
 
 
     <?php view::includeHandlerMessage() ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('vacunacion', ((isset($objVacunacion)) ? 'updateVacunacion' : 'createVacunacion')) ?>">
 
-
+    <div class="container">
 <?php if (isset($objVacunacion) == true): ?>
         <input name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID, true) ?>" value="<?php echo $objVacunacion[0]->$id ?>" type="hidden">
             <?php endif ?>
@@ -54,22 +55,22 @@ use mvc\view\viewClass as view ?>
         </div>
     </div>
     
-     <?php if(session::getInstance()->hasError('inputHora')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHora') ?><!--esta linea para actualizar demas formularios-->
-    </div>
-    <?php endif ?>
+     <?php // if(session::getInstance()->hasError('inputHora')): ?>
+    <!--<div class="alert alert-danger alert-dismissible" role="alert">-->
+<!--      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> ////<?php // echo session::getInstance()->getError('inputHora') ?>esta linea para actualizar demas formularios
+    </div>-->
+    <?php // endif ?>
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Time') ?>:</label>
+<!--    <div class="form-group ////<?php // echo (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="////<?php // echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>" class="control-label col-xs-3"><?php // echo i18n::__('Time') ?>:</label>
         <div class="col-xs-9">
-            <input id="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) : ((isset($objVacunacion) == true) ? $objVacunacion[0]->$hora : '') ?>" type="text" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>">
-<?php if (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) === true): ?>
+            <input id="////<?php // echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>" class="form-control" value="<?php // echo request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) : ((isset($objVacunacion) == true) ? $objVacunacion[0]->$hora : '') ?>" type="text" name="<?php // echo vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true) ?>">
+//<?php // if (session::getInstance()->hasFlash(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true)) === true): ?>
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-<?php endif ?>
+//<?php // endif ?>
         </div>
-    </div>
+    </div>-->
 
     
 <?php if(session::getInstance()->hasError('inputInsumo')): ?>
@@ -110,10 +111,11 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE) ?>" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, TRUE); ?>">
-               <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true)) : ((isset($objVacunacion[0])) ? $objVacunacion[0]->$idCerdo_c : '') ?>">Seleccione cerdo</option>
+               <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true)) : ((isset($objVacunacion[0])) ? $objVacunacion[0]->$idCerdo_c : '') ?>">Seleccione lote</option>
 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objVacunacion[0]->$idCerdo_c) === true and $objVacunacion[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
-    <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
+    <?php echo loteTableClass::getNameLote($hojaVida->$lote )?><!--validacion para traer dato  de foranea en editar-->
+    <?php // echo vacunacionTableClass::getNameVacunacion($hojaVida->$lote) ?>
                     </option>
 <?php endforeach; ?>
             </select>
@@ -147,7 +149,7 @@ use mvc\view\viewClass as view ?>
 
         <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>"><?php echo i18n::__('return') ?> </a></button>
 
-
+    </div>
 
 
 </form>

@@ -52,20 +52,10 @@ namespace mvc\validator {
             }
             //-------------------------------campo unidad medida-----------------------------
             //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true)))) {
+            if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputUnidadMedida', true); /* input usuario biene del formulario */
                 session::getInstance()->setError('el campo unidad medida no puede estar vacio', 'inputUnidadMedida');
-            } //----sobre pasar los caracteres----
-            else if (strlen(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))) > \sacrificiovTableClass::UNIDAD_MEDIDA_LENGTH) {
-                $flag = true;
-                session::getInstance()->setFlash('inputUnidadMedida', true);
-                session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputUnidadMedida');
-            } //----solo permitir letras----
-            else if (!preg_match($soloLetras, (request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputUnidadMedida', true);
-                session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputUnidadMedida');
             }
 
             //-----------------------------------------cerdo-----------------------------//
@@ -124,21 +114,12 @@ namespace mvc\validator {
             }
             //-------------------------------campo unidad medida-----------------------------
             //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true)))) {
+            if (self::notBlank(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputUnidadMedida', true); /* input usuario biene del formulario */
                 session::getInstance()->setError('el campo unidad medida no puede estar vacio', 'inputUnidadMedida');
             } //----sobre pasar los caracteres----
-            else if (strlen(request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))) > \sacrificiovTableClass::UNIDAD_MEDIDA_LENGTH) {
-                $flag = true;
-                session::getInstance()->setFlash('inputUnidadMedida', true);
-                session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputUnidadMedida');
-            } //----solo permitir letras----
-            else if (!preg_match($soloLetras, (request::getInstance()->getPost(\sacrificiovTableClass::getNameField(\sacrificiovTableClass::UNIDAD_MEDIDA, true))))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputUnidadMedida', true);
-                session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputUnidadMedida');
-            }
+           
 
 
             if ($flag === true) {

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\partoValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -22,10 +23,35 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
+        
+        if (request::getInstance()->hasPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) and empty(mvc\request\requestClass::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $num_nacidos = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true));
+
+            validator::validateFiltroNacidos();
+            if (isset($num_nacidos) and $num_nacidos !== null and $num_nacidos !== '') {
+              $where[partoTableClass::NUM_NACIDOS] = $num_nacidos;
+            }
+          }
+        }
 
         if (isset($filter['nacidos']) and $filter['nacidos'] !== null and $filter['nacidos'] !== '') {
           $where[partoTableClass::NUM_NACIDOS] = $filter['nacidos'];
         }
+        
+        if (request::getInstance()->hasPost(partoTableClass::getNameField(partoTableClass::NUM_VIVOS, true)) and empty(mvc\request\requestClass::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_VIVOS, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $num_vivos = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_VIVOS, true));
+
+            validator::validateFiltroVivos();
+            if (isset($num_vivos) and $num_vivos !== null and $num_vivos !== '') {
+              $where[partoTableClass::NUM_VIVOS] = $num_vivos;
+            }
+          }
+        }
+        
         if (isset($filter['vivos']) and $filter['vivos'] !== null and $filter['vivos'] !== '') {
           $where[partoTableClass::NUM_VIVOS] = $filter['vivos'];
         }
@@ -79,8 +105,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objParto = partoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'parto', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+      //session::getInstance()->setFlash('exc', $exc);
+      //routing::getInstance()->forward('shfSecurity', 'exception');
+      routing::getInstance()->redirect('parto', 'index');
     }
   }
 

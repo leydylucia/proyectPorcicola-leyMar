@@ -4,6 +4,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = ciudadTableClass::ID ?>
 <?php $nom_ciudad = ciudadTableClass::NOM_CIUDAD ?>
@@ -35,15 +36,21 @@
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
 
+          <?php if (session::getInstance()->hasError('inputCiud')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCiud') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+<?php endif ?>
+          
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>">
               <div class="form-group">
                 <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('name_city') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre ciudad">
+                  <input type="text" class="form-control" id="filter[nombre]" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true) ?>" placeholder="nombre ciudad">
                 </div>
               </div>  
-              
               
               <div class="form-group">
                 <label for="filterdepto" class="col-sm-2 control-label"><?php echo i18n::__('name_dept') ?></label>
@@ -224,7 +231,7 @@
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexCiudad') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\credencialValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of createProvActionClass
@@ -15,27 +16,26 @@ use mvc\validator\credencialValidatorClass as validator;
  * @category modulo proveedor
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
-  
   /* public function execute inicializa las variables 
-     * @return $nombre=> nombre del proveedor (string)
-     * @return $apellido=> apellido del proveedor (string)
-     * @return $direccion=> direccion del proveedor (string)
-     * @return $correo=> correo del proveedor (string)
-     * @return $telefono=> telefono del proveedor (string)
-     * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
+   * @return $nombre=> nombre del proveedor (string)
+   * @return $apellido=> apellido del proveedor (string)
+   * @return $direccion=> direccion del proveedor (string)
+   * @return $correo=> correo del proveedor (string)
+   * @return $telefono=> telefono del proveedor (string)
+   * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        
+
         $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
-        
-       //$this->Validate($nombre);
-        
-         validator::validateInsert(); /*para validas los campos de la tabla y se redirige al validator*/
-        
+
+        //$this->Validate($nombre);
+
+        validator::validateInsert(); /* para validas los campos de la tabla y se redirige al validator */
+
         /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
         $data = array(
             credencialTableClass::NOMBRE => $nombre,
@@ -44,6 +44,8 @@ class createActionClass extends controllerClass implements controllerActionInter
         credencialTableClass::insert($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
+
+        log::register('insertar', credencialTableClass::getNameTable());
 
         routing::getInstance()->redirect('credencial', 'index');
       } else {
@@ -87,5 +89,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('credencial', 'insert');
 //    }
 //  }
-
 }

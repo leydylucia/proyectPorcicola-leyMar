@@ -20,12 +20,13 @@ class verActionClass extends controllerClass implements controllerActionInterfac
 
       $fields = array(
           hojaVidaTableClass::ID,
-          hojaVidaTableClass::GENERO,
+          hojaVidaTableClass::GENERO_ID,
           hojaVidaTableClass::FECHA_NACIMIENTO,
           hojaVidaTableClass::ESTADO_ID,
           hojaVidaTableClass::LOTE_ID,
           hojaVidaTableClass::RAZA_ID,
-          hojaVidaTableClass::ID_MADRE,
+          hojaVidaTableClass::NOMBRE_CERDO,
+          //hojaVidaTableClass::ID_MADRE,
           hojaVidaTableClass::CREATED_AT
       );
       $where = array(

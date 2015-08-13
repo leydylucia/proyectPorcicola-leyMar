@@ -10,7 +10,7 @@
 
 
        
-         <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>"><?php echo i18n::__('return') ?> </a>
+    <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>"><?php echo i18n::__('return') ?> </a></button>
 
  
     </div>
@@ -23,21 +23,21 @@
                 <thead>
                     <tr>
                    
-                        <th>Datos</th>
+                        <th class="info">Datos</th>
                         
                     </tr>        
                 </thead>
                 <tbody>
                 <?php foreach ($objTipoin as $tipoIn): ?>  
-                        <tr >
+                    <tr class="active">
                            <th><?php echo i18n::__('describe_typeProduct') ?></th>
                             
                             <td><?php echo $tipoIn->$desc_tipoIn ?></td>
                             
                              <tr >
-                            <th><?php echo i18n::__('date_creation') ?></th>
+                                 <th class="info"><?php echo i18n::__('date_creation') ?></th>
                             
-                            <td><?php echo $tipoIn->$created_at ?></td>
+                                 <td class="info"> <?php echo $tipoIn->$created_at ?></td>
                             
                 <?php endforeach ?>
                 </tbody>

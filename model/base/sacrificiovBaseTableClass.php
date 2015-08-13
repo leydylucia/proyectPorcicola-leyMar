@@ -17,7 +17,7 @@ class sacrificiovBaseTableClass extends tableBaseClass {
     private $tipo_venta_id;
     private $id_cerdo;
     private $cantidad;
-    private $unidad_medida;
+    private $unidad_medida_id;
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
@@ -27,8 +27,8 @@ class sacrificiovBaseTableClass extends tableBaseClass {
     const TIPO_VENTA_ID = 'tipo_venta_id';
     const ID_CERDO = 'id_cerdo';
     const CANTIDAD = 'cantidad';
-    const UNIDAD_MEDIDA='unidad_medida';
-    const UNIDAD_MEDIDA_LENGTH = 10;
+    const UNIDAD_MEDIDA_ID='unidad_medida_id';
+    
 
 
     function getId() {
@@ -63,8 +63,8 @@ class sacrificiovBaseTableClass extends tableBaseClass {
         return $this->cantidad;
     }
 
-    function getUnidad_medida() {
-        return $this->unidad_medida;
+    function getUnidad_medida_id() {
+        return $this->unidad_medida_id;
     }
 
     function setId($id) {
@@ -99,11 +99,11 @@ class sacrificiovBaseTableClass extends tableBaseClass {
         $this->cantidad = $cantidad;
     }
 
-    function setUnidad_medida($unidad_medida) {
-        $this->unidad_medida = $unidad_medida;
+    function setUnidad_medida_id($unidad_medida_id) {
+        $this->unidad_medida_id = $unidad_medida_id;
     }
 
-    
+        
     
     /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato

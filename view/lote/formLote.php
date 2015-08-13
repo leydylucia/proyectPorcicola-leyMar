@@ -28,7 +28,7 @@ use mvc\view\viewClass as view ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('desc_lot') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" class="form-control" value="<?php echo ((isset($objLote) == true) ? $objLote[0]->$desc_lote : '') ?><?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) : '' ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>">
+       <input id="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>" class="form-control" value="<?php echo ((isset($objLote) == true) ? $objLote[0]->$desc_lote : '') ?><?php echo (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) : '' ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESC_LOTE, true) ?>">
         <?php if (session::getInstance()->hasFlash(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>
@@ -48,6 +48,6 @@ use mvc\view\viewClass as view ?>
 
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objLote)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+    <a class="btn btn-primary" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('return') ?> </a>
 </form>
 </div>

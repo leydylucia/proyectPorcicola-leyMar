@@ -27,6 +27,7 @@ class editDetalleSalidaActionClass extends controllerClass implements controller
                     detalleSalidaTableClass::CANTIDAD,
                     detalleSalidaTableClass::SALIDA_BODEGA_ID,
                     detalleSalidaTableClass::INSUMO_ID,
+                    detalleSalidaTableClass::UNIDAD_MEDIDA_ID,
                 );
                 $where = array(
                     detalleSalidaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::ID)
@@ -50,6 +51,17 @@ class editDetalleSalidaActionClass extends controllerClass implements controller
                 insumoTableClass::DESC_INSUMO
                 );
                 $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+                
+                $fieldsUnidad = array(
+                    unidadMedidaTableClass::ID,
+                    unidadMedidaTableClass::DESCRIPCION
+                );
+                $orderByUnidad = array(
+                    unidadMedidaTableClass::DESCRIPCION
+                );
+                $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
+
+                
                 $this->id_salida_bodega =  request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));/*manda el id a la vista*/
                 $this->defineView('editDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
 

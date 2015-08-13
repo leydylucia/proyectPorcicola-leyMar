@@ -21,7 +21,7 @@ class verInsumoActionClass extends controllerClass implements controllerActionIn
             $fields = array(
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO,
-                insumoTableClass::PRECIO,
+//                insumoTableClass::PRECIO,
                 insumoTableClass::TIPO_INSUMO_ID,
                 insumoTableClass::FECHA_FABRICACION,
                 insumoTableClass::FECHA_VENCIMIENTO,

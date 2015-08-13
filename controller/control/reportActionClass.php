@@ -38,6 +38,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           controlTableClass::PESO_CERDO,
           controlTableClass::EMPLEADO_ID,
           controlTableClass::HOJA_VIDA,
+          controlTableClass::UNIDAD_MEDIDA_ID,
           controlTableClass::CREATED_AT
       );
       $orderBy = array(

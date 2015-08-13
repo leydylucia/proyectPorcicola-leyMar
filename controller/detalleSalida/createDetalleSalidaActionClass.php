@@ -36,6 +36,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
 //                $salida_bodega = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
                 $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, TRUE));
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
+                $unidad_medida = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true));
 
 //                echo $salida_bodega;
 //                exit();
@@ -47,6 +48,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
                     detalleSalidaTableClass::CANTIDAD => $cantidad,
                     detalleSalidaTableClass::SALIDA_BODEGA_ID => $salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
+                    detalleSalidaTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
                 );
 
 

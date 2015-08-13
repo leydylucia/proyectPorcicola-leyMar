@@ -23,7 +23,7 @@ class updateVacunacionActionClass extends controllerClass implements controllerA
 
                 $id = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID, true));
                 $dosis = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true));
-                $hora = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true));
+//                $hora = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::HORA, true));
                 $insumoId = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::INSUMO_ID, true));
                 $idCerdo = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::ID_CERDO, true));
 
@@ -35,7 +35,7 @@ class updateVacunacionActionClass extends controllerClass implements controllerA
 
                 $data = array(
                     vacunacionTableClass::DOSIS => $dosis,
-                    vacunacionTableClass::HORA => $hora,
+//                    vacunacionTableClass::HORA => $hora,
                     vacunacionTableClass::INSUMO_ID => $insumoId,
                     vacunacionTableClass::ID_CERDO => $idCerdo,
                 );

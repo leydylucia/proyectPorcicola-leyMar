@@ -4,6 +4,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = credencialTableClass::ID ?>
 <?php $nombre = credencialTableClass::NOMBRE ?>
@@ -21,9 +22,7 @@
   <div style="margin-bottom: 10px; margin-top: 30px">
 
 
-
-
-    <!-- FILTROS -->
+      <!-- FILTROS -->
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -34,10 +33,18 @@
 
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>">
+
+ <?php if (session::getInstance()->hasError('inputNombre')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+             <?php endif ?>
+              
               <div class="form-group">
                 <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                  <input type="text" class="form-control" id="filter[nombre]" name="<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, true) ?>" placeholder="nombre">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
              </div>
@@ -60,6 +67,54 @@
         </div>
       </div>
     </div>
+    
+    
+<!--
+     FILTROS 
+    <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"></?php echo i18n::__('filter') ?></h4>
+          </div>
+
+          <div class="modal-body">
+            <form class="form-horizontal" role="form" id="filterForm" method="POST" action="</?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>">
+              
+             </?php if (session::getInstance()->hasError('inputNombre')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> </?php echo session::getInstance()->getError('inputNombre') ?>esta linea para actualizar demas formularios
+                </div>
+             </?php endif ?>
+              
+              <div class="form-group">
+                <label for="filternombre" class="col-sm-2 control-label"></?php echo i18n::__('name') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filter[nombre]" name="</?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, true) ?>" placeholder="nombre">
+                </div>
+              </div>    PONER CORCHER  EN NAME filter[insumo]
+             </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"></?php echo i18n::__('date_creation') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
+                  <br>
+                  <input type="date" class="form-control" id="filter[Date2]" name="filter[Date2]">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"></?php echo i18n::__('cancel') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"></?php echo i18n::__('filter') ?></button>
+          </div>
+        </div>
+      </div>
+    </div>-->
 
     <!-- REPORTE CON FILTROS -->
     <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -185,7 +240,7 @@
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

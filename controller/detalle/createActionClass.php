@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\detalleEntradaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
@@ -35,11 +36,12 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $valor = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, true));
                 $entrada_bodega = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, TRUE));
                 $insumo = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::INSUMO_ID, true));
+                $unidad_media = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::UNIDAD_MEDIDA_ID, true));
 
 //                echo $salida_bodega;
 //                exit();
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
-
+                validator::validateInsert();
 
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
@@ -47,6 +49,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                     detalleEntradaTableClass::VALOR => $valor,
                     detalleEntradaTableClass::ENTRADA_BODEGA_ID => $entrada_bodega,
                     detalleEntradaTableClass::INSUMO_ID => $insumo,
+                    detalleEntradaTableClass::UNIDAD_MEDIDA_ID => $unidad_media,
                 );
 
 

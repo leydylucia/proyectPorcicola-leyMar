@@ -80,7 +80,7 @@ namespace mvc\validator {
             }
         }
 
-        public static function validateFiltroDescTipo() {
+        public static function validateFiltroTipo() {
             $soloLetras = "/^[a-z]+$/i";
             $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
             $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
@@ -93,7 +93,7 @@ namespace mvc\validator {
             else if (!preg_match($soloLetras, (request::getInstance()->getPost(\tipovTableClass::getNameField(\tipovTableClass::DESC_TIPOV, true))))) {
                 session::getInstance()->setError('el campo descripcion tipo venta no permite numeros, solo letras', 'inputDescTipoIn');
             }
-             routing::getInstance()->forward('sacrificioVenta', 'indexTipov');
+             
         }
 
     }

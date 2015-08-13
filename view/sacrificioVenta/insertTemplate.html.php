@@ -13,5 +13,5 @@
 
 
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array( 'objTipoV' => $objTipoV, 'objHojaVida' => $objHojaVida))?>
+<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array( 'objTipoV' => $objTipoV, 'objHojaVida' => $objHojaVida, 'objUnidadMedida' => $objUnidadMedida))?>
 

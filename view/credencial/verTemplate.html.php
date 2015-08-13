@@ -7,9 +7,10 @@
 
 <div class="container container-fluid">
 
-
-  <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('return') ?> </a>
-
+  <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <br>
+  <br>
+  
 </div>
 
 

@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\detalleEntradaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -35,10 +36,10 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $valor = trim(request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::VALOR, true)));
                 $id_entrada_bodega = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));
                 $insumo = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::INSUMO_ID, true));
+                $unidad_medida = request::getInstance()->getPost(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::UNIDAD_MEDIDA_ID, true));
 
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
-
-
+                validator::validateEdit();
 
                 $ids = array(
                     detalleEntradaTableClass::ID => $id
@@ -51,6 +52,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     detalleEntradaTableClass::VALOR => $valor,
                     detalleEntradaTableClass::ENTRADA_BODEGA_ID => $id_entrada_bodega,
                     detalleEntradaTableClass::INSUMO_ID => $insumo,
+                    detalleEntradaTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
                 );
                 detalleEntradaTableClass::update($ids, $data);
 

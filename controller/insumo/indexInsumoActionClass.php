@@ -43,7 +43,9 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                     }
                 }
 
-
+                if (isset($filter['desc_insumo']) and $filter['desc_insumo'] !== null and $filter['desc_insumo'] !== '') {
+                    $where[insumoTableClass::DESC_INSUMO] = $filter['desc_insumo'];
+                }
 
                 if (isset($filter['Precio']) and $filter['Precio'] !== null and $filter['Precio'] !== '') {
                     $where[insumoTableClass::PRECIO] = $filter['Precio'];
@@ -86,7 +88,7 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
             $fields = array(
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO,
-                insumoTableClass::PRECIO,
+//                insumoTableClass::PRECIO,
                 insumoTableClass::TIPO_INSUMO_ID,
                 insumoTableClass::FECHA_FABRICACION,
                 insumoTableClass::FECHA_VENCIMIENTO,
@@ -152,9 +154,10 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
             $this->defineView('index', 'insumo', session::getInstance()
                             ->getFormatOutput());
         } catch (PDOException $exc) {
-            
+
             session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->redirect('shfSecurity', 'exception');
+            routing::getInstance()->forward('shfSecurity', 'exception');
+            //            routing::getInstance()->redirect('insumo', 'indexInsumo');
         }
     }
 

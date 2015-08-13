@@ -19,12 +19,14 @@ use mvc\session\sessionClass as session ?>
 <?php $id = sacrificiovTableClass::ID ?>
 <?php $valor = sacrificiovTableClass::VALOR ?>
 <?php $cantidad = sacrificiovTableClass::CANTIDAD ?>
-<?php $unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA ?>
+<?php $unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $tipoVenta = sacrificiovTableClass::TIPO_VENTA_ID ?>
 <?php $tipoVenta_t = tipovTableClass::ID ?>
 <?php $descripcion = tipovTableClass::DESC_TIPOV ?>
 <?php $idCerdo = sacrificiovTableClass::ID_CERDO ?>
 <?php $cerdo = hojaVidaTableClass::ID ?>
+<?php $nombre = hojaVidaTableClass::NOMBRE_CERDO ?>
+
 <?php $fecha = sacrificiovTableClass::CREATED_AT ?>
 
 <!--titulo-->
@@ -92,17 +94,17 @@ use mvc\session\sessionClass as session ?>
                             </div>
                         </div>     
 
-                        <div class="form-group">
-                            <label for="filterCerdo" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
-                                    <option value=""><?php echo i18n::__('pig') ?></option>
-                                    <?php foreach ($objHojaVida as $hojaVida): ?>
-                                        <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>             
+                        <!--                        <div class="form-group">
+                                                    <label for="filterCerdo" class="col-sm-2 control-label"><?php // echo i18n::__('pig')  ?></label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
+                                                            <option value=""><?php // echo i18n::__('pig')  ?></option>
+                        <?php // foreach ($objHojaVida as $hojaVida): ?>
+                                                                <option value="<?php // echo $hojaVida->$idCerdo  ?>"><?php // echo $hojaVida->$nombre  ?></option>
+                        <?php // endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>             -->
 
                     </form>
                 </div>
@@ -125,12 +127,12 @@ use mvc\session\sessionClass as session ?>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>">
-                        <div class="form-group">
-                            <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('sale') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[valor]" name="filter[valor]" placeholder="valor">
-                            </div>
-                        </div>  
+                        <!--                        <div class="form-group">
+                                                    <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('sale') ?></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="filter[valor]" name="filter[valor]" placeholder="valor">
+                                                    </div>
+                                                </div>  -->
 
                         <?php if (session::getInstance()->hasError('inputCantidad')): ?>
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -163,12 +165,12 @@ use mvc\session\sessionClass as session ?>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
                                     <option value=""><?php echo i18n::__('pig') ?></option>
-                                    <?php foreach ($objHojaVida as $hojaVida): ?>
-                                        <option value="<?php echo $hojaVida->$cerdo ?>"><?php echo $hojaVida->$cerdo ?></option>
+                                    <?php foreach ($objHojaVida as $hoja): ?>
+                                        <option value="<?php echo $hoja ->$cerdo ?>"><?php echo $hoja-> $nombre ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                        </div>             
+                        </div>
 
 
                         <div class="form-group">
@@ -216,10 +218,10 @@ use mvc\session\sessionClass as session ?>
                         <?php foreach ($objSacrificioV as $sacrificio): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $sacrificio->$id ?>"></td>
-                                <td><?php echo $sacrificio->$idCerdo ?></td>
+                                <td><?php echo hojaVidaTableClass::getNameHojaVida($sacrificio->$idCerdo) ?></td>
                                 <td><?php echo tipovTableClass::getNameTipov($sacrificio->$tipoVenta) ?></td>
                                 <td><?php echo $sacrificio->$cantidad ?></td>
-                                <td><?php echo $sacrificio->$unidad_medida ?></td>
+                                <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($sacrificio->$unidad_medida) ?></td>
                                 <td><?php echo '$ ' . number_format($sacrificio->$valor, 0, ',', '.'); ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($sacrificio->$fecha)) ?></td>
                                 <td>

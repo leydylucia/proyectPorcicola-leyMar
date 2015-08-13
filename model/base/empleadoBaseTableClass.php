@@ -16,6 +16,7 @@ class empleadoBaseTableClass extends tableBaseClass {
   private $nombre;
   private $usuario_id;
   private $tipo_id_id;
+  private $documento;
   private $apellido;
   private $direccion;
   private $correo;
@@ -30,6 +31,8 @@ class empleadoBaseTableClass extends tableBaseClass {
   const NOMBRE_LENGTH = 80;
   const USUARIO_ID = 'usuario_id';
   const TIPO_ID_ID = 'tipo_id_id';
+  const DOCUMENTO = 'documento';
+  const DOCUMENTO_LENGTH = 12;
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 80;
   const DIRECCION = 'direccion';
@@ -65,6 +68,10 @@ class empleadoBaseTableClass extends tableBaseClass {
 
   function getTipo_id_id() {
     return $this->tipo_id_id;
+  }
+  
+  function getDocumento() {
+    return $this->documento;
   }
 
   function getApellido() {
@@ -109,6 +116,10 @@ class empleadoBaseTableClass extends tableBaseClass {
 
   function setTipo_id_id($tipo_id_id) {
     $this->tipo_id_id = $tipo_id_id;
+  }
+  
+  function setDocumento($documento) {
+    $this->documento = $documento;
   }
 
   function setApellido($apellido) {

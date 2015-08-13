@@ -162,6 +162,7 @@ dictionary:
     id the father:             Identicacion Padre
     new_delivery:              Nuevo Parto
     
+    
     #Control Peso#
     pig weight:                Peso Cerdo               
     employee:                  Empleado
@@ -180,12 +181,14 @@ dictionary:
     Vaccination:             Vacunacion
     New_Vaccination:         Nueva Vacunacion
     Edit_Vaccination:        Editar Vacunacion
+    lot:                     Lote
     
     #Empleado#
     name_user:                 Nombre Usuario
     type_id:                   Tipo Identificacion
     empleyeed:                 Empleado
     new_employeed:             Nuevo Empleado
+    document:                  Documento
 
     #Genero"ANIMAL"#
     genre:                     Genero
@@ -195,6 +198,7 @@ dictionary:
     mother:                    Madre
     new_curriculum vitae:      Nueva Hoja de Vida
     curriculum vitae:          Hoja de Vida
+    name_pig:                  Nombre Cerdo
     
     #Entrada Bodega#
     cellar entry:              Entrada Bodega

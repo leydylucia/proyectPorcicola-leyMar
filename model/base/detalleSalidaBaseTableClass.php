@@ -16,6 +16,7 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
     private $cantidad;
     private $salida_bodega_id;
     private $insumo_id;
+    private $unidad_medida_id;
 
     const ID = 'id';
     const CREATED_AT = 'created_at';
@@ -24,6 +25,7 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
     const CANTIDAD = 'cantidad';
     const SALIDA_BODEGA_ID = 'salida_bodega_id';
     const INSUMO_ID = 'insumo_id';
+    const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
 
     function getId() {
         return $this->id;
@@ -51,6 +53,10 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
 
     function getInsumo_id() {
         return $this->insumo_id;
+    }
+
+    function getUnidad_medida_id() {
+        return $this->unidad_medida_id;
     }
 
     function setId($id) {
@@ -81,6 +87,11 @@ class detalleSalidaBaseTableClass extends tableBaseClass {
         $this->insumo_id = $insumo_id;
     }
 
+    function setUnidad_medida_id($unidad_medida_id) {
+        $this->unidad_medida_id = $unidad_medida_id;
+    }
+
+    
         /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)

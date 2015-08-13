@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
+use hook\log\logHookClass as log;
 
 /**
  * Description of editProvClass
@@ -39,6 +39,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $this->objCredencial = credencialTableClass::getAll($fields, true, null, null, null, null, $where);
         
         $this->defineView('edit', 'credencial', session::getInstance()->getFormatOutput());
+        
+        log::register('editar', credencialTableClass::getNameTable());
         //session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {
         routing::getInstance()->redirect('credencial', 'index');

@@ -78,7 +78,7 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
                 sacrificiovTableClass::TIPO_VENTA_ID,
                 sacrificiovTableClass::ID_CERDO,
                 sacrificiovTableClass::CANTIDAD,
-                sacrificiovTableClass::UNIDAD_MEDIDA,
+                sacrificiovTableClass::UNIDAD_MEDIDA_ID,
                 sacrificiovTableClass::CREATED_AT
             );
             $orderBy = array(
@@ -119,18 +119,21 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
 
             $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
                 hojaVidaTableClass::ID,
+                hojaVidaTableClass::NOMBRE_CERDO
             );
             $orderByCerdo = array(
-                hojaVidaTableClass::ID
+                hojaVidaTableClass::NOMBRE_CERDO
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 
             
-            $this->defineView('index', 'sacrificioVenta', session::getInstance()->getFormatOutput());
+            $this->defineView('indexSacrificioVenta', 'sacrificioVenta', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
+//            routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');
-//            routing::getInstance()->redirect('sacrificioVenta','index');
+//            routing::getInstance()->redirect('sacrificioVenta','indexSacrificioVenta');
         }
     }
 

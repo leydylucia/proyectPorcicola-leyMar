@@ -36,9 +36,10 @@ class insertVacunacionActionClass extends controllerClass implements controllerA
 
             $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
                 hojaVidaTableClass::ID,
+                hojaVidaTableClass::LOTE_ID,
             );
             $orderByCerdo = array(
-                hojaVidaTableClass::ID
+                hojaVidaTableClass::LOTE_ID
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 

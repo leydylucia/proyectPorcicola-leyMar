@@ -24,15 +24,31 @@ namespace mvc\validator {
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('El peso cerdo del control es requerido', 'inputUbicacion');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El peso cerdo del control es requerido', 'inputPeso');
       } 
       //----solo numeros----
         else if (!is_numeric(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputPeso');
       } 
+      
+      //-------------------------------campo cerdo-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::HOJA_VIDA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCerdo', true);
+        session::getInstance()->setError('El id del cerdo es requerido', 'inputCerdo');
+        }
+      
+      //-------------------------------campo empleado-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::EMPLEADO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputEmpleado', true);
+        session::getInstance()->setError('El empleado no puede estar vacio', 'inputEmpleado');
+        }    
       
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
@@ -54,14 +70,14 @@ namespace mvc\validator {
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion del control es requerido', 'inputUbicacion');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('La ubicacion del control es requerido', 'inputPeso');
       } 
       //----solo numeros----
         else if (!is_numeric(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputPeso');
       } 
        
       //-------------------------------condiccion de bandera true-----------------------------
@@ -87,15 +103,31 @@ namespace mvc\validator {
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion del control es requerido', 'inputUbicacion');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El peso del Cerdo es requerido', 'inputPeso');
       } //-//----solo numeros----
         else if (!is_numeric(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El peso del Cerdo no permite letras, solo numeros', 'inputPeso');
       } 
+      
+      //-------------------------------campo cerdo-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::HOJA_VIDA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCerdo', true);
+        session::getInstance()->setError('El id del cerdo es requerido', 'inputCerdo');
+        }
 
+      //-------------------------------campo empleado-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::EMPLEADO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputEmpleado', true);
+        session::getInstance()->setError('El empleado no puede estar vacio', 'inputEmpleado');
+        }  
+        
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
@@ -104,5 +136,17 @@ namespace mvc\validator {
       
       }
     }
+    
+    public static function validateFiltroCerdo() {
+         $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+       if (!is_numeric(request::getInstance()->getPost(\controlTableClass::getNameField(\controlTableClass::PESO_CERDO, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputPeso', true);
+        session::getInstance()->setError('El peso del Cerdo no permite letras, solo numeros', 'inputPeso');
+      }      
+      }
   }
 }

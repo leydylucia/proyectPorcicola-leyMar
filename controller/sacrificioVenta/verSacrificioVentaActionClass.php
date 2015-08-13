@@ -25,7 +25,7 @@ class verSacrificioVentaActionClass extends controllerClass implements controlle
                 sacrificiovTableClass::TIPO_VENTA_ID,
                 sacrificiovTableClass::ID_CERDO,
                 sacrificiovTableClass::CANTIDAD,
-                sacrificiovTableClass::UNIDAD_MEDIDA,
+                sacrificiovTableClass::UNIDAD_MEDIDA_ID,
                 sacrificiovTableClass::CREATED_AT
             );
             $where = array(

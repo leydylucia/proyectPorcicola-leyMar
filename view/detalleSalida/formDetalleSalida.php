@@ -25,12 +25,14 @@ use mvc\view\viewClass as view ?>
 <?php $insumoId_p = detalleSalidaTableClass::INSUMO_ID ?>
 <?php $insumoId = insumoTableClass::ID ?><!--manejo de foranea para traer datos-->
 <?php $descripcion = insumoTableClass::DESC_INSUMO ?>
-
+<?php $unidad_medida_u = detalleSalidaTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $unidad_medida = unidadMedidaTableClass::ID ?>
+<?php $desc_unidad = unidadMedidaTableClass::DESCRIPCION ?>
 <?php view::includeHandlerMessage() ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', ((isset($objDetalleSalida)) ? 'updateDetalleSalida' : 'createDetalleSalida'), ((isset($objDetalleSalida)) ? array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) : '') ) ?>">
 
-
+    <div class="container">
     <?php if (isset($objDetalleSalida) == true): ?>
         <input name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" value="<?php echo $objDetalleSalida[0]->$id ?>" type="hidden">
         <input type="hidden" value="<?php echo $objDetalleSalida[0]->$id_salida_bodega ?>" name="<?php echo  detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, TRUE) ?>"><!--tipo oculto para foranea-->
@@ -87,8 +89,31 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, TRUE); ?>">
                  <option value="<?php echo (session::getInstance()->hasFlash('inputInsumo') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$insumoId_p  : '') ?>">Seleccione insumo</option>
                 <?php foreach ($objInsumo as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objDetalleSalida[0]->$insumoId_p) === true and $objDetalleSalida[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><!--validacion para traer dato  de foranea en editar poner tambien un null enel option value=""-->
+                    <option <?php echo (request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) == $insumo->$insumoId) ? 'selected' : (isset($objDetalleSalida[0]->$insumoId_p) === true and $objDetalleSalida[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><?php echo $insumo->$descripcion ?></option><!--sostenimiento de dato en foranea-->
                         <?php echo $insumo->$descripcion ?><!--validacion para traer dato  de foranea en editar-->
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+
+ <?php if (session::getInstance()->hasError('inputUnidadMedida')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUnidadMedida') ?><!--esta linea para actualizar demas formularios-->
+        </div>
+    <?php endif ?><!--se agrega antes de cada input-->
+    
+
+<div class="form-group">
+        <label for="<?php echo detallesalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('unit_measure') ?>:</label>
+
+        <div class="col-xs-9">
+            <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
+                 <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$unidad_medida_u  : '') ?>">Seleccione unidad medida</option>
+                <?php foreach ($objUnidadMedida as $unidad): ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) == $unidad->$unidad_medida) ? 'selected' : (isset($objDetalleSalida[0]->$unidad_medida_u) === true and $objDetalleSalida[0]->$unidad_medida_u == $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><?php echo $unidad->$desc_unidad ?></option><!--sostenimiento de dato en foranea-->
+                        <?php echo $unidad->$desc_unidad ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -109,6 +134,6 @@ use mvc\view\viewClass as view ?>
 <?php // endif; ?>
 
 
-
+    </div>
 </form>
 

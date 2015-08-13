@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\loteValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -22,10 +23,35 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
+        
+        if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $desc_lote = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true));
+
+            validator::validateFiltroLote();
+            if (isset($desc_lote) and $desc_lote !== null and $desc_lote !== '') {
+              $where[loteTableClass::DESC_LOTE] = $desc_lote;
+            }
+          }
+        }
 
         if (isset($filter['desc_lote']) and $filter['desc_lote'] !== null and $filter['desc_lote'] !== '') {
           $where[loteTableClass::DESC_LOTE] = $filter['desc_lote'];
         }
+        
+//        if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true))) === false) {
+//
+//          if (request::getInstance()->isMethod('POST')) {
+//            $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
+//
+//            validator::validateFiltroUbibacion();
+//            if (isset($ubicacion) and $ubicacion !== null and $ubicacion !== '') {
+//              $where[loteTableClass::UBICACION] = $ubicacion;
+//            }
+//          }
+//        }
+        
         if (isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== '') {
           $where[loteTableClass::UBICACION] = $filter['ubicacion'];
         }
@@ -72,11 +98,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'lote', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      routing::getInstance()->redirect('lote', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo '<pre>';
+//      print_r($exc->getTrace());
+//      echo '</pre>';
     }
   }
 

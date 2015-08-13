@@ -9,7 +9,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $tipoVenta = sacrificiovTableClass::TIPO_VENTA_ID ?>
 <?php $idCerdo = sacrificiovTableClass::ID_CERDO ?>
 <?php $cantidad = sacrificiovTableClass::CANTIDAD ?>
-<?php $unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA ?>
+<?php $unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $fecha = sacrificiovTableClass::CREATED_AT ?>
 
 <div class="container container-fluid">

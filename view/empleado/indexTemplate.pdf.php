@@ -21,25 +21,23 @@ $pdf->Image(routing::getInstance()->getUrlImg('prueba.jpg'), 50, 8, 200); /* 200
 
 $pdf->Ln(05);
 
-$pdf->Cell(20, 5, utf8_decode("ID"), 1);
-$pdf->Cell(40, 5, utf8_decode("NOMBRE"), 1);
-$pdf->Cell(40, 5, utf8_decode("USUARIO"), 1);
-$pdf->Cell(40, 5, utf8_decode("TIPO ID"), 1);
-$pdf->Cell(40, 5, utf8_decode("APELLIDO"), 1);
-$pdf->Cell(40, 5, utf8_decode("DIRECCION"), 1);
-$pdf->Cell(40, 5, utf8_decode("CORREO"), 1);
-$pdf->Cell(40, 5, utf8_decode("TELEFONO"), 1);
+//$pdf->Cell(20, 5, utf8_decode("ID"), 1);
+$pdf->Cell(35, 5, utf8_decode("NOMBRE"), 1);
+$pdf->Cell(35, 5, utf8_decode("USUARIO"), 1);
+$pdf->Cell(35, 5, utf8_decode("TIPO ID"), 1);
+$pdf->Cell(35, 5, utf8_decode("DIRECCION"), 1);
+$pdf->Cell(35, 5, utf8_decode("CORREO"), 1);
+$pdf->Cell(35, 5, utf8_decode("TELEFONO"), 1);
 $pdf->Ln();
 
 foreach ($objEmpleado as $empleado) {
-  $pdf->Cell(20, 10, utf8_decode($empleado->$id), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$nombre), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$usuario_id), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$tipo_id_id), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$apellido), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$direccion), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$correo), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$telefono), 1);
+ // $pdf->Cell(20, 10, utf8_decode($empleado->$id), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$nombre . ' ' . $empleado->$apellido), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$usuario_id), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$tipo_id_id), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$direccion), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$correo), 1);
+  $pdf->Cell(35, 10, utf8_decode($empleado->$telefono), 1);
 
   $pdf->Ln();
 }

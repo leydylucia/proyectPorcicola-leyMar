@@ -24,6 +24,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
                 detalleEntradaTableClass::VALOR,
                 detalleEntradaTableClass::ENTRADA_BODEGA_ID,
                 detalleEntradaTableClass::INSUMO_ID,
+                detalleEntradaTableClass::UNIDAD_MEDIDA_ID,
                 detalleEntradaTableClass::CREATED_AT,
             );
             $where = array(

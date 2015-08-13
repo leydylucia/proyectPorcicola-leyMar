@@ -11,7 +11,8 @@ use mvc\i18n\i18nClass as i18n ?>
 use mvc\config\configClass as confing ?>
 <?php
 use mvc\request\requestClass as request ?>
-
+<?php
+use mvc\session\sessionClass as session ?>
 
 
 <?php $desc_tipoV = tipovTableClass::DESC_TIPOV ?>
@@ -36,49 +37,49 @@ use mvc\request\requestClass as request ?>
         <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs "data-target="#myModalDeleteMasivo" data-toggle="modal" id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
         <button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php echo i18n::__('filter') ?></button>
         <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'deleteFiltersTipov') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
-        <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportTipov') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+        <!--<button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>-->
+        <!--<a href="<?php // echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportTipov')  ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>-->
 
 
 
 
     </div>
-    <!--modal en ajax para reporte-->
-    <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
-                </div>
-
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportTipov') ?>">
-                        <div class="form-group">
-                            <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[tipoVenta]" placeholder="desc_tipov">
+    <!--    modal en ajax para reporte
+        <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('report') ?></h4>
+                    </div>
+    
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportTipov') ?>">
+                            <div class="form-group">
+                                <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[tipoVenta]" placeholder="desc_tipov">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
-                            <div class="col-sm-10">
-                                <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
-                                <br>
-                                <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
+                                    <br>
+                                    <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
+                        </form>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+                        <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--fin modal en ajax para reporte-->
+        fin modal en ajax para reporte-->
 
 
     <!--modal en ajax para filtrar-->
@@ -93,14 +94,21 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>">
 
-                       
+                        <?php if (session::getInstance()->hasError('inputDescTipoV')): ?>
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescTipoV') ?><!--esta linea para actualizar demas formularios-->
+                            </div>
+                        <?php endif ?><!--se agrega antes de cada input-->
+
 
                         <div class="form-group">
                             <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[tipoVenta]" placeholder="desc_tipov">
+                                <input type="text" class="form-control" id="filter[tipoVenta]" name="filter[<?php echo tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true) ?>]" placeholder="desc_tipov">
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                             <div class="col-sm-10">

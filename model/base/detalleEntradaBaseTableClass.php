@@ -17,6 +17,7 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
   private $valor;
   private $entrada_bodega_id;
   private $insumo_id;
+  private $unidad_medida_id;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
@@ -26,71 +27,81 @@ class detalleEntradaBaseTableClass extends tableBaseClass {
   const VALOR = 'valor';
   const ENTRADA_BODEGA_ID = 'entrada_bodega_id';
   const INSUMO_ID = 'insumo_id';
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   
   function getId() {
-    return $this->id;
+      return $this->id;
   }
 
   function getCreated_at() {
-    return $this->created_at;
+      return $this->created_at;
   }
 
   function getUpdated_at() {
-    return $this->updated_at;
+      return $this->updated_at;
   }
 
   function getDeleted_at() {
-    return $this->deleted_at;
+      return $this->deleted_at;
   }
 
   function getCantidad() {
-    return $this->cantidad;
+      return $this->cantidad;
   }
 
   function getValor() {
-    return $this->valor;
+      return $this->valor;
   }
 
   function getEntrada_bodega_id() {
-    return $this->entrada_bodega_id;
+      return $this->entrada_bodega_id;
   }
 
   function getInsumo_id() {
-    return $this->insumo_id;
+      return $this->insumo_id;
+  }
+
+  function getUnidad_medida_id() {
+      return $this->unidad_medida_id;
   }
 
   function setId($id) {
-    $this->id = $id;
+      $this->id = $id;
   }
 
   function setCreated_at($created_at) {
-    $this->created_at = $created_at;
+      $this->created_at = $created_at;
   }
 
   function setUpdated_at($updated_at) {
-    $this->updated_at = $updated_at;
+      $this->updated_at = $updated_at;
   }
 
   function setDeleted_at($deleted_at) {
-    $this->deleted_at = $deleted_at;
+      $this->deleted_at = $deleted_at;
   }
 
   function setCantidad($cantidad) {
-    $this->cantidad = $catidad;
+      $this->cantidad = $cantidad;
   }
 
   function setValor($valor) {
-    $this->valor = $valor;
+      $this->valor = $valor;
   }
 
   function setEntrada_bodega_id($entrada_bodega_id) {
-    $this->entrada_bodega_id = $entrada_bodega_id;
+      $this->entrada_bodega_id = $entrada_bodega_id;
   }
 
   function setInsumo_id($insumo_id) {
-    $this->insumo_id = $insumo_id;
+      $this->insumo_id = $insumo_id;
   }
 
+  function setUnidad_medida_id($unidad_medida_id) {
+      $this->unidad_medida_id = $unidad_medida_id;
+  }
+
+  
     
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

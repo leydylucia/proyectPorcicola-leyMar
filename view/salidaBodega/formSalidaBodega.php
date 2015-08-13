@@ -25,7 +25,7 @@ use mvc\view\viewClass as view ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('salidaBodega', ((isset($objSalidaBodega)) ? 'updateSalidaBodega' : 'createSalidaBodega')) ?>">
 
-
+    <div class="container">
 <?php if (isset($objSalidaBodega) == true): ?>
         <input name="<?php echo salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true) ?>" value="<?php echo $objSalidaBodega[0]->$id ?>" type="hidden">
             <?php endif ?>
@@ -63,7 +63,7 @@ use mvc\view\viewClass as view ?>
 
         <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('salidaBodega', 'indexSalidaBodega') ?>"><?php echo i18n::__('return') ?> </a></button>
 
-
+    </div>
 
 
 </form>

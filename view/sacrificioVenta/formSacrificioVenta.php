@@ -18,18 +18,23 @@ use mvc\view\viewClass as view ?>
 <?php $id = sacrificiovTableClass::ID ?>
 <?php $valor = sacrificiovTableClass::VALOR ?>
 <?php $cantidad = sacrificiovTableClass::CANTIDAD ?>
-<?php $unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA ?>
+<?php $unidad_medida_u = sacrificiovTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $unidad_medida = unidadMedidaTableClass::ID ?>
+<?php $descripcion = unidadMedidaTableClass::DESCRIPCION ?>
 <?php $tipoVenta_v = sacrificiovTableClass::TIPO_VENTA_ID ?>
 <?php $tipoVenta = tipovTableClass::ID ?>
 <?php $desc_tipoV = tipovTableClass::DESC_TIPOV ?><!--manejo de foranea para traer datos-->
 
 <?php $idCerdo_c = sacrificiovTableClass::ID_CERDO ?>
 <?php $idCerdo = hojaVidaTableClass::ID ?>
+<?php $nombre = hojaVidaTableClass::NOMBRE_CERDO ?>
 
 <?php view::includeHandlerMessage() ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', ((isset($objSacrificioV)) ? 'updateSacrificioVenta' : 'createSacrificioVenta')) ?>">
-    <?php if (isset($objSacrificioV) == true): ?>
+   
+    <div class="container">
+ <?php if (isset($objSacrificioV) == true): ?>
         <input name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" value="<?php echo $objSacrificioV[0]->$id ?>" type="hidden">
     <?php endif ?>
         
@@ -49,7 +54,7 @@ use mvc\view\viewClass as view ?>
                 <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$idCerdo_c : '') ?>">Seleccione Cerdo</option>
                 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objSacrificioV[0]->$idCerdo_c) === true and $objSacrificioV[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
-                        <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
+                        <?php echo $hojaVida->$nombre ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -102,16 +107,31 @@ use mvc\view\viewClass as view ?>
             <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUnidadMedida') ?><!--esta linea para actualizar demas formularios-->
         </div>
     <?php endif ?><!--se agrega antes de cada input-->
+    
+     <div class="form-group">
+        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('unit_measure') ?>:</label>
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('unit_measure') ?>:</label>
         <div class="col-xs-9">
-            <input id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true)) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true)) : ((isset($objSacrificioV) == true) ? $objSacrificioV[0]->$unidad_medida : '') ?>" type="text" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true) ?>">
-            <?php if (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true)) === true): ?>
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            <?php endif ?>
+            <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
+                <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$unidad_medida_u : '') ?>">Seleccione unidad medida</option>
+                <?php foreach ($objUnidadMedida as $unidad): ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (isset($objSacrificioV[0]->$unidad_medida_u) === true and $objSacrificioV[0]->$unidad_medida_u == $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><!--validacion para traer dato  de foranea en editar-->
+                        <?php echo $unidad->$descripcion ?><!--validacion para traer dato  de foranea en editar-->
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
-    </div>
+    </div>      
+
+<!--    <div class="form-group <?php // echo (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="<?php // echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true) ?>" class="control-label col-xs-3"><?php // echo i18n::__('unit_measure') ?>:</label>
+        <div class="col-xs-9">
+            <input id="<?php // echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true) ?>" class="form-control" value="<?php // echo request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objSacrificioV) == true) ? $objSacrificioV[0]->$unidad_medida : '') ?>" type="text" name="<?php // echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true) ?>">
+            <?php // if (session::getInstance()->hasFlash(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) === true): ?>
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <?php // endif ?>
+        </div>
+    </div>-->
 
     <?php if (session::getInstance()->hasError('inputValor')): ?>
         <div class="alert alert-danger alert-dismissible" role="alert">
@@ -182,7 +202,7 @@ use mvc\view\viewClass as view ?>
     <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs"  href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>"><?php echo i18n::__('return') ?> </a></button>
 
 
-
+    </div>
 
 </form>
 

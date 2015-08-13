@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\controlValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -20,25 +21,29 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST')) {
 
+        $unidad = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true));
         $peso_cerdo = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true));
         $empleado_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true));
         $hoja_vida_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true));
-        
 
-      //  $this->Validate($peso_cerdo);
-        
-      validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
+
+        //  $this->Validate($peso_cerdo);
+
+        validator::validateInsert();  /* para validas los campos de la tabla y se redirige al validator */
 
         $data = array(
-            controlTableClass::PESO_CERDO => $peso_cerdo,
-            controlTableClass::EMPLEADO_ID => $empleado_id,
-            controlTableClass::HOJA_VIDA => $hoja_vida_id
+        controlTableClass::UNIDAD_MEDIDA_ID => $unidad,
+        controlTableClass::PESO_CERDO => $peso_cerdo,
+        controlTableClass::EMPLEADO_ID => $empleado_id,
+        controlTableClass::HOJA_VIDA => $hoja_vida_id
         );
 
         controlTableClass::insert
                 ($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
+
+        log::register('insertar', controlTableClass::getNameTable());
 
         routing::getInstance()->redirect('control', 'index');
       } else {
@@ -70,5 +75,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('control', 'insert');
 //    }
 //  }
-
 }

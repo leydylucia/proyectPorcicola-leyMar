@@ -7,6 +7,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+//use mvc\validator\defaultValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -25,6 +26,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
 
                 // aqui validar datos de filtros
+                
+//                if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
+//                    if (request::getInstance()->isMethod('POST')) {
+//                        $descripcion = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
+//                        validator::validateFiltroUsuario();
+//                        if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
+//                            $where[usuarioTableClass::USER] = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
+//                        }
+//                    }
+//                }
 
                 if (isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== '') {
                     $where[usuarioTableClass::USER] = $filter['usuario'];

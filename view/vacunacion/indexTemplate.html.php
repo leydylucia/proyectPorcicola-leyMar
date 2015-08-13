@@ -18,11 +18,13 @@ use mvc\session\sessionClass as session ?>
 
 <?php $id = vacunacionTableClass::ID ?>
 <?php $dosis = vacunacionTableClass::DOSIS ?>
-<?php $hora = vacunacionTableClass::HORA ?>
+<?php // $hora = vacunacionTableClass::HORA ?>
 <?php $insumoId = vacunacionTableClass::INSUMO_ID ?>
 <?php $insumo = insumoTableClass::ID ?>
 <?php $descripcion = insumoTableClass::DESC_INSUMO ?>
 <?php $idCerdo = vacunacionTableClass::ID_CERDO ?>
+<?php $cerdo = hojaVidaTableClass::ID ?>
+<?php $lote = hojaVidaTableClass::LOTE_ID ?>
 <?php $fecha = vacunacionTableClass::CREATED_AT ?>
 <!--titulo-->
 <div class="container container-fluid">
@@ -70,11 +72,16 @@ use mvc\session\sessionClass as session ?>
                             </div>
                         </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
                         <div class="form-group">
-                            <label for="filterHora" class="col-sm-2 control-label"><?php echo i18n::__('Time') ?></label>
+                            <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lot') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[hora]" name="filter[hora]" placeholder="hora">
+                                <select class="form-control" id="filterTipo_venta" name="filter[Lote]">
+                                    <option value=""><?php echo i18n::__('lot') ?></option>
+                                    <?php foreach ($objHojaVida as $hoja): ?>
+                                        <option value="<?php echo $hoja->$cerdo ?>"><?php echo $hoja->$lote ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                        </div>  
+                        </div>
 
                     </form>
                 </div>
@@ -98,12 +105,12 @@ use mvc\session\sessionClass as session ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>">
 
-<?php if (session::getInstance()->hasError('inputDosis')): ?>
+                        <?php if (session::getInstance()->hasError('inputDosis')): ?>
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDosis') ?><!--esta linea para actualizar demas formularios-->
                             </div>
-<?php endif ?>
+                        <?php endif ?>
 
                         <div class="form-group">
                             <label for="filterDosis" class="col-sm-2 control-label"><?php echo i18n::__('Dose') ?></label>
@@ -111,26 +118,31 @@ use mvc\session\sessionClass as session ?>
                                 <input type="text" class="form-control" id="filter[dosis]" name="<?php echo vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true) ?>" placeholder="dosis">
                             </div>
                         </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-                        
-                        
-                        <div class="form-group">
-                            <label for="filterHora" class="col-sm-2 control-label"><?php echo i18n::__('Time') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[hora]" name="filter[hora]" placeholder="hora">
-                            </div>
-                        </div>  
 
-                        <!--                     <div class="form-group">
-                                                    <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="filterInsumo" name="filter[Insumo]">
-                                                            <option value=""><?php echo i18n::__('describe_product') ?></option>
-<?php foreach ($objInsumo as $producto): ?>
-                                                                    <option value="<?php echo $producto->$insumo ?>"><?php echo $producto->$descripcion ?></option>
-<?php endforeach; ?>
-                                                        </select>
-                                                    </div>
-                                                </div>-->
+
+                        <div class="form-group">
+                            <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lot') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterTipo_venta" name="filter[Lote]">
+                                    <option value=""><?php echo i18n::__('lot') ?></option>
+                                    <?php foreach ($objHojaVida as $hoja): ?>
+                                        <option value="<?php echo $hoja->$cerdo ?>"><?php echo loteTableClass::getNameLote($hoja->$lote) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterInsumo" name="filter[Insumo]">
+                                    <option value=""><?php echo i18n::__('describe_product') ?></option>
+                                    <?php foreach ($objInsumo as $producto): ?>
+                                        <option value="<?php echo $producto->$insumo ?>"><?php echo $producto->$descripcion ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="form-group">
@@ -153,7 +165,7 @@ use mvc\session\sessionClass as session ?>
     </div>
     <!--fin de modal filtro-->
 
-<?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
+    <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
 
 
     <div class="container">
@@ -165,23 +177,24 @@ use mvc\session\sessionClass as session ?>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('Dose') ?></th>
-                            <th><?php echo i18n::__('Time') ?></th>
+                            <!--<th><?php // echo i18n::__('Time')  ?></th>-->
                             <th><?php echo i18n::__('product') ?></th>
-                            <th><?php echo i18n::__('pig') ?></th>
+                            <th><?php echo i18n::__('lot') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
 
                         </tr>        
                     </thead>
                     <tbody>
-<?php foreach ($objVacunacion as $vacunacion): ?> 
+                        <?php foreach ($objVacunacion as $vacunacion): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $vacunacion->$id ?>"></td>
                                 <td><?php echo $vacunacion->$dosis ?></td>
-                                <td><?php echo $vacunacion->$hora ?></td>
+                                <!--<td><?php // echo $vacunacion->$hora  ?></td>-->
                                <!--<td></?php echo time('hh .?[AaPp] .? [Mm] .? [\0\t ]',strtotime($vacunacion->$hora)) ?></td>-->
                                 <td><?php echo insumoTableClass::getNameInsumo($vacunacion->$insumoId) ?></td>
-                                <td><?php echo $vacunacion->$idCerdo ?></td>
+                                <!--<td><?php // echo $vacunacion->$idCerdo  ?></td>-->
+                                <td>  <?php echo loteTableClass::getNameLote($vacunacion->$idCerdo) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($vacunacion->$fecha)) ?></td>
                                 <td>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'verVacunacion', array(vacunacionTableClass::ID => $vacunacion->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
@@ -201,7 +214,7 @@ use mvc\session\sessionClass as session ?>
                                     </div>
                                     <div class="modal-body">
                                         <!--pára que imprima el id en cada ventana-->
-    <?php i18n::__('confirmDelete') ?> <?php echo $vacunacion->$dosis ?>
+                                        <?php i18n::__('confirmDelete') ?> <?php echo $vacunacion->$dosis ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -210,7 +223,7 @@ use mvc\session\sessionClass as session ?>
                                 </div>
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
 
 
@@ -220,10 +233,10 @@ use mvc\session\sessionClass as session ?>
             <!--paginado-->
             <div class="text-right">
                 página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+                    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+                    <?php endfor; ?>
 
 
 

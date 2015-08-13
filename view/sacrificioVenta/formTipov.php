@@ -18,6 +18,8 @@ use mvc\view\viewClass as view ?>
 <?php view::includeHandlerMessage() ?>
 <div class="container">
     <form  role="form" class="form-horizontal" method="post" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', ((isset($objTipoV)) ? 'updateTipov' : 'createTipov')) ?>">
+        
+        <div class="container">
         <?php if (isset($objTipoV) == true): ?>
             <input name="<?php echo tipovTableClass::getNameField(tipovTableClass::ID, true) ?>" value="<?php echo $objTipoV[0]->$id ?>" type="hidden">
         <?php endif ?>
@@ -45,7 +47,7 @@ use mvc\view\viewClass as view ?>
             <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('return') ?> </a> </button>
 
 
-
+        </div>
     </form>
 </div>
 

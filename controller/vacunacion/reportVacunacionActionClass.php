@@ -42,7 +42,7 @@ class reportVacunacionActionClass extends controllerClass implements controllerA
             $fields = array(
                 vacunacionTableClass::ID,
                 vacunacionTableClass::DOSIS,
-                vacunacionTableClass::HORA,
+//                vacunacionTableClass::HORA,
                 vacunacionTableClass::INSUMO_ID,
                 vacunacionTableClass::ID_CERDO,
                 

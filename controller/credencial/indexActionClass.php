@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
+use mvc\validator\credencialValidatorClass as validator;
 /**
  * Description of indexProvActionClass
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
@@ -26,6 +26,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
+        
+        if (request::getInstance()->hasPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
+
+            validator::validateFiltroNombre();
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+              $where[credencialTableClass::NOMBRE] = $nombre;
+            }
+          }
+        }
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[credencialTableClass::NOMBRE] = $filter['nombre'];
@@ -58,7 +70,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = $page * config::getRowGrid();
       }
       /* para mantener filtro con paginado,@var $where=> para sostener el filtro con el paginado
-       * getTotalPages => se encuentra en proveedorTablesclass
+       * getTotalPages => se encuentra en credencialTablesclass
        * @var $this para enviar al cntPages"contador de pagina" a la vista 
        *  */
       $this->cntPages = credencialTableClass::getTotalPages(config::getRowGrid(), $where);
@@ -76,8 +88,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'credencial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+      //session::getInstance()->setFlash('exc', $exc);
+      //routing::getInstance()->forward('shfSecurity', 'exception');
+      routing::getInstance()->redirect('credencial', 'index');
     }
   }
 

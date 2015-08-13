@@ -22,19 +22,17 @@ $pdf->Ln(05);
 
 $pdf->Cell(20,5,  utf8_decode("ID"),1);
   $pdf->Cell(40,5,  utf8_decode("NOMBRE"),1);
-  $pdf->Cell(40,5,  utf8_decode("APELLIDO"),1);
   $pdf->Cell(40,5,  utf8_decode("DIRECCION"),1);
-  $pdf->Cell(40,5,  utf8_decode("CORREO"),1);
+  $pdf->Cell(45,5,  utf8_decode("CORREO"),1);
   $pdf->Cell(40,5,  utf8_decode("TELEFONO"),1);
   $pdf->Cell(40,5,  utf8_decode("CIUDAD"),1);
   $pdf->Ln();
   
   foreach ($objProveedor as $proveedor){
   $pdf->Cell(20,10,  utf8_decode($proveedor->$id),1);
-  $pdf->Cell(40,10,  utf8_decode($proveedor->$nombre),1);
-  $pdf->Cell(40,10,  utf8_decode($proveedor->$apellido),1);
+  $pdf->Cell(40,10,  utf8_decode($proveedor->$nombre. ' ' . $proveedor->$apellido),1);
   $pdf->Cell(40,10,  utf8_decode($proveedor->$direccion),1);
-  $pdf->Cell(40,10,  utf8_decode($proveedor->$correo),1);
+  $pdf->Cell(45,10,  utf8_decode($proveedor->$correo),1);
   $pdf->Cell(40,10,  utf8_decode($proveedor->$telefono),1);
   $pdf->Cell(40,10,  utf8_decode($proveedor->$ciudad_id),1);
 

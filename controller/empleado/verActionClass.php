@@ -23,6 +23,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           empleadoTableClass::NOMBRE,
           empleadoTableClass::USUARIO_ID,
           empleadoTableClass::TIPO_ID_ID,
+          empleadoTableClass::DOCUMENTO,
           empleadoTableClass::APELLIDO,
           empleadoTableClass::DIRECCION,
           empleadoTableClass::CORREO,

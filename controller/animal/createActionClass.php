@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\animalValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -20,38 +21,41 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST')) {
 
-        $genero = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, true));
+        $genero_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true));
         $fecha_nacimiento = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true));
         $estado_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true));
         $lote_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true));
         $raza_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true));
-        $id_madre = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, true));
-
+        $nombre_cerdo = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true));
+        //$id_madre = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, true));
+       
 //        $this->Validate($genero, $id_madre);
 
-        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
+//        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
         
         $data = array(
-            hojaVidaTableClass::GENERO => $genero,
+            hojaVidaTableClass::GENERO_ID => $genero_id,
             hojaVidaTableClass::FECHA_NACIMIENTO => $fecha_nacimiento,
             hojaVidaTableClass::ESTADO_ID => $estado_id,
             hojaVidaTableClass::LOTE_ID => $lote_id,
             hojaVidaTableClass::RAZA_ID => $raza_id,
-            hojaVidaTableClass::ID_MADRE => $id_madre
+            hojaVidaTableClass::NOMBRE_CERDO => $nombre_cerdo
+            //hojaVidaTableClass::ID_MADRE => $id_madre
         );
 
-        hojaVidaTableClass::insert
-                ($data);
-
+        hojaVidaTableClass::insert($data);
         session::getInstance()->setSuccess('Registro Exitoso');
+        
+        log::register('insertar', hojaVidaTableClass::getNameTable());
 
         routing::getInstance()->redirect('animal', 'index');
       } else {
         routing::getInstance()->redirect('animal', 'index');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('animal', 'insert');
+      routing::getInstance()->redirect('shfSecurity', 'exception');
       session::getInstance()->setFlash('exc', '$exc');
+      
     }
   }
 

@@ -1,10 +1,5 @@
-
-
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 
 
 <?php $nombre = empleadoTableClass::NOMBRE ?>
@@ -19,8 +14,10 @@ use mvc\i18n\i18nClass as i18n ?>
 
 <div class="container container-fluid">
 
+  <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <br>
+  <br>
 
-  <a href="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>"><?php echo i18n::__('return') ?> </a>
 
 </div>
 
@@ -43,7 +40,7 @@ use mvc\i18n\i18nClass as i18n ?>
           <tr>
             <th><?php echo i18n::__('name') ?></th>
 
-            <td><?php echo $empleado->$nombre ?></td>
+            <td><?php echo $empleado->$nombre. ' ' . $empleado->$apellido ?></td>
 
           <tr>
             <th><?php echo i18n::__('name_user') ?></th>
@@ -53,10 +50,6 @@ use mvc\i18n\i18nClass as i18n ?>
             <th><?php echo i18n::__('type_id') ?></th>
 
             <td><?php echo tipoIdTableClass::getNameTipo($empleado->$tipo_id_id) ?></td>
-          <tr>
-            <th><?php echo i18n::__('lastname') ?></th>
-
-            <td><?php echo $empleado->$apellido ?></td>
           <tr>
             <th><?php echo i18n::__('direction') ?></th>
 

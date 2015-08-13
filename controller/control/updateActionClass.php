@@ -21,6 +21,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->isMethod('POST')) {
 
         $id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::ID, true));
+        $unidad = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true));
         $peso_cerdo = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true));
         $empleado_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true));
         $hoja_vida_id = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true));
@@ -35,6 +36,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
 
         $data = array(
+            controlTableClass::UNIDAD_MEDIDA_ID => $unidad,
             controlTableClass::PESO_CERDO => $peso_cerdo,
             controlTableClass::EMPLEADO_ID => $empleado_id,
             controlTableClass::HOJA_VIDA => $hoja_vida_id
@@ -42,7 +44,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         controlTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro se modifico con Exitoso');
+        session::getInstance()->setSuccess('Registro Exitoso');
 
         routing::getInstance()->redirect('control', 'index');
       } else {

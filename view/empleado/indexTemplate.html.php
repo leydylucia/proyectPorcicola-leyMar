@@ -1,22 +1,16 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?> 
-<?php
-
-use mvc\view\viewClass as view ?> 
-<?php
-
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as config ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = empleadoTableClass::ID ?>
 <?php $nombre = empleadoTableClass::NOMBRE ?>
 <?php $usuario_id = empleadoTableClass::USUARIO_ID ?>
 <?php $tipo_id_id = empleadoTableClass::TIPO_ID_ID ?>
+<?php $documento = empleadoTableClass::DOCUMENTO ?>
 <?php $apellido = empleadoTableClass::APELLIDO ?>
 <?php $direccion = empleadoTableClass::DIRECCION ?>
 <?php $correo = empleadoTableClass::CORREO ?>
@@ -46,18 +40,33 @@ use mvc\request\requestClass as request ?>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
 
+          <?php if (session::getInstance()->hasError('inputNombre')): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?><!--esta linea para actualizar demas formularios-->
+            </div>
+          <?php endif ?>
+
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>">
               <div class="form-group">
                 <label for="filternombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nombre]" name="filter[nombre]" placeholder="nombre">
+                  <input type="text" class="form-control" id="filter[nombre]" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true) ?>" placeholder="nombre">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+              
+              <?php if (session::getInstance()->hasError('inputApellido')): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?><!--esta linea para actualizar demas formularios-->
+            </div>
+          <?php endif ?>
+              
               <div class="form-group">
                 <label for="filterapellido" class="col-sm-2 control-label"><?php echo i18n::__('lastname') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[apellido]" name="filter[apellido]" placeholder="apellido">
+                  <input type="text" class="form-control" id="filter[apellido]" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, true) ?>" placeholder="apellido">
                 </div>
               </div>  
 
@@ -128,19 +137,20 @@ use mvc\request\requestClass as request ?>
     </div>
 
 
-<?php view::includeHandlerMessage() ?>  <!--esta linea es para traer mensajes de exito cunado registra -->
+    <?php view::includeHandlerMessage() ?>  <!--esta linea es para traer mensajes de exito cunado registra -->
 
     <div class="container table-responsive"><!--esto es boostrap que no se te el olvides de cerrar el div-->
     </div>
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('empleado', 'deleteSelect') ?>" method="POST">
       <table class="table table-bordered table-responsive table-striped table-condensed mitabla">  
-      <thead>
+        <thead>
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('name') ?></th>
             <th><?php echo i18n::__('name_user') ?></th>
             <th><?php echo i18n::__('type_id') ?></th>
-            <th><?php echo i18n::__('lastname') ?></th>
+            <th><?php echo i18n::__('document') ?></th>
+<!--            <th><?php echo i18n::__('lastname') ?></th>-->
             <th><?php echo i18n::__('direction') ?></th>
             <th><?php echo i18n::__('email') ?></th>
             <th><?php echo i18n::__('telephone') ?></th>
@@ -150,13 +160,14 @@ use mvc\request\requestClass as request ?>
           </tr>
         </thead>
         <tbody>
-<?php foreach ($objEmpleado as $empleado): ?>
+          <?php foreach ($objEmpleado as $empleado): ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $empleado->$id ?>"></td>
-              <td><?php echo $empleado->$nombre ?></td>
+              <td><?php echo $empleado->$nombre. ' ' . $empleado->$apellido ?></td>
               <td><?php echo usuarioTableClass::getNameUsuario($empleado->$usuario_id) ?></td>
               <td><?php echo tipoIdTableClass::getNameTipo($empleado->$tipo_id_id) ?></td>
-              <td><?php echo $empleado->$apellido ?></td>
+              <td><?php echo $empleado->$documento ?></td>
+<!--              <td><?php echo $empleado->$apellido ?></td>-->
               <td><?php echo $empleado->$direccion ?></td>
               <td><?php echo $empleado->$correo ?></td>
               <td><?php echo $empleado->$telefono ?></td>
@@ -179,7 +190,7 @@ use mvc\request\requestClass as request ?>
                 </div>
                 <div class="modal-body">
                   <!--pára que imprima el id en cada ventana-->
-          <?php i18n::__('confirmDelete') ?> <?php echo $empleado->$id ?>
+                  <?php i18n::__('confirmDelete') ?> <?php echo $empleado->$id ?>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -188,7 +199,7 @@ use mvc\request\requestClass as request ?>
               </div>
             </div>
           </div>
-<?php endforeach ?>
+        <?php endforeach ?>
         </tbody>
       </table>  
     </form>
@@ -210,7 +221,7 @@ use mvc\request\requestClass as request ?>
       </div>
       <div class="modal-body">
 
-<?php i18n::__('confirmDeleteMasivo') ?> 
+        <?php i18n::__('confirmDeleteMasivo') ?> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -221,12 +232,12 @@ use mvc\request\requestClass as request ?>
 </div>
 
 
-<div class="text-right">
-<?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+<div class="text-right container container-fluid">
+  <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('empleado', 'index') ?>')">
+    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+    <?php endfor; ?>
 
   </select><?php echo i18n::__('off') ?> <?php echo $cntPages ?>
 </div>

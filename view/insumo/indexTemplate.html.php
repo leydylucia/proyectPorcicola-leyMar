@@ -17,7 +17,7 @@ use mvc\request\requestClass as request ?>
 
 <?php $id = insumoTableClass::ID ?>
 <?php $descInsumo = insumoTableClass::DESC_INSUMO ?>
-<?php $precio = insumoTableClass::PRECIO ?>
+<?php // $precio = insumoTableClass::PRECIO ?>
 <?php $tipoInsumo = insumoTableClass::TIPO_INSUMO_ID ?>
 <?php $idTipoInsumo = tipoInsumoTableClass::ID ?>
 <?php $desTipoInsumo = tipoInsumoTableClass::DESC_TIPOIN ?>
@@ -140,12 +140,12 @@ use mvc\request\requestClass as request ?>
                             </div>
                         </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="filterprecio" class="col-sm-2 control-label"><?php echo i18n::__('prise') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
                             </div>
-                        </div> 
+                        </div> -->
 
 
 
@@ -169,7 +169,7 @@ use mvc\request\requestClass as request ?>
                                                           </div>
                                                         </div> -->
 
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
@@ -180,7 +180,7 @@ use mvc\request\requestClass as request ?>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
                             </div>
-                        </div> 
+                        </div> -->
 
 
                         <div class="form-group">
@@ -233,7 +233,7 @@ use mvc\request\requestClass as request ?>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('describe_product') ?></th>
-                            <th><?php echo i18n::__('prise') ?></th>
+                            <!--<th><?php // echo i18n::__('prise') ?></th>-->
                             <th><?php echo i18n::__('type_product') ?></th>
                             <th><?php echo i18n::__('date_manufacture') ?></th>
                             <th><?php echo i18n::__('date_conquering') ?></th>
@@ -248,7 +248,7 @@ use mvc\request\requestClass as request ?>
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $insumo->$id ?>"></td>
                                 <td><?php echo $insumo->$descInsumo ?></td>
-                                <td> <?php echo '$ ' . number_format($insumo->$precio, 0, ',', '.'); ?></td>
+                                <!--<td> <?php // echo '$ ' . number_format($insumo->$precio, 0, ',', '.'); ?></td>-->
                                 <td><?php echo tipoInsumoTableClass::getNameTipoin($insumo->$tipoInsumo) ?></td>
                                 <td><?php echo $insumo->$fechaFabricacion ?></td>
                                 <td><?php echo $insumo->$fechaVencimiento ?></td>

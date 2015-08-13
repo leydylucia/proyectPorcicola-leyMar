@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\controlValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -22,6 +23,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
+
+        if (request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $peso_cerdo = request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::PESO_CERDO, true));
+
+            validator::validateFiltroCerdo();
+            if (isset($peso_cerdo) and $peso_cerdo !== null and $peso_cerdo !== '') {
+              $where[controlTableClass::PESO_CERDO] = $peso_cerdo;
+            }
+          }
+        }
 
         // aqui validar datos de filtros
 
@@ -48,6 +61,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           controlTableClass::PESO_CERDO,
           controlTableClass::EMPLEADO_ID,
           controlTableClass::HOJA_VIDA,
+          controlTableClass::UNIDAD_MEDIDA_ID,
           controlTableClass::CREATED_AT
       );
       $orderBy = array(
@@ -76,8 +90,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objControl = controlTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'control', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+      //session::getInstance()->setFlash('exc', $exc);
+      //routing::getInstance()->forward('shfSecurity', 'exception');
+      routing::getInstance()->redirect('control', 'index');
     }
   }
 

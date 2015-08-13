@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\validator\sacrificioVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
-use hook\log\logHookClass as log; /* linea de la bitacora */
+//use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  *  Description of createActionClass esta clase sirve para 
@@ -35,7 +35,7 @@ class createSacrificioventaActionClass extends controllerClass implements contro
                 $tipoVenta = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
                 $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
                 $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
-                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA, true));
+                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true));
 //                $this->Validate($valor,$idCerdo);/*@ $this->validate para validar campos*/
                 validator::validateInsert();
 
@@ -46,13 +46,13 @@ class createSacrificioventaActionClass extends controllerClass implements contro
                     sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
                     sacrificiovTableClass::ID_CERDO => $idCerdo,
                     sacrificiovTableClass::CANTIDAD => $cantidad,
-                    sacrificiovTableClass::UNIDAD_MEDIDA => $unidad_medida,
+                    sacrificiovTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
                 );
 
                 sacrificiovTableClass::insert($data);
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                 log::register('insertar', sacrificiovTableClass::getNameTable()); //linea de bitacora
+//                 log::register('insertar', sacrificiovTableClass::getNameTable()); //linea de bitacora
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
             } else {
                 routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');

@@ -40,9 +40,19 @@ class insertActionClass extends controllerClass implements controllerActionInter
             );
             $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
 
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
 
-            $this->id_entrada_bodega =  request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));/*manda el id a la vista*/
+
+
+            $this->id_entrada_bodega = request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true)); /* manda el id a la vista */
             $this->defineView('insert', 'detalle', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

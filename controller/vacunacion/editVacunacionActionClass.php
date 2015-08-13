@@ -24,7 +24,7 @@ class editVacunacionActionClass extends controllerClass implements controllerAct
                 $fields = array(
                     vacunacionTableClass::ID,
                     vacunacionTableClass::DOSIS,
-                    vacunacionTableClass::HORA,
+//                    vacunacionTableClass::HORA,
                     vacunacionTableClass::INSUMO_ID,
                     vacunacionTableClass::ID_CERDO,
                 );
@@ -43,15 +43,16 @@ class editVacunacionActionClass extends controllerClass implements controllerAct
                 );
                 $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
 
-                
-                
-                $fieldsCerdo = array(/* foranea cerdo hojadevida */
+
+
+                $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
                     hojaVidaTableClass::ID,
+                    hojaVidaTableClass::LOTE_ID,
                 );
                 $orderByCerdo = array(
-                    hojaVidaTableClass::ID
+                    hojaVidaTableClass::LOTE_ID
                 );
-                $this->objHojaVida= hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+                $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 
                 $this->defineView('edit', 'vacunacion', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
 

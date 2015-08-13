@@ -33,7 +33,7 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
 
                 $id = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID, true));
                 $desc_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
-                $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
+//                $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
                 $tipoInsumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true));
                 $fechaFabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true));
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
@@ -50,7 +50,7 @@ class updateInsumoActionClass extends controllerClass implements controllerActio
  */
                 $data = array(
                     insumoTableClass::DESC_INSUMO => $desc_insumo,
-                    insumoTableClass::PRECIO => $precio,
+//                    insumoTableClass::PRECIO => $precio,
                     insumoTableClass::TIPO_INSUMO_ID => $tipoInsumo,
                     insumoTableClass::FECHA_FABRICACION => $fechaFabricacion,
                     insumoTableClass::FECHA_VENCIMIENTO => $fechaVencimiento,

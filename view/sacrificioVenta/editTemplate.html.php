@@ -10,7 +10,7 @@
         <h2> <?php echo $objSacrificioV[0]->$valor ?></h2>
     </div>
 <!--fintitulo-->
-<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array('objSacrificioV' => $objSacrificioV, 'valor' => $valor, 'objTipoV' => $objTipoV,'objHojaVida'=>$objHojaVida)) ?>
+<?php view::includePartial('sacrificioVenta/formSacrificioVenta', array('objSacrificioV' => $objSacrificioV, 'valor' => $valor, 'objTipoV' => $objTipoV,'objHojaVida'=>$objHojaVida, 'objUnidadMedida' => $objUnidadMedida)) ?>
 
 
 </div>

@@ -11,7 +11,8 @@ use mvc\i18n\i18nClass as i18n ?>
 use mvc\config\configClass as confing ?>
 <?php
 use mvc\request\requestClass as request ?>
-
+<?php
+use mvc\session\sessionClass as session ?>
 
 
 <?php $desc_tipoIn = tipoInsumoTableClass::DESC_TIPOIN ?>
@@ -41,61 +42,37 @@ use mvc\request\requestClass as request ?>
         <!--            <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ></?php echo i18n::__('report') ?></button>
                     <a href="</?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>"class="btn btn-info btn-xs"></?php echo i18n::__('printOut') ?></a>-->
     </div>
-    <!--reporte con filtro-->
-    <!--        <div class="modal fade" id="myModalReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"></?php echo i18n::__('report') ?></h4>
-                        </div>
-    
-                        <div class="modal-body">
-                            <form class="form-horizontal" role="form" id="report" method="POST" action="</?php echo routing::getInstance()->getUrlWeb('insumo', 'reportTipoin') ?>">
-                                <div class="form-group">
-                                    <label for="filtertipoInsumo" class="col-sm-2 control-label"></?php echo i18n::__('typeProd') ?></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_insumo">
-                                    </div>
-                                </div>
-                               
-                            </form>
-                        </div>
-    
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"></?php echo i18n::__('cancel') ?></button>
-                            <button type="button" onclick="$('#report').submit()" class="btn btn-warning"></?php echo i18n::__('report')?></button>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-    <!--fin reporte con filtro-->
-    <!--modal en ajax para filtrar-->
+
+
+
+
+    <!--filtros-->
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
+                    <h4 class="modal-title" id="myModalLabel">Filtros</h4>
                 </div>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>">
-                        <div class="form-group">
-                            <label for="filtertipoInsumo" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[tipoInsumo]" placeholder="desc_tipo_insumo">
+
+<?php if (session::getInstance()->hasError('inputDescTipoIn')): ?><!--inicio de validaciones-->
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescTipoIn') ?><!--esta linea para actualizar demas formularios-->
                             </div>
-                        </div>
-                        <!--                            <div class="form-group">
-                                                        <label class="col-sm-2 control-label"></?php echo i18n::__('date_creation') ?></label>
-                                                        <div class="col-sm-10">
-                                                            <input type="date" class="form-control" id="filter[Date1]" name="filterDate1">
-                                                            <br>
-                                                            <input type="date" class="form-control" id="filter[Date2]" name="filterDate2">
-                                                        </div>
-                                                    </div>-->
-                    </form>
+<?php endif ?><!--fin de validaciones-->
+
+
+                        <div class="form-group">
+                            <label for="filterDesc_insumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="filter[tipoInsumo]" name="filter[<?php echo tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true) ?>]" placeholder="desc_tipo_insumo">
+                            </div>
+                        </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+
                 </div>
 
                 <div class="modal-footer">
@@ -105,9 +82,10 @@ use mvc\request\requestClass as request ?>
             </div>
         </div>
     </div>
-    <!--fin de modal-->
+    <!--fin de modal filtro-->
 
-    <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
+
+<?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
     <!--formulario de borrado masivo-->
     <div class="container">
         <div class="table-responsive">
@@ -124,7 +102,7 @@ use mvc\request\requestClass as request ?>
                         </tr>        
                     </thead>
                     <tbody>
-                        <?php foreach ($objTipoin as $tipoIn): ?> 
+<?php foreach ($objTipoin as $tipoIn): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $tipoIn->$id ?>"></td>
                                 <td><?php echo $tipoIn->$desc_tipoIn ?></td>
@@ -148,7 +126,7 @@ use mvc\request\requestClass as request ?>
                                     </div>
                                     <div class="modal-body">
                                         <!--pára que imprima el id en cada ventana-->
-                                        <?php i18n::__('confirmDelete') ?> <?php echo $tipoIn->$desc_tipoIn ?>
+    <?php i18n::__('confirmDelete') ?> <?php echo $tipoIn->$desc_tipoIn ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -157,7 +135,7 @@ use mvc\request\requestClass as request ?>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
+<?php endforeach ?>
                     </tbody>
 
 
@@ -166,10 +144,10 @@ use mvc\request\requestClass as request ?>
             </form><!-- fin formulario de borrado masivo-->
             <div class="text-right">
                 página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>')">
-                    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-                    <?php endfor; ?>
+<?php endfor; ?>
 
 
 
@@ -195,7 +173,7 @@ use mvc\request\requestClass as request ?>
                 </div>
                 <div class="modal-body">
 
-                    <?php i18n::__('confirmDeleteMasivo') ?> <?php echo $tipoIn->$desc_tipoIn ?>
+<?php i18n::__('confirmDeleteMasivo') ?> <?php echo $tipoIn->$desc_tipoIn ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>

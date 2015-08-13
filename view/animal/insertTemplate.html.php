@@ -13,5 +13,5 @@
 </div>
 <!--fintitulo-->
 
-<?php view::includePartial('animal/formAnimal',array( 'objEstado' => $objEstado, 'objLote' => $objLote, 'objRaza' => $objRaza)) ?>
+<?php view::includePartial('animal/formAnimal',array('objGenero' => $objGenero, 'objEstado' => $objEstado, 'objLote' => $objLote, 'objRaza' => $objRaza)) ?>
 

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+//use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -17,42 +18,58 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
   public function execute() {
     try {
-      if (request::getInstance()->hasGet(controlTableClass::ID)) {
+      if (request::getInstance()->hasRequest(controlTableClass::ID)) {
         $fields = array(
             controlTableClass::ID,
             controlTableClass::PESO_CERDO,
             controlTableClass::EMPLEADO_ID,
-            controlTableClass::HOJA_VIDA
+            controlTableClass::HOJA_VIDA,
+            controlTableClass::UNIDAD_MEDIDA_ID
         );
 
         $where = array(
-            controlTableClass::ID => request::getInstance()->getGet(controlTableClass::ID)
+            controlTableClass::ID => request::getInstance()->getRequest(controlTableClass::ID)
         );
         $this->objControl = controlTableClass::getAll($fields, true, null, null, null, null, $where);
         
         /* fields para foraneas */
-      $fieldsA = array(
-          empleadoTableClass::ID,
-          empleadoTableClass::NOMBRE
-      );
-      $orderByA = array(
-          empleadoTableClass::NOMBRE
-      );
-      $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
-      
-      
-      /* fields para foraneas */
-      $fields = array(
-          hojaVidaTableClass::ID,
-      );
-      $orderBy = array(
-          hojaVidaTableClass::ID
-      );
-      $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-        
-        
+        $fieldsF = array(
+            unidadMedidaTableClass::ID,
+            unidadMedidaTableClass::DESCRIPCION
+        );
+        $orderByF = array(
+            unidadMedidaTableClass::DESCRIPCION
+        );
+        $this->objUnidad = unidadMedidaTableClass::getAll($fieldsF, true, $orderByF, 'ASC'); 
+
+        /* fields para foraneas */
+        $fieldsA = array(
+            empleadoTableClass::ID,
+            empleadoTableClass::NOMBRE,
+            empleadoTableClass::APELLIDO
+        );
+        $orderByA = array(
+            empleadoTableClass::NOMBRE
+        );
+        $this->objEmpleado = empleadoTableClass::getAll($fieldsA, true, $orderByA, 'ASC');
+
+
+        /* fields para foraneas */
+        $fields = array(
+            hojaVidaTableClass::ID,
+            hojaVidaTableClass::NOMBRE_CERDO
+        );
+        $orderBy = array(
+            hojaVidaTableClass::NOMBRE_CERDO
+        );
+        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+
         $this->defineView('edit', 'control', session::getInstance()->getFormatOutput());
-        session::getInstance()->setSuccess('El registro se modifico exitosamente');
+
+        log::register('editar', controlTableClass::getNameTable());
+
+        //session::getInstance()->setSuccess('El registro se modifico exitosamente');
       } else {
         routing::getInstance()->redirect('control', 'index');
       }

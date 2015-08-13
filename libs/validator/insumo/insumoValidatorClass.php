@@ -41,19 +41,19 @@ namespace mvc\validator {
 //        session::getInstance()->setFlash('inputDescInsumo', true);
 //        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputDescInsumo');
 //      } 
-            //------------------------------------campo precio---------------------
-            //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputPrecio', true); /* input usuario biene del formulario */
-                session::getInstance()->setError('el campo precio no puede estar vacio', 'inputPrecio');
-            } //----solo numeros----      
-            else if (!is_numeric(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputPrecio', true);
-                session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputPrecio');
-            }
-            //------------------------------------campo tipo insumo---------------------
+//            //------------------------------------campo precio---------------------
+//            //----campo nulo----
+//            if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputPrecio', true); /* input usuario biene del formulario */
+//                session::getInstance()->setError('el campo precio no puede estar vacio', 'inputPrecio');
+//            } //----solo numeros----      
+//            else if (!is_numeric(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputPrecio', true);
+//                session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputPrecio');
+//            }
+//            //------------------------------------campo tipo insumo---------------------
             //----campo nulo----
             if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::TIPO_INSUMO_ID, true)))) {
                 $flag = true;
@@ -123,18 +123,18 @@ namespace mvc\validator {
 //        session::getInstance()->setFlash('inputDescInsumo', true);
 //        session::getInstance()->setError('El campo descripcion  insumo no permite numeros, solo letras', 'inputDescInsumo');
 //      } 
-            //------------------------------------campo precio---------------------
-            //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputPrecio', true); /* input usuario biene del formulario */
-                session::getInstance()->setError('el campo no puede estar vacio', 'inputPrecio');
-            } //----solo numeros----      
-            else if (!is_numeric(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputPrecio', true);
-                session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputPrecio');
-            }
+//            //------------------------------------campo precio---------------------
+//            //----campo nulo----
+//            if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputPrecio', true); /* input usuario biene del formulario */
+//                session::getInstance()->setError('el campo no puede estar vacio', 'inputPrecio');
+//            } //----solo numeros----      
+//            else if (!is_numeric(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::PRECIO, true)))) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputPrecio', true);
+//                session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputPrecio');
+//            }
             //------------------------------------campo fecha fabricacion---------------------
             //----campo nulo----
             if (self::notBlank(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::FECHA_FABRICACION, true)))) {

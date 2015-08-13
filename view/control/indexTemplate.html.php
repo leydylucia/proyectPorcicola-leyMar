@@ -1,19 +1,13 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?> 
-<?php
-
-use mvc\view\viewClass as view ?> 
-<?php
-
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as config ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = controlTableClass::ID ?>
+<?php $unidad = controlTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $peso_cerdo = controlTableClass::PESO_CERDO ?>
 <?php $empleado_id = controlTableClass::EMPLEADO_ID ?>
 <?php $hoja_vida_id = controlTableClass::HOJA_VIDA ?>
@@ -40,15 +34,22 @@ use mvc\request\requestClass as request ?>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
 
+<?php if (session::getInstance()->hasError('inputPeso')): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPeso') ?><!--esta linea para actualizar demas formularios-->
+            </div>
+<?php endif ?>
+
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>">
               <div class="form-group">
-                <label for="filtercontrol" class="col-sm-2 control-label"><?php echo i18n::__('weight control') ?></label>
+                <label for="filtercontrol" class="col-sm-2 control-label"><?php echo i18n::__('pig weight') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[control]" name="filter[control]" placeholder="control peso">
+                  <input type="text" class="form-control" id="filter[control]" name="<?php echo controlTableClass::getNameField(controlTableClass::PESO_CERDO, true) ?>" placeholder="control peso">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              
+
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
@@ -125,6 +126,7 @@ use mvc\request\requestClass as request ?>
           <tr>
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('pig') ?></th>
+            <th><?php echo i18n::__('unit_measure') ?></th>
             <th><?php echo i18n::__('pig weight') ?></th>
             <th><?php echo i18n::__('employee') ?></th>
             <th><?php echo i18n::__('date') ?></th>
@@ -135,10 +137,11 @@ use mvc\request\requestClass as request ?>
 <?php foreach ($objControl as $control): ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $control->$id ?>"></td>
-               <td><?php echo $control->$hoja_vida_id ?></td>
+              <td><?php echo hojaVidaTableClass::getNameHojaVida($control->$hoja_vida_id) ?></td>
+              <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($control->$unidad) ?></td>
               <td><?php echo $control->$peso_cerdo ?></td>
-              <td><?php echo empleadoTableClass::getNameEmpleado($control->$empleado_id) ?></td>
-              <td><?php echo date('d-m-Y h:i:s a', strtotime( $control->$fecha)) ?></td>
+              <td><?php echo empleadoTableClass::getNameEmpleado($control->$empleado_id) . ' ' . empleadoTableClass::getNameApellido($control->$empleado_id) ?></td>
+              <td><?php echo date('d-m-Y h:i:s a', strtotime($control->$fecha)) ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'ver', array(controlTableClass::ID => $control->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'edit', array(controlTableClass::ID => $control->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
@@ -199,7 +202,7 @@ use mvc\request\requestClass as request ?>
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

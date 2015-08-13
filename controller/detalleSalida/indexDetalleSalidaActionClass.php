@@ -75,6 +75,7 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
                 detalleSalidaTableClass::CANTIDAD,
                 detalleSalidaTableClass::SALIDA_BODEGA_ID,
                 detalleSalidaTableClass::INSUMO_ID,
+                detalleSalidaTableClass::UNIDAD_MEDIDA_ID,
                 detalleSalidaTableClass::CREATED_AT
             );
             $orderBy = array(
@@ -111,7 +112,7 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
                     salidaBodegaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))
                 );
             }
-            
+
             /**
              *  
              * @var $where => para filtros
@@ -154,6 +155,16 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
                 insumoTableClass::DESC_INSUMO
             );
             $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
+
 //ECHO $id_salida_bodega;
 //            if(request::getInstance()->hasPost('filter')){
 ////                     $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));

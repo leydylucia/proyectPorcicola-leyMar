@@ -298,7 +298,34 @@ namespace mvc\validator {
         request::getInstance()->addParamGet(array(\proveedorTableClass::ID => request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::ID, true))));
         routing::getInstance()->forward('proveedor', 'editProv');
       }
+ 
+      }
+  
+      public static function validateFiltroNombre() {
+         $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+       if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBRE, true))))){
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } 
+        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBRE, true))) > \proveedorTableClass::NOMBRE_LENGTH) {
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }       
+      }
+      
+      public static function validateFiltroApellido() {
+         $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+       if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))))){
+        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
+      } 
+        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))) > \proveedorTableClass::APELLIDO_LENGTH) {
+        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      }       
+      }
     }
-  }
   
 }

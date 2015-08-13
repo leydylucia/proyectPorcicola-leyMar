@@ -26,10 +26,10 @@
 
 
     <?php view::includeHandlerMessage() ?>
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true) ? 'has-error has-feedback' : '' ?>">       
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?><?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) : '' ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>">
+        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) : ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true) ?>">
         <?php if (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>
@@ -113,7 +113,7 @@
 
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objProveedor)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('return') ?> </a>
+    <a class="btn btn-info" href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('return') ?> </a>
 </form>
 </div>
 

@@ -29,7 +29,7 @@ use mvc\view\viewClass as view ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', ((isset($objUsuarioCredencial)) ? 'updateUsuarioCredencial' : 'createUsuarioCredencial')) ?>">
 
-
+    <div class="container">
     <?php if (isset($objUsuarioCredencial) == true): ?>
         <input name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" value="<?php echo $objUsuarioCredencial[0]->$id ?>" type="hidden">
     <?php endif ?>
@@ -103,7 +103,7 @@ use mvc\view\viewClass as view ?>
     <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'indexUsuarioCredencial') ?>"><?php echo i18n::__('return') ?> </a></button>
 
 
-
+    </div>
 
 </form>
 

@@ -20,6 +20,17 @@ class insertActionClass extends controllerClass implements controllerActionInter
       if (session::getInstance()->hasAttribute('form_' . hojaVidaTableClass::getNameTable())) {
         $this->hojaVida = session::getInstance()->getAttribute('form_' . hojaVidaTableClass::getNameTable());
       }
+
+      // para editar foraneas tabla genero
+      $fieldsT = array(
+          generoTableClass::ID,
+          generoTableClass::DESCRIPCION
+      );
+      $orderByT = array(
+          generoTableClass::DESCRIPCION
+      );
+      $this->objGenero = generoTableClass::getAll($fieldsT, true, $orderByT, 'ASC');
+      //fin
       // para editar foraneas tabla estado
       $fields = array(
           estadoTableClass::ID,
@@ -49,6 +60,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
           razaTableClass::DESC_RAZA
       );
       $this->objRaza = razaTableClass::getAll($fields, true, $orderBy, 'ASC');
+      //fin
+//      // para editar foraneas tabla raza
+//        $fieldy = array(
+//            hojaVidaTableClass::ID_MADRE
+//                    );
+//        $orderBr = array(
+//            hojaVidaTableClass::ID_MADRE
+//        );
+//        $this->objHojaVida = hojaVidaTableClass::getAll($fieldy, true, $orderBr, 'ASC');
       //fin
 
       $this->defineView('insert', 'animal', session::getInstance()->getFormatOutput());

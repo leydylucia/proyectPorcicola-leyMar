@@ -38,9 +38,9 @@ class partoBaseTableClass extends tableBaseClass {
   const FECHA_MONTADA = 'fecha_montada';
   const FECHA_MONTADA_LENGTH = 10;
   const ID_PADRE = 'id_padre';
+  const ID_PADRE_LENGTH = 20;
   const HOJA_VIDA_ID = 'hoja_vida_id';
-
-
+  
   function getId() {
     return $this->id;
   }

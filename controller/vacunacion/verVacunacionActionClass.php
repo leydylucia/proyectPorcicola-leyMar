@@ -21,7 +21,7 @@ class verVacunacionActionClass extends controllerClass implements controllerActi
             $fields = array(
                 vacunacionTableClass::ID,
                 vacunacionTableClass::DOSIS,
-                vacunacionTableClass::HORA,
+//                vacunacionTableClass::HORA,
                 vacunacionTableClass::INSUMO_ID,
                 vacunacionTableClass::ID_CERDO,
                 vacunacionTableClass::CREATED_AT

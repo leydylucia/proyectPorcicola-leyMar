@@ -11,7 +11,7 @@
         <h2> <?php echo $objDetalle[0]->$cantidad ?></h2>
     </div>
 <!--fintitulo-->
-<?php view::includePartial('detalle/formDetalle', array('objDetalle' => $objDetalle, 'cantidad' => $cantidad,'objEntrada' => $objEntrada,'objInsumo'=>$objInsumo)) ?>
+<?php view::includePartial('detalle/formDetalle', array('objDetalle' => $objDetalle, 'cantidad' => $cantidad,'objEntrada' => $objEntrada,'objInsumo'=>$objInsumo,'objUnidadMedida'=>$objUnidadMedida)) ?>
 
 
 </div>

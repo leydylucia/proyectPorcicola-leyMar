@@ -161,13 +161,14 @@ dictionary:
     Vaccination:             Vaccination
     New_Vaccination:         New Vaccination
     Edit_Vaccination:        Edit Vaccination
+    lot:                     lot
     
       #Empleado#
     name_user:                 Name User
     type_id:                   Type Identification
     empleyeed:                 Employeed
     new_employeed:             New Employeed
-    
+    document:                  Document
     #Genero"ANIMAL"#
     genre:                     Genre
     batch:                     Batch
@@ -176,7 +177,7 @@ dictionary:
     mother:                    Mother
     new_curriculum vitae:      New Curriculum Vitae
     curriculum vitae:          curriculum vitae
-    
+    name_pig:                  name_pig
     #Entrada Bodega#
     cellar entry:              Cellar Entry
     detail:                    Detail

@@ -108,5 +108,18 @@ namespace mvc\validator {
       
       }
     }
+    
+    public static function validateFiltroNombre() {
+         $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+       if (!preg_match($soloLetras, (request::getInstance()->getPost(\credencialTableClass::getNameField(\credencialTableClass::NOMBRE, true))))){
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } 
+        else if(strlen(request::getInstance()->getPost(\credencialTableClass::getNameField(\credencialTableClass::NOMBRE, true))) > \credencialTableClass::NOMBRE_LENGTH) {
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }       
+      }
   }
 }

@@ -1,11 +1,9 @@
-<?php
-
-use mvc\model\table\tableBaseClass;
+<?php use mvc\model\table\tableBaseClass;
 
 /**
  * Description of credencialBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
  */
 class hojaVidaBaseTableClass extends tableBaseClass {
 
@@ -13,24 +11,28 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   private $created_at;
   private $updated_at;
   private $deleted_at;
-  private $genero;
   private $fecha_nacimiento;
   private $estado_id;
   private $lote_id;
   private $raza_id;
-  private $id_madre;
+  private $genero_id;
+  private $nombre_cerdo;
+
+  //private $id_madre;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  const GENERO = 'genero';
-  const GENERO_LENGTH = 1;
   const FECHA_NACIMIENTO = 'fecha_nacimiento';
   const ESTADO_ID = 'estado_id';
   const LOTE_ID = 'lote_id';
   const RAZA_ID = 'raza_id';
-  const ID_MADRE = 'id_madre';
+  const GENERO_ID = 'genero_id';
+  const NOMBRE_CERDO = 'nombre_cerdo';
+  const NOMBRE_CERDO_LENGTH = 10;
+
+  //const ID_MADRE = 'id_madre';
 
   function getId() {
     return $this->id;
@@ -48,10 +50,6 @@ class hojaVidaBaseTableClass extends tableBaseClass {
     return $this->deleted_at;
   }
 
-  function getGenero() {
-    return $this->genero;
-  }
-  
   function getFecha_nacimiento() {
     return $this->fecha_nacimiento;
   }
@@ -67,10 +65,18 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   function getRaza_id() {
     return $this->raza_id;
   }
-
-  function getId_madre() {
-    return $this->id_madre;
+  
+  function getGenero_id() {
+    return $this->genero_id;
   }
+  
+  function getNombre_cerdo() {
+    return $this->nombre_cerdo;
+  }
+
+//  function getId_madre() {
+//    return $this->id_madre;
+//  }
 
   function setId($id) {
     $this->id = $id;
@@ -88,10 +94,6 @@ class hojaVidaBaseTableClass extends tableBaseClass {
     $this->deleted_at = $deleted_at;
   }
 
-  function setGenero($genero) {
-    $this->genero = $genero;
-  }
-  
   function setFecha_nacimiento($fecha_nacimiento) {
     $this->fecha_nacimiento = $fecha_nacimiento;
   }
@@ -107,10 +109,18 @@ class hojaVidaBaseTableClass extends tableBaseClass {
   function setRaza_id($raza_id) {
     $this->raza_id = $raza_id;
   }
-
-  function setId_madre($id_madre) {
-    $this->id_madre = $id_madre;
+  
+  function setGenero_id($genero_id) {
+    $this->genero_id = $genero_id;
   }
+  
+  function setNombre_cerdo($nombre_cerdo) {
+    $this->nombre_cerdo = $nombre_cerdo;
+  }
+
+//  function setId_madre($id_madre) {
+//    $this->id_madre = $id_madre;
+//  }
 
     
   /**

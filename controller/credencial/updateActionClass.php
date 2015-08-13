@@ -37,7 +37,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         credencialTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro se modifico con Exitoso');
+        session::getInstance()->setSuccess('Registro Exitoso');
 
         routing::getInstance()->redirect('credencial', 'index');
       } else {

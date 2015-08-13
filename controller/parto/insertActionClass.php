@@ -22,10 +22,11 @@ class insertActionClass extends controllerClass implements controllerActionInter
       }
       // para editar foraneas tabla estado
         $fields = array(
-        hojaVidaTableClass::ID
+        hojaVidaTableClass::ID,
+        hojaVidaTableClass::NOMBRE_CERDO
         );
         $orderBy = array(
-            hojaVidaTableClass::ID
+            hojaVidaTableClass::NOMBRE_CERDO
         );
         $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
         //fin

@@ -29,7 +29,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             /* filtros */
 //            $where = null; /* where se encuentra nulo para entrar en la sentencia getall */
-             $where[detalleEntradaTableClass::ENTRADA_BODEGA_ID] = request::getInstance()->getGet('detalle_entrada_entrada_bodega_id');
+            $where[detalleEntradaTableClass::ENTRADA_BODEGA_ID] = request::getInstance()->getGet('detalle_entrada_entrada_bodega_id');
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter'); /* $filter si se encuentra en la vista?? */
 
@@ -72,6 +72,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 detalleEntradaTableClass::VALOR,
                 detalleEntradaTableClass::ENTRADA_BODEGA_ID,
                 detalleEntradaTableClass::INSUMO_ID,
+                detalleEntradaTableClass::UNIDAD_MEDIDA_ID,
                 detalleEntradaTableClass::CREATED_AT
             );
             $orderBy = array(
@@ -90,7 +91,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
              * * @var $where => para sostener el filtro con el paginado  */
             $this->cntPages = detalleEntradaTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
-            
 //            $where = null;
 //            if (request::getInstance()->hasGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true))) {
 //                $this->detalleEntradaId = $detalleEntradaId = request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));
@@ -98,8 +98,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //                    detalleEntradaTableClass::ENTRADA_BODEGA_ID => $detalleEntradaId
 //                );
 //            }
-            /*where2 sirve para traer tan solo el dato de la cabezera */
-             $where2 = null;
+            /* where2 sirve para traer tan solo el dato de la cabezera */
+            $where2 = null;
             if (request::getInstance()->hasGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true))) {
                 //$this->objSalidaBodega = $objSalidaBodega = request::getInstance()->getGet(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true));
                 $where2 = array(
@@ -142,6 +142,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 insumoTableClass::DESC_INSUMO
             );
             $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
+
 //ECHO $id_salida_bodega;
 //            if(request::getInstance()->hasPost('filter')){
 ////                     $detalleEntradaId = request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::SALIDA_BODEGA_ID, true));

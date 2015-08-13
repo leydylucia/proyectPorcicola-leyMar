@@ -14,9 +14,11 @@ use mvc\i18n\i18nClass as i18n ?>
 
 <div class="container container-fluid">
 
+  <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <br>
+  <br>
 
-  <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>"><?php echo i18n::__('return') ?> </a>
-
+  
 </div>
 
 

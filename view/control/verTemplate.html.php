@@ -9,7 +9,10 @@
 <div class="container container-fluid">
 
 
-  <button type="button" class="btn btn-info btn-xs" > <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('return') ?> </a> </button>
+  <br>
+  <br>
+
 
 </div>
 

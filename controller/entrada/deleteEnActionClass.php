@@ -31,7 +31,7 @@ class deleteEnActionClass extends controllerClass implements controllerActionInt
            'msg' =>'la eliminacion fue exitosa'
             
         );
-        $this->defineView('deleteEn', 'entrada',session::getInstance()->getFormatOutput());
+        $this->defineView('deleteEn', 'entrada', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('Registro Exitoso');
       } else {
         routing::getInstance()->redirect('entrada', 'indexEn');

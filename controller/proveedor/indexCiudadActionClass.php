@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\ciudadValidatorClass as validator;
 
 /**
  * Description of indexCiudadActionClass
@@ -14,11 +15,10 @@ use mvc\i18n\i18nClass as i18n;
  * @category modulo proveedor
  */
 class indexCiudadActionClass extends controllerClass implements controllerActionInterface {
-  
   /* public function execute inicializa las variables 
-     * @return $where=> se encuentra nulo para entrar en la sentencia getAll
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
+   * @return $where=> se encuentra nulo para entrar en la sentencia getAll
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {
@@ -28,10 +28,22 @@ class indexCiudadActionClass extends controllerClass implements controllerAction
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[ciudadTableClass::NOM_CIUDAD] = $filter['nombre'];
+        if (request::getInstance()->hasPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true)) and empty(mvc\request\requestClass::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nom_ciudad = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::NOM_CIUDAD, true));
+
+            validator::validateFiltroCiudad();
+            if (isset($nom_ciudad) and $nom_ciudad !== null and $nom_ciudad !== '') {
+              $where[ciudadTableClass::NOM_CIUDAD] = $nom_ciudad;
+            }
+          }
         }
-        
+
+//        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+//          $where[ciudadTableClass::NOM_CIUDAD] = $filter['nombre'];
+//        }
+
         if (isset($filter['depto']) and $filter['depto'] !== null and $filter['depto'] !== '') {
           $where[ciudadTableClass::DEPTO_ID] = $filter['depto'];
         }
@@ -67,17 +79,17 @@ class indexCiudadActionClass extends controllerClass implements controllerAction
       //$page = request::getInstance()->getGet('page');
 
 
-      /*** @return $filter=> es que hace el filtro de los campos de la base de datos
-     * @return $fields=> son los campos que trae de la base de datos
-     * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
-     * @param true Descriptiontrue=> es el borrado logico si lo tienes en la bd pones true sino false
-     * ASC => es la forma como se va a ordenar si de forma ascendente o desendente 
-     * config::getRowGrid()=> va con el paginado y hace una funcion
-     * @var $this->objInsumo para enviar los datos a la vista      */
-      
-      
+      /*       * * @return $filter=> es que hace el filtro de los campos de la base de datos
+       * @return $fields=> son los campos que trae de la base de datos
+       * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+       * @param true Descriptiontrue=> es el borrado logico si lo tienes en la bd pones true sino false
+       * ASC => es la forma como se va a ordenar si de forma ascendente o desendente 
+       * config::getRowGrid()=> va con el paginado y hace una funcion
+       * @var $this->objInsumo para enviar los datos a la vista      */
+
+
       $this->objCiudad = ciudadTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
-      
+
       $fields = array(
           deptoTableClass::ID,
           deptoTableClass::NOM_DEPTO
@@ -89,8 +101,7 @@ class indexCiudadActionClass extends controllerClass implements controllerAction
 
       $this->defineView('indexCiudad', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+       routing::getInstance()->redirect('proveedor', 'indexCiudad');
     }
   }
 

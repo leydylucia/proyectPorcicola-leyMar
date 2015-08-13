@@ -146,6 +146,21 @@ namespace mvc\validator {
                 routing::getInstance()->forward('default', 'edit');
             }
         }
+        
+        
+         public static function validateFiltroUsuario() {
+            $soloLetras = "/^[a-z]+$/i";
+            $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+            $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+
+
+            //-------------------------------campo usuario-----------------------------
+            //----sobre pasar los caracteres----
+            if (strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USER, true))) > \usuarioTableClass::USER_LENGTH) {
+               session::getInstance()->setError('El usuario no puede esceder en cantidad de caracteres a lo permitido', 'inputUsuario');
+            } 
+             
+        }
 
     }
 

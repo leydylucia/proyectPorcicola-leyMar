@@ -14,7 +14,6 @@ class vacunacionBaseTableClass extends tableBaseClass {
     private $updatedAt;
     private $deletedAt;
     private $dosis;
-    private $hora;
     private $insumo_id;
     private $id_cerdo;
 
@@ -24,7 +23,6 @@ class vacunacionBaseTableClass extends tableBaseClass {
     const DELETED_AT = 'deleted_at';
     const DOSIS='dosis';
     const DOSIS_LENGTH = 6;
-    const HORA='hora';
     const INSUMO_ID='insumo_id';
     const ID_CERDO= 'id_cerdo';
 
@@ -46,10 +44,6 @@ class vacunacionBaseTableClass extends tableBaseClass {
 
     function getDosis() {
         return $this->dosis;
-    }
-
-    function getHora() {
-        return $this->hora;
     }
 
     function getInsumo_id() {
@@ -80,10 +74,6 @@ class vacunacionBaseTableClass extends tableBaseClass {
         $this->dosis = $dosis;
     }
 
-    function setHora($hora) {
-        $this->hora = $hora;
-    }
-
     function setInsumo_id($insumo_id) {
         $this->insumo_id = $insumo_id;
     }
@@ -92,7 +82,7 @@ class vacunacionBaseTableClass extends tableBaseClass {
         $this->id_cerdo = $id_cerdo;
     }
 
-            
+                
         /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\animalValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -24,11 +25,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
 
         if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
-          $where[hojaVIdaTableClass::GENERO] = $filter['genero'];
+          $where[hojaVIdaTableClass::GENERO_ID] = $filter['genero'];
         }
-        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
-          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
-        }
+//        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
+//          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
+//        }
       }
       if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
         $where[hojaVidaTableClass::CREATED_AT] = array(
@@ -42,12 +43,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $fields = array(
           hojaVidaTableClass::ID,
-          hojaVidaTableClass::GENERO,
+          hojaVidaTableClass::GENERO_ID,
           hojaVidaTableClass::FECHA_NACIMIENTO,
           hojaVidaTableClass::ESTADO_ID,
           hojaVidaTableClass::LOTE_ID,
           hojaVidaTableClass::RAZA_ID,
-          hojaVidaTableClass::ID_MADRE,
+          hojaVidaTableClass::NOMBRE_CERDO,
+          //hojaVidaTableClass::ID_MADRE,
           hojaVidaTableClass::CREATED_AT
       );
       $orderBy = array(
@@ -77,12 +79,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'animal', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      routing::getInstance()->redirect('animal', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo '<pre>';
+//      print_r($exc->getTrace());
+//      echo '</pre>';
     }
   }
-
 }

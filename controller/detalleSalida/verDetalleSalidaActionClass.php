@@ -23,6 +23,7 @@ class verDetalleSalidaActionClass extends controllerClass implements controllerA
                 detalleSalidaTableClass::CANTIDAD,
                 detalleSalidaTableClass::SALIDA_BODEGA_ID,
                 detalleSalidaTableClass::INSUMO_ID,
+                detalleSalidaTableClass::UNIDAD_MEDIDA_ID,
                 detalleSalidaTableClass::CREATED_AT,
             );
             $where = array(

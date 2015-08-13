@@ -31,8 +31,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id_padre = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::ID_PADRE, true));
         $hoja_vida_id = request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::HOJA_VIDA_ID, true));
 
-  //      $this->Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos);
-        
+        //      $this->Validate($num_nacidos, $num_vivos, $num_muertos, $num_hembras, $num_machos);
+
         validator::validateEdit();
 
         $ids = array(
@@ -53,9 +53,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         partoTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro Exitoso');
+        session::getInstance()->setSuccess('El registro se modifico exitosamente');
 
-        routing::getInstance()->redirect('parto', 'index');
+        routing::getInstance()->getUrlWeb('parto', 'index');
       } else {
         routing::getInstance()->redirect('parto', 'index');
       }
@@ -105,5 +105,4 @@ class updateActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('parto', 'edit');
 //    }
 //  }
-
 }

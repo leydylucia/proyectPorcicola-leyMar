@@ -16,6 +16,7 @@ class controlBaseTableClass extends tableBaseClass {
   private $peso_cerdo;
   private $empleado_id;
   private $hoja_vida_id;
+  private $unidad_medida_id;
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
@@ -24,9 +25,9 @@ class controlBaseTableClass extends tableBaseClass {
   const PESO_CERDO = 'peso_cerdo';
   const EMPLEADO_ID = 'empleado_id';
   const HOJA_VIDA = 'hoja_vida_id';
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
 
-
-  function getId() {
+    function getId() {
     return $this->id;
   }
 
@@ -52,6 +53,10 @@ class controlBaseTableClass extends tableBaseClass {
   
   function getHoja_vida_id() {
     return $this->hoja_vida_id;
+  }
+  
+  function getUnidad_medida_id() {
+    return $this->unidad_medida_id;
   }
 
   function setId($id) {
@@ -82,6 +87,9 @@ class controlBaseTableClass extends tableBaseClass {
     $this->empleado_id = $hoja_vida_id;
   }
    
+  function setUnidad_medida_id($unidad_medida_id) {
+    $this->unidad_medida_id = $unidad_medida_id;
+  }
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)

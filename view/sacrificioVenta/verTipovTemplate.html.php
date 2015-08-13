@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
 
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('return') ?> </a>
+    <button type="button" class="btn btn-info btn-xs"><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('return') ?> </a></button>
 
 </div>
 

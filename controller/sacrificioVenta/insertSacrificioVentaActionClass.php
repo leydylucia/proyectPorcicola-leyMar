@@ -35,13 +35,21 @@ class insertSacrificioVentaActionClass extends controllerClass implements contro
 
             $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
                 hojaVidaTableClass::ID,
+                hojaVidaTableClass::NOMBRE_CERDO,
             );
             $orderByCerdo = array(
-                hojaVidaTableClass::ID
+                hojaVidaTableClass::NOMBRE_CERDO
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 
-
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
 
             $this->defineView('insert', 'sacrificioVenta', session::getInstance()->getFormatOutput());

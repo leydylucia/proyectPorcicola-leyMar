@@ -8,7 +8,7 @@ config::setRowGrid(3);
 
 config::setDbHost('localhost');
 config::setDbDriver('pgsql'); // pgsql
-config::setDbName('proyecto_porcicola');
+config::setDbName('leydy');
 config::setDbPort(5432); // 5432
 config::setDbUser('postgres');
 config::setDbPassword('123456');

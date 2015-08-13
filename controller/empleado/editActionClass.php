@@ -32,6 +32,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             empleadoTableClass::NOMBRE,
             empleadoTableClass::USUARIO_ID,
             empleadoTableClass::TIPO_ID_ID,
+            empleadoTableClass::DOCUMENTO,
             empleadoTableClass::APELLIDO,
             empleadoTableClass::DIRECCION,
             empleadoTableClass::CORREO,

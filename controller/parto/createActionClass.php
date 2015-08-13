@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\partoValidatorClass as validator;
-
+//use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -61,6 +61,8 @@ class createActionClass extends controllerClass implements controllerActionInter
         partoTableClass::insert($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
+        
+//        log::register('insertar', partoTableClass::getNameTable());
 
         routing::getInstance()->redirect('parto', 'index');
       } else {

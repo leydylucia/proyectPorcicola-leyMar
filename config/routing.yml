@@ -66,8 +66,8 @@ default_index:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-    - libs/validator/default/defaultValidatorClass.php
-
+#    - libs/validator/default/defaultValidatorClass.php
+    
 default_insert:
   url:    /usuarios/insertar
   param:  { module: default, action: insert, format: html }
@@ -149,7 +149,7 @@ default_reporte:
 
 
     
-   ##--------------------------ciudad----------------------------##
+  ##--------------------------ciudad----------------------------##
 ciudad_index:
   url:    /ciudad/index
   param:  { module: proveedor, action: indexCiudad, format: html }
@@ -158,6 +158,7 @@ ciudad_index:
     - model/ciudadTableClass.php 
     - model/base/deptoBaseTableClass.php
     - model/deptoTableClass.php
+    - libs/validator/ciudad/ciudadValidatorClass.php
     
 
 ciuadad_insert:
@@ -258,15 +259,16 @@ ciudad_traduccion:
     
 ciudad_deleteFilters:
   url:    /borrar_filtros_ciudad
-  param:  { module: proveedor, action: deleteFiltersCiudad, format: html }             
+  param:  { module: proveedor, action: deleteFiltersCiudad, format: html }        
 
-##--------------------------lote----------------------------##
+ ##--------------------------lote----------------------------##
 lote_index:
   url:    /lote/index
   param:  { module: lote, action: index, format: html }
   load:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - libs/validator/lote/loteValidatorClass.php
 
 lote_insert:
   url:    /lote/insertar
@@ -339,8 +341,61 @@ lote_reporte:
 lote_deleteFilters:
   url:    /borrar_filtros_lote
   param:  { module: lote, action: deleteFilters, format: html }
+ ##--------------------------Estado----------------------------##
+raza_index:
+  url:    /raza/index
+  param:  { module: raza, action: index, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_insert:
+  url:    /raza/insertar
+  param:  { module: raza, action: insert, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_create:
+  url:    /raza/crear
+  param:  { module: raza, action: create, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_edit:
+  url:    /raza/editar
+  param:  { module: raza, action: edit, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_update:
+  url:    /raza/actualizar
+  param:  { module: raza, action: update, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_delete:
+  url:    /raza/eliminar
+  param:  { module: raza, action: delete, format: json }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_deleteSelect:
+  url:    /raza/eliminarSeleccion
+  param:  { module: raza, action: deleteSelect, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_reporte:
+  url:    /raza/reporte
+  param:  { module: raza, action: report, format: pdf }
   
- ##--------------------------Parto----------------------------##
+   ##--------------------------Parto----------------------------##
 parto_index:
   url:    /parto/index
   param:  { module: parto, action: index, format: html }
@@ -349,6 +404,7 @@ parto_index:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - libs/validator/parto/partoValidatorClass.php
     
 
 parto_insert:
@@ -446,6 +502,7 @@ proveedor_index:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/proveedor/proveedorValidatorClass.php
 
 proveedor_insert:
   url:    /proveedor/insertar
@@ -455,6 +512,7 @@ proveedor_insert:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/proveedor/proveedorValidatorClass.php
 
 proveedor_create:
   url:    /proveedor/crear
@@ -549,7 +607,6 @@ proveedor_traduccion:
   param:  { module: proveedor, action: traductor, format: html }
  
  
-
 ##-------------------------------------------TIPO INSUMO--------------------##
 tipoInsumo_index:
   url:    /tipoInsumo/index
@@ -558,6 +615,7 @@ tipoInsumo_index:
     - model/base/tipoInsumoBaseTableClass.php
     - model/tipoInsumoTableClass.php
     - libs/validator/tipoInsumo/tipoInsumoValidatorClass.php
+    
 
 tipoInsumo_insert:
   url:    /tipoInsumo/insertar
@@ -837,20 +895,27 @@ tipoVenta_reporte:
     - model/base/tipovBaseTableClass.php
     - model/tipovTableClass.php
   
- ##--------------------------Control Peso----------------------------##
+  ##--------------------------Control Peso----------------------------##
 control_index:
   url:    /control/index
   param:  { module: control, action: index, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - libs/validator/control/controlValidatorClass.php
 
 control_insert:
   url:    /control/insertar
   param:  { module: control, action: insert, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -862,6 +927,8 @@ control_create:
   url:    /control/crear
   param:  { module: control, action: create, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -878,6 +945,8 @@ control_edit:
   url:    /control/editar
   param:  { module: control, action: edit, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -892,6 +961,8 @@ control_update:
   url:    /control/actualizar
   param:  { module: control, action: update, format: json }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -904,6 +975,8 @@ control_delete:
   url:    /control/eliminar
   param:  { module: control, action: delete, format: json }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -918,6 +991,8 @@ control_deleteSelect:
   url:    /control/eliminarSeleccion
   param:  { module: control, action: deleteSelect, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -930,6 +1005,8 @@ control_ver:
   url:    /control/ver
   param:  { module: control, action: ver, format: html }
   load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
     - model/base/hojaVidaBaseTableClass.php
@@ -942,6 +1019,8 @@ control_reporte:
   url:    /control/reporte
   param:  { module: control, action: report, format: pdf }
   load:  
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/fpdf/fpdf.php
     - model/base/controlBaseTableClass.php
     - model/controlTableClass.php
@@ -954,7 +1033,6 @@ control_deleteFilters:
   url:    /borrar_filtros_control
   param:  { module: control, action: deleteFilters, format: html }
 
-         
 #---------------------------------sacrificioVenta-------------------------------#
 sacrificioVenta_index:
   url:    /sacrificioVenta/index
@@ -966,6 +1044,8 @@ sacrificioVenta_index:
     - model/tipovTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/sacrificioVenta/sacrificioVentaValidatorClass.php
 
 sacrificioVenta_insert:
@@ -978,6 +1058,8 @@ sacrificioVenta_insert:
     - model/tipovTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 sacrificioVenta_create:
   url:    /sacrificioVenta/crear
@@ -992,6 +1074,8 @@ sacrificioVenta_create:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/sacrificioVenta/sacrificioVentaValidatorClass.php
 
 sacrificioVenta_edit:
@@ -1007,6 +1091,8 @@ sacrificioVenta_edit:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 
 sacrificioVenta_update:
@@ -1016,8 +1102,8 @@ sacrificioVenta_update:
    - model/base/sacrificiovBaseTableClass.php
    - model/sacrificiovTableClass.php
    - libs/validator/sacrificioVenta/sacrificioVentaValidatorClass.php
-   
-   
+   - model/base/unidadMedidaBaseTableClass.php
+   - model/unidadMedidaTableClass.php
     
 sacrificioVenta_delete:
   url:    /sacrificioVenta/eliminar
@@ -1048,7 +1134,8 @@ sacrificioVenta_ver:
     - model/tipovTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-    
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
   
   
     
@@ -1071,7 +1158,8 @@ sacrificioVenta_reporte:
     - model/tipovTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-    
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     #---------------------------------Vacunacion-------------------------------#
 vacunacion_index:
   url:    /vacunacion/index
@@ -1083,6 +1171,8 @@ vacunacion_index:
     - model/insumoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/vacunacion/vacunacionValidatorClass.php
     
 
@@ -1096,7 +1186,8 @@ vacunacion_insert:
     - model/insumoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-    
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
 
 vacunacion_create:
   url:    /vacunacion/crear
@@ -1123,6 +1214,8 @@ vacunacion_edit:
     - model/insumoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1189,7 +1282,7 @@ vacunacion_reporte:
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
     
- ##--------------------------Empleado----------------------------##
+##--------------------------Empleado----------------------------##
 empleado_index:
   url:    /empleado/index
   param:  { module: empleado, action: index, format: html }
@@ -1200,6 +1293,7 @@ empleado_index:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - libs/validator/empleado/empleadoValidatorClass.php
 
 empleado_insert:
   url:    /empleado/insertar
@@ -1211,6 +1305,7 @@ empleado_insert:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - libs/validator/empleado/empleadoValidatorClass.php
     
     
 empleado_create:
@@ -1236,6 +1331,7 @@ empleado_edit:
     - model/tipoIdTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - libs/validator/empleado/empleadoValidatorClass.php
 
 empleado_update:
   url:    /empleado/actualizar
@@ -1308,10 +1404,13 @@ animal_index:
     - model/hojaVidaTableClass.php
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - libs/validator/animal/animalValidatorClass.php
 
 animal_insert:
   url:    /animal/insertar
@@ -1321,6 +1420,8 @@ animal_insert:
     - model/hojaVidaTableClass.php
     - model/base/estadoBaseTableClass.php
     - model/estadoTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
@@ -1338,6 +1439,8 @@ animal_create:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - libs/validator/animal/animalValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -1355,6 +1458,8 @@ animal_edit:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1371,6 +1476,8 @@ animal_update:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - libs/validator/animal/animalValidatorClass.php
 
 animal_delete:
@@ -1385,6 +1492,8 @@ animal_delete:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1401,6 +1510,8 @@ animal_deleteSelect:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
     
 animal_ver:
   url:    /animal/ver
@@ -1414,6 +1525,8 @@ animal_ver:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
 
 animal_reporte:
   url:    /animal/reporte
@@ -1427,6 +1540,9 @@ animal_reporte:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
+    - libs/fpdf/fpdf.php
     
 animal_deleteFilters:
   url:    /borrar_filtros_animal
@@ -1584,6 +1700,8 @@ detalle_index:
     - model/empleadoTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
     
@@ -1600,6 +1718,8 @@ detalle_insert:
     - model/insumoTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
     
@@ -1618,10 +1738,12 @@ detalle_create:
     - model/empleadoTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    - libs/validator/detalle/detalleValidatorClass.php
+    - libs/validator/detalleEntrada/detalleEntradaValidatorClass.php
 
 
 
@@ -1639,6 +1761,8 @@ detalle_edit:
     - model/empleadoTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1658,10 +1782,12 @@ detalle_update:
     - model/empleadoTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    - libs/validator/detalle/detalleValidatorClass.php
+    - libs/validator/detalleEntrada/detalleEntradaValidatorClass.php
     
 
 detalle_delete:
@@ -1708,6 +1834,8 @@ detalle_ver:
     - model/insumoTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
 
@@ -1725,6 +1853,8 @@ detalle_reporte:
     - model/insumoTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
 
@@ -1744,7 +1874,7 @@ credencial_index:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
-    
+    - libs/validator/credencial/credencialValidatorClass.php
 
 credencial_insert:
   url:    /credencial/insertar
@@ -1824,6 +1954,7 @@ credencial_reporte:
 credencial_deleteFilters:
   url:    /borrar_filtros_credencial
   param:  { module: credencial, action: deleteFilters, format: html }    
+
 
    #----------------------usuario-credencial -------------------#
    
@@ -1934,6 +2065,7 @@ salidaBodega_index:
     - model/detalleSalidaTableClass.php
     
     
+    
 
 salidaBodega_insert:
   url:    /salidaBodega/insertar
@@ -2028,6 +2160,8 @@ detalleSalida_index:
     - model/insumoTableClass.php
     - model/base/empleadoBaseTableClass.php
     - model/empleadoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 detalleSalida_insert:
   url:    /detalleSalida/insertar
@@ -2039,7 +2173,9 @@ detalleSalida_insert:
     - model/salidaBodegaTableClass.php 
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
-    - libs/validator/default/defaultValidatorClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    
 
 detalleSalida_create:
   url:    /detalleSalida/crear
@@ -2051,6 +2187,8 @@ detalleSalida_create:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleSalida/detalleSalidaValidatorClass.php
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
@@ -2067,6 +2205,8 @@ detalleSalida_edit:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
 #    - model/bitacoraTableClass.php
@@ -2082,6 +2222,9 @@ detalleSalida_update:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - libs/validator/detalleSalida/detalleSalidaValidatorClass.php
   
     
 detalleSalida_delete:
@@ -2112,6 +2255,8 @@ detalleSalida_ver:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
      
 detalleSalida_deleteFilters:
   url:    /borrar_filtros_detalleSalida
@@ -2137,3 +2282,5 @@ detalleSalida_reporte:
     - model/salidaBodegaTableClass.php
     - model/base/insumoBaseTableClass.php
     - model/insumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php

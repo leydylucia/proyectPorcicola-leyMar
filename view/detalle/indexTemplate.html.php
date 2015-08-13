@@ -22,7 +22,7 @@ use mvc\request\requestClass as request ?>
 <?php $empleado = entradaTableClass::EMPLEADO_ID ?>
 <?php $proveedor = entradaTableClass::PROVEEDOR_ID ?>
 
-
+<?php $unidad_medida = detalleEntradaTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $insumo = detalleEntradaTableClass::INSUMO_ID ?>
 <?php $insumo_i = insumoTableClass::ID ?>
 <?php $descInsumo = insumoTableClass::DESC_INSUMO ?>
@@ -85,7 +85,7 @@ use mvc\request\requestClass as request ?>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
 
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'report') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
-
+        <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>"><?php echo i18n::__('return') ?> </a>
     </div>
 
     <!--filtro con reporte-->
@@ -106,7 +106,7 @@ use mvc\request\requestClass as request ?>
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
                         </div> 
-                        
+
                         <div class="form-group">
                             <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
@@ -152,19 +152,19 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalle', 'index', array(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true) => $detalleEntradaId)) ?>"><!--aqui poner array para sostener filtro-->
 
-                         <?php if (isset($objDetalle) == true): ?>
-                            <!--<input name="<?php // echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" value="<?php // echo $objDetalleSalida[0]->$id ?>" type="hidden">-->
+                        <?php if (isset($objDetalle) == true): ?>
+                                <!--<input name="<?php // echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true)  ?>" value="<?php // echo $objDetalleSalida[0]->$id  ?>" type="hidden">-->
                             <input type="hidden" value="<?php echo $detalleEntradaId ?>" name="filer[<?php echo detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, TRUE) ?>]"><!--tipo oculto para foranea-->
                         <?php endif; ?>
 
-                        
+
                         <div class="form-group">
                             <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
                         </div> 
-                        
+
                         <div class="form-group">
                             <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
@@ -211,8 +211,8 @@ use mvc\request\requestClass as request ?>
                         <tr class="active">
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('cant') ?></th>
+                            <th><?php echo i18n::__('unit_measure') ?></th>
                             <th><?php echo i18n::__('value') ?></th>
-                            <!--<th><?php // echo i18n::__('cellar entry') ?></th>-->
                             <th><?php echo i18n::__('product') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
@@ -224,8 +224,8 @@ use mvc\request\requestClass as request ?>
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalle->$id ?>"></td>
                                 <td><?php echo $detalle->$cantidad ?></td>
+                                <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($detalle->$unidad_medida) ?></td>
                                 <td><?php echo $detalle->$valor ?></td>
-                                <!--<td><?php // echo $detalle->$entrada_bodega ?></td>-->
                                 <td><?php echo insumoTableClass::getNameInsumo($detalle->$insumo) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($detalle->$fecha)) ?></td>
                                 <td>

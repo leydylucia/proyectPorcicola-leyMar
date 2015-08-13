@@ -36,16 +36,45 @@ class empleadoTableClass extends empleadoBaseTableClass {
 
   public static function getNameEmpleado($id) {
     try {
-      $sql = 'SELECT ' . empleadoTableClass::NOMBRE . ' As nombre '
+      $sql = 'SELECT ' . empleadoTableClass::NOMBRE . ' as nombre '
               . ' FROM ' . empleadoTableClass::getNameTable() . '  '
               . ' WHERE ' . empleadoTableClass::ID . ' = :id';
-      $params = array(
-          ':id' => $id);
+      $params = array(':id' => $id);
 
       $answer = model::getInstance()->prepare($sql);
       $answer->execute($params);
       $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      
+//      echo '<pre>';
+//      print_r($sql);
+//      echo '</pre>';
+//      exit();
+      
       return $answer[0]->nombre;
+    } catch (PDOException $exc) {
+      throw $exc;
+    }
+  }
+  
+  
+  
+   public static function getNameApellido($id) {
+    try {
+      $sql = 'SELECT ' . empleadoTableClass::APELLIDO . ' as apellido '
+              . ' FROM ' . empleadoTableClass::getNameTable() . '  '
+              . ' WHERE ' . empleadoTableClass::ID . ' = :id';
+      $params = array(':id' => $id);
+
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      
+//      echo '<pre>';
+//      print_r($sql);
+//      echo '</pre>';
+//      exit();
+      
+      return $answer[0]->apellido;
     } catch (PDOException $exc) {
       throw $exc;
     }

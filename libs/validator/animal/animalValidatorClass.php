@@ -16,43 +16,95 @@ namespace mvc\validator {
     public static function validateInsert() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i";
+      $soloLetras = "[/^a-zA-Z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
       //-------------------------------campo genero-----------------------------
           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero de hojaVida es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))) > \hojaVidaTableClass::GENERO_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }
+//      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero de hojaVida es requerido', 'inputGenero');
+//      } //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero no permite numeros, solo letras', 'inputGenero');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))) > \hojaVidaTableClass::GENERO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero digitado es mayor en cantidad de caracteres a lo permitido', 'inputGenero');
+//      }
       
       
       //---------------------------------------campo id_madre------------------------------------------//
       //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
+//      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El id de la madre de hojaVida es requerido', 'inputDocumento');
+//      } //----solo numeros----
+//        else if (!is_numeric(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
+//      } 
+      
+      
+      //-------------------------------campo nombre-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El id de la madre de hojaVida es requerido', 'inputDocumento');
-      } //----solo numeros----
-        else if (!is_numeric(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
-      } 
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre del Cerdo es requerido', 'inputNombre');
+      } //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre del cerdo no permite numeros, solo letras', 'inputNombre');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))) > \hojaVidaTableClass::NOMBRE_CERDO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre del cerdo digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+//      }
 
+      
+       //-------------------------------campo genero-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputGenero', true);
+        session::getInstance()->setError('El Genero de hojaVida es requerido', 'inputGenero');
+        }
+      
+      //-------------------------------campo estado-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ESTADO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputEstado', true);
+        session::getInstance()->setError('El estado de hojaVida es requerido', 'inputEstado');
+        }
+      
+      //-------------------------------campo lote-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::LOTE_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputLote', true);
+        session::getInstance()->setError('El lote es requerido', 'inputLote');
+        }  
+        
+      //-------------------------------campo raza-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::RAZA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputRaza', true);
+        session::getInstance()->setError('La raza es requerida', 'inputRaza');
+        }    
+        
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
@@ -63,41 +115,91 @@ namespace mvc\validator {
     public static function validateEdit() {
      $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i";
+      $soloLetras = "[/^a-zA-Z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      //------------------------------------campo campo---------------------
+      //------------------------------------campo madre---------------------
         //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo de hojaVida es requerido', 'inputDocumento');
-      } //----solo numeros----
-        else if (!is_numeric(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
-      } 
+//      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El campo de hojaVida es requerido', 'inputDocumento');
+//      } //----solo numeros----
+//        else if (!is_numeric(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ID_MADRE, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El campo no permite letras, solo numeros', 'inputDocumento');
+//      } 
       
       //-------------------------------campo genero-----------------------------
           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true)))) {
+//      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero de hojaVida es requerido', 'inputGenero');
+//      } //----solo permitir letras----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero no permite numeros, solo letras', 'inputGenero');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))) > \hojaVidaTableClass::GENERO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El genero digitado es mayor en cantidad de caracteres a lo permitido', 'inputGenero');
+//      }
+      
+      //-------------------------------campo nombre-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero de hojaVida es requerido', 'inputNombre');
+        session::getInstance()->setError('El nombre del Cerdo es requerido', 'inputNombre');
       } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))))){
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre del cerdo no permite numeros, solo letras', 'inputNombre');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))) > \hojaVidaTableClass::NOMBRE_CERDO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre del cerdo digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+//      }
+      
+      //-------------------------------campo genero-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))) > \hojaVidaTableClass::GENERO_LENGTH) {
+        session::getInstance()->setFlash('inputGenero', true);
+        session::getInstance()->setError('El Genero de hojaVida es requerido', 'inputGenero');
+        }
+      
+      //-------------------------------campo estado-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::ESTADO_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El genero digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }
-
+        session::getInstance()->setFlash('inputEstado', true);
+        session::getInstance()->setError('El estado de hojaVida es requerido', 'inputEstado');
+        }
+      
+      //-------------------------------campo lote-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::LOTE_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputLote', true);
+        session::getInstance()->setError('El lote es requerido', 'inputLote');
+        }
+        
+      //-------------------------------campo raza-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::RAZA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputRaza', true);
+        session::getInstance()->setError('La raza es requerida', 'inputRaza');
+        }  
+        
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
@@ -105,6 +207,18 @@ namespace mvc\validator {
         routing::getInstance()->forward('animal', 'edit');
       }
     }
+    
+//    public static function validateFiltroGenero() {
+//         $soloLetras = "[/^a-zA-Z]+$/i";
+//      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+//      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+//      
+//       if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::GENERO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputGenero', true);
+//        session::getInstance()->setError('El Genero no permite numeros, solo letras', 'inputGenero');
+//      }      
+//      }
   }
   
 }

@@ -36,14 +36,24 @@ namespace mvc\validator {
                 session::getInstance()->setFlash('inputCantidad', true);
                 session::getInstance()->setError('El campo cantidad no permite letras, solo numeros', 'inputCantidad');
             }
-            //----campo nulo----
+            //---------------------------------------------campo insumo--------------------------------------------
             if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::INSUMO_ID, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputInsumo', true); /* input usuario biene del formulario */
                 session::getInstance()->setError('el campo insumo debe ser seleccionada no puede estar vacio', 'inputInsumo');
             } 
+            
+              //---------------------------------------------campo unidadMedida--------------------------------------------
+            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::INSUMO_ID, true)))) {
+                $flag = true;
+                session::getInstance()->setFlash('inputUnidadMedida', true); /* input usuario biene del formulario */
+                session::getInstance()->setError('el campo unidad medida debe ser seleccionada no puede estar vacio', 'inputUnidadMedida');
+            } 
+            
+            $detalleSalidaId= request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::SALIDA_BODEGA_ID, true));;
             if ($flag === true) {
                 //request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::SALIDA_BODEGA_ID,true) => $detalleSalidaId));
                 routing::getInstance()->forward('detalleSalida', 'insertDetalleSalida');
             }
         }
@@ -56,19 +66,31 @@ namespace mvc\validator {
             $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
 
-            //-------------------------------campo desc salidaBodega-----------------------------
+            //-------------------------------campo cantidad-----------------------------
             //----campo nulo----
-            if (self::notBlank(request::getInstance()->getPost(\salidaBodegaTableClass::getNameField(\salidaBodegaTableClass::DESC_INSUMO, true)))) {
+            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::CANTIDAD, true)))) {
                 $flag = true;
-                session::getInstance()->setFlash('inputDescInsumo', true); /* input usuario biene del formulario */
-                session::getInstance()->setError('el campo descripcion salidaBodega no puede estar vacio', 'inputDescInsumo');
-            } //----sobre pasar los caracteres----
+                session::getInstance()->setFlash('inputCantidad', true); /* input usuario biene del formulario */
+                session::getInstance()->setError('el campo cantidad no puede estar vacio', 'inputCantidad');
+            }  //----solo numeros----      
+            else if (!is_numeric(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::CANTIDAD, true)))) {
+                $flag = true;
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('El campo cantidad no permite letras, solo numeros', 'inputCantidad');
+            }
+            //----campo nulo----
+            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::INSUMO_ID, true)))) {
+                $flag = true;
+                session::getInstance()->setFlash('inputInsumo', true); /* input usuario biene del formulario */
+                session::getInstance()->setError('el campo insumo debe ser seleccionada no puede estar vacio', 'inputInsumo');
+            }
 
-
+            $detalleSalidaId= request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::SALIDA_BODEGA_ID, true));;
             if ($flag === true) {
                 //request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\salidaBodegaTableClass::ID => request::getInstance()->getPost(\salidaBodegaTableClass::getNameField(\salidaBodegaTableClass::ID, true))));
-                routing::getInstance()->forward('salidaBodega', 'editInsumo');
+                request::getInstance()->addParamGet(array(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::SALIDA_BODEGA_ID,true) => $detalleSalidaId));
+                request::getInstance()->addParamGet(array(\detalleSalidaTableClass::ID => request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::ID, true))));
+                routing::getInstance()->forward('detalleSalida', 'editDetalleSalida');
             }
         }
 

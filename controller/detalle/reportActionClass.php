@@ -32,7 +32,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
                     $where[detalleEntradaTableClass::INSUMO_ID] = $filter['Insumo'];
                 }
-               
+
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[proveedorTableClass::CREATED_AT] = array(
                         date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
@@ -53,6 +53,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
                 detalleEntradaTableClass::VALOR,
                 detalleEntradaTableClass::ENTRADA_BODEGA_ID,
                 detalleEntradaTableClass::INSUMO_ID,
+                detalleEntradaTableClass::UNIDAD_MEDIDA_ID
             );
             $orderBy = array(
                 detalleEntradaTableClass::CANTIDAD,
@@ -70,25 +71,35 @@ class reportActionClass extends controllerClass implements controllerActionInter
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
-            $this->objDetalle =detalleEntradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
-            
-            //estos campo son para llamar las foraneas
-                $fields = array(/* foranea salidaBodega */
-                    entradaTableClass::ID,
-                );
-                $orderBy = array(
-                    entradaTableClass::ID,
-                );
-                $this->objEntrada = entradaTableClass::getAll($fields, true, $orderBy, 'ASC');
+            $this->objDetalle = detalleEntradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
 
-                $fieldsInsumo = array(/* foranea insumo */
+            //estos campo son para llamar las foraneas
+            $fields = array(/* foranea salidaBodega */
+                entradaTableClass::ID,
+            );
+            $orderBy = array(
+                entradaTableClass::ID,
+            );
+            $this->objEntrada = entradaTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+            $fieldsInsumo = array(/* foranea insumo */
                 insumoTableClass::ID,
                 insumoTableClass::DESC_INSUMO
-                );
-                $orderByInsumo = array(
+            );
+            $orderByInsumo = array(
                 insumoTableClass::DESC_INSUMO
-                );
-                $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+            );
+            $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
+
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
+
 
 
             $this->defineView('index', 'detalle', session::getInstance()->getFormatOutput());

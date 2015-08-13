@@ -20,10 +20,22 @@ class insertActionClass extends controllerClass implements controllerActionInter
       if (session::getInstance()->hasAttribute('form_' . controlTableClass::getNameTable())) {
         $this->control = session::getInstance()->getAttribute('form_' . controlTableClass::getNameTable());
       }
+      
+      /* fields para foraneas */
+        $fieldsF = array(
+            unidadMedidaTableClass::ID,
+            unidadMedidaTableClass::DESCRIPCION
+        );
+        $orderByF = array(
+            unidadMedidaTableClass::DESCRIPCION
+        );
+        $this->objUnidad = unidadMedidaTableClass::getAll($fieldsF, true, $orderByF, 'ASC'); 
+      
       /* fields para foraneas */
       $fieldsA = array(
           empleadoTableClass::ID,
-          empleadoTableClass::NOMBRE
+          empleadoTableClass::NOMBRE,
+          empleadoTableClass::APELLIDO
       );
       $orderByA = array(
           empleadoTableClass::NOMBRE
@@ -34,9 +46,10 @@ class insertActionClass extends controllerClass implements controllerActionInter
       /* fields para foraneas */
       $fields = array(
           hojaVidaTableClass::ID,
+          hojaVidaTableClass::NOMBRE_CERDO
       );
       $orderBy = array(
-          hojaVidaTableClass::ID
+          hojaVidaTableClass::NOMBRE_CERDO
       );
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
 

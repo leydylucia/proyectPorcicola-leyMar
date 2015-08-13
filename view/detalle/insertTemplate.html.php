@@ -12,6 +12,6 @@
 <!--fintitulo-->
 
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('detalle/formDetalle', array('id_entrada_bodega' =>$id_entrada_bodega,'objEntrada' => $objEntrada,'objInsumo'=>$objInsumo))?>
+<?php view::includePartial('detalle/formDetalle', array('id_entrada_bodega' =>$id_entrada_bodega,'objEntrada' => $objEntrada,'objInsumo'=>$objInsumo,'objUnidadMedida'=>$objUnidadMedida))?>
 
 

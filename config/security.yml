@@ -318,39 +318,39 @@ paginaPrincipal:
       - [admin, empleado]
       
 sacrificioVenta:
-  index:
-    security: true
-    credentials:
-      - [admin, empleado]
-  insert:
+  indexSacrificioVenta:
     security: true
     credentials:
       - [admin, usuario]
-  create:
+  insertSacrificioVenta:
+    security: true
+    credentials:
+      - [admin, usuario]
+  createSacrificioVenta:
     security: true 
     credentials:
       - [admin, usuario]
-  edit:
+  editSacrificioVenta:
     security: true 
     credentials:
       - [admin, usuario]
-  update:
+  updateSacrificioVenta:
     security: true
     credentials:
       - [admin, usuario]
-  delete:
+  deleteSacrificioVenta:
     security: true 
     credentials:
       - [admin, usuario]
-  deleteSelect:
+  deleteSelectSacrificioVenta:
     security: true
     credentials:
       - [admin, usuario]
-  ver:
+  verSacrificioVenta:
     security: true
     credentials:
       - [admin, usuario]
-  reporte:
+  reporteSacrificioVenta:
     security: true 
     credentials:
       - [admin, usuario]
@@ -506,151 +506,151 @@ lote:
       - [admin, usuario]
     
 vacunacion:
-  index:
+  indexVacunacion:
     security: true
     credentials:
       - [admin, empleado]
-  insert:
+  insertVacunacion:
     security: true
     credentials:
       - [admin, usuario]
-  create:
+  createVacunacion:
     security: true
     credentials:
       - [admin, usuario]
-  edit:
+  editVacunacion:
     security: true 
     credentials:
       - [admin, usuario]
-  update:
+  updateVacunacion:
     security: true
     credentials:
       - [admin, usuario]
-  delete:
+  deleteVacunacion:
     security: true 
     credentials:
       - [admin, usuario]
-  deleteSelect:
+  deleteSelectVacunacion:
     security: true
     credentials:
       - [admin, usuario]
-  ver:
+  verVacunacion:
     security: true
     credentials:
       - [admin, usuario]
-  reporte:
+  reporteVacunacion:
     security: true  
     credentials:
       - [admin, usuario]
     
 salidaBodega:
-  index:
+  indexSalidaBodega:
     security: true
     credentials:
       - [admin, empleado]
-  insert:
+  insertSalidaBodega:
     security: true
     credentials:
       - [admin, usuario]
-  create:
+  createSalidaBodega:
     security: true 
     credentials:
       - [admin, usuario]
-  edit:
+  editSalidaBodega:
     security: true 
     credentials:
       - [admin, usuario]
-  update:
+  updateSalidaBodega:
     security: true
     credentials:
       - [admin, usuario]
-  delete:
+  deleteSalidaBodega:
     security: true 
     credentials:
       - [admin, usuario]
-  deleteSelect:
+  deleteSelectSalidaBodega:
     security: true
     credentials:
       - [admin, usuario]
-  ver:
+  verSalidaBodega:
     security: true
     credentials:
       - [admin, usuario]
-  reporte:
+  reporteSalidaBodega:
     security: true 
     credentials:
       - [admin, usuario]
     
 detalleSalida:
-  index:
+  indexDetalleSalida:
     security: true
     credentials:
       - [admin, empleado]
-  insert:
+  insertDetalleSalida:
     security: true
     credentials:
       - [admin, usuario]
-  create:
+  createDetalleSalida:
     security: true 
     credentials:
       - [admin, usuario]
-  edit:
+  editDetalleSalida:
     security: true 
-  update:
+  updateDetalleSalida:
     security: true
     credentials:
       - [admin, usuario]
-  delete:
+  deleteDetalleSalida:
     security: true 
     credentials:
       - [admin, usuario]
-  deleteSelect:
+  deleteSelectDetalleSalida:
     security: true
     credentials:
       - [admin, usuario]
-  ver:
+  verDetalleSalida:
     security: true
     credentials:
       - [admin, usuario]
-  reporte:
+  reporteDetalleSalida:
     security: true
     credentials:
       - [admin, usuario]
     
 entrada:
-  index:
+  indexEn:
     security: true
     credentials:
       - [admin, empleado]
-  insert:
+  insertEn:
     security: true
     credentials:
       - [admin, usuario]
-  create:
+  createEn:
     security: true 
     credentials:
       - [admin, usuario]
-  edit:
+  editEn:
     security: true
     credentials:
       - [admin, usuario]
-  update:
+  updateEn:
     security: true
     credentials:
       - [admin, usuario]
-  delete:
+  deleteEn:
     security: true 
     credentials:
       - [admin, usuario]
-  deleteSelect:
+  deleteSelectEn:
     security: true
     credentials:
       - [admin, usuario]
-  ver:
+  verEn:
     security: true
     credentials:
       - [admin, usuario]
-  reporte:
+  reporteEn:
     security: true  
     credentials:
       - [admin, usuario]

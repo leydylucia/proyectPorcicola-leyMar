@@ -1,4 +1,4 @@
-<?php
+x<?php
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\proveedorValidatorClass as validator;
 
 /**
  * Description of indexProvActionClass
@@ -27,9 +28,34 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
+        if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBRE, true));
+
+            validator::validateFiltroNombre();
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+              $where[proveedorTableClass::NOMBRE] = $nombre;
+            }
+          }
+        }
+
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[proveedorTableClass::NOMBRE] = $filter['nombre'];
         }
+        
+        if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $apellido = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true));
+
+            validator::validateFiltroApellido();
+            if (isset($apellido) and $apellido !== null and $apellido !== '') {
+              $where[proveedorTableClass::APELLIDO] = $apellido;
+            }
+          }
+        }
+        
         if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
           $where[proveedorTableClass::APELLIDO] = $filter['apellido'];
         }
@@ -97,11 +123,14 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
 
       $this->defineView('index', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+
+      
+      routing::getInstance()->redirect('proveedor', 'indexProv');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo '<pre>';
+//      print_r($exc->getTrace());
+//      echo '</pre>';
     }
   }
 

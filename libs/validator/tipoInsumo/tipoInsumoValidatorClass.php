@@ -86,17 +86,24 @@ namespace mvc\validator {
             }
         }
 
-        public static function validateFiltroDescripcion() {
+        public static function validateFiltroDescripcion($filter) {
 
             $soloLetras = "/^[a-z]+$/i";
-            
+            $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+            $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+
+//            
             if (strlen(request::getInstance()->getPost(\tipoInsumoTableClass::getNameField(\tipoInsumoTableClass::DESC_TIPOIN, true))) > \tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {
                 session::getInstance()->setError('el tipo insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescInsumo');
             }
-            //----solo permitir letras----
-//            else if (!preg_match($soloLetras, (request::getInstance()->getPost(\tipoInsumoTableClass::getNameField(\tipoInsumoTableClass::DESC_TIPOIN, true))))) {
-//                session::getInstance()->setError('El campo descripcion tipo insumo no permite numeros, solo letras', 'inputDescTipoIn');
-//            }
+//            //----solo permitir letras----
+            else if (!preg_match($soloLetras, (request::getInstance()->getPost(\tipoInsumoTableClass::getNameField(\tipoInsumoTableClass::DESC_TIPOIN, true))))) {
+               session::getInstance()->setError('El campo descripcion tipo insumo no permite numeros, solo letras', 'inputDescTipoIn');
+            }
+             //----solo numeros----      
+            else if (!is_numeric(request::getInstance()->getPost(\tipoInsumoTableClass::getNameField(\tipoInsumoTableClass::DESC_TIPOIN, true)))) {
+              session::getInstance()->setError('El campo precio no permite letras, solo numeros', 'inputDescTipoIn');
+            }
         }
 
     }

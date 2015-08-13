@@ -31,7 +31,7 @@
     
     <input type="submit" class="btn btn-success btn-sm" value="<?php echo i18n::__(((isset($objCredencial)) ? 'update' : 'register')) ?>">
 
-    <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+    <a class="btn btn-info" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18n::__('return') ?> </a>
 </form>
 </div>
 

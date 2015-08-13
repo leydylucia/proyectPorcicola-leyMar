@@ -1,17 +1,10 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?> 
-<?php
-
-use mvc\view\viewClass as view ?> 
-<?php
-
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\config\configClass as config ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?> 
+<?php use mvc\view\viewClass as view ?> 
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 
 
 <?php $id = partoTableClass::ID ?>
@@ -50,19 +43,34 @@ use mvc\request\requestClass as request ?>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filter') ?></h4>
           </div>
+          
+          <?php if (session::getInstance()->hasError('inputNacidos')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNacidos') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+          <?php endif ?>
 
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>">
               <div class="form-group">
                 <label for="filternacidos" class="col-sm-2 control-label"><?php echo i18n::__('num_born') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[nacidos]" name="filter[nacidos]" placeholder="nacidos">
+                  <input type="text" class="form-control" id="filter[nacidos]" name="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" placeholder="nacidos">
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+              
+              <?php if (session::getInstance()->hasError('inputVivos')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputVivos') ?><!--esta linea para actualizar demas formularios-->
+                </div>
+          <?php endif ?>
+              
               <div class="form-group">
                 <label for="filtervivos" class="col-sm-2 control-label"><?php echo i18n::__('num_lives') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[vivos]" name="filter[vivos]" placeholder="vivos">
+                  <input type="text" class="form-control" id="filter[vivos]" name="<?php echo partoTableClass::getNameField(partoTableClass::NUM_VIVOS, true) ?>" placeholder="vivos">
                 </div>
               </div>  
 
@@ -169,7 +177,7 @@ use mvc\request\requestClass as request ?>
               <td><?php echo $parto->$fecha_montada ?></td>
               <td><?php echo $parto->$id_padre ?></td>
               <td><?php echo hojaVidaTableClass::getNameHojaVida($parto->$hoja_vida_id) ?></td>
-              <td><?php echo $parto->$fecha ?></td>
+              <td><?php echo date('d-m-Y h:i:s a', strtotime($parto->$fecha)) ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'ver', array(partoTableClass::ID => $parto->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'edit', array(partoTableClass::ID => $parto->$id)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
@@ -230,7 +238,7 @@ use mvc\request\requestClass as request ?>
 </div>
 
 
-<div class="text-right">
+<div class="text-right container container-fluid">
 <?php echo i18n::__('pag') ?><select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>')">
 <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
       <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 

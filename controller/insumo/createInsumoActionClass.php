@@ -34,7 +34,7 @@ class createInsumoActionClass extends controllerClass implements controllerActio
             if (request::getInstance()->isMethod('POST')) {
 
                 $desc_insumo = trim(request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true)));
-                $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
+//                $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
                 $tipoInsumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true));
                 $fechaFabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true));
                 $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
@@ -44,10 +44,10 @@ class createInsumoActionClass extends controllerClass implements controllerActio
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
                 validator::validateInsert(); /* para validar los campos de la tabla se redirije al validator */
 
-                /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
+               echo($data); /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
                 $data = array(
                     insumoTableClass::DESC_INSUMO => $desc_insumo,
-                    insumoTableClass::PRECIO => $precio,
+//                    insumoTableClass::PRECIO => $precio,
                     insumoTableClass::TIPO_INSUMO_ID => $tipoInsumo,
                     insumoTableClass::FECHA_FABRICACION => $fechaFabricacion,
                     insumoTableClass::FECHA_VENCIMIENTO => $fechaVencimiento,

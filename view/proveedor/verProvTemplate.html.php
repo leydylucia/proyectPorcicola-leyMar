@@ -13,8 +13,10 @@
 
 <div class="container container-fluid">
 
+        <button type="button" class="btn btn-info" > <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('return') ?> </a> </button>
+        <br>
+  <br>
 
-        <a href="<?php echo routing::getInstance()->getUrlWeb('proveedor', 'indexProv') ?>"><?php echo i18n::__('return') ?> </a>
 
     </div>
 
@@ -37,12 +39,7 @@
                         <tr>
                             <th><?php echo i18n::__('name') ?></th>
                             
-                            <td><?php echo $proveedor->$nombre ?></td>
-                            
-                             <tr>
-                            <th><?php echo i18n::__('lastname') ?></th>
-                            
-                            <td><?php echo $proveedor->$apellido ?></td>
+                            <td><?php echo $proveedor->$nombre. ' ' . $proveedor->$apellido ?></td>
                              <tr>
                             <th><?php echo i18n::__('direction') ?></th>
                             

@@ -23,11 +23,11 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $filter = request::getInstance()->getPost('filter');
 
         if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
-          $where[hojaVidaTableClass::GENERO] = $filter['genero'];
+          $where[hojaVidaTableClass::GENERO_ID] = $filter['genero'];
         }
-        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
-          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
-        }
+//        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
+//          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
+//        }
 
 
         /* para mantener filtro con paginado */
@@ -40,12 +40,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
 
       $fields = array(
           hojaVidaTableClass::ID,
-          hojaVidaTableClass::GENERO,
-            hojaVidaTableClass::FECHA_NACIMIENTO,
-            hojaVidaTableClass::ESTADO_ID,
-            hojaVidaTableClass::LOTE_ID,
-            hojaVidaTableClass::RAZA_ID,
-            hojaVidaTableClass::ID_MADRE
+          hojaVidaTableClass::GENERO_ID,
+          hojaVidaTableClass::FECHA_NACIMIENTO,
+          hojaVidaTableClass::ESTADO_ID,
+          hojaVidaTableClass::LOTE_ID,
+          hojaVidaTableClass::RAZA_ID,
+          hojaVidaTableClass::NOMBRE_CERDO,
+          hojaVidaTableClass::CREATED_AT
+              //hojaVidaTableClass::ID_MADRE
       );
       $orderBy = array(
           hojaVidaTableClass::ID

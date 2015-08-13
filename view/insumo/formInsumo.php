@@ -17,7 +17,7 @@ use mvc\view\viewClass as view ?>
 
 <?php $id = insumoTableClass::ID ?>
 <?php $descInsumo = insumoTableClass::DESC_INSUMO ?>
-<?php $precio = insumoTableClass::PRECIO ?>
+<?php // $precio = insumoTableClass::PRECIO ?>
 
 <?php $tipoInsumo_i = insumoTableClass::TIPO_INSUMO_ID ?>
 <?php $tipoInsumo = tipoInsumoTableClass::ID ?>
@@ -33,7 +33,7 @@ use mvc\view\viewClass as view ?>
 <?php view::includeHandlerMessage() ?>
 
 <form  role="form" class="form-horizontal" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', ((isset($objInsumo)) ? 'updateInsumo' : 'createInsumo')) ?>">
-
+    <div class="container">
 
     <?php if (isset($objInsumo) == true): ?>
         <input name="<?php echo insumoTableClass::getNameField(insumoTableClass::ID, true) ?>" value="<?php echo $objInsumo[0]->$id ?>" type="hidden">
@@ -56,27 +56,27 @@ use mvc\view\viewClass as view ?>
         </div>
     </div>
 
-    <?php if (session::getInstance()->hasError('inputPrecio')): ?>
+<!--    <?php // if (session::getInstance()->hasError('inputPrecio')): ?>
         <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPrecio') ?><!--esta linea para actualizar demas formularios-->
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php // echo session::getInstance()->getError('inputPrecio') ?>esta linea para actualizar demas formularios
         </div>
-    <?php endif ?>
+    <?php // endif ?>
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('prise') ?>:</label>
+    <div class="form-group <?php // echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? 'has-error has-feedback' : '' ?>">
+        <label for="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="control-label col-xs-3"><?php // echo i18n::__('prise') ?>:</label>
         <div class="col-xs-9">
-            <input id="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) : ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?>" type="text" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">
-            <?php if (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true): ?>
+            <input id="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="form-control" value="<?php // echo request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) : ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?>" type="text" name="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">
+            <?php // if (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true): ?>
                 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            <?php endif ?>
+            <?php // endif ?>
         </div>
-    </div>
+    </div>-->
 
-<?php if(session::getInstance()->hasError('inputProveedor')): ?>
+<?php if(session::getInstance()->hasError('inputTipoIn')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputProveedor') ?><!--esta linea para actualizar demas formularios-->
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTipoIn') ?><!--esta linea para actualizar demas formularios-->
     </div>
     <?php endif ?>
     
@@ -88,8 +88,7 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, TRUE) ?>" name="<?php echo insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$insumoId_p : '') ?>">Seleccione tipoinsumo</option>
                 <?php foreach ($objTipoin as $tipoin): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objInsumo[0]->$tipoInsumo_i) === true and $objInsumo[0]->$tipoInsumo_i == $tipoin->$tipoInsumo) ? 'selected' : '' ?> value="<?php echo $tipoin->$tipoInsumo ?>"><!--validacion para traer dato  de foranea en editar-->
-                        <?php echo $tipoin->$desc_tipoIn ?><!--validacion para traer dato  de foranea en editar-->
+                <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) == $tipoin->$tipoInsumo) ? 'selected' : (isset($objInsumo[0]->$tipoInsumo_i) === true and $objInsumo[0]->$tipoInsumo_i == $tipoin->$tipoInsumo) ? 'selected' : '' ?> value="<?php echo $tipoin->$tipoInsumo ?>"><?php echo $tipoin->$desc_tipoIn ?></option><!--sostenimiento de dato en foranea-->
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -151,7 +150,7 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE) ?>" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$tipoInsumo_i : '') ?>">Seleccione proveedor</option>
                 <?php foreach ($objProv as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objInsumo[0]->$insumoId_p) === true and $objInsumo[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) == $insumo->$insumoId) ? 'selected' : (isset($objInsumo[0]->$insumoId_p) === true and $objInsumo[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><?php echo $insumo->$nombre ?></option><!--sostenimiento de dato en foranea-->
                         <?php echo $insumo->$nombre ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
@@ -169,7 +168,7 @@ use mvc\view\viewClass as view ?>
 
     <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexInsumo') ?>"><?php echo i18n::__('return') ?> </a></button>
 
-
+    </div>
 
 
 </form>

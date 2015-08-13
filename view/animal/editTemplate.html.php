@@ -12,11 +12,12 @@
         <h2><?php echo $objHojaVida[0]->$hojaVida ?></h2>
     </div>
     
-</div>
+
 <!--fintitulo-->
 
 
 
-<?php view::includePartial('animal/formAnimal', array('objHojaVida' => $objHojaVida, 'id' => $hojaVida,'objLote' => $objLote, 'objEstado' => $objEstado, 'objRaza' => $objRaza,)) ?>
+<?php view::includePartial('animal/formAnimal', array('objHojaVida' => $objHojaVida, 'id' => $hojaVida,'objLote' => $objLote, 'objEstado' => $objEstado, 'objRaza' => $objRaza, 'objGenero' => $objGenero)) ?>
 
 
+</div>
