@@ -19,7 +19,7 @@ use mvc\view\viewClass as view ?>
 <?php $empleado_e = salidaBodegaTableClass::EMPLEADO_ID?>
 <?php $empleado = empleadoTableClass::ID?>
 <?php $nombre = empleadoTableClass::NOMBRE?>
-
+<?php $apellido = empleadoTableClass::APELLIDO?>
 
     <?php view::includeHandlerMessage() ?>
 
@@ -47,7 +47,7 @@ use mvc\view\viewClass as view ?>
                 <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true)) : ((isset($objSalidaBodega[0])) ? $objSalidaBodega[0]->$empleado_e : '') ?>">Seleccione empleado</option>
 <?php foreach ($objEmpleado as $trabajador): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objSalidaBodega[0]->$empleado_e) === true and $objSalidaBodega[0]->$empleado_e == $trabajador->$empleado) ? 'selected' : '' ?> value="<?php echo $trabajador->$empleado ?>"><!--validacion para traer dato  de foranea en editar-->
-    <?php echo $trabajador->$nombre ?><!--validacion para traer dato  de foranea en editar-->
+    <?php echo $trabajador->$nombre . ' ' . $trabajador->$apellido ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
 <?php endforeach; ?>
             </select>

@@ -57,7 +57,7 @@ dictionary:
     desc_prod:                    Description Product
     price:                        Price
     typeProd:                     Type Product
-    dateManuf:                    Date Manufacture
+    Date_of_manufacture_or_purchase: Date of manufacture or purchase
     datedef:                      Date Defeat
     supplier:                     Supplier
     message1:                     Messaje the Succes
@@ -140,7 +140,7 @@ dictionary:
     number of females:         Number of females
     number of males:           Number of males
     date mounted:              Date mounted
-    id the father:             Id the father
+    father:                    Father
     
     #Control Peso#
     pig weight:                Pig weight               
@@ -210,6 +210,9 @@ dictionary:
     Output_edit_detail_winery: Output edit detail winery
     Output_detail_new_winery : Output detail new winery 
     quantity:                 quantity
+    
+    Report:                Report
+    description:           Description
     
     
  

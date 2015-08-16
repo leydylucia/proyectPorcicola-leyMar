@@ -55,5 +55,22 @@ class proveedorTableClass extends proveedorBaseTableClass {
       throw $exc;
     }
   }
+  
+  public static function getNameApellido($id) {
+    try {
+      $sql = 'SELECT ' . proveedorTableClass::APELLIDO   . ' As apellido '
+              . ' FROM ' . proveedorTableClass::getNameTable() . '  '
+              . ' WHERE ' . proveedorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id);
+
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->apellido;
+    } catch (PDOException $exc) {
+      throw $exc;
+    }
+  }
 
 }

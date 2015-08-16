@@ -193,8 +193,8 @@ use mvc\session\sessionClass as session ?>
                                 <!--<td><?php // echo $vacunacion->$hora  ?></td>-->
                                <!--<td></?php echo time('hh .?[AaPp] .? [Mm] .? [\0\t ]',strtotime($vacunacion->$hora)) ?></td>-->
                                 <td><?php echo insumoTableClass::getNameInsumo($vacunacion->$insumoId) ?></td>
-                                <!--<td><?php // echo $vacunacion->$idCerdo  ?></td>-->
-                                <td>  <?php echo loteTableClass::getNameLote($vacunacion->$idCerdo) ?></td>
+                                <td><?php echo  $vacunacion->$idCerdo  ?></td>
+                                <!--<td>  <?php // echo loteTableClass::getNameLote($vacunacion->$idCerdo) ?></td>-->
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($vacunacion->$fecha)) ?></td>
                                 <td>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'verVacunacion', array(vacunacionTableClass::ID => $vacunacion->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>

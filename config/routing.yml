@@ -66,7 +66,7 @@ default_index:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-#    - libs/validator/default/defaultValidatorClass.php
+    - libs/validator/default/defaultValidatorClass.php
     
 default_insert:
   url:    /usuarios/insertar
@@ -395,7 +395,7 @@ raza_reporte:
   url:    /raza/reporte
   param:  { module: raza, action: report, format: pdf }
   
-   ##--------------------------Parto----------------------------##
+  ##--------------------------Parto----------------------------##
 parto_index:
   url:    /parto/index
   param:  { module: parto, action: index, format: html }
@@ -492,6 +492,7 @@ parto_reporte:
 parto_deleteFilters:
   url:    /borrar_filtros_parto
   param:  { module: parto, action: deleteFilters, format: html }
+  
  
    ##--------------------------Proveedor----------------------------##
 proveedor_index:
@@ -1160,6 +1161,11 @@ sacrificioVenta_reporte:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    
+sacrificioVenta_grafica:
+  url:    /generar_grafica
+  param:  { module: sacrificioVenta, action: grafica, format: html }
+  
     #---------------------------------Vacunacion-------------------------------#
 vacunacion_index:
   url:    /vacunacion/index
@@ -2284,3 +2290,12 @@ detalleSalida_reporte:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    
+  #----------------------Reporte especial-----------------------------#
+reporte_index:
+  url:    /reporte/index
+  param:  { module: reporte, action: index, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+    

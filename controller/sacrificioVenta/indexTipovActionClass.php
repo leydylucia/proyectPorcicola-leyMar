@@ -30,7 +30,7 @@ class indexTipovActionClass extends controllerClass implements controllerActionI
                     if (request::getInstance()->isMethod('POST')) {
                         $descripcion = $filter[tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true)];
                         
-                        validator::validateFiltroTipo();
+                        validator::validateFiltroTipo($descripcion);
                         if (isset($filter[tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true)]) and empty($filter[tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true)]) === false) {
                             $where[tipovTableClass::DESC_TIPOV] = $filter[tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true)];
                         }

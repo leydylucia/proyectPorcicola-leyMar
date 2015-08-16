@@ -25,7 +25,8 @@ class insertSalidaBodegaActionClass extends controllerClass implements controlle
             //estos campo son para llamar las foraneas
             $fields = array(/* foranea empleados */
                 empleadoTableClass::ID,
-                empleadoTableClass::NOMBRE
+                empleadoTableClass::NOMBRE,
+                empleadoTableClass::APELLIDO
             );
             $orderBy = array(
                 empleadoTableClass::NOMBRE

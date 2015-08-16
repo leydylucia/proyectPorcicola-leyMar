@@ -75,9 +75,10 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
 //                print_r($where);
 //              echo  $filter['Date2'];
 //                exit();
-                session::getInstance()->setAttribute('defaultIndexFilters', $where);
-            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-                $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//                session::getInstance()->setAttribute('defaultIndexFilters', $where);
+//            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+//                $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//            
             }
 
             /*             * @var $fields trae los campos de model
@@ -155,9 +156,9 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                             ->getFormatOutput());
         } catch (PDOException $exc) {
 
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-            //            routing::getInstance()->redirect('insumo', 'indexInsumo');
+//            session::getInstance()->setFlash('exc', $exc);
+//            routing::getInstance()->forward('shfSecurity', 'exception');
+            routing::getInstance()->redirect('insumo', 'indexInsumo');
         }
     }
 

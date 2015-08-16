@@ -9,6 +9,7 @@ all:
     - index.js
     - bootstrap.js
     - main.js
+    
   stylesheet:
     - bootstrap.css
     - main.css
@@ -53,4 +54,18 @@ parto:
 proveedor:
   indexProv:
     javascript:
-      - index.js      
+      - index.js 
+      
+sacrificioVenta:
+  indexSacrificioVenta:
+    javascript:
+      - index.js 
+  grafica: 
+    javascript:
+      - jqPlot/jquery.jqplot.min.js 
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisLabelRenderer.min.js
+      - graficas/grafica1.js
+    stylesheet:
+      - jquery.jqplot.min.css   
+      

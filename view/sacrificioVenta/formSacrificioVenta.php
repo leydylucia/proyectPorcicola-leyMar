@@ -53,8 +53,8 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$idCerdo_c : '') ?>">Seleccione Cerdo</option>
                 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objSacrificioV[0]->$idCerdo_c) === true and $objSacrificioV[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
-                        <?php echo $hojaVida->$nombre ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true and request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) == $hojaVida->$idCerdo) ? 'selected' : (isset($objSacrificioV[0]->$idCerdo_c) === true and $objSacrificioV[0]->$idCerdo_c== $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><?php echo $hojaVida->$nombre ?><!--validacion para traer dato  de foranea en editar-->
+                       <!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -76,8 +76,8 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputTipov') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$tipoVenta_v : '') ?>">Seleccione tipo venta</option>
                 <?php foreach ($objTipoV as $tipoV): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objSacrificioV[0]->$tipoVenta_v) === true and $objSacrificioV[0]->$tipoVenta_v == $tipoV->$tipoVenta) ? 'selected' : '' ?> value="<?php echo $tipoV->$tipoVenta ?>"><!--validacion para traer dato  de foranea en editar-->
-                        <?php echo $tipoV->$desc_tipoV ?><!--validacion para traer dato  de foranea en editar-->
+                   <option <?php echo (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true)) === true and request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true)) == $tipoV->$tipoVenta) ? 'selected' : (isset($objSacrificioV[0]->$tipoVenta_v) === true and $objSacrificioV[0]->$tipoVenta_v== $tipoV->$tipoVenta) ? 'selected' : '' ?> value="<?php echo $tipoV->$tipoVenta ?>"><?php echo $tipoV->$desc_tipoV ?><!--validacion para traer dato  de foranea en editar-->
+                     <!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -115,8 +115,8 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$unidad_medida_u : '') ?>">Seleccione unidad medida</option>
                 <?php foreach ($objUnidadMedida as $unidad): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (isset($objSacrificioV[0]->$unidad_medida_u) === true and $objSacrificioV[0]->$unidad_medida_u == $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><!--validacion para traer dato  de foranea en editar-->
-                        <?php echo $unidad->$descripcion ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true)) == $unidad->$unidad_medida) ? 'selected' : (isset($objSacrificioV[0]->$unidad_medida_u) === true and $objSacrificioV[0]->$unidad_medida_u== $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><?php echo $unidad->$descripcion ?><!--validacion para traer dato  de foranea en editar-->
+                        <?php // echo $unidad->$descripcion ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>

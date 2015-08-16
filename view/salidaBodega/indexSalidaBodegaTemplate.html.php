@@ -109,7 +109,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $salidaBodega->$id ?>"></td>
                               
-                                <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) ?></td>
+                                <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) . ' ' . empleadoTableClass::getNameApellido($salidaBodega->$empleado) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($salidaBodega->$fecha)) ?></td>
                                 <td>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('salidaBodega', 'verSalidaBodega', array(salidaBodegaTableClass::ID => $salidaBodega->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>

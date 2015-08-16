@@ -5,23 +5,26 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of credencialBaseTableClass
  *
- * @author leydy lucia castilo mosquera<leydylucia@hotamil.com>
+ * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
-class tipoinsumoBaseTableClass extends tableBaseClass {
+class reporteBaseTableClass extends tableBaseClass {
   private $id;
   private $createdAt;
-  private $updatedAt;
-  private $deletedAt;
-  private $desc_tipoIn;
-
-
-    const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
-  const DESC_TIPOIN = 'desc_tipoin';
-  const DESC_TIPOIN_LENGTH = 2;
+  private $nombre;
+  private $descripcion;
+  private $direccion;
   
+
+  const ID = 'id';
+  const CREATED_AT = 'created_at';
+  const NOMBRE = 'nombre';
+  const NOMBRE_LENGTH = 400;
+  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 400;
+  const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 400;
+  
+
   function getId() {
       return $this->id;
   }
@@ -30,16 +33,16 @@ class tipoinsumoBaseTableClass extends tableBaseClass {
       return $this->createdAt;
   }
 
-  function getUpdatedAt() {
-      return $this->updatedAt;
+  function getNombre() {
+      return $this->nombre;
   }
 
-  function getDeletedAt() {
-      return $this->deletedAt;
+  function getDescripcion() {
+      return $this->descripcion;
   }
 
-  function getDesc_tipoIn() {
-      return $this->desc_tipoIn;
+  function getDireccion() {
+      return $this->direccion;
   }
 
   function setId($id) {
@@ -50,20 +53,21 @@ class tipoinsumoBaseTableClass extends tableBaseClass {
       $this->createdAt = $createdAt;
   }
 
-  function setUpdatedAt($updatedAt) {
-      $this->updatedAt = $updatedAt;
+  function setNombre($nombre) {
+      $this->nombre = $nombre;
   }
 
-  function setDeletedAt($deletedAt) {
-      $this->deletedAt = $deletedAt;
+  function setDescripcion($descripcion) {
+      $this->descripcion = $descripcion;
   }
 
-  function setDesc_tipoIn($desc_tipoIn) {
-      $this->desc_tipoIn = $desc_tipoIn;
+  function setDireccion($direccion) {
+      $this->direccion = $direccion;
   }
 
   
     
+      
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
@@ -82,7 +86,7 @@ class tipoinsumoBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'tipo_insumo';
+    return 'reporte';
   }
 
   /**
@@ -147,6 +151,4 @@ class tipoinsumoBaseTableClass extends tableBaseClass {
   }
 
 }
-
-
 

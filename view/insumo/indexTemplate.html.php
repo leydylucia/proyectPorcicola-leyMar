@@ -235,7 +235,7 @@ use mvc\request\requestClass as request ?>
                             <th><?php echo i18n::__('describe_product') ?></th>
                             <!--<th><?php // echo i18n::__('prise') ?></th>-->
                             <th><?php echo i18n::__('type_product') ?></th>
-                            <th><?php echo i18n::__('date_manufacture') ?></th>
+                            <th><?php echo i18n::__('Date_of_manufacture_or_purchase') ?></th>
                             <th><?php echo i18n::__('date_conquering') ?></th>
                             <th><?php echo i18n::__('provisioner') ?></th>
                             <th><?php echo i18n::__('date') ?></th>

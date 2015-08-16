@@ -101,7 +101,7 @@ use mvc\session\sessionClass as session ?>
                         <div class="form-group">
                             <label for="filterusuario" class="col-sm-2 control-label">usuario</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[usuario]" name="filter[usuario]" placeholder="usuario">
+                                <input type="text" class="form-control" id="filter[usuario]" name="filter[<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>]" placeholder="usuario">
                             </div>
                         </div>
                         <div class="form-group">

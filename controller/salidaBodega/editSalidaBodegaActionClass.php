@@ -24,7 +24,8 @@ class editSalidaBodegaActionClass extends controllerClass implements controllerA
             if (request::getInstance()->hasGet(salidaBodegaTableClass::ID)) {
                 $fields = array(
                     salidaBodegaTableClass::ID,
-                    salidaBodegaTableClass::EMPLEADO_ID
+                    salidaBodegaTableClass::EMPLEADO_ID,
+                    empleadoTableClass::APELLIDO
                 );
                 $where = array(
                     salidaBodegaTableClass::ID => request::getInstance()->getGet(salidaBodegaTableClass::ID)

@@ -26,16 +26,17 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $filter = request::getInstance()->getPost('filter');
 
                 // aqui validar datos de filtros
-                
-//                if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
-//                    if (request::getInstance()->isMethod('POST')) {
-//                        $descripcion = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
-//                        validator::validateFiltroUsuario();
-//                        if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
-//                            $where[usuarioTableClass::USER] = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
-//                        }
-//                    }
-//                }
+
+                if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
+                    if (request::getInstance()->isMethod('POST')) {
+                        $descripcion = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
+
+//                        validator::validateFiltroUsuario($descripcion);
+                        if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)]) === false) {
+                            $where[usuarioTableClass::USER] = $filter[usuarioTableClass::getNameField(usuarioTableClass::USER, true)];
+                        }
+                    }
+                }
 
                 if (isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== '') {
                     $where[usuarioTableClass::USER] = $filter['usuario'];
@@ -55,7 +56,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
 
-  $fields = array(
+            $fields = array(
                 usuarioTableClass::ID,
                 usuarioTableClass::USER,
                 usuarioTableClass::CREATED_AT

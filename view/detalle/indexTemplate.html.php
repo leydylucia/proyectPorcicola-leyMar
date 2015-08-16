@@ -56,8 +56,8 @@ use mvc\request\requestClass as request ?>
                 <?php foreach ($objEntrada as $entrada): ?>
                     <tr class="text-info bg-info">
                         <td><input type="checkbox" name="chk[]" value="<?php echo $entrada->$id ?>"></td>
-                        <td><?php echo empleadoTableClass::getNameEmpleado($entrada->$empleado) ?></td>
-                        <td><?php echo proveedorTableClass::getNameProveedor($entrada->$proveedor) ?></td>
+                        <td><?php echo empleadoTableClass::getNameEmpleado($entrada->$empleado) . ' ' . empleadoTableClass::getNameApellido($entrada->$empleado) ?></td>
+                        <td><?php echo proveedorTableClass::getNameProveedor($entrada->$proveedor) . ' ' . proveedorTableClass::getNameApellido($entrada->$proveedor) ?></td>
                         <td><?php echo $entrada->$fecha ?></td>
 
                     </tr>

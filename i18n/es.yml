@@ -3,15 +3,15 @@ culture:                       Español
 dictionary:
   default:
     user:                         Usuario
-    pass:                         contraseña
+    pass:                         Contraseña
     pass2:                        Verifique la contraseña
     register:                     Registro
-    update:                       actualizacion
+    update:                       Actualizacion
     New User:                     Nuevo Usuario
     Edit User:                    Editar Usuario
     #usuario credencial#
     tableUsucred:                 Tabla usuario
-    date:                         fecha
+    date:                         Fecha
     credential:                   Credencial
     tableusuCred:                 Tabla usuario credencial
     #DEPTO#
@@ -31,25 +31,26 @@ dictionary:
     #Raza#
     desc_race:                    Descripcion Raza
     #Parto#  
-    date_birth:                   fecha nacimiento
-    num_born:                     numero de nacidos
-    num_lives:                    numero de vivos
-    num_deads:                    numero de muertos
-    num_female:                   numero de hembras
-    num_male:                     numero de machos
-    date_pregnancy:               fecha montada
-    id_father:                    Id del padre
+    date_birth:                   Fecha nacimiento
+    num_born:                     Numero de nacidos
+    num_lives:                    Numero de vivos
+    num_deads:                    Numero de muertos
+    num_female:                   Numero de hembras
+    num_male:                     Numero de machos
+    date_pregnancy:               Fecha montada
+    father:                       Padre
     #Proveedor#
     name:                         Nombre
     lastname:                     Apellido
     direction:                    Direccion 
+    
     email:                        correo
     telephone:                    Telefono      
     city_id:                      Ciudad 
     Register Sucess:              Registro exitoso 
-    page:                         paginador
-    pag:                          página
-    off:                          de
+    page:                         Paginador
+    pag:                          Página
+    off:                          De
     new_supplier:                 Nuevo Proveedor 
     secure the Eliminate register:  Seguro de eliminar registro
     Reg.supplier:                 Reg.proveedor
@@ -57,13 +58,13 @@ dictionary:
     desc_prod:                    Descripcion insumo
     price:                        Precio
     typeProd:                     Tipo insumo
-    dateManuf:                    fecha fabricacion
-    datedef:                      fecha vencimiento
-    supplier:                     proveedor
+    dateManuf:                   Fecha fabricacion
+    datedef:                      Fecha vencimiento
+    supplier:                     Proveedor
     message1:                     Mesaje de exito
     confirmDelete:                ¿Seguro de eliminar registros
     actions:                      Acciones
-    delete Selection:             eliminar Seleccion
+    delete Selection:             Eliminar Seleccion
     confirmDeleteMasivo:          ¿Seguro eliminar los elementos selecionados?
     elements delete:              Elementos eliminados exitosamente 
     city:                         Ciudad
@@ -71,35 +72,35 @@ dictionary:
     begin:                        Inici
     cancel:                       Cancelar
     return:                       volver
-    Delete:                       eliminar
-    delete:                       eliminar
-    confirm:                      confirmar
-    see:                          ver
-    publish:                      editar
+    Delete:                       Eliminar
+    delete:                       Eliminar
+    confirm:                      Confirmar
+    see:                          Ver
+    publish:                      Editar
     deleteall:                    Eliminado masivo
-    new:                          nuevo
-    date_creation:                fecha creación
+    new:                          Nuevo
+    date_creation:                Fecha creación
     
     #insumo#
    
     describe_product:          Descripcion insumo
     prise:                     Precio
     type_product:              Tipo Insumo 
-    date_manufacture:          fecha de fabricacion
-    date_conquering:           fecha de vencimiento
-    provisioner:               proveedor
-    New Product:                   Nuevo Producto
-    Edit Product:                  Editar Producto
+    Date_of_manufacture_or_purchase: Fecha de fabricacion o compra
+    date_conquering:           Fecha de vencimiento
+    provisioner:               Proveedor
+    New Product:                   Nuevo Insumo
+    Edit Product:                  Editar Insumo
     Reg.Product:               Reg.Insumo
     ###########
-    date_creation:             fecha de creacion
+    date_creation:             Fecha de creacion
     #mensajes en ajax#
-    mensaje1:                  mensaje de exito
+    mensaje1:                  Mensaje de exito
     confirmDelete:             ¿Desea eliminar registro
     action:                    Acciones
     eliminar Seleccion:        Eliminar Seleccion
     confirmDeleteMasivo:       ¿Desea eliminar elementos seleccionados ?
-    elementos eliminados:      elementos eliminados satisfactoriamente 
+    elementos eliminados:      Elementos eliminados satisfactoriamente 
     #proveedor#
     proveedor:                 Proveedor
     ciudad:                    Ciudad
@@ -114,33 +115,33 @@ dictionary:
     
     #tipo venta#
     describe:                  Descripcion
-    type_sale:                tipo venta
+    type_sale:                Tipo Venta
     New_typeSale:             Nuevo Tipo Venta
     Edit_typeSale:            Editar Tipo Venta
     #botones#
     new:                       Nuevo  
     Delete:                    Elimiar
     deleteall:                 Borrar 
-    filter:                    filtros
-    deleteFilter:              eliminar filtros
-    cancel:                    cancelar
-    see:                       ver
-    publish:                   editar
-    confirm:                   confirmar
-    return:                    volver 
-    start:                     inicio
-    delete filter:             eliminar filtro
+    filter:                    Filtros
+    deleteFilter:              Eliminar Filtros
+    cancel:                    Cancelar
+    see:                       Ver
+    publish:                   Editar
+    confirm:                   Confirmar
+    return:                    Volver 
+    start:                     Inicio
+    delete filter:             Eliminar Filtro
     #menu#
-    product:                   insumo
-    hoja de vida:              hoja de vida
-    printOut:                  imprimir
+    product:                   Insumo
+    hoja de vida:              Hoja de vida
+    printOut:                  Imprimir
     report:                    Reporte
     Error:                     Error
     information:              Informacion
-    Date:                     fecha
+    Date:                     Fecha
     #sacrificio#
-    sacrifice:                sacrificio 
-    pig:                      cerdo
+    sacrifice:                Sacrificio 
+    pig:                      Cerdo
     New_Sacrifice:            Nuevo Sacrificio
     Edit_Sacrifice:           Editar Sacrificio
     Sacrifice_Pig:           Sacrificio Cerdo
@@ -148,7 +149,7 @@ dictionary:
     unit_measure:             Unidad Medida
     
     
-    closing session:          cierre de sesion
+    closing session:          Cierre de sesion
 
  #Parto#
     delivery:                  Parto
@@ -232,7 +233,10 @@ dictionary:
     quantity:                  Cantidad
     
     # paginaPrincipal# 
-    welcome:               BIENBENIDO
+    welcome:               BIENVENIDO
+    
+    Report:                Reportes
+    description:           Descripcion
     
     
     ##errores##

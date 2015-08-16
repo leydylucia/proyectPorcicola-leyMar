@@ -148,18 +148,21 @@ namespace mvc\validator {
         }
         
         
-         public static function validateFiltroUsuario() {
+         public static function validateFiltroUsusario($descripcion) {
             $soloLetras = "/^[a-z]+$/i";
             $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
             $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
 
-            //-------------------------------campo usuario-----------------------------
-            //----sobre pasar los caracteres----
-            if (strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USER, true))) > \usuarioTableClass::USER_LENGTH) {
-               session::getInstance()->setError('El usuario no puede esceder en cantidad de caracteres a lo permitido', 'inputUsuario');
-            } 
-             
+             if (strlen($descripcion) > \usuarioTableClass::USER_LENGTH) {
+//                 echo $descripcion;
+//                 exit();
+                session::getInstance()->setError('el tipo usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
+            }
+//            //----solo permitir letras----
+            else if (!preg_match($soloLetras, ($descripcion))) {
+               session::getInstance()->setError('El campo usuario insumo no permite numeros, solo letras', 'inputUsuario');
+            }
         }
 
     }

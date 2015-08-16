@@ -9,9 +9,11 @@
 <?php $empleado_id_e = entradaTableClass::EMPLEADO_ID ?>
 <?php $empleado_id = empleadoTableClass::ID ?>
 <?php $nombre_em = empleadoTableClass::NOMBRE ?>
+<?php $apellido = empleadoTableClass::APELLIDO ?>
 <?php $proveedor_id_em = entradaTableClass::PROVEEDOR_ID ?>
 <?php $proveedor_id = proveedorTableClass::ID ?>
 <?php $nombre = proveedorTableClass::NOMBRE ?><!--manejo de foranea para traer datos-->
+<?php $apellido_c = proveedorTableClass::APELLIDO ?>
 
 
 
@@ -40,7 +42,7 @@
           <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$empleado_id_e : '') ?>">Seleccione empleado</option>
           <?php foreach ($objEmpleado as $empleado): ?>
           <option <?php echo (isset($objEntrada[0]->$empleado_id_e) === true and $objEntrada[0]->$empleado_id_e == $empleado->$empleado_id) ? 'selected' : '' ?> value="<?php echo $empleado->$empleado_id ?>">
-          <?php  echo $empleado->$nombre_em ?>
+          <?php  echo $empleado->$nombre_em . ' ' . $empleado->$apellido?>
           </option>
           <?php endforeach; ?>
         </select>
@@ -62,7 +64,7 @@
           <option value="<?php echo (session::getInstance()->hasFlash('inputProveedor') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$proveedor_id_em : '') ?>">Seleccione empleado</option>
           <?php foreach ($objProveedor as $proveedor): ?>
           <option <?php echo (isset($objEntrada[0]->$proveedor_id_em) === true and $objEntrada[0]->$proveedor_id_em == $proveedor->$proveedor_id) ? 'selected' : '' ?> value="<?php echo $proveedor->$proveedor_id ?>">
-          <?php  echo $proveedor->$nombre ?>
+          <?php  echo $proveedor->$nombre . ' ' . $proveedor->$apellido_c ?>
           </option>
           <?php endforeach; ?>
         </select>

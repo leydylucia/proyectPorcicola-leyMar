@@ -31,7 +31,8 @@ class editEnActionClass extends controllerClass implements controllerActionInter
         // para editar foraneas
         $fields = array(
             empleadoTableClass::ID,
-            empleadoTableClass::NOMBRE
+            empleadoTableClass::NOMBRE,
+            empleadoTableClass::APELLIDO
         );
         $orderBy = array(
             empleadoTableClass::NOMBRE
@@ -41,7 +42,8 @@ class editEnActionClass extends controllerClass implements controllerActionInter
         // para editar foraneas
         $fields = array(
             proveedorTableClass::ID,
-            proveedorTableClass::NOMBRE
+            proveedorTableClass::NOMBRE,
+            proveedorTableClass::APELLIDO
         );
         $orderBy = array(
             proveedorTableClass::NOMBRE

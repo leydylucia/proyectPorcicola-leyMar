@@ -58,12 +58,12 @@ use mvc\session\sessionClass as session ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>">
 
-<?php if (session::getInstance()->hasError('inputDescTipoIn')): ?><!--inicio de validaciones-->
+                        <?php if (session::getInstance()->hasError('inputDescTipoIn')): ?>
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescTipoIn') ?><!--esta linea para actualizar demas formularios-->
                             </div>
-<?php endif ?><!--fin de validaciones-->
+                        <?php endif ?><!--se agrega antes de cada input-->
 
 
                         <div class="form-group">
@@ -85,7 +85,7 @@ use mvc\session\sessionClass as session ?>
     <!--fin de modal filtro-->
 
 
-<?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
+    <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->
     <!--formulario de borrado masivo-->
     <div class="container">
         <div class="table-responsive">
@@ -102,7 +102,7 @@ use mvc\session\sessionClass as session ?>
                         </tr>        
                     </thead>
                     <tbody>
-<?php foreach ($objTipoin as $tipoIn): ?> 
+                        <?php foreach ($objTipoin as $tipoIn): ?> 
                             <tr class="text-info bg-info">
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $tipoIn->$id ?>"></td>
                                 <td><?php echo $tipoIn->$desc_tipoIn ?></td>
@@ -126,7 +126,7 @@ use mvc\session\sessionClass as session ?>
                                     </div>
                                     <div class="modal-body">
                                         <!--pára que imprima el id en cada ventana-->
-    <?php i18n::__('confirmDelete') ?> <?php echo $tipoIn->$desc_tipoIn ?>
+                                        <?php i18n::__('confirmDelete') ?> <?php echo $tipoIn->$desc_tipoIn ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
@@ -135,7 +135,7 @@ use mvc\session\sessionClass as session ?>
                                 </div>
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
 
 
@@ -144,10 +144,10 @@ use mvc\session\sessionClass as session ?>
             </form><!-- fin formulario de borrado masivo-->
             <div class="text-right">
                 página <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('insumo', 'indexTipoin') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?> 
+                    <?php for ($x = 1; $x <= $cntPages; $x++): ?> 
                         <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option> 
 
-<?php endfor; ?>
+                    <?php endfor; ?>
 
 
 
@@ -173,7 +173,7 @@ use mvc\session\sessionClass as session ?>
                 </div>
                 <div class="modal-body">
 
-<?php i18n::__('confirmDeleteMasivo') ?> <?php echo $tipoIn->$desc_tipoIn ?>
+                    <?php i18n::__('confirmDeleteMasivo') ?> <?php echo $tipoIn->$desc_tipoIn ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>

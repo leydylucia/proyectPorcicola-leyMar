@@ -65,9 +65,9 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
 //                print_r($where);
 //              echo  $filter['Date2'];
 //                exit();
-                session::getInstance()->setAttribute('defaultIndexFilters', $where);
-            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-                $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//                session::getInstance()->setAttribute('defaultIndexFilters', $where);
+//            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+//                $where = session::getInstance()->getAttribute('defaultIndexFilters');
             }
 
 
@@ -131,9 +131,9 @@ class indexSacrificioVentaActionClass extends controllerClass implements control
         } catch (PDOException $exc) {
 //            routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
 
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-//            routing::getInstance()->redirect('sacrificioVenta','indexSacrificioVenta');
+//            session::getInstance()->setFlash('exc', $exc);
+//            routing::getInstance()->forward('shfSecurity', 'exception');
+            routing::getInstance()->redirect('sacrificioVenta','indexSacrificioVenta');
         }
     }
 

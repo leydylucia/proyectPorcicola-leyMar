@@ -56,7 +56,7 @@ use mvc\request\requestClass as request ?>
                     <tr class="text-info bg-info">
                         <td><input type="checkbox" name="chk[]" value="<?php echo $salidaBodega->$id ?>"></td>
 
-                        <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) ?></td>
+                        <td><?php echo empleadoTableClass::getNameEmpleado($salidaBodega->$empleado) . ' ' . empleadoTableClass::getNameApellido($salidaBodega->$empleado) ?></td>
                         <td><?php echo date('d-m-Y h:i:s a', strtotime($salidaBodega->$fecha)) ?></td>
 
                     </tr>

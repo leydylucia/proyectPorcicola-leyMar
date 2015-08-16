@@ -149,8 +149,8 @@
 <?php foreach ($objEntrada as $entrada): ?>
             <tr class="text-info bg-info">
               <td><input type="checkbox" name="chk[]" value="<?php echo $entrada->$id ?>"></td>
-              <td><?php echo empleadoTableClass::getNameEmpleado($entrada->$empleado_id) ?></td>
-              <td><?php echo proveedorTableClass::getNameProveedor($entrada->$proveedor_id) ?></td>
+              <td><?php echo empleadoTableClass::getNameEmpleado($entrada->$empleado_id) . ' ' . empleadoTableClass::getNameApellido($entrada->$empleado_id) ?></td>
+              <td><?php echo proveedorTableClass::getNameProveedor($entrada->$proveedor_id) . ' ' .proveedorTableClass::getNameApellido($entrada->$proveedor_id) ?></td>
               <td><?php echo $entrada->$fecha ?></td>
               <td>
                 <a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'verEn', array(entradaTableClass::ID => $entrada->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
@@ -158,7 +158,7 @@
                 
                 <!--eliminado individual con ajax-->
                 <a href="#" data-target="#myModalDelete<?php echo $entrada->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
-                <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'index', array (detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true) => $entrada->$id))?>" class="btn btn-info btn-xs"><?php echo i18n::__('detail') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('detalle', 'index', array (detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true) => $entrada->$id))?>" class="btn btn-default btn-xs"><?php echo i18n::__('detail') ?></a>
               </td>
             </tr>
 

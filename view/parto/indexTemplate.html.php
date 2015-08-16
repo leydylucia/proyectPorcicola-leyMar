@@ -157,7 +157,7 @@
             <th><?php echo i18n::__('num_female') ?></th>
             <th><?php echo i18n::__('num_male') ?></th>
             <th><?php echo i18n::__('date_pregnancy') ?></th>
-            <th><?php echo i18n::__('id_father') ?></th>
+            <th><?php echo i18n::__('father') ?></th>
             <th><?php echo i18n::__('pig') ?></th>
             <th><?php echo i18n::__('date') ?></th>
             <th><?php echo i18n::__('actions') ?></th>

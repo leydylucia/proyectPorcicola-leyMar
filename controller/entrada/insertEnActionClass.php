@@ -23,7 +23,8 @@ class insertEnActionClass extends controllerClass implements controllerActionInt
       /* fields para foraneas */
       $fieldsE = array(
           empleadoTableClass::ID,
-          empleadoTableClass::NOMBRE
+          empleadoTableClass::NOMBRE,
+          empleadoTableClass::APELLIDO
       );
       $orderByE = array(
           empleadoTableClass::NOMBRE
@@ -34,7 +35,8 @@ class insertEnActionClass extends controllerClass implements controllerActionInt
       /* fields para foraneas */
       $fields = array(
           proveedorTableClass::ID,
-          proveedorTableClass::NOMBRE
+          proveedorTableClass::NOMBRE,
+          proveedorTableClass::APELLIDO
       );
       $orderBy = array(
           proveedorTableClass::NOMBRE

@@ -27,16 +27,18 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
                 if (isset($filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)]) and empty($filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)]) === false) {
                     if (request::getInstance()->isMethod('POST')) {
                         $descripcion = $filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)];
-                        validator::validateFiltroDescripcion($filter);
+
+                        validator::validateFiltroTipoIn($descripcion);
                         if (isset($filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)]) and empty($filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)]) === false) {
                             $where[tipoInsumoTableClass::DESC_TIPOIN] = $filter[tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true)];
                         }
                     }
                 }
+//
 //  echo ('descripcion');
 //                       exit();
-//                if (isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== '') {
-//                    $where[tipoInsumoTableClass::DESC_TIPOIN] = $filter['tipoInsumo'];
+//                if (isset($filter['tipoInsumosumo']) and $filter['tipoInsumosumo'] !== null and $filter['tipoInsumosumo'] !== '') {
+//                    $where[tipoInsumosumoTableClass::DESC_TIPOIN] = $filter['tipoInsumosumo'];
 //                }
 //                if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
 //                    $where[proveedorTableClass::CREATED_AT] = array(
@@ -76,7 +78,7 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
             }
             /* para mantener filtro con paginado,
              * @var $this para enviar al cntPages"contador de pagina" a la vista 
-             * getTotalPages => se encuentra en tipoinsumoTables class
+             * getTotalPages => se encuentra en tipoInsumosumoTables class
              * @var $where => para sostener el filtro con el paginado* */
             $this->cntPages = tipoInsumoTableClass::getTotalPages(config::getRowGrid(), $where);
             //  $page = request::getInstance()->getGet('page');
@@ -97,7 +99,6 @@ class indexTipoinActionClass extends controllerClass implements controllerAction
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');
 //            routing::getInstance()->redirect('insumo', 'indexTipoIn');
-
         }
     }
 

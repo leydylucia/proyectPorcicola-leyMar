@@ -106,7 +106,7 @@ use mvc\view\viewClass as view ?>
     <?php endif ?>
 
     <div class="form-group <?php echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('date_manufacture') ?>:</label>
+        <label for="<?php echo insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Date_of_manufacture_or_purchase') ?>:</label>
         <div class="col-xs-9">
             <input id="<?php echo insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true)) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true)) : ((isset($objInsumo) == true) ? $objInsumo[0]->$fechaFabricacion : '') ?>" type="date" name="<?php echo insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true) ?>">
             <?php if (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true)) === true): ?>
