@@ -22,8 +22,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
-        if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
-          $where[hojaVidaTableClass::GENERO_ID] = $filter['genero'];
+        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+          $where[hojaVidaTableClass::GENERO_ID] = $filter['nombre'];
         }
 //        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
 //          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
@@ -50,7 +50,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
               //hojaVidaTableClass::ID_MADRE
       );
       $orderBy = array(
-          hojaVidaTableClass::ID
+          hojaVidaTableClass::ID,
+          hojaVidaTableClass::NOMBRE_CERDO
       );
 
 
@@ -71,6 +72,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
        * config::getRowGrid()=> va con el paginado y hace una funcion
        * @var $this->objInsumo para enviar los datos a la vista      */
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+      $fields = array(
+          generoTableClass::ID,
+          generoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          generoTableClass::DESCRIPCION
+      );
+      $this->objGenero = generoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
       $this->defineView('index', 'animal', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

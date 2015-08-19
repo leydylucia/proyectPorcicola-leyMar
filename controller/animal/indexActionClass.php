@@ -53,7 +53,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           hojaVidaTableClass::CREATED_AT
       );
       $orderBy = array(
-          hojaVidaTableClass::ID
+          hojaVidaTableClass::ID,
+          hojaVidaTableClass::NOMBRE_CERDO
       );
 
       $page = 0;
@@ -77,14 +78,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
        * @var $this->objInsumo para enviar los datos a la vista      */
       
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+      $fields = array(
+          generoTableClass::ID,
+          generoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          generoTableClass::DESCRIPCION
+      );
+      $this->objGenero = generoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
       $this->defineView('index', 'animal', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       routing::getInstance()->redirect('animal', 'index');
-//      echo $exc->getMessage();
-//      echo '<br>';
-//      echo '<pre>';
-//      print_r($exc->getTrace());
-//      echo '</pre>';
     }
   }
 }

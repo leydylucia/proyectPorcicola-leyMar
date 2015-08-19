@@ -18,51 +18,46 @@
   <br>
   <br>
 
-
 </div>
-
-
 
 <div class="container">
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-condensed">
       <thead>
-        <tr>
+        <tr class="info"|>
 
           <th>Datos Empleado</th>
-
-
 
         </tr>        
       </thead>
       <tbody>
         <tr><?php foreach ($objEmpleado as $empleado): ?> </tr>
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('name') ?></th>
 
             <td><?php echo $empleado->$nombre. ' ' . $empleado->$apellido ?></td>
 
-          <tr>
+          <tr class="info">
             <th><?php echo i18n::__('name_user') ?></th>
 
             <td><?php echo usuarioTableClass::getNameUsuario($empleado->$usuario_id) ?></td>
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('type_id') ?></th>
 
             <td><?php echo tipoIdTableClass::getNameTipo($empleado->$tipo_id_id) ?></td>
-          <tr>
+          <tr class="info">
             <th><?php echo i18n::__('direction') ?></th>
 
             <td><?php echo $empleado->$direccion ?></td>
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('email') ?></th>
 
             <td><?php echo $empleado->$correo ?></td>
-          <tr>
+          <tr class="info">
             <th><?php echo i18n::__('telephone') ?></th>
 
             <td><?php echo $empleado->$telefono ?></td>
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('date_creation') ?></th>
             <td><?php echo $empleado->$created_at ?></td>
 

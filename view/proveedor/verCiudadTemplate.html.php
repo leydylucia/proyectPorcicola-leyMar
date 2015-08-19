@@ -13,13 +13,11 @@
 
 </div>
 
-
-
 <div class="container">
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-condensed">
       <thead>
-        <tr>
+        <tr class="info">
 
       <center> <th>Datos de ciudad</th>     
         </tr>        
@@ -30,16 +28,16 @@
 <?php foreach ($objCiudad as $ciudad): ?>
 
           <th><?php echo i18n::__('name_city') ?></th>
-          <tr>
+          <tr class="info">
             <td><?php echo $ciudad->$nom_ciudad ?></td>
 
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('name_dept') ?></th>
-          <tr>
+          <tr class="info">
             <td><?php echo deptoTableClass::getNameDepto($ciudad->$depto_id) ?></td>
-          <tr>
+          <tr class="active">
             <th><?php echo i18n::__('date_creation') ?></th>
-          <tr>
+          <tr class="info">
             <td><?php echo $ciudad->$created_at ?></td>
 
 <?php endforeach ?>

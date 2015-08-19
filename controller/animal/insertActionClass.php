@@ -61,23 +61,11 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objRaza = razaTableClass::getAll($fields, true, $orderBy, 'ASC');
       //fin
-//      // para editar foraneas tabla raza
-//        $fieldy = array(
-//            hojaVidaTableClass::ID_MADRE
-//                    );
-//        $orderBr = array(
-//            hojaVidaTableClass::ID_MADRE
-//        );
-//        $this->objHojaVida = hojaVidaTableClass::getAll($fieldy, true, $orderBr, 'ASC');
-      //fin
 
       $this->defineView('insert', 'animal', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+       session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 

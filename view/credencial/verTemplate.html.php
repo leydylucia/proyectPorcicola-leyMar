@@ -22,9 +22,6 @@
         <tr class="active">
 
           <th>datos de credencial</th>
-
-
-
         </tr>        
       </thead>
       <tbody>

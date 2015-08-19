@@ -31,7 +31,7 @@ class createActionClass extends controllerClass implements controllerActionInter
        
 //        $this->Validate($genero, $id_madre);
 
-//        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
+        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
         
         $data = array(
             hojaVidaTableClass::GENERO_ID => $genero_id,

@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use hook\log\logHookClass as log;
+//use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -92,7 +92,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         
         $this->defineView('edit', 'animal', session::getInstance()->getFormatOutput());
         //session::getInstance()->setSuccess('El registro se modifico exitosamente');
-        log::register('insertar', hojaVidaTableClass::getNameTable());
+//        log::register('insertar', hojaVidaTableClass::getNameTable());
       } else {
         routing::getInstance()->redirect('animal', 'index');
       }

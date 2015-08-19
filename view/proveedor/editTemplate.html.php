@@ -5,11 +5,12 @@
 <!--@var $depto para definir que campo voy a modificar-->
 
 <?php $proveedor = proveedorTableClass::NOMBRE ?>
+<?php $apellido = proveedorTableClass::APELLIDO ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
         <h1>EDITAR PROVEEDOR </h1>
-        <h2><?php echo $objProveedor[0]->$proveedor ?></h2>
+        <h2><?php echo $objProveedor[0]->$proveedor . ' ' . $objProveedor[0]->$apellido ?></h2>
     </div>
     
 </div>

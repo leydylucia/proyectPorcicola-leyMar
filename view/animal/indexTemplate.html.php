@@ -8,6 +8,8 @@
 
 <?php $id = hojaVidaTableClass::ID ?>
 <?php $genero_id = hojaVidaTableClass::GENERO_ID ?>
+<?php $genero_id_b = generoTableClass::ID ?>
+<?php $descripcion = generoTableClass::DESCRIPCION ?>
 <?php $fecha_nacimiento = hojaVidaTableClass::FECHA_NACIMIENTO ?>
 <?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
 <?php $estado_id = hojaVidaTableClass::ESTADO_ID ?>
@@ -107,11 +109,17 @@
               <div class="form-group">
                 <label for="filtergenero" class="col-sm-2 control-label"><?php echo i18n::__('genre') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[genero]" name="filter[genero]" placeholder="genero">
+                  <select class="form-control" id="filtergenero" name="filter[genero]">
+                    <option value=""><?php echo i18n::__('genre') ?></option>
+                    <?php foreach ($objGenero as $genero): ?>
+                      <option value="<?php echo $genero->$genero_id_b ?>"><?php echo $genero->$descripcion ?></option>
+<?php endforeach; ?>
+                  </select>
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+              
               <!--              <div class="form-group">
-                              <label for="filtermadre" class="col-sm-2 control-label"><?php // echo i18n::__('mother')  ?></label>
+                              <label for="filtermadre" class="col-sm-2 control-label"></?php // echo i18n::__('mother')  ?></label>
                               <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
                               </div>

@@ -18,7 +18,7 @@ namespace mvc\validator {
     public static function validateInsert() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "[/^a-zA-Z]+$/i"; //"/^[a-z]+$/i"
+      $soloLetras = "/^[a-z]+$/i"; //"/^[a-z]+$/i"
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
@@ -29,16 +29,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del empleado es requerido', 'inputNombre');
       } //----solo permitir letras----
-//      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputNombre', true);
-//        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-//      } //----sobre pasar los caracteres----
-//      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputNombre', true);
-//        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-//      }
+      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } //----sobre pasar los caracteres----
+      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }
 
       //-------------------------------campo apellido-----------------------------
       //----campo nulo----
@@ -47,16 +47,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido del empleado es requerido', 'inputApellido');
       } //----solo permitir letras----
-//      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputApellido', true);
-//        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
-//      } //----sobre pasar los caracteres----
-//      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputApellido', true);
-//        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
-//      }
+     else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputApellido', true);
+        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
+      } //----sobre pasar los caracteres----
+      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputApellido', true);
+        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      }
 
 
       //-------------------------------campo direccion-----------------------------
@@ -157,7 +157,7 @@ namespace mvc\validator {
     public static function validateEdit() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "[/^a-zA-Z]+$/i";  //"/^[a-z]+$/i"
+      $soloLetras = "/^[a-z]+$/i";  //"/^[a-z]+$/i"
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
@@ -186,16 +186,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del empleado es requerido', 'inputNombre');
       } //----solo permitir letras----
-//      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputNombre', true);
-//        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-//      } //----sobre pasar los caracteres----
-//      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputNombre', true);
-//        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-//      }
+      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } //----sobre pasar los caracteres----
+      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }
 
       //-------------------------------campo apellido-----------------------------
       //----campo nulo----
@@ -204,16 +204,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido del empleado es requerido', 'inputApellido');
       } //----solo permitir letras----
-//      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputApellido', true);
-//        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
-//      } //----sobre pasar los caracteres----
-//      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputApellido', true);
-//        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
-//      }
+      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputApellido', true);
+        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
+      } //----sobre pasar los caracteres----
+      else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputApellido', true);
+        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      }
 
       //-------------------------------campo direccion-----------------------------
       //----campo nulo----

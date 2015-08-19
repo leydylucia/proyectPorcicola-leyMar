@@ -4,6 +4,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $peso_cerdo = controlTableClass::PESO_CERDO ?>
 <?php $empleado_id = controlTableClass::EMPLEADO_ID ?>
+<?php $unidad = controlTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $created_at = controlTableClass::CREATED_AT ?>
 
 <div class="container container-fluid">
@@ -23,18 +24,20 @@
         <tr class="active">
 
           <th>Datos Contro Peso</th>
-</tr>        
+        </tr>        
       </thead>
       <tbody>
-      <?php foreach ($objControl as $control): ?> 
+<?php foreach ($objControl as $control): ?> 
           <tr class="info">
+            <th><?php echo i18n::__('unit_measure') ?></th>
+            <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($control->$unidad) ?></td>
+          <tr class="active">
             <th><?php echo i18n::__('pig weight') ?></th>
             <td><?php echo $control->$peso_cerdo ?></td>
-          <tr class="active">
-
+          <tr class="info">
             <th><?php echo i18n::__('employee') ?></th>
             <td><?php echo empleadoTableClass::getNameEmpleado($control->$empleado_id) ?></td>
-          <tr class="info">
+          <tr class="active">
             <th><?php echo i18n::__('date_creation') ?></th>
             <td><?php echo $control->$created_at ?></td>
 
@@ -47,4 +50,3 @@
   </div>
 </div>
 
-  

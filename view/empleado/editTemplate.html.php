@@ -5,11 +5,12 @@
 <!--@var $depto para definir que campo voy a modificar-->
 
 <?php $empleado = empleadoTableClass::NOMBRE ?>
+<?php $apellido = empleadoTableClass::APELLIDO ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
         <h1>EDITAR EMPLEADO </h1>
-        <h2><?php echo $objEmpleado[0]->$empleado ?></h2>
+        <h2><?php echo $objEmpleado[0]->$empleado . ' ' . $objEmpleado[0]->$apellido ?></h2>
     </div>
     
 </div>

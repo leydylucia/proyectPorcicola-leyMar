@@ -36,12 +36,7 @@ class proveedorTableClass extends proveedorBaseTableClass {
 
   public static function getNameProveedor($id) {
     try {
-      $sql = 'SELECT ' . proveedorTableClass::NOMBRE . ' As nombre '
-//              . proveedorTableClass::APELLIDO . ' As apellido '
-//              . proveedorTableClass::DIRECCION . ' As direccion '
-//              . proveedorTableClass::CORREO . ' As correo '
-//              . proveedorTableClass::TELEFONO . ' As telefono '
-//              . proveedorTableClass::CIUDAD_ID . ' As ciudad '
+      $sql = 'SELECT ' . proveedorTableClass::NOMBRE   . ' As nombre '
               . ' FROM ' . proveedorTableClass::getNameTable() . '  '
               . ' WHERE ' . proveedorTableClass::ID . ' = :id';
       $params = array(

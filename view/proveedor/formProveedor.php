@@ -93,8 +93,7 @@
         <select class="form-control" id="<?php proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE) ?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputCiudad') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$ciudad_id_p : '') ?>"  type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true) ?>" placeholder="<?php echo i18n::__('city') ?>">Seleccione ciudad</option>
           <?php foreach ($objCiudad as $ciudad): ?>
-          <option <?php echo (isset($objProveedor[0]->$ciudad_id_p) === true and $objProveedor[0]->$ciudad_id_p == $ciudad->$ciudad_id) ? 'selected' : '' ?> value="<?php echo $ciudad->$ciudad_id ?>">
-          <?php  echo $ciudad->$nom_ciudad ?>
+          <option <?php echo (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true)) === true and request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true)) == $ciudad->$ciudad_id) ? 'selected' : (isset($objProveedor[0]->$ciudad_id_p) === true and $objProveedor[0]->$ciudad_id_p == $ciudad->$ciudad_id) ? 'selected' : '' ?> value="<?php echo $ciudad->$ciudad_id ?>"><?php echo $ciudad->$nom_ciudad ?></option><!--sostenimiento de dato en foranea-->
           </option>
           <?php endforeach; ?>
         </select>

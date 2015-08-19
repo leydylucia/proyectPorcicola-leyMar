@@ -54,8 +54,7 @@
         <select class="form-control" id="<?php ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, TRUE) ?>" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputCiudad') or request::getInstance()->hasPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true))) ? request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true)) : ((isset($objCiudad[0])) ? $objCiudad[0]->$depto_id_c : '') ?>"  type="text" name="<?php echo ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true) ?>" placeholder="<?php echo i18n::__('name_dept') ?>">Seleccione Departamento</option>
 <?php foreach ($objDepto as $depto): ?>
-            <option <?php echo (isset($objCiudad[0]->$depto_id_c) === true and $objCiudad[0]->$depto_id_c == $depto->$depto_id) ? 'selected' : '' ?> value="<?php echo $depto->$depto_id ?>">
-  <?php echo $depto->$nom_depto ?>
+            <option <?php echo (request::getInstance()->hasPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true)) === true and request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true)) == $depto->$depto_id) ? 'selected' : (isset($objDepto[0]->$depto_id_c) === true and $objDepto[0]->$depto_id_c == $depto->$depto_id) ? 'selected' : '' ?> value="<?php echo $depto->$depto_id ?>"><?php echo $depto->$nom_depto ?></option><!--sostenimiento de dato en foranea-->
             </option>
 <?php endforeach; ?>
         </select>

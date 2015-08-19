@@ -144,7 +144,7 @@ namespace mvc\validator {
       $num_nacidos = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_NACIDOS, true));
       $num_hembras = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_HEMBRAS, true));
       $num_machos = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_MACHOS, true));
-      if ($num_nacidos < $num_hembras + $num_machos) {
+      if ($num_nacidos < ($num_hembras + $num_machos)) {
         $flag = true;
         session::getInstance()->setFlash('inputHembra', true); /* input usuario biene del formulario */
         session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor al Numero Nacidos', 'inputHembra');
@@ -154,7 +154,8 @@ namespace mvc\validator {
       
 //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
-        //request::getInstance()->setMethod('GET');
+        request::getInstance()->setMethod('GET');
+        request::getInstance()->addParamGet(array(\partoTableClass::ID => request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::ID, true))));        
         routing::getInstance()->forward('parto', 'insert');
       }
     }
@@ -282,7 +283,7 @@ namespace mvc\validator {
       $num_nacidos = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_NACIDOS, true));
       $num_hembras = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_HEMBRAS, true));
       $num_machos = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_MACHOS, true));
-      if ($num_nacidos < $num_hembras + $num_machos) {
+      if ($num_nacidos < ($num_hembras + $num_machos)) {
         $flag = true;
         session::getInstance()->setFlash('inputHembra', true); /* input usuario biene del formulario */
         session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor al Numero Nacidos', 'inputHembra');
@@ -295,17 +296,17 @@ namespace mvc\validator {
         routing::getInstance()->forward('parto', 'edit');
       }
     }
-    public static function validateFiltroNacidos() {
-         $soloLetras = "/^[a-z]+$/i";
-      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
-      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-      
-       if (!is_numeric(request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_NACIDOS, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputNacidos', true);
-        session::getInstance()->setError('El campo Número Nacidos no permite letras, solo números', 'inputNacidos');
-      }      
-      }
+//    public static function validateFiltroNacidos() {
+//         $soloLetras = "/^[a-z]+$/i";
+//      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+//      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+//      
+//       if (!is_numeric(request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::NUM_NACIDOS, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNacidos', true);
+//        session::getInstance()->setError('El campo Número Nacidos no permite letras, solo números', 'inputNacidos');
+//      }      
+//      }
       
       public static function validateFiltroVivos() {
          $soloLetras = "/^[a-z]+$/i";

@@ -1,6 +1,4 @@
-<?php
-
-use mvc\interfaces\controllerActionInterface;
+<?php use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
 use mvc\request\requestClass as request;

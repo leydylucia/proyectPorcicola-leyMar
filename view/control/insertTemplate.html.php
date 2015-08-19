@@ -5,7 +5,7 @@
 
 <div class="container container-fluid">
   <div class="page-header titulo">
-    <h1><i class="glyphicon glyphicon-user"></i>NUEVO CONTROL PESO</h1>
+    <h1>NUEVO CONTROL PESO</h1>
   </div>
 </div>
 

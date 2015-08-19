@@ -395,7 +395,7 @@ raza_reporte:
   url:    /raza/reporte
   param:  { module: raza, action: report, format: pdf }
   
-  ##--------------------------Parto----------------------------##
+ ##--------------------------Parto----------------------------##
 parto_index:
   url:    /parto/index
   param:  { module: parto, action: index, format: html }
@@ -437,9 +437,7 @@ parto_edit:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
+    
     
 parto_ver:
   url:    /parto/ver
@@ -458,6 +456,9 @@ parto_update:
     - model/partoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
     - libs/validator/parto/partoValidatorClass.php
 
 parto_delete:
@@ -492,7 +493,6 @@ parto_reporte:
 parto_deleteFilters:
   url:    /borrar_filtros_parto
   param:  { module: parto, action: deleteFilters, format: html }
-  
  
    ##--------------------------Proveedor----------------------------##
 proveedor_index:
@@ -2299,3 +2299,17 @@ reporte_index:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
     
+reporte_insert:
+  url:    /reporte/insertar
+  param:  { module: reporte, action: insert, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+    
+
+reporte_create:
+  url:    /reporte/crear
+  param:  { module: reporte, action: create, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php

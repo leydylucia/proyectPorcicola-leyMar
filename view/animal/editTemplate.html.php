@@ -5,11 +5,12 @@
 <!--@var $depto para definir que campo voy a modificar-->
 
 <?php $hojaVida = hojaVidaTableClass::ID ?>
+<?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
         <h1>EDITAR HOJA DE VIDA CERDO </h1>
-        <h2><?php echo $objHojaVida[0]->$hojaVida ?></h2>
+        <h2><?php echo $objHojaVida[0]->$nombre_cerdo ?></h2>
     </div>
     
 

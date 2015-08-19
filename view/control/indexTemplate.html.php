@@ -123,7 +123,7 @@
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('control', 'deleteSelect') ?>" method="POST">
       <table class="table table-bordered table-responsive table-striped table-condensed mitabla">
         <thead>
-          <tr>
+            <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
             <th><?php echo i18n::__('pig') ?></th>
             <th><?php echo i18n::__('unit_measure') ?></th>

@@ -85,7 +85,7 @@ use mvc\request\requestClass as request ?>
                                       </div>
                                     </div> -->
                         <div class="form-group">
-                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
+                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
                             </div>
@@ -214,7 +214,7 @@ use mvc\request\requestClass as request ?>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
+                    <button type="button" onclick="$('#filterForm').submit()" class="btn btn-warning"><?php echo i18n::__('filter') ?></button>
                 </div>
             </div>
         </div>

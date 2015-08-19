@@ -1,4 +1,3 @@
-
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\session\sessionClass as session ?>
@@ -35,26 +34,19 @@
 
     <?php view::includeHandlerMessage() ?>
     
-    <?php if(session::getInstance()->hasError('inputGenero')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputGenero') ?><!--esta linea para actualizar demas formularios-->
-    </div>
-    <?php endif ?><!--se agrega antes de cada input-->
+    
     <div class="form-group">
       <label for="" class="control-label col-xs-3"><?php echo i18n::__('genre') ?>:</label>
       <div class="col-xs-9">
         <select class="form-control" id="<?php hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, TRUE) ?>" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, TRUE); ?>">
-          <option value="<?php echo (session::getInstance()->hasFlash('inputGenero') or request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true))) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true)) : ((isset($objHojaVida[0])) ? $objHojaVida[0]->$genero_id_b : '') ?>"  type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true) ?>" placeholder="<?php echo i18n::__('genre') ?>">Seleccione Genero</option>
+          <option value="<?php echo (session::getInstance()->hasFlash('inputNombre') or request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true))) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true)) : ((isset($objHojaVida[0])) ? $objHojaVida[0]->$genero_id_b : '') ?>"  type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true) ?>" placeholder="<?php echo i18n::__('genre') ?>">Seleccione Genero</option>
 <?php foreach ($objGenero as $genero): ?>
-            <option <?php echo (isset($objHojaVida[0]->$genero_id_b) === true and $objHojaVida[0]->$genero_id_b == $genero->$genero_id) ? 'selected' : '' ?> value="<?php echo $genero->$genero_id ?>">
-  <?php echo $genero->$descripcion ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true)) === true and request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO_ID, true)) == $genero->$genero_id) ? 'selected' : (isset($objHojaVida[0]->$genero_id_b) === true and $objHojaVida[0]->$genero_id_b == $genero->$genero_id) ? 'selected' : '' ?> value="<?php echo $genero->$genero_id ?>"><?php echo $genero->$descripcion ?></option> <!--sostenimiento de dato en foranea ?>-->  
 <?php endforeach; ?>
         </select>
       </div>
     </div>
-    
+
     
     <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name_pig') ?>:</label>
@@ -102,9 +94,7 @@
         <select class="form-control" id="<?php hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, TRUE) ?>" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputEstado') or request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true))) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true)) : ((isset($objHojaVida[0])) ? $objHojaVida[0]->$estado_id_p : '') ?>"  type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true) ?>" placeholder="<?php echo i18n::__('state') ?>">Seleccione Estado</option>
 <?php foreach ($objEstado as $estado): ?>
-            <option <?php echo (isset($objHojaVida[0]->$estado_id_p) === true and $objHojaVida[0]->$estado_id_p == $estado->$estado_id) ? 'selected' : '' ?> value="<?php echo $estado->$estado_id ?>">
-  <?php echo $estado->$desc_estado ?>
-            </option>
+             <option <?php echo (request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true)) === true and request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ESTADO_ID, true)) == $estado->$estado_id) ? 'selected' : (isset($objHojaVida[0]->$estado_id_p) === true and $objHojaVida[0]->$estado_id_p == $estado->$estado_id) ? 'selected' : '' ?> value="<?php echo $estado->$estado_id ?>"><?php echo $estado->$desc_estado ?></option> <!--sostenimiento de dato en foranea ?>-->  
 <?php endforeach; ?>
         </select>
       </div>
@@ -124,9 +114,7 @@
         <select class="form-control" id="<?php hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, TRUE) ?>" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputLote') or request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true)) : ((isset($objHojaVida[0])) ? $objHojaVida[0]->$lote_id_e : '') ?>"  type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true) ?>" placeholder="<?php echo i18n::__('state') ?>">Seleccione Lote</option>
 <?php foreach ($objLote as $lote): ?>
-            <option <?php echo (isset($objHojaVida[0]->$lote_id_e) === true and $objHojaVida[0]->$lote_id_e == $lote->$lote_id) ? 'selected' : '' ?> value="<?php echo $lote->$lote_id ?>">
-  <?php echo $lote->$desc_lote ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::LOTE_ID, true)) == $lote->$lote_id) ? 'selected' : (isset($objHojaVida[0]->$lote_id_e) === true and $objHojaVida[0]->$lote_id_e == $lote->$lote_id) ? 'selected' : '' ?> value="<?php echo $lote->$lote_id ?>"><?php echo $lote->$desc_lote ?></option> <!--sostenimiento de dato en foranea ?>-->  
 <?php endforeach; ?>
         </select>
       </div>
@@ -146,9 +134,7 @@
         <select class="form-control" id="<?php hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, TRUE) ?>" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputRaza') or request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true))) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true)) : ((isset($objHojaVida[0])) ? $objHojaVida[0]->$raza_id_a : '') ?>"  type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true) ?>" placeholder="<?php echo i18n::__('race') ?>">Seleccione Raza</option>
 <?php foreach ($objRaza as $raza): ?>
-            <option <?php echo (isset($objHojaVida[0]->$raza_id_a) === true and $objHojaVida[0]->$raza_id_a == $raza->$raza_id) ? 'selected' : '' ?> value="<?php echo $raza->$raza_id ?>">
-  <?php echo $raza->$desc_raza ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true)) === true and request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true)) == $raza->$raza_id) ? 'selected' : (isset($objHojaVida[0]->$raza_id_a) === true and $objHojaVida[0]->$raza_id_a == $raza->$raza_id) ? 'selected' : '' ?> value="<?php echo $raza->$raza_id ?>"><?php echo $raza->$desc_raza ?></option> <!--sostenimiento de dato en foranea ?>-->  
 <?php endforeach; ?>
         </select>
       </div>

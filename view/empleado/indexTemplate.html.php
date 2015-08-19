@@ -167,7 +167,7 @@
               <td><?php echo usuarioTableClass::getNameUsuario($empleado->$usuario_id) ?></td>
               <td><?php echo tipoIdTableClass::getNameTipo($empleado->$tipo_id_id) ?></td>
               <td><?php echo $empleado->$documento ?></td>
-<!--              <td><?php echo $empleado->$apellido ?></td>-->
+<!--              <td></?php echo $empleado->$apellido ?></td>-->
               <td><?php echo $empleado->$direccion ?></td>
               <td><?php echo $empleado->$correo ?></td>
               <td><?php echo $empleado->$telefono ?></td>

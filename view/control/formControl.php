@@ -43,9 +43,7 @@
         <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::HOJA_VIDA, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true))) ? request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true)) : ((isset($objControl[0])) ? $objControl[0]->$hoja_vida_id_h : '') ?>"  type="text" name="<?php echo controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true) ?>" placeholder="<?php echo i18n::__('pig') ?>" >Seleccione Id Cerdo</option>
           <?php foreach ($objHojaVida as $control): ?>
-            <option <?php echo (isset($objControl[0]->$hoja_vida_id_h) and $objControl[0]->$hoja_vida_id_h == $control->$hoja_vida_id) ? 'selected' : '' ?> value="<?php echo $control->$hoja_vida_id ?>">
-              <?php echo $control->$cerdo ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true)) === true and request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::HOJA_VIDA, true)) == $control->$hoja_vida_id) ? 'selected' : (isset($objControl[0]->$hoja_vida_id_h) === true and $objControl[0]->$hoja_vida_id_h == $control->$hoja_vida_id) ? 'selected' : '' ?> value="<?php echo $control->$hoja_vida_id ?>"><?php echo $control->$cerdo ?></option> <!--sostenimiento de dato en foranea ?>-->  
           <?php endforeach; ?>
         </select>
       </div>
@@ -68,9 +66,7 @@
         <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objControl[0])) ? $objControl[0]->$unidad_medida_id_p : '') ?>"  type="text" name="<?php echo controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true) ?>" placeholder="<?php echo i18n::__('unit_measure') ?>" >Seleccione Unidad Medida</option>
           <?php foreach ($objUnidad as $control): ?>
-            <option <?php echo (isset($objControl[0]->$unidad_medida_id_p) and $objControl[0]->$unidad_medida_id_p == $control->$unidad_medida_id) ? 'selected' : '' ?> value="<?php echo $control->$unidad_medida_id ?>">
-              <?php echo $control->$descripcion ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::UNIDAD_MEDIDA_ID, true)) == $control->$unidad_medida_id) ? 'selected' : (isset($objControl[0]->$unidad_medida_id_p) === true and $objControl[0]->$unidad_medida_id_p == $control->$unidad_medida_id) ? 'selected' : '' ?> value="<?php echo $control->$unidad_medida_id ?>"><?php echo $control->$descripcion ?></option> <!--sostenimiento de dato en foranea ?>-->  
           <?php endforeach; ?>
         </select>
       </div>
@@ -90,7 +86,7 @@
         <select class="form-control" id="<?php controlTableClass::getNameField(controlTableClass::ID, TRUE) ?>" name="<?php echo controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true)) : ((isset($objControl[0])) ? $objControl[0]->$control_id_c : '') ?>"  type="text" name="<?php echo controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true) ?>" placeholder="<?php echo i18n::__('employee') ?>">Seleccione Empleado</option>
           <?php foreach ($objEmpleado as $control): ?>
-            <option <?php echo (isset($objControl[0]->$control_id_c) === true and $objControl[0]->$control_id_c == $control->$control_id) ? 'selected' : '' ?> value="<?php echo $control->$control_id ?>"><?php echo $control->$nombre . ' ' . $control->$apellido ?></option>
+            <option <?php echo (request::getInstance()->hasPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true)) === true and request::getInstance()->getPost(controlTableClass::getNameField(controlTableClass::EMPLEADO_ID, true)) == $control->$control_id) ? 'selected' : (isset($objControl[0]->$control_id_c) === true and $objControl[0]->$control_id_c == $control->$control_id) ? 'selected' : '' ?> value="<?php echo $control->$control_id ?>"><?php echo $control->$nombre . ' ' . $control->$apellido ?></option> <!--sostenimiento de dato en foranea ?>-->  
           <?php endforeach; ?>
         </select>
       </div>

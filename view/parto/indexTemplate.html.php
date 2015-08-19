@@ -22,6 +22,7 @@
 
 
 <!--titulo-->
+<div class="table-responsive"
 <div class="container container-fluid">
   <div class="page-header titulo">
     <h1><?php echo i18n::__('delivery') ?></h1>  
@@ -247,6 +248,4 @@
 
   </select><?php echo i18n::__('off') ?> <?php echo $cntPages ?>
 </div>
-
-
 

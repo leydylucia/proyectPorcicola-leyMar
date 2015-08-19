@@ -104,24 +104,20 @@ use mvc\view\viewClass as view ?>
         <select class="form-control" id="<?php empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, TRUE) ?>" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, TRUE); ?>">
           <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true))) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true)) : ((isset($objEmpleado[0])) ? $objEmpleado[0]->$usuario_id_p : '') ?>"  type="text" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true) ?>" placeholder="<?php echo i18n::__('user') ?>">Seleccione Usuario</option>
 <?php foreach ($objUsuario as $usuario): ?>
-            <option <?php echo (isset($objEmpleado[0]->$usuario_id_p) === true and $objEmpleado[0]->$usuario_id_p == $usuario->$usuario_id) ? 'selected' : '' ?> value="<?php echo $usuario->$usuario_id ?>">
-  <?php echo $usuario->$user ?>
-            </option>
-<?php endforeach; ?>
+            <option <?php echo (request::getInstance()->hasPost(empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true)) === true and request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true)) == $usuario->$usuario_id) ? 'selected' : (isset($objEmpleado[0]->$usuario_id_p) === true and $objEmpleado[0]->$usuario_id_p == $usuario->$usuario_id) ? 'selected' : '' ?> value="<?php echo $usuario->$usuario_id ?>"><?php echo $usuario->$user ?></option> <!--sostenimiento de dato en foranea ?>-->  
+            <?php endforeach; ?>
         </select>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="<//?php echo empleadoTableClass::getNameField(empleadoTableClass::ID,true)?>" class="control-label col-xs-3"><?php echo i18n::__('type_id') ?>:</label>
+      <label for="" class="control-label col-xs-3"><?php echo i18n::__('type_id') ?>:</label>
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php empleadoTableClass::getNameField(empleadoTableClass::TIPO_ID_ID, TRUE) ?>" name="<?php echo empleadoTableClass::getNameField(EmpleadoTableClass::TIPO_ID_ID, TRUE); ?>">
           <option>Seleccione Tipo Identificacion</option>
 <?php foreach ($objTipoId as $tipoId): ?>
-            <option <?php echo (isset($objEmpleado[0]->$tipo_id_id_e) === true and $objEmpleado[0]->$tipo_id_id_e == $tipoId->$tipo_id_id) ? 'selected' : '' ?> value="<?php echo $tipoId->$tipo_id_id ?>">
-  <?php echo $tipoId->$desc_tipo_id ?>
-            </option>
+            <option <?php echo (request::getInstance()->hasPost(empleadoTableClass::getNameField(empleadoTableClass::TIPO_ID_ID, true)) === true and request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TIPO_ID_ID, true)) == $tipoId->$tipo_id_id) ? 'selected' : (isset($objEmpleado[0]->$tipo_id_id_e) === true and $objEmpleado[0]->$tipo_id_id_e == $tipoId->$tipo_id_id) ? 'selected' : '' ?> value="<?php echo $tipoId->$tipo_id_id ?>"><?php echo $tipoId->$desc_tipo_id ?></option> <!--sostenimiento de dato en foranea ?>-->  
 <?php endforeach; ?>
         </select>
       </div>

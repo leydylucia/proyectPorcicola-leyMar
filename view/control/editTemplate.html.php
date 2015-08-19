@@ -11,8 +11,8 @@ use mvc\view\viewClass as view ?>
 <?php $control = controlTableClass::PESO_CERDO ?>
 <div class="container container-fluid">
   <div class="page-header titulo">
-    <h1>EDITAR CONTROL PESO      
-      <small><?php echo $objControl[0]->$control ?></small>    </h1>
+    <h1>EDITAR CONTROL PESO</h1>  
+      <h2><?php echo $objControl[0]->$control ?></h2>    
   </div>
 </div>
 
