@@ -69,3 +69,16 @@ sacrificioVenta:
     stylesheet:
       - jquery.jqplot.min.css   
       
+reporte:
+  index:
+    javascript:
+      - index.js 
+  grafica: 
+    javascript:
+      - jqPlot/jquery.jqplot.min.js 
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisLabelRenderer.min.js
+      - graficas/grafica1.js
+    stylesheet:
+      - jquery.jqplot.min.css   
+      

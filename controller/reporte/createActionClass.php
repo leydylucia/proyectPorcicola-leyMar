@@ -37,18 +37,25 @@ class createActionClass extends controllerClass implements controllerActionInter
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
 //                validator::validateInsert();
                 /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
-                $data = array(
-                    reporteTableClass::NOMBRE => $nombre,
-                    reporteTableClass::DESCRIPCION => $descripcion,
-                    reporteTableClass::DIRECCION => $direccion,
-                );
-                reporteTableClass::insert($data);
-
-                session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
+                $fields = array(
+                reporteTableClass::ID,
+                reporteTableClass::NOMBRE,
+                reporteTableClass::DIRECCION,
+                reporteTableClass::DESCRIPCION,
+                reporteTableClass::CREATED_AT
+            );
+            $orderBy = array(
+                reporteTableClass::NOMBRE
+            );
+            
+            $this->objReporte = reporteTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,null);
+            
+            
+//                session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
 //                log::register('insertar', usuarioCredencialTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('reporte', 'index');
+                routing::getInstance()->redirect('reporte', 'grafica');
             } else {
-                routing::getInstance()->redirect('reporte', 'index');
+                routing::getInstance()->redirect('reporte', 'grafica');
             }
         } catch (PDOException $exc) {
 

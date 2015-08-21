@@ -7,7 +7,7 @@ $valor = sacrificiovTableClass::VALOR;
 $tipoVenta = sacrificiovTableClass::TIPO_VENTA_ID;
 $idCerdo = sacrificiovTableClass::ID_CERDO;
 $cantidad = sacrificiovTableClass::CANTIDAD;
-$unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA;
+$unidad_medida = sacrificiovTableClass::UNIDAD_MEDIDA_ID;
 
 
 $pdf = new FPDF('l', 'mm', 'letter');

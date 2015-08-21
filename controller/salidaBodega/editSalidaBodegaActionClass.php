@@ -25,7 +25,7 @@ class editSalidaBodegaActionClass extends controllerClass implements controllerA
                 $fields = array(
                     salidaBodegaTableClass::ID,
                     salidaBodegaTableClass::EMPLEADO_ID,
-                    empleadoTableClass::APELLIDO
+                 
                 );
                 $where = array(
                     salidaBodegaTableClass::ID => request::getInstance()->getGet(salidaBodegaTableClass::ID)
@@ -35,7 +35,8 @@ class editSalidaBodegaActionClass extends controllerClass implements controllerA
                 //estos campo son para llamar las foraneas
                 $fields = array(/* foranea de usuario */
                     empleadoTableClass::ID,
-                    empleadoTableClass::NOMBRE
+                    empleadoTableClass::NOMBRE,
+                    empleadoTableClass::APELLIDO
                 );
                 $orderBy = array(
                     empleadoTableClass::NOMBRE

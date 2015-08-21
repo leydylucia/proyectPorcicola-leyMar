@@ -20,7 +20,7 @@ $pdf->Ln(10);
 
 $pdf->Cell(20, 5, utf8_decode("ID"), 1);
 $pdf->Cell(40, 5, utf8_decode("DOSIS"), 1);
-//$pdf->Cell(40, 5, utf8_decode("HORA"), 1);
+
 $pdf->Cell(40, 5, utf8_decode("INSUMO"), 1);
 $pdf->Cell(40, 5, utf8_decode("CERDO"), 1);
 
@@ -29,7 +29,6 @@ $pdf->Ln();
 foreach ($objVacunacion as $vacunacion) {
     $pdf->Cell(20, 10, utf8_decode($vacunacion->$id), 1);
     $pdf->Cell(40, 10, utf8_decode($vacunacion->$dosis), 1);
-//    $pdf->Cell(40, 10, utf8_decode($vacunacion->$hora), 1);
     $pdf->Cell(40, 10, utf8_decode(insumoTableClass::getNameInsumo($vacunacion->$insumoId)), 1);
     $pdf->Cell(40, 10, utf8_decode($vacunacion->$idCerdo), 1);
    

@@ -89,7 +89,8 @@ use mvc\view\viewClass as view ?>
                 <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$insumoId_p : '') ?>">Seleccione tipoinsumo</option>
                 <?php foreach ($objTipoin as $tipoin): ?><!--validacion para traer dato  de foranea en editar-->
                 <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) == $tipoin->$tipoInsumo) ? 'selected' : (isset($objInsumo[0]->$tipoInsumo_i) === true and $objInsumo[0]->$tipoInsumo_i == $tipoin->$tipoInsumo) ? 'selected' : '' ?> value="<?php echo $tipoin->$tipoInsumo ?>"><?php echo $tipoin->$desc_tipoIn ?></option><!--sostenimiento de dato en foranea-->
-                    </option>
+             <?php echo $tipoin->$desc_tipoIn ?><       
+            </option>
                 <?php endforeach; ?>
             </select>
         </div>

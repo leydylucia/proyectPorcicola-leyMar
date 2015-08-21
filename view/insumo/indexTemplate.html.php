@@ -72,12 +72,7 @@ use mvc\request\requestClass as request ?>
                                 <input type="text" class="form-control" id="filter[desc_insumo]" name="filter[insumo]" placeholder="desc_insumo">
                             </div>
                         </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-                        <div class="form-group">
-                            <label for="filterprecio" class="col-sm-2 control-label"><?php echo i18n::__('prise') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
-                            </div>
-                        </div>  
+                        
                         <!--             <div class="form-group">
                                       <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
                                       <div class="col-sm-10">

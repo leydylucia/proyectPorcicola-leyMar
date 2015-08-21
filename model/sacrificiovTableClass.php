@@ -16,6 +16,25 @@ class sacrificiovTableClass extends  sacrificiovBaseTableClass{
    * @var $where para mantener el filtro y va al controller
    
    */
+    public static function getNumero() {
+    try {
+     $sql = ' SELECT count( ' . sacrificiovTableClass::ID . ') as cantidad ' .
+
+   ' FROM '  . sacrificiovTableClass::getNameTable()  .
+   ' WHERE ' . sacrificiovTableClass::DELETED_AT . ' IS NULL ';
+
+      
+      $answer = model::getInstance()->prepare($sql);
+      $answer ->execute();
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return  $answer[0]->cantidad;
+    } catch (PDOException $exc) {
+      throw $exc;
+    }
+  }
+ 
+    
+    
 
     public static function getTotalPages($lines, $where) {
         try {

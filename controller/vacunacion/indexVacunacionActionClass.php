@@ -34,21 +34,19 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
                 if (request::getInstance()->hasPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true)) and empty(mvc\request\requestClass::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true))) === false) {
 
                     if (request::getInstance()->isMethod('POST')) {
-                        $dosis = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true));
+                        $descripcion = request::getInstance()->getPost(vacunacionTableClass::getNameField(vacunacionTableClass::DOSIS, true));
 
                         validator::validateFiltroDosis();
-                        if (isset($dosis) and $dosis !== null and $dosis !== '') {
-                            $where[vacunacionTableClass::DOSIS] = $dosis;
+                        if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
+                            $where[vacunacionTableClass::DOSIS] = $descripcion;
                         }
                     }
                 }
 
-//                if (isset($filter['dosis']) and $filter['dosis'] !== null and $filter['dosis'] !== '') {
-//                    $where[vacunacionTableClass::DOSIS] = $filter['dosis'];
-//                }
-                if (isset($filter['Lote']) and $filter['Lote'] !== null and $filter['Lote'] !== '') {
-                    $where[vacunacionTableClass::ID_CERDO] = $filter['Lote'];
+                if (isset($filter['dosis']) and $filter['dosis'] !== null and $filter['dosis'] !== '') {
+                    $where[vacunacionTableClass::DOSIS] = $filter['dosis'];
                 }
+               
                  if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
                     $where[vacunacionTableClass::INSUMO_ID] = $filter['Insumo'];
                 }
@@ -65,9 +63,9 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
 //                print_r($where);
 //              echo  $filter['Date2'];
 //                exit();
-                session::getInstance()->setAttribute('defaultIndexFilters', $where);
-            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-                $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//                session::getInstance()->setAttribute('defaultIndexFilters', $where);
+//            } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+//                $where = session::getInstance()->getAttribute('defaultIndexFilters');
             }
 
 
@@ -113,33 +111,11 @@ class indexVacunacionActionClass extends controllerClass implements controllerAc
              *
              * */
             $this->objVacunacion = vacunacionTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
-            
-             $fieldsInsumo = array(/* foranea de  insumo */
-                insumoTableClass::ID,
-                insumoTableClass::DESC_INSUMO
-            );
-            $orderByInsumo = array(
-                insumoTableClass::DESC_INSUMO
-            );
-            $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
-
-
-            $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
-                hojaVidaTableClass::ID,
-                hojaVidaTableClass::LOTE_ID,
-            );
-            $orderByCerdo = array(
-                hojaVidaTableClass::LOTE_ID
-            );
-            $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
-
-            
             $this->defineView('index', 'vacunacion', session::getInstance()
                             ->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');
-//            routing::getInstance()->redirect('vacunacion', 'index');
         }
     }
 

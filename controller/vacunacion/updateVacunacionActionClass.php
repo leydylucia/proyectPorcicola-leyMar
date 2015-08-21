@@ -41,11 +41,10 @@ class updateVacunacionActionClass extends controllerClass implements controllerA
                 );
 
                 vacunacionTableClass::update($ids, $data);
-                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-                routing::getInstance()->redirect('vacunacion', 'indexVacunacion');
+                routing::getInstance()->redirect('vacunacion', 'editVacunacion');
             } else {
                 session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-                routing::getInstance()->redirect('vacunacion', 'indexVacunacion');
+                routing::getInstance()->redirect('vacunacion', 'editVacunacion');
             }
         } catch (PDOException $exc) {
 

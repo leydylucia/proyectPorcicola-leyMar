@@ -1,8 +1,8 @@
-function crearGrafica(cosPoints, sinPoints, powPoints1, powPoints2) {
+function crearGrafica(cosPoints) {
   // Some simple loops to build up data arrays.
-  var plot3 = $.jqplot('chart3', [cosPoints, sinPoints, powPoints1, powPoints2],
+  var plot3 = $.jqplot('chart1', [cosPoints],
           {
-            title: 'Numeros de Clientes Registrados',
+            title: 'Numeros de Sacrificio de los cerdos',
             // Series options are specified as an array of objects, one object
             // for each series.
             series: [

@@ -20,7 +20,7 @@ class tipoinsumoBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   const DESC_TIPOIN = 'desc_tipoin';
-  const DESC_TIPOIN_LENGTH = 2;
+  const DESC_TIPOIN_LENGTH = 80;
   
   function getId() {
       return $this->id;

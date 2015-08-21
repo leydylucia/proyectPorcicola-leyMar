@@ -1287,6 +1287,8 @@ vacunacion_reporte:
     - model/insumoTableClass.php
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 ##--------------------------Empleado----------------------------##
 empleado_index:
@@ -2298,6 +2300,8 @@ reporte_index:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
     
 reporte_insert:
   url:    /reporte/insertar
@@ -2305,6 +2309,8 @@ reporte_insert:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
     
 
 reporte_create:
@@ -2313,3 +2319,14 @@ reporte_create:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    
+reporte_grafica:
+  url:    /reporte/grafica
+  param:  { module: reporte, action: grafica, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php  
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php

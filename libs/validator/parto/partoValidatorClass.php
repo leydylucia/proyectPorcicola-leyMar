@@ -286,7 +286,7 @@ namespace mvc\validator {
       if ($num_nacidos < ($num_hembras + $num_machos)) {
         $flag = true;
         session::getInstance()->setFlash('inputHembra', true); /* input usuario biene del formulario */
-        session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor al Numero Nacidos', 'inputHembra');
+        session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor a la totalidad de Numero Nacidos' . '  ' . $num_nacidos, 'inputHembra');
       }
       
       //-------------------------------condiccion de bandera true-----------------------------
