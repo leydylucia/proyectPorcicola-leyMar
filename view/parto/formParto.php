@@ -60,7 +60,7 @@ use mvc\view\viewClass as view ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="control-label col-xs-3 hidden"><?php echo i18n::__('number born') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="form-control hidden" value="<?php echo request::getInstance()->hasPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) : ((isset($objParto) == true) ? $objParto[0]->$num_nacidos : '') ?>" type="text" name="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" >
+        <input id="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) ? request::getInstance()->getPost(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) : ((isset($objParto) == true) ? $objParto[0]->$num_nacidos : '') ?>" type="hidden" name="<?php echo partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true) ?>" >
         <?php if (session::getInstance()->hasFlash(partoTableClass::getNameField(partoTableClass::NUM_NACIDOS, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>

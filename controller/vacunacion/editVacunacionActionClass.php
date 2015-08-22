@@ -49,7 +49,8 @@ class editVacunacionActionClass extends controllerClass implements controllerAct
                     hojaVidaTableClass::ID,
                 );
                 $orderByCerdo = array(
-                    hojaVidaTableClass::ID
+                    hojaVidaTableClass::ID,
+                    hojaVidaTableClass::NOMBRE_CERDO
                 );
                 $this->objHojaVida= hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 

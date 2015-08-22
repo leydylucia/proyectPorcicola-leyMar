@@ -35,7 +35,8 @@ class insertInsumoActionClass extends controllerClass implements controllerActio
 
             $fieldsProveedor = array(/*foranea proveedor*/
                 proveedorTableClass::ID,
-                proveedorTableClass::NOMBRE
+                proveedorTableClass::NOMBRE,
+                proveedorTableClass::APELLIDO
             );
             $orderByProvedor = array(
                 proveedorTableClass::NOMBRE

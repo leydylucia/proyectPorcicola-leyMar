@@ -38,7 +38,8 @@ class insertVacunacionActionClass extends controllerClass implements controllerA
                 hojaVidaTableClass::ID,
             );
             $orderByCerdo = array(
-                hojaVidaTableClass::ID
+                hojaVidaTableClass::ID,
+                hojaVidaTableClass::NOMBRE_CERDO
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
 

@@ -29,6 +29,7 @@ use mvc\view\viewClass as view ?>
 <?php $insumoId_p = insumoTableClass::PROVEEDOR_ID ?>
 <?php $insumoId = proveedorTableClass::ID ?><!--manejo de foranea para traer datos-->
 <?php $nombre = proveedorTableClass::NOMBRE ?>
+<?php $apellido = proveedorTableClass::APELLIDO ?>
 
 <?php view::includeHandlerMessage() ?>
 
@@ -151,8 +152,8 @@ use mvc\view\viewClass as view ?>
             <select class="form-control" id="<?php insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE) ?>" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE); ?>">
                 <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$tipoInsumo_i : '') ?>">Seleccione proveedor</option>
                 <?php foreach ($objProv as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
-                    <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) == $insumo->$insumoId) ? 'selected' : (isset($objInsumo[0]->$insumoId_p) === true and $objInsumo[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><?php echo $insumo->$nombre ?></option><!--sostenimiento de dato en foranea-->
-                        <?php echo $insumo->$nombre ?><!--validacion para traer dato  de foranea en editar-->
+                    <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) == $insumo->$insumoId) ? 'selected' : (isset($objInsumo[0]->$insumoId_p) === true and $objInsumo[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><?php echo $insumo->$nombre . ' ' . $insumo->$apellido?></option><!--sostenimiento de dato en foranea-->
+                         <?php echo $insumo->$nombre . ' ' . $insumo->$apellido ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
                 <?php endforeach; ?>
             </select>

@@ -225,7 +225,7 @@ use mvc\request\requestClass as request ?>
                                 <td><input type="checkbox" name="chk[]" value="<?php echo $detalle->$id ?>"></td>
                                 <td><?php echo $detalle->$cantidad ?></td>
                                 <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($detalle->$unidad_medida) ?></td>
-                                <td><?php echo $detalle->$valor ?></td>
+                                <td><?php echo '$ ' . number_format($detalle->$valor, 0, ',', '.'); ?></td>
                                 <td><?php echo insumoTableClass::getNameInsumo($detalle->$insumo) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($detalle->$fecha)) ?></td>
                                 <td>

@@ -25,7 +25,7 @@ use mvc\view\viewClass as view ?>
 
 <?php $idCerdo_c = vacunacionTableClass::ID_CERDO ?>
 <?php $idCerdo = hojaVidaTableClass::ID ?>
-<?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
+<?php $nombre = hojaVidaTableClass::NOMBRE_CERDO ?>
 
 
     <?php view::includeHandlerMessage() ?>
@@ -81,7 +81,7 @@ use mvc\view\viewClass as view ?>
                 <option>Seleccione Cerdo</option>
 <?php foreach ($objHojaVida as $hojaVida): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objVacunacion[0]->$idCerdo_c) === true and $objVacunacion[0]->$idCerdo_c == $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><!--validacion para traer dato  de foranea en editar-->
-    <?php echo $hojaVida->$idCerdo ?><!--validacion para traer dato  de foranea en editar-->
+    <?php echo hojaVidaTableClass::getNameHojaVida($hojaVida->$idCerdo) ?><!--validacion para traer dato  de foranea en editar-->
                     </option>
 <?php endforeach; ?>
             </select>

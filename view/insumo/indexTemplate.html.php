@@ -247,7 +247,7 @@ use mvc\request\requestClass as request ?>
                                 <td><?php echo tipoInsumoTableClass::getNameTipoin($insumo->$tipoInsumo) ?></td>
                                 <td><?php echo $insumo->$fechaFabricacion ?></td>
                                 <td><?php echo $insumo->$fechaVencimiento ?></td>
-                                <td><?php echo proveedorTableClass::getNameProveedor($insumo->$proveedorId) ?></td>
+                                <td><?php echo proveedorTableClass::getNameProveedor($insumo->$proveedorId) . ' ' . proveedorTableClass::getNameApellido($insumo->$proveedorId) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($insumo->$fecha)) ?></td>
                                 <td>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('insumo', 'verInsumo', array(insumoTableClass::ID => $insumo->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>

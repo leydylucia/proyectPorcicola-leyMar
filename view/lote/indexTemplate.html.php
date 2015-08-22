@@ -118,8 +118,8 @@
       <a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php echo i18n::__('deleteall') ?></a>
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filter') ?></button>
       <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'index') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
-      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport"><?php echo i18n::__('report') ?></button>
-      <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'report') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+<!--      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport"><?php // echo i18n::__('report') ?></button>
+      <a target="_NEW" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'report') ?>" class="btn btn-info btn-xs"><?php // echo i18n::__('printOut') ?></a>-->
     </div>
 
 

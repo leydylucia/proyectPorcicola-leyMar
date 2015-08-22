@@ -78,7 +78,7 @@ class reportInsumoActionClass extends controllerClass implements controllerActio
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
             $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC',null, null, $where);
-            
+//            $this->mensaje = 'HOLA INSUMO';
       $this->defineView('index', 'insumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

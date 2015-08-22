@@ -48,7 +48,8 @@ class editInsumoActionClass extends controllerClass implements controllerActionI
 
                 $fieldsProveedor = array(/*foranea proveedor*/
                     proveedorTableClass::ID,
-                    proveedorTableClass::NOMBRE
+                    proveedorTableClass::NOMBRE,
+                    proveedorTableClass::APELLIDO
                 );
                 $orderByProvedor = array(
                     proveedorTableClass::NOMBRE

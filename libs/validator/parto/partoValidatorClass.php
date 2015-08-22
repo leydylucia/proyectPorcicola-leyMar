@@ -150,12 +150,20 @@ namespace mvc\validator {
         session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor al Numero Nacidos', 'inputHembra');
       }
       
+      $fecha_nacimiento = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::FECHA_NACIMIENTO, true));
+      $fecha_montada = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::FECHA_MONTADA, true));
+      if (strtotime($fecha_nacimiento) == strtotime($fecha_montada)) {
+        $flag = true;
+        session::getInstance()->setFlash('inputMont', true); /* input usuario biene del formulario */
+        session::getInstance()->setError('el campo Fecha Montada no puede ser igual a la de Nacimiento', 'inputMont');
+      }
+      
       
       
 //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
-        request::getInstance()->addParamGet(array(\partoTableClass::ID => request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::ID, true))));        
+        //request::getInstance()->addParamGet(array(\partoTableClass::ID => request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::ID, true))));        
         routing::getInstance()->forward('parto', 'insert');
       }
     }
@@ -287,6 +295,14 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputHembra', true); /* input usuario biene del formulario */
         session::getInstance()->setError('Los campos Numero Hembras y Numero de Machos no puede ser mayor a la totalidad de Numero Nacidos' . '  ' . $num_nacidos, 'inputHembra');
+      }
+      
+      $fecha_nacimiento = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::FECHA_NACIMIENTO, true));
+      $fecha_montada = request::getInstance()->getPost(\partoTableClass::getNameField(\partoTableClass::FECHA_MONTADA, true));
+      if (strtotime($fecha_nacimiento) == strtotime($fecha_montada)) {
+        $flag = true;
+        session::getInstance()->setFlash('inputMont', true); /* input usuario biene del formulario */
+        session::getInstance()->setError('el campo Fecha Montada no puede ser igual a la de Nacimiento', 'inputMont');
       }
       
       //-------------------------------condiccion de bandera true-----------------------------
