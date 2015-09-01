@@ -22,8 +22,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[hojaVidaTableClass::GENERO_ID] = $filter['nombre'];
+      if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
+          $where[hojaVIdaTableClass::GENERO_ID] = $filter['genero'];
         }
 //        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
 //          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];

@@ -18,7 +18,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(50);
 $pdf->Cell(10, 50, utf8_decode(''), 100, 10, 'C');
-$pdf->Image(routing::getInstance()->getUrlImg('prueba.jpg'), 50, 8, 200); /* 200 ancho */
+$pdf->Image(routing::getInstance()->getUrlImg('imagen_reporte.jpg'), 0, 0, 280); /* 200 ancho */
 $pdf->Ln(05);
 
 $pdf->Cell(255, 10, utf8_decode("HOJA DE VIDA"), 1, 0, 'C');
@@ -47,3 +47,4 @@ foreach ($objHojaVida as $hojaVida) {
 
 $pdf->Output();
 ?>
+

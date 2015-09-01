@@ -36,7 +36,7 @@ class indexInsumoActionClass extends controllerClass implements controllerAction
                     if (request::getInstance()->isMethod('POST')) {
                         $descripcion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
 
-                        validator::validateFiltroDescripcion();
+                        validator::validateFiltroDescripcion($descripcion);
                         if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
                             $where[insumoTableClass::DESC_INSUMO] = $descripcion;
                         }

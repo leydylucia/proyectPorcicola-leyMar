@@ -11,7 +11,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(80);
 $pdf->Cell(10, 50, utf8_decode(''), 100, 10, 'C');
-$pdf->Image(routing::getInstance()->getUrlImg('fondopasto.jpg'), 0, 0,280);/*200 ancho*/
+$pdf->Image(routing::getInstance()->getUrlImg('imagen_reporte.jpg'), 0, 0,280);/*200 ancho*/
 
 $pdf->Ln(05);
 

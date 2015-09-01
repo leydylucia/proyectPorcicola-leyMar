@@ -1,19 +1,18 @@
 <?php
 
-//use mvc\config\myConfigClass as config;
 use mvc\config\configClass as config;
 use mvc\session\sessionClass as session;
 
 config::setRowGrid(3);
 
 config::setDbHost('localhost');
-config::setDbDriver('pgsql'); // pgsql
-config::setDbName('leydy');
-config::setDbPort(5432); // 5432
+config::setDbDriver('pgsql'); // mysql
+config::setDbName('sena');
+config::setDbPort(5432); // 3306
 config::setDbUser('postgres');
 config::setDbPassword('123456');
 // Esto solo es necesario en caso de necesitar un socket para la DB
-// config::setDbUnixSocket(null);
+config::setDbUnixSocket(null); ///tmp/mysql.sock
 
 if (config::getDbUnixSocket() !== null) {
   config::setDbDsn(
@@ -31,14 +30,9 @@ if (config::getDbUnixSocket() !== null) {
 }
 
 config::setPathAbsolute('/var/www/html/proyectPorcicola-leyMar/');
-
-//host virtual
 config::setUrlBase('http://www.porcicolatapasco.com/');
-//fin hosting
 
-//config::setUrlBase('http://localhost/proyectPorcicola-leyMar/web/');
-
-config::setScope('prod'); // dev//prod
+config::setScope('prod'); // prod
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');
@@ -60,22 +54,9 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
-//host virtual
-config::setCookiePath('/www.porcicolatapasco.com/web/' . config::getIndexFile());
-//fin hosting
-
-
-//config::setCookiePath('/proyectPorcicola-leyMar/web/' . config::getIndexFile());
-
-//host virtual
-config::setCookieDomain('http://www.porcicolatapasco.com/');
-//fin hosting
-
-//config::setCookieDomain('http://localhost/');
+config::setCookiePath('/SohoFramework/web/' . config::getIndexFile());
+config::setCookieDomain('http://localhost/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
-
-//config::setDefaultModule('default');
-//config::setDefaultAction('index');
 
 config::setDefaultModule('paginaPrincipal');
 config::setDefaultAction('index');

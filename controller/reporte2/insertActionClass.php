@@ -19,9 +19,9 @@ class insertActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
 
-//            if (session::getInstance()->hasAttribute('form_' . reporteTableClass::getNameTable())) {
-//                $this->reporte = session::getInstance()->getAttribute('form_' . reporteTableClass::getNameTable());
-//            }
+            if (session::getInstance()->hasAttribute('form_' . reporteTableClass::getNameTable())) {
+                $this->reporte = session::getInstance()->getAttribute('form_' . reporteTableClass::getNameTable());
+            }
            //estos campo son para llamar las foraneas
              /* fields para foraneas */
             $fields = array(
@@ -33,14 +33,23 @@ class insertActionClass extends controllerClass implements controllerActionInter
             );
             $this->objTipoV = tipovTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-            $fields = array(/* foranea cerdo"hoja de vida" */
+            $fieldsCerdo = array(/* foranea cerdo"hoja de vida" */
                 hojaVidaTableClass::ID,
                 hojaVidaTableClass::NOMBRE_CERDO,
             );
-            $orderBy = array(
+            $orderByCerdo = array(
                 hojaVidaTableClass::NOMBRE_CERDO
             );
-            $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
+            $this->objHojaVida = hojaVidaTableClass::getAll($fieldsCerdo, true, $orderByCerdo, 'ASC');
+
+            $fieldsUnidad = array(
+                unidadMedidaTableClass::ID,
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $orderByUnidad = array(
+                unidadMedidaTableClass::DESCRIPCION
+            );
+            $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
  
 

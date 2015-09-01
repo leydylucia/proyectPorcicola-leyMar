@@ -4,7 +4,7 @@ dictionary:
   default:
     user:                         User
     pass:                         Password
-    pass2:                        verify the password
+    pass2:                        Verify The Password
     register:                     Register
     update:                       Update
     New User:                     New User
@@ -26,7 +26,7 @@ dictionary:
     new_city:                     New city
     #Estado# 
     desc_state:                   Description State
-    to turn:                      to turn
+    to turn:                      To Turn
     #Raza#
     desc_race:                    Description Race
     #Parto#  
@@ -47,10 +47,10 @@ dictionary:
     telephone:                    Telephone      
     city_id:                      City 
     Register Sucess:              Register Succes 
-    page:                         pages
-    pag:                          page 
-    off:                          off
-    new_supplier:                 New supplier
+    page:                         Pages
+    pag:                          Page 
+    off:                          Off
+    new_supplier:                 New Supplier
     secure the Eliminate register:  Secure the Eliminate Register
     Reg.supplier:                  Reg.supplier
     #insumo#
@@ -66,70 +66,71 @@ dictionary:
     delete Selection:             Delete Selection
     confirmDeleteMasivo:          ¿Secure delete the elements selections?
     elementos eliminados:         Elements deletes success 
+    elements_update:              Elements update success
     city:                         City
     departament:                  Departament
     begin:                        Begin
     cancel:                       Cancel
-    return:                       return
+    return:                       Return
     Delete:                       Delete
     delete:                       Delete
-    see:                          see
-    publish:                      publish
-    new:                          new
-    deleteall:                    deleteall
-    date_creation:                date_creation
+    see:                          See
+    publish:                      Publish
+    new:                          New
+    deleteall:                    Deleteall
+    date_creation:                Date_Creation
 #insumo#
-    describe_product:          Describe_product 
+    describe_product:          Describe_Product 
     prise:                     Prise
-    type_product:              Type_product 
-    date_manufacture:          date_manufacture
-    date_conquering:           date_conquering
-    provisioner:               provisioner
+    type_product:              Type_Product 
+    date_manufacture:          Date_Manufacture
+    date_conquering:           Date_Conquering
+    provisioner:               Provisioner
     delete filter:             Delete Filter
     New Product:                New Product
     Edit Product:                Edit Product
     Reg.Product:               Reg.Product
 #tipoInsumo#
     describe_typeProduct:      Descripcion Tipo 
-    New_typeProduct:           New typeProduct             
-    Edit_typeProduct:          Edit typeProduct
+    New_typeProduct:           New TypeProduct             
+    Edit_typeProduct:          Edit TypeProduct
      
     
 #tipo venta#
-    describe:                  describe
+    describe:                  Describe
     New_typeSale:              New type Sale
     Edit_typeSale:             Edit type Sale
     #botones#
-    new:                       new 
-    Delete:                    delete
+    new:                       New 
+    Delete:                    Delete
    
-    filter:                    filter
-    deleteFilter:              deleteFilter
-    cancel:                    cancel
-    action:                    action
+    filter:                    Filter
+    deleteFilter:              DeleteFilter
+    cancel:                    Cancel
+    action:                    Action
     start:                        Start
-    confirm:                   confirm
-    printOut:                 printOut  
+    confirm:                   Confirm
+    printOut:                 PrintOut  
     information:              Information
     
     #menu#
-    product:                   product
-    hoja de vida:              hoja de vida
+    product:                   Product
+    hoja de vida:              Hoja de vida
     report:                    Report
     Error:                    Error
     information:              Information
     Date:                     Date
     #sacrificio#
-    sacrifice:                sacrifice
-    type_sale:                type Sale
+    sacrifice:                Sacrifice
+    type_sale:                Type Sale
     Sacrifice_Pig:           Sacrifice Pig
     sale:                     Sale
     pig:                      Pig
     New_Sacrifice:            New Sacrifice
     Edit_Sacrifice:           Edit Sacrifice
-    unit_measure:             unit_measure
+    unit_measure:             Unit_Measure
     
-    closing session:          closing session
+    closing session:          Closing Session
 
   #Parto#
     delivery:                  Delivery
@@ -176,8 +177,8 @@ dictionary:
     race:                      Race
     mother:                    Mother
     new_curriculum vitae:      New Curriculum Vitae
-    curriculum vitae:          curriculum vitae
-    name_pig:                  name_pig
+    curriculum vitae:          Curriculum Vitae
+    name_pig:                  Name_pig
     #Entrada Bodega#
     cellar entry:              Cellar Entry
     detail:                    Detail
@@ -202,31 +203,35 @@ dictionary:
     Hold_Out:                Hold Out
     New_Hold_Out:            New Hold Out
     Edit_Hold_Out:           Edit Hold Out
-    cellar:                  cellar             
+    cellar:                  Cellar             
 
     
     #detalle Salida bodega#
     Output_detail_winery:    Output detail winery
     Output_edit_detail_winery: Output edit detail winery
     Output_detail_new_winery : Output detail new winery 
-    quantity:                 quantity
+    quantity:                 Quantity
     
     Report:                Report
     description:           Description
+    
+    select_pig:            Select Pig
+    select_type_sale:      Select Type Sale
+    select_unit_measure:   Select Unit Measure
     
     
  
 
 
-    errorLength:             this exceeds the length field
+    errorLength:             This exceeds the length field
     errorNumeric:            This field is only numerical
-    errorNull:               this field can not be empty
+    errorNull:               This field can not be empty
     errorLengthName:           This name (% name%) exceeds the length
     errorLengthLastName:       This last name (% name%) exceeds the length
     errorAdress:               This Last (% address%) exceeds the length
     errorText:               Just enter text
-    errorDeleteForeign:      this field can not be eliminated that is being used in another form
-    errorLengthin:           desc_tipoIn% field% description% input type characters% exceeds allowable maximums
+    errorDeleteForeign:      This field can not be eliminated that is being used in another form
+    errorLengthin:           Desc_tipoIn% field% description% input type characters% exceeds allowable maximums
  
     
     Error:                     Error

@@ -40,7 +40,7 @@ foreach ($objEmpleado as $empleado) {
   $pdf->Cell(40, 10, utf8_decode(tipoIdTableClass::getNameTipo($empleado->$tipo_id_id)), 1);
   $pdf->Cell(40, 10, utf8_decode($empleado->$direccion), 1);
   $pdf->Cell(40, 10, utf8_decode($empleado->$correo), 1);
-  $pdf->Cell(40, 10, utf8_decode($empleado->$telefono), 1, 0 ,'C');
+  $pdf->Cell(40, 10, utf8_decode($empleado->$telefono), 1);
 
   $pdf->Ln();
 }
@@ -48,3 +48,4 @@ foreach ($objEmpleado as $empleado) {
 
 $pdf->Output();
 ?>
+

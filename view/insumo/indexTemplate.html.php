@@ -66,12 +66,12 @@ use mvc\request\requestClass as request ?>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('insumo', 'reportInsumo') ?>">
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="filterDesc_insumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[desc_insumo]" name="filter[insumo]" placeholder="desc_insumo">
                             </div>
-                        </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+                        </div>    PONER CORCHER  EN NAME filter[insumo]-->
                         
                         <!--             <div class="form-group">
                                       <label for="filterTipo_insumo" class="col-sm-2 control-label"></?php echo i18n::__('type_product') ?></label>
@@ -79,8 +79,34 @@ use mvc\request\requestClass as request ?>
                                         <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
                                       </div>
                                     </div> -->
+                        
+                         <div class="form-group">
+                            <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterTipo_insumo" name="filter[Tipo_insumo]">
+                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                    <?php foreach ($objTipoin as $ciudad): ?>
+                                        <option value="<?php echo $ciudad->$idTipoInsumo ?>"><?php echo $ciudad->$desTipoInsumo ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
-                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
+                            <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterTipo_insumo" name="filter[Proveedor]">
+                                    <option value=""><?php echo i18n::__('provisioner') ?></option>
+                                    <?php foreach ($objProv as $proveedor): ?>
+                                        <option value="<?php echo $proveedor->$idproveedor ?>"><?php echo $proveedor->$nomproveedor ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('Date_of_manufacture_or_purchase') ?></label>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
                             </div>
@@ -104,7 +130,7 @@ use mvc\request\requestClass as request ?>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#report').submit()" class="btn btn-warnig"><?php echo i18n::__('report') ?></button>
+                    <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
                 </div>
             </div>
         </div>
@@ -128,19 +154,12 @@ use mvc\request\requestClass as request ?>
                             </div>
                         <?php endif ?> 
 
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="filterDesc_insumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[desc_insumo]" name="<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>" placeholder="desc_insumo">
+                                <input type="text" class="form-control" id="filter[desc_insumo]" name="filter[<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>]" placeholder="desc_insumo">
                             </div>
-                        </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-
-<!--                        <div class="form-group">
-                            <label for="filterprecio" class="col-sm-2 control-label"><?php echo i18n::__('prise') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[Precio]" name="filter[Precio]" placeholder="Precio">
-                            </div>
-                        </div> -->
+                        </div>    PONER CORCHER  EN NAME filter[insumo]-->
 
 
 
@@ -157,27 +176,6 @@ use mvc\request\requestClass as request ?>
                         </div>
 
 
-                        <!--                                 <div class="form-group">
-                                                          <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
-                                                          <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="filter[Tipo_insumo]" name="filter[Tipo_insumo]" placeholder="Tipo_insumo">
-                                                          </div>
-                                                        </div> -->
-
-<!--                        <div class="form-group">
-                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('date_manufacture') ?></label>
-                            <div class="col-sm-10">
-                                <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <label for="filterFecha_vencimiento" class="col-sm-2 control-label"><?php echo i18n::__('date_conquering') ?></label>
-                            <div class="col-sm-10">
-                                <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
-                            </div>
-                        </div> -->
-
-
                         <div class="form-group">
                             <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
                             <div class="col-sm-10">
@@ -189,31 +187,48 @@ use mvc\request\requestClass as request ?>
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="form-group">
-                           <label for="filterProveedor" class="col-sm-2 control-label"></?php echo i18n::__('provisioner') ?></label>
-                           <div class="col-sm-10">
-                             <input type="text" class="form-control" id="filter[Proveedor]" name="filter[Proveedor]" placeholder="Proveedor">
-                           </div>
-                         </div> -->
 
+  <div class="form-group">
+                            <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('Date_of_manufacture_or_purchase') ?></label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="filter[Fecha_fabricacion]" name="filter[Fecha_fabricacion]" placeholder="Fecha_fabricacion">
+                            </div>
+                        </div> 
                         <div class="form-group">
+                            <label for="filterFecha_vencimiento" class="col-sm-2 control-label"><?php echo i18n::__('date_conquering') ?></label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="filter[Fecha_vencimiento]" name="filter[Fecha_vencimiento]" placeholder="Fecha_vencimiento">
+                            </div>
+                        </div> 
+                     
+
+<!--                        <div class="form-group">
                             <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" id="filter[Date1]" name="filter[Date1]">
                                 <br>
                                 <input type="date" class="form-control" id="filter[Date2]" name="filter[Date2]">
                             </div>
-                        </div>
+                        </div>-->
                     </form>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#filterForm').submit()" class="btn btn-warning"><?php echo i18n::__('filter') ?></button>
+                    <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filter') ?></button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>
+    
+    <script>
+        $ (document).ready(function(){
+            $('#myModalFilters').modal('toogle');
+        });
+    </script>
+    <?php endif ?>
     <!--fin de modal filtro-->
 
     <?php view::includeHandlerMessage() ?><!--esta linea es para traer mensajes de exito cunado registra-->

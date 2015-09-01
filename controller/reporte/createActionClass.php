@@ -26,37 +26,25 @@ class createActionClass extends controllerClass implements controllerActionInter
 
     public function execute() {
         try {
-            if (request::getInstance()->isMethod('POST')) {
 
-                $nombre = trim(request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::NOMBRE, true)));
-                $descripcion = trim(request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::DESCRIPCION, true)));
-                $direccion = trim(request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::DIRECCION, true)));
+            $where = null;
 
 
+            if ((request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true)) and empty(mvc\request\requestClass::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true))) === false) and (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) === false)) {
 
-//                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/*@ $this->validate para validar campos*/
-//                validator::validateInsert();
-                /** @var $data recorre el campo  o campos seleccionados de la tabla deseada* */
-                $fields = array(
-                reporteTableClass::ID,
-                reporteTableClass::NOMBRE,
-                reporteTableClass::DIRECCION,
-                reporteTableClass::DESCRIPCION,
-                reporteTableClass::CREATED_AT
-            );
-            $orderBy = array(
-                reporteTableClass::NOMBRE
-            );
-            
-            $this->objReporte = reporteTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,null);
-            
-            
-//                session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-//                log::register('insertar', usuarioCredencialTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('reporte', 'grafica');
-            } else {
-                routing::getInstance()->redirect('reporte', 'grafica');
+                if (request::getInstance()->isMethod('POST')) {
+                    $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
+                    $nombre = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
+
+                    $where[] = sacrificiovTableClass::TIPO_VENTA_ID . ' = ' . $cantidad . ' ' . ' AND ' . sacrificiovTableClass::ID_CERDO . ' = ' . $nombre;
+                    session::getInstance()->setAttribute('graficaWhere', $where);
+                   
+                    print_r($where);
+                    exit();
+                 
+                }
             }
+            routing::getInstance()->redirect('reporte', 'grafica');
         } catch (PDOException $exc) {
 
             routing::getInstance()->redirect('reporte', 'insert');

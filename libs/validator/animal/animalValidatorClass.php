@@ -41,16 +41,21 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del Cerdo es requerido', 'inputNombre');
-//      } //----solo permitir letras----
-//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))))){
-//        $flag = true;
-//        session::getInstance()->setFlash('inputNombre', true);
-//        session::getInstance()->setError('El nombre del Cerdo no permite numeros, solo letras', 'inputNombre');
+      } //----solo permitir letras----
+        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre del Cerdo no permite numeros, solo letras', 'inputNombre');
       } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))) > \hojaVidaTableClass::NOMBRE_CERDO_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del Cerdo digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      } //----documento repetitivo---
+      else if (self::isUnique(\hojaVidaTableClass::ID, true, array(\hojaVidaTableClass::NOMBRE_CERDO => request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))), \hojaVidaTableClass::getNameTable())) {
+        $flag = true;
+        session::getInstance()->setFlash('inputNombre', true);
+        session::getInstance()->setError('El nombre del Cerdo digitado ya existe', 'inputNombre');
       }
 
       
@@ -126,12 +131,12 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del Cerdo es requerido', 'inputNombre');
-      } //----solo permitir letras----
+//      } //----solo permitir letras----
 //        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))))){
 //        $flag = true;
 //        session::getInstance()->setFlash('inputNombre', true);
 //        session::getInstance()->setError('El nombre del Cerdo no permite numeros, solo letras', 'inputNombre');
-//      } //----sobre pasar los caracteres----
+      } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\hojaVidaTableClass::getNameField(\hojaVidaTableClass::NOMBRE_CERDO, true))) > \hojaVidaTableClass::NOMBRE_CERDO_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);

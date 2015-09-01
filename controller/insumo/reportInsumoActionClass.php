@@ -16,22 +16,24 @@ use mvc\i18n\i18nClass as i18n;
  */
 class reportInsumoActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-     try {
+    public function execute() {
+        try {
             /* reporte con filtros */
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
-              
+
                 if (isset($filter['insumo']) and $filter['insumo'] !== null and $filter['insumo'] !== '') {
                     $where[insumoTableClass::DESC_INSUMO] = $filter['insumo'];
                 }
-                if (isset($filter['Precio']) and $filter['Precio'] !== null and $filter['Precio'] !== '') {
-                    $where[insumoTableClass::PRECIO] = $filter['Precio'];
+
+                if (isset($filter['Tipo_insumo']) and $filter['Tipo_insumo'] !== null and $filter['Tipo_insumo'] !== '') {
+                    $where[insumoTableClass::TIPO_INSUMO_ID] = $filter['Tipo_insumo'];
                 }
-//         if (isset($filter['Tipo_insumo']) and $filter['Tipo_insumo'] !== null and $filter['Tipo_insumo'] !== '') {
-//          $where[insumoTableClass::TIPO_INSUMO_ID] = $filter['Tipo_insumo'];
-//        }
+
+                if (isset($filter['Proveedor']) and $filter['Proveedor'] !== null and $filter['Proveedor'] !== '') {
+                    $where[insumoTableClass::PROVEEDOR_ID] = $filter['Proveedor'];
+                }
                 if (isset($filter['Fecha_fabricacion']) and $filter['Fecha_fabricacion'] !== null and $filter['Fecha_fabricacion'] !== '') {
                     $where[insumoTableClass::FECHA_FABRICACION] = $filter['Fecha_fabricacion'];
                 }
@@ -65,9 +67,9 @@ class reportInsumoActionClass extends controllerClass implements controllerActio
                 insumoTableClass::DESC_INSUMO
             );
 
-          
-         
-           
+
+
+
 
             /** @var $where => para filtros
              * *@var $page => para el paginado
@@ -77,15 +79,13 @@ class reportInsumoActionClass extends controllerClass implements controllerActio
              * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
              * config::getRowGrid()=> va con el paginado y hace una funcion
              * @var $this->objInsumo para enviar los datos a la vista      */
-            $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC',null, null, $where);
+            $this->objInsumo = insumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
 //            $this->mensaje = 'HOLA INSUMO';
-      $this->defineView('index', 'insumo', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+            $this->defineView('index', 'insumo', session::getInstance()->getFormatOutput());
+        } catch (PDOException $exc) {
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
+        }
     }
-  }
 
 }
-
-

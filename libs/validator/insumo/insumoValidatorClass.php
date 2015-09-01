@@ -19,7 +19,7 @@ namespace mvc\validator {
         public static function validateInsert() {
             $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-            $soloLetras = "/^[a-z]+$/i";
+            $soloLetras = "/^[a-zA-Z ]+$/i";
             $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
             $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
@@ -101,7 +101,7 @@ namespace mvc\validator {
         public static function validateEdit() {
             $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-            $soloLetras = "/^[a-z]+$/i";
+            $soloLetras = "/^[a-zA-Z ]+$/i";
             $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
             $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
@@ -162,11 +162,13 @@ namespace mvc\validator {
     
 
 
-public static function validateFiltroDescripcion() {
+public static function validateFiltroDescripcion($descripcion) {
            
             //-------------------------------campo desc insumo-----------------------------
-            if (strlen(request::getInstance()->getPost(\insumoTableClass::getNameField(\insumoTableClass::DESC_INSUMO, true))) > \insumoTableClass::DESC_INSUMO_LENGTH) {
+            if (strlen($descripcion) > \insumoTableClass::DESC_INSUMO_LENGTH) {
                 session::getInstance()->setError('el insumo digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescInsumo');
+                session::getInstance()->setFlash('modalFilters', true);
+                
             } 
             
 

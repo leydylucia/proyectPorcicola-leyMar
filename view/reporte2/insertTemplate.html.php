@@ -13,6 +13,6 @@
 
 
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('reporte/formReporte', array('objTipoV' => $objTipoV, 'objHojaVida' => $objHojaVida))?>
+<?php view::includePartial('reporte/formReporteDetalle', array('objTipoV' => $objTipoV, 'objHojaVida' => $objHojaVida, 'objUnidadMedida' => $objUnidadMedida))?>
 
 

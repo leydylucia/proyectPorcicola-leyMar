@@ -42,7 +42,7 @@
                         <th><input type="checkbox" id="chkAll"></th>
                         <th><?php echo i18n::__('name') ?></th>
                         <th><?php echo i18n::__('description') ?></th>
-<!--                        <th><?php // echo i18n::__('direction') ?></th>-->
+                        <th><?php echo i18n::__('direction') ?></th>
                          <th><?php echo i18n::__('date') ?></th>
                         <th><?php echo i18n::__('action') ?></th>
 
@@ -55,10 +55,10 @@
                             
                             <td><?php echo $reporte->$nombre ?></td>
                             <td><?php echo $reporte->$descripcion ?></td>
-                            <!--<td><?php // echo $reporte->$direccion ?></td>-->
+                            <td><?php echo $reporte->$direccion ?></td>
                             <td><?php echo date('d-m-Y h:i:s a', strtotime($reporte->$fecha)) ?></td>
                             <td>
-                                <a href="<?php  echo routing::getInstance()->getUrlWeb('reporte', 'insert', array(reporteTableClass::ID => $reporte->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
+                                <a href="<?php  echo routing::getInstance()->getUrlWeb('reporte2', 'insert', array(reporteTableClass::ID => $reporte->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                 
 
                                 <!--eliminado individual con ajax-->

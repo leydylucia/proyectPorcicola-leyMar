@@ -40,12 +40,14 @@ use mvc\view\viewClass as view ?>
       <label for="<?php echo empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name') ?>:</label>
       <div class="col-xs-9">
         <input id="<?php echo empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true)) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true)) : ((isset($objEmpleado) == true) ? $objEmpleado[0]->$nombre : '') ?>" type="text" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true) ?>">
-        <?php if (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true)) === true): ?>
+<?php if (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-        <?php endif ?>
+<?php endif ?>
       </div>
     </div>
-
+    
+    
+    
     <div class="form-group <?php echo (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, true)) === true) ? 'has-error has-feedback' : '' ?>">       
       <label for="<?php echo empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('lastname') ?>:</label>
       <div class="col-xs-9">

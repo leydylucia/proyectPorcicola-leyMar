@@ -16,8 +16,6 @@
 
 <div id="chart1" style="width: 500px;height: 500px;"></div>
 
-<a class="btn btn-lg btn-success btn-xs" href="<?php  echo routing::getInstance()->getUrlWeb('reporte', 'report') ?>" >Importar pdf</a>
-
-
+<a href="<?php echo routing::getInstance()->getUrlWeb('reporte2', 'grafica') ?>"class="btn btn-info btn-xs">Generar Pdf</a>
 
 </div>

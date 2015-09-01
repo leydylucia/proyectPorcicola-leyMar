@@ -18,7 +18,7 @@ namespace mvc\validator {
     public static function validateInsert() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i"; //"/^[a-z]+$/i"
+      $soloLetras = "/^[a-zA-Z ]+$/i"; //"/^[a-zA-Z ]+$/i"
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
@@ -47,7 +47,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido del empleado es requerido', 'inputApellido');
       } //----solo permitir letras----
-     else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
+      else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
         $flag = true;
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
@@ -71,15 +71,14 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
       }
-      
-       //-------------------------------campo ciudad-----------------------------
+
+      //-------------------------------campo ciudad-----------------------------
       //----campo nulo----
 //      if (self::notBlank(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::ID_CIUDAD, true)))) {
 //        $flag = true;
 //        session::getInstance()->setFlash('selectCiudad', true);
 //        session::getInstance()->setError('La ciudad del empleado es requerido', 'selectCiudad');
 //        }
-        
       //-------------------------------campo telefono-----------------------------
       //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::TELEFONO, true)))) {
@@ -127,18 +126,18 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento del empleado es requerido', 'inputDocumento');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true))) > \empleadoTableClass::DOCUMENTO_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
       }  //----valida que sea numerico----      
-        else if (!is_numeric(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true)))) {
+      else if (!is_numeric(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+      }//----documento repetitivo---
+      else if (self::isUnique(\empleadoTableClass::ID, true, array(\empleadoTableClass::DOCUMENTO => request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true))), \empleadoTableClass::getNameTable())) {
+        $flag = true;
+        session::getInstance()->setFlash('inputDocumento', true);
+        session::getInstance()->setError('El documento digitado ya existe', 'inputDocumento');
       }
-      
+
       //-------------------------------campo usuario-----------------------------
       //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::USUARIO_ID, true)))) {
@@ -157,22 +156,22 @@ namespace mvc\validator {
     public static function validateEdit() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i";  //"/^[a-z]+$/i"
+      $soloLetras = "/^[a-zA-Z ]+$/i";  //"/^[a-zA-Z ]+$/i"
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
 
-        //-------------------------------campo documento-----------------------------
-       //----campo nulo----
+      //-------------------------------campo documento-----------------------------
+      //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento del empleado es requerido', 'inputDocumento');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true))) > \empleadoTableClass::DOCUMENTO_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputDocumento', true);
-        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
-      }  //----valida que sea numerico----      
+      } //----documento repetitivo---
+//      else if (self::isUnique(\empleadoTableClass::ID, true, array(\empleadoTableClass::DOCUMENTO => request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true))), \empleadoTableClass::getNameTable())) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputDocumento', true);
+//        session::getInstance()->setError('El documento digitado ya existe', 'inputDocumento');
+//      }    
         else if (!is_numeric(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::DOCUMENTO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDocumento', true);
@@ -282,32 +281,30 @@ namespace mvc\validator {
         routing::getInstance()->forward('empleado', 'edit');
       }
     }
-    
-     public static function validateFiltroNombre() {
-         $soloLetras = "/^[a-z]+$/i";
+
+    public static function validateFiltroNombre() {
+      $soloLetras = "/^[a-zA-Z ]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-      
-       if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))){
+
+      if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))))) {
         session::getInstance()->setError('El Nombre no permite numeros, solo letras', 'inputNombre');
-      } 
-        else if(strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
+      } else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::NOMBRE, true))) > \empleadoTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El Nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }       
       }
-      
+    }
+
     public static function validateFiltroApellido() {
-         $soloLetras = "/^[a-z]+$/i";
+      $soloLetras = "/^[a-zA-Z ]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-      
-       if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))){
+
+      if (!preg_match($soloLetras, (request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))))) {
         session::getInstance()->setError('El Apellido no permite numeros, solo letras', 'inputNombre');
-      } 
-        else if(strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
+      } else if (strlen(request::getInstance()->getPost(\empleadoTableClass::getNameField(\empleadoTableClass::APELLIDO, true))) > \empleadoTableClass::APELLIDO_LENGTH) {
         session::getInstance()->setError('El Apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }       
-      }  
+      }
+    }
 
   }
 

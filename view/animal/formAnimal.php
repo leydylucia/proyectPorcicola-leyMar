@@ -48,10 +48,10 @@
     </div>
 
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) === true) ? 'has-error has-feedback' : '' ?>">       
       <label for="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('name_pig') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>" class="form-control" value="<?php echo ((isset($objHojaVida) == true) ? $objHojaVida[0]->$nombre_cerdo : '') ?><?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) === true) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) : '' ?>" type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>">
+        <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) : ((isset($objHojaVida) == true) ? $objHojaVida[0]->$nombre_cerdo : '') ?>" type="text" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true) ?>">
         <?php if (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>
@@ -69,10 +69,11 @@
       </div>
     </div>-->
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? 'has-error has-feedback' : '' ?>">
+
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? 'has-error has-feedback' : '' ?>">       
       <label for="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('date_birth') ?>:</label>
       <div class="col-xs-9">
-        <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo ((isset($objHojaVida) == true) ? $objHojaVida[0]->$fecha_nacimiento : '') ?><?php echo (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) : '' ?>" type="date" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>">
+          <input id="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) ? request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) : ((isset($objHojaVida) == true) ? $objHojaVida[0]->$fecha_nacimiento : '') ?>" type="date" name="<?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true) ?>">
         <?php if (session::getInstance()->hasFlash(hojaVidaTableClass::getNameField(hojaVidaTableClass::FECHA_NACIMIENTO, true)) === true): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback"></span>
         <?php endif ?>

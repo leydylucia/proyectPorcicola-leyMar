@@ -52,8 +52,8 @@ use mvc\session\sessionClass as session ?>
         <!--filtros-->
         <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-
-        <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportSacrificioVenta') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'insert') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('graphic') ?></a>
+       
 
     </div>
 
@@ -68,25 +68,25 @@ use mvc\session\sessionClass as session ?>
 
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'reportSacrificioVenta') ?>">
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('sale') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[valor]" name="filter[valor]" placeholder="valor">
                             </div>
-                        </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+                        </div>    PONER CORCHER  EN NAME filter[insumo]
 
-                        <div class="form-group">
+-->                        <div class="form-group">
                             <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('quantity') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[cantidad]" name="filter[cantidad]" placeholder="cantidad">
+                                <input type="text" class="form-control" id="filter[cantidad]" name="filter[cantidad]" placeholder="<?php echo i18n::__('quantity')?>">
                             </div>
                         </div> 
 
                         <div class="form-group">
-                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
-                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                    <option value=""><?php echo i18n::__('type_sale') ?></option>
                                     <?php foreach ($objTipoV as $venta): ?>
                                         <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
                                     <?php endforeach; ?>
@@ -111,7 +111,7 @@ use mvc\session\sessionClass as session ?>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-                    <button type="button" onclick="$('#report').submit()" class="btn btn-warnig"><?php echo i18n::__('report') ?></button>
+                    <button type="button" onclick="$('#report').submit()" class="btn btn-warning"><?php echo i18n::__('report') ?></button>
                 </div>
             </div>
         </div>
@@ -144,15 +144,15 @@ use mvc\session\sessionClass as session ?>
                         <div class="form-group">
                             <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('quantity') ?></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[cantidad]" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true) ?>" placeholder="cantidad">
+                                <input type="text" class="form-control" id="filter[cantidad]" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('quantity')?>">
                             </div>
                         </div> 
 
                         <div class="form-group">
-                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
-                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                    <option value=""><?php echo i18n::__('type_sale') ?></option>
                                     <?php foreach ($objTipoV as $venta): ?>
                                         <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
                                     <?php endforeach; ?>

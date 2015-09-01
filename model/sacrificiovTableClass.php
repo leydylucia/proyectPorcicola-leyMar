@@ -8,37 +8,83 @@ use mvc\config\configClass as config;
  *
  * @author leydy lucia castillo mosquera<leydylucia@hotmail.com>
  */
-class sacrificiovTableClass extends  sacrificiovBaseTableClass{
-    
-     /**
-   * Método para el paginado
-   *
-   * @var $where para mantener el filtro y va al controller
+class sacrificiovTableClass extends sacrificiovBaseTableClass {
+
+    /**
+     * Método para el paginado
+     *
+     * @var $where para mantener el filtro y va al controller
+
+     */
+    public static function getcantidadS($cantidad, $nombre) {
+        try {
+            $sql = ' SELECT ' . tipovTableClass::DESC_TIPOV . ' as ' . ' descripcion ' . ' , ' . hojaVidaTableClass::NOMBRE_CERDO . ' as ' . ' nombre ' . ' , ' . sacrificiovTableClass::CANTIDAD . ' as ' . ' cantidad ' .
+                    ' FROM ' . sacrificiovTableClass::getNameTable() . ' , ' . tipovTableClass::getNameTable() . ' , ' . hojaVidaTableClass::getNameTable() .
+                    ' WHERE ' . sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID) . ' = ' . tipovTableClass::getNameField(tipovTableClass::ID) .
+                    ' AND ' . sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO) . ' = ' . hojaVidaTableClass::getNameField(HojaVidaTableClass::ID) .
+                    ' AND ' . '(' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                    . 'OR ' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                    . 'OR ' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'%' . $nombre . '\') ' .
+                    ' AND ' . '(' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'' . $cantidad . '%\'  '
+                    . 'OR ' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'%' . $cantidad . '%\' '
+                    . 'OR ' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'%' . $cantidad . '\') ';
    
-   */
-    public static function getNumero() {
-    try {
-     $sql = ' SELECT count( ' . sacrificiovTableClass::ID . ') as cantidad ' .
-
-   ' FROM '  . sacrificiovTableClass::getNameTable()  .
-   ' WHERE ' . sacrificiovTableClass::DELETED_AT . ' IS NULL ';
-
-      
-      $answer = model::getInstance()->prepare($sql);
-      $answer ->execute();
-      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-      return  $answer[0]->cantidad;
-    } catch (PDOException $exc) {
-      throw $exc;
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//            print_r($sql);
+//exit();
+            return  $answer[0]->cantidad; /*->cantidad*/
+//             $answer[0]->descripcion . ' ' .
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
     }
-  }
- 
     
-    
+     public static function getDescripcionS($cantidad,$nombre) {
+        try {
+            $sql = ' SELECT ' . tipovTableClass::DESC_TIPOV . ' as ' . ' descripcion ' . ' , ' . hojaVidaTableClass::NOMBRE_CERDO . ' as ' . ' nombre ' . ' , ' . sacrificiovTableClass::CANTIDAD . ' as ' . ' cantidad ' .
+                    ' FROM ' . sacrificiovTableClass::getNameTable() . ' , ' . tipovTableClass::getNameTable() . ' , ' . hojaVidaTableClass::getNameTable() .
+                    ' WHERE ' . sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID) . ' = ' . tipovTableClass::getNameField(tipovTableClass::ID) .
+                    ' AND ' . sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO) . ' = ' . hojaVidaTableClass::getNameField(HojaVidaTableClass::ID) .
+                    ' AND ' . '(' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                    . 'OR ' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                    . 'OR ' . hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO) . ' LIKE ' . '\'%' . $nombre . '\') ' .
+                    ' AND ' . '(' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'' . $cantidad . '%\'  '
+                    . 'OR ' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'%' . $cantidad . '%\' '
+                    . 'OR ' . tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV) . ' LIKE ' . '\'%' . $cantidad . '\') ';
+   
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//            print_r($sql);
+//exit();
+            return  $answer[0]->nombre; /*->cantidad*/
+//             $answer[0]->descripcion . ' ' .
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
+
+    public static function getNumero() {
+        try {
+            $sql = ' SELECT count( ' . sacrificiovTableClass::ID . ') as cantidad ' .
+                    ' FROM ' . sacrificiovTableClass::getNameTable() .
+                    ' WHERE ' . sacrificiovTableClass::DELETED_AT . ' IS NULL ';
+
+
+            $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+            return $answer[0]->cantidad;
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
 
     public static function getTotalPages($lines, $where) {
         try {
-            $sql = 'SELECT count(' . sacrificiovTableClass::ID . ') AS cantidad ' ./*DEJAR ESPACIO EN EL AND BETWEEN Y NULL*/
+            $sql = 'SELECT count(' . sacrificiovTableClass::ID . ') AS cantidad ' . /* DEJAR ESPACIO EN EL AND BETWEEN Y NULL */
                     ' FROM ' . sacrificiovTableClass::getNameTable() .
                     ' WHERE ' . sacrificiovTableClass::DELETED_AT . ' is NULL ';
             if (is_array($where) === true) {
@@ -59,13 +105,13 @@ class sacrificiovTableClass extends  sacrificiovBaseTableClass{
             throw $exc;
         }
     }
- /**
-   * Método public static function getNameInsumo($id)  para foreanea
-   *
-   * 
-   
-   */
-    
+
+    /**
+     * Método public static function getNameInsumo($id)  para foreanea
+     *
+     * 
+
+     */
     public static function getNameSacrificioV($id) {
         try {
             $sql = 'SELECT ' . sacrificiovTableClass::VALOR . ' As valor '
@@ -86,5 +132,4 @@ class sacrificiovTableClass extends  sacrificiovBaseTableClass{
         }
     }
 
-  
 }

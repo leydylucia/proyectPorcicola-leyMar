@@ -2302,6 +2302,12 @@ reporte_index:
     - model/reporteTableClass.php
     - model/base/sacrificiovBaseTableClass.php
     - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 reporte_insert:
   url:    /reporte/insertar
@@ -2311,6 +2317,12 @@ reporte_insert:
     - model/reporteTableClass.php
     - model/base/sacrificiovBaseTableClass.php
     - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 
 reporte_create:
@@ -2321,6 +2333,12 @@ reporte_create:
     - model/reporteTableClass.php
     - model/base/sacrificiovBaseTableClass.php
     - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 reporte_grafica:
   url:    /reporte/grafica
@@ -2330,3 +2348,67 @@ reporte_grafica:
     - model/reporteTableClass.php  
     - model/base/sacrificiovBaseTableClass.php
     - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    
+reporte_pdf:
+  url:    /reporte/pdf
+  param:  { module: reporte, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php 
+    - model/base/sacrificiovBaseTableClass.php
+    - model/sacrificiovTableClass.php
+    - model/base/tipovBaseTableClass.php
+    - model/tipovTableClass.php
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    
+# #----------------------Reporte especial2-----------------------------#
+#reporte2_index:
+#  url:    /reporte/index
+#  param:  { module: reporte2, action: index, format: html }
+#  load:
+#    - model/base/reporteBaseTableClass.php
+#    - model/reporteTableClass.php
+#    
+#    
+#reporte2_insert:
+#  url:    /reporte/insertar
+#  param:  { module: reporte2, action: insert, format: html }
+#  load:
+#    - model/base/reporteBaseTableClass.php
+#    - model/reporteTableClass.php
+#    
+#
+#reporte2_create:
+#  url:    /reporte/crear
+#  param:  { module: reporte2, action: create, format: html }
+#  load:
+#    - model/base/reporteBaseTableClass.php
+#    - model/reporteTableClass.php
+#   
+#    
+#reporte2_grafica:
+#  url:    /reporte/grafica
+#  param:  { module: reporte2, action: grafica, format: html }
+#  load:
+#    - model/base/reporteBaseTableClass.php
+#    - model/reporteTableClass.php  
+#   
+#    
+#reporte2_pdf:
+#  url:    /reporte/pdf
+#  param:  { module: reporte2, action: pdf, format: pdf }
+#  load:
+#    - libs/fpdf/fpdf.php
+#    - model/base/reporteBaseTableClass.php
+#    - model/reporteTableClass.php     
+      

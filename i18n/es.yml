@@ -66,7 +66,8 @@ dictionary:
     actions:                      Acciones
     delete Selection:             Eliminar Seleccion
     confirmDeleteMasivo:          ¿Seguro eliminar los elementos selecionados?
-    elements delete:              Elementos eliminados exitosamente 
+    elements delete:              Elementos eliminados exitosamente
+    elements_update:              El registro se modificio con exito 
     city:                         Ciudad
     departament:                  Departamento
     begin:                        Inici
@@ -235,9 +236,13 @@ dictionary:
     # paginaPrincipal# 
     welcome:               BIENVENIDO
     
-    Report:                Reportes
+    Report:                Reporte
     description:           Descripcion
+    graphic:               Grafica
     
+    select_pig:            Seleccione Cerdo
+    select_type_sale:      Seleccione Tipo Venta
+    select_unit_measure:   Seleccione Unidad Medida
     
     ##errores##
     errorLength:             este campo excede la longitud

@@ -32,7 +32,6 @@ class empleadoBaseTableClass extends tableBaseClass {
   const USUARIO_ID = 'usuario_id';
   const TIPO_ID_ID = 'tipo_id_id';
   const DOCUMENTO = 'documento';
-  const DOCUMENTO_LENGTH = 12;
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 80;
   const DIRECCION = 'direccion';

@@ -86,14 +86,14 @@
                   <input type="text" class="form-control" id="filter[control]" name="filter[control]" placeholder="control peso">
                 </div>
               </div>
-              <div class="form-group">
+<!--              <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha Creaccion</label>
                 <div class="col-sm-10">
                   <input type="date" class="form-control" id="filterDate" name="filter[fechaCreacion]">
                   <br>
 
                 </div>
-              </div>
+              </div>-->
             </form>
           </div>
           <div class="modal-footer">
