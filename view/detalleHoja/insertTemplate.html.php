@@ -5,13 +5,13 @@
 <!--titulo-->
 <div class="container container-fluid">
     <div class="page-header titulo">
-        <h1><?php echo i18n::__('Output_detail_new_winery')?></h1>  
+        <h1><?php echo i18n::__('new_detaill_curriculum_vitae')?></h1>  
     </div>
     
 </div>
 <!--fintitulo-->
 
 <?php view::includeHandlerMessage()?>
-<?php view::includePartial('detalleSalida/formDetalleSalida', array( 'id_salida_bodega' =>$id_salida_bodega, 'objSalidaBodega' => $objSalidaBodega,'objInsumo'=>$objInsumo,'objUnidadMedida'=>$objUnidadMedida,'objLote'=>$objLote))?>
+<?php view::includePartial('detalleHoja/formDetalleHoja', array('id_hoja_vida' =>$id_hoja_vida,'objHojaVida' => $objHojaVida,'objInsumo'=>$objInsumo,'objTipoin'=>$objTipoin,'objUnidadMedida'=>$objUnidadMedida))?>
 
 

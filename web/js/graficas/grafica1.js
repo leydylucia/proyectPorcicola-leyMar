@@ -1,6 +1,7 @@
 function crearGrafica(cosPoints) {
 // Some simple loops to build up data arrays.
-var plot3 = $.jqplot('chart1', [cosPoints],
+console.log(cosPoints);
+var plot3 = $.jqplot('chart1', cosPoints,/*[cosPoints] para ser individual*/
 {
 title: 'venta en carnes de cerdo',
         legend: {show: false},

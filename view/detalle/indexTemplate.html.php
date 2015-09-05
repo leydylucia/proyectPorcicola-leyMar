@@ -101,14 +101,14 @@ use mvc\request\requestClass as request ?>
                     <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalle', 'report') ?>">
 
                         <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
                         </div> 
 
                         <div class="form-group">
-                            <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('value') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Valor]" name="filter[Valor]" placeholder="Valor">
                             </div>
@@ -159,14 +159,14 @@ use mvc\request\requestClass as request ?>
 
 
                         <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
                         </div> 
 
                         <div class="form-group">
-                            <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('value') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Valor]" name="filter[Valor]" placeholder="Valor">
                             </div>

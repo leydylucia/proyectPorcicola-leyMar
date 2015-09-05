@@ -15,7 +15,7 @@ use mvc\i18n\i18nClass as i18n;
  * @category modulo insumo
 
  */
-class indexDetalleSalidaActionClass extends controllerClass implements controllerActionInterface {
+class indexActionClass extends controllerClass implements controllerActionInterface {
 
     /**
      * Description of ejemploClass
@@ -26,25 +26,24 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
     public function execute() {
         try {
 
-
-            /* filtros */
-            //$where = null; /* where se encuentra nulo para entrar en la sentencia getall */
-            $where[detalleSalidaTableClass::SALIDA_BODEGA_ID] = request::getInstance()->getGet('detalle_salida_salida_bodega_id');
+  /* filtros */
+//            $where = null; /* where se encuentra nulo para entrar en la sentencia getall */
+            $where[detalleHojaTableClass::HOJA_VIDA_ID] = request::getInstance()->getGet('detalle_hoja_hoja_vida_id');
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter'); /* $filter si se encuentra en la vista?? */
 
                 if (isset($filter['Cantidad']) and $filter['Cantidad'] !== null and $filter['Cantidad'] !== '') {
-                    $where[detalleSalidaTableClass::CANTIDAD] = $filter['Cantidad'];
+                    $where[detalleHojaTableClass::PESO_CERDO] = $filter['Cantidad'];
                 }
-                if (isset($filter['SalidaBodega']) and $filter['SalidaBodega'] !== null and $filter['SalidaBodega'] !== '') {
-                    $where[detalleSalidaTableClass::SALIDA_BODEGA_ID] = $filter['SalidaBodega'];
+                if (isset($filter['Valor']) and $filter['Valor'] !== null and $filter['Valor'] !== '') {
+                    $where[detalleHojaTableClass::DOSIS] = $filter['Valor'];
                 }
 
                 if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
-                    $where[detalleSalidaTableClass::INSUMO_ID] = $filter['Insumo'];
+                    $where[detalleHojaTableClass::INSUMO_ID] = $filter['Insumo'];
                 }
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
-                    $where[insumoTableClass::CREATED_AT] = array(
+                    $where[detalleHojaTableClass::CREATED_AT] = array(
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date2']))
                         $filter['Date1'],
@@ -59,11 +58,6 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
             } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
                 $where = session::getInstance()->getAttribute('defaultIndexFilters');
             }
-
-//            echo '<pre>';
-//            print_r($where);esto es para imprimir filtros
-//            echo '</pre>';
-
             /*             * @var $fields trae los campos de model
              * @var $orderBy ordena con el tipo de datos seleccionado
              * @var page paginado
@@ -71,16 +65,17 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
 
 
             $fields = array(
-                detalleSalidaTableClass::ID,
-                detalleSalidaTableClass::CANTIDAD,
-                detalleSalidaTableClass::SALIDA_BODEGA_ID,
-                detalleSalidaTableClass::INSUMO_ID,
-                detalleSalidaTableClass::UNIDAD_MEDIDA_ID,
-                detalleSalidaTableClass::LOTE_ID,
-                detalleSalidaTableClass::CREATED_AT
+                detalleHojaTableClass::ID,
+                detalleHojaTableClass::PESO_CERDO,
+                detalleHojaTableClass::UNIDAD_MEDIDA_ID,
+                detalleHojaTableClass::HOJA_VIDA_ID,
+                detalleHojaTableClass::INSUMO_ID,
+                detalleHojaTableClass::DOSIS,
+                detalleHojaTableClass::TIPO_INSUMO_ID,
+                detalleHojaTableClass::CREATED_AT
             );
             $orderBy = array(
-                detalleSalidaTableClass::CANTIDAD
+                detalleHojaTableClass::PESO_CERDO
             );
 
             $page = 0; /* paginado */
@@ -93,27 +88,23 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * @return $this para enviar al cntPages"contador de pagina" a la vista 
              * *getTotalPages => se encuentra en insumoTables class
              * * @var $where => para sostener el filtro con el paginado  */
-            $this->cntPages = detalleSalidaTableClass::getTotalPages(config::getRowGrid(), $where);
+            $this->cntPages = detalleHojaTableClass::getTotalPages(config::getRowGrid(), $where);
             // $page = request::getInstance()->getGet('page');
-//            echo '<pre>';
-//            print_r($where);esto es para imprimir filtros
-//            echo '</pre>';
-//            
 //            $where = null;
-//            if (request::getInstance()->hasGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) {
-//                $this->detalleSalidaId = $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
-//                $where = array(
-//                    detalleSalidaTableClass::SALIDA_BODEGA_ID => $detalleSalidaId
-//                );
-//            }
-            $where2 = null;
-            if (request::getInstance()->hasGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))) {
-                //$this->objSalidaBodega = $objSalidaBodega = request::getInstance()->getGet(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true));
-                $where2 = array(
-                    salidaBodegaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true))
+            if (request::getInstance()->hasGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true))) {
+                $this->detalleHojaId = $detalleHojaId = request::getInstance()->getGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true));
+                $where = array(
+                    detalleHojaTableClass::HOJA_VIDA_ID => $detalleHojaId
                 );
             }
-
+            /* where2 sirve para traer tan solo el dato de la cabezera */
+            $where2 = null;
+            if (request::getInstance()->hasGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true))) {
+                //$this->objSalidaBodega = $objSalidaBodega = request::getInstance()->getGet(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::ID, true));
+                $where2 = array(
+                    hojaVidaTableClass::ID => request::getInstance()->getGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true))
+                );
+            }
             /**
              *  
              * @var $where => para filtros
@@ -128,25 +119,24 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
              * @var $this->objInsumo para enviar los datos a la vista      
              *
              * */
-//            echo '<pre>';esto es para imprimir filtros
-//            print_r($where);
-//            echo '</pre>';
+            $this->objDetalleHoja = detalleHojaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
-            $this->objDetalleSalida = detalleSalidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
-
-//            echo '<pre>';
-//            print_r($this->objDetalleSalida);esto es para imprimir filtros
-//            echo '</pre>';
             //estos campo son para llamar las foraneas
             $fields = array(/* foranea salidaBodega */
-                salidaBodegaTableClass::ID,
-                salidaBodegaTableClass::CREATED_AT,
-                salidaBodegaTableClass::EMPLEADO_ID
+                hojaVidaTableClass::ID,
+                hojaVidaTableClass::CREATED_AT,
+                hojaVidaTableClass::GENERO_ID,
+                hojaVidaTableClass::NOMBRE_CERDO,
+                hojaVidaTableClass::FECHA_NACIMIENTO,
+                hojaVidaTableClass::LOTE_ID,
+                hojaVidaTableClass::ESTADO_ID,
+                hojaVidaTableClass::RAZA_ID,
+                hojaVidaTableClass::CREATED_AT
             );
             $orderBy = array(
-                salidaBodegaTableClass::ID,
+                hojaVidaTableClass::ID,
             );
-            $this->objSalidaBodega = salidaBodegaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where2);
+            $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where2);
 
             $fieldsInsumo = array(/* foranea insumo */
                 insumoTableClass::ID,
@@ -157,6 +147,16 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
             );
             $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
 
+            $fieldsTipoInsumo = array(/* foranea insumo */
+                tipoInsumoTableClass::ID,
+                tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $orderByTipoInsumo = array(
+                tipoInsumoTableClass::DESC_TIPOIN
+            );
+            $this->objTipoIn = tipoInsumoTableClass::getAll($fieldsTipoInsumo, true, $orderByTipoInsumo, 'ASC');
+
+
             $fieldsUnidad = array(
                 unidadMedidaTableClass::ID,
                 unidadMedidaTableClass::DESCRIPCION
@@ -166,31 +166,21 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
             );
             $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
-            $fieldsLote = array(
-                loteTableClass::ID,
-                loteTableClass::DESC_LOTE
-            );
-            $orderByLote = array(
-                loteTableClass::DESC_LOTE
-            );
-            $this->objLote = loteTableClass::getAll($fieldsLote, true, $orderByLote, 'ASC');
-
-
 //ECHO $id_salida_bodega;
 //            if(request::getInstance()->hasPost('filter')){
-////                     $detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
-//                     $detalleSalidaId = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
+////                     $detalleHojaId = request::getInstance()->getGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::SALIDA_BODEGA_ID, true));
+//                     $detalleHojaId = request::getInstance()->getPost(detalleHojaTableClass::getNameField(detalleHojaTableClass::SALIDA_BODEGA_ID, true));
 //                   
 //                     $detalle = array(
-//detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID) => $detalleSalidaId
+//detalleHojaTableClass::getNameField(detalleHojaTableClass::SALIDA_BODEGA_ID) => $detalleHojaId
 //);
-//                     print_r($detalleSalidaId);
+//                     print_r($detalleHojaId);
 //
-//                     $this->defineView('indexDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput(), $detalle);
+//                     $this->defineView('indexDetalleSalida', 'detalleHoja', session::getInstance()->getFormatOutput(), $detalle);
 //                print_r($detalle);
 //                }else{
-            $this->detalleSalidaId = request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));
-            $this->defineView('indexDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput());
+            $this->detalleHojaId = request::getInstance()->getGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true));
+            $this->defineView('index', 'detalleHoja', session::getInstance()->getFormatOutput());
 //            }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

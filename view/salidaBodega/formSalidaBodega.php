@@ -44,7 +44,7 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, TRUE) ?>" name="<?php echo salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true)) : ((isset($objSalidaBodega[0])) ? $objSalidaBodega[0]->$empleado_e : '') ?>">Seleccione empleado</option>
+                <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(salidaBodegaTableClass::getNameField(salidaBodegaTableClass::EMPLEADO_ID, true)) : ((isset($objSalidaBodega[0])) ? $objSalidaBodega[0]->$empleado_e : '') ?>"><?php echo i18n::__('select_employee')?></option>
 <?php foreach ($objEmpleado as $trabajador): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objSalidaBodega[0]->$empleado_e) === true and $objSalidaBodega[0]->$empleado_e == $trabajador->$empleado) ? 'selected' : '' ?> value="<?php echo $trabajador->$empleado ?>"><!--validacion para traer dato  de foranea en editar-->
     <?php echo $trabajador->$nombre . ' ' . $trabajador->$apellido ?><!--validacion para traer dato  de foranea en editar-->

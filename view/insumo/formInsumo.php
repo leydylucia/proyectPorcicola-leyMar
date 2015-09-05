@@ -57,22 +57,7 @@ use mvc\view\viewClass as view ?>
         </div>
     </div>
 
-<!--    <?php // if (session::getInstance()->hasError('inputPrecio')): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <i class="glyphicon glyphicon-remove-sign"></i> <?php // echo session::getInstance()->getError('inputPrecio') ?>esta linea para actualizar demas formularios
-        </div>
-    <?php // endif ?>
 
-    <div class="form-group <?php // echo (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-        <label for="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="control-label col-xs-3"><?php // echo i18n::__('prise') ?>:</label>
-        <div class="col-xs-9">
-            <input id="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>" class="form-control" value="<?php // echo request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) : ((isset($objInsumo) == true) ? $objInsumo[0]->$precio : '') ?>" type="text" name="<?php // echo insumoTableClass::getNameField(insumoTableClass::PRECIO, true) ?>">
-            <?php // if (session::getInstance()->hasFlash(insumoTableClass::getNameField(insumoTableClass::PRECIO, true)) === true): ?>
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-            <?php // endif ?>
-        </div>
-    </div>-->
 
 <?php if(session::getInstance()->hasError('inputTipoIn')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -87,7 +72,7 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, TRUE) ?>" name="<?php echo insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$insumoId_p : '') ?>">Seleccione tipoinsumo</option>
+                <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$insumoId_p : '') ?>"><?php echo i18n::__('select_type_product')?></option>
                 <?php foreach ($objTipoin as $tipoin): ?><!--validacion para traer dato  de foranea en editar-->
                 <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) == $tipoin->$tipoInsumo) ? 'selected' : (isset($objInsumo[0]->$tipoInsumo_i) === true and $objInsumo[0]->$tipoInsumo_i == $tipoin->$tipoInsumo) ? 'selected' : '' ?> value="<?php echo $tipoin->$tipoInsumo ?>"><?php echo $tipoin->$desc_tipoIn ?></option><!--sostenimiento de dato en foranea-->
              <?php echo $tipoin->$desc_tipoIn ?><       
@@ -150,7 +135,7 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE) ?>" name="<?php echo insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$tipoInsumo_i : '') ?>">Seleccione proveedor</option>
+                <option value="<?php echo (session::getInstance()->hasFlash('inputTipoIn') or request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true))) ? request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true)) : ((isset($objInsumo[0])) ? $objInsumo[0]->$tipoInsumo_i : '') ?>"><?php echo i18n::__('select_provider')?></option><!--validador del select-->
                 <?php foreach ($objProv as $insumo): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (request::getInstance()->hasPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true)) == $insumo->$insumoId) ? 'selected' : (isset($objInsumo[0]->$insumoId_p) === true and $objInsumo[0]->$insumoId_p == $insumo->$insumoId) ? 'selected' : '' ?> value="<?php echo $insumo->$insumoId ?>"><?php echo $insumo->$nombre . ' ' . $insumo->$apellido?></option><!--sostenimiento de dato en foranea-->
                          <?php echo $insumo->$nombre . ' ' . $insumo->$apellido ?><!--validacion para traer dato  de foranea en editar-->

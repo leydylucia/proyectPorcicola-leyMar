@@ -1,17 +1,11 @@
 <!--@var $objInsumo
 @var $descInsumo,$precio,$tipoInsumo,$fechaFabricacion,$fechaVencimiento,$proveedorId-->
 
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\session\sessionClass as session ?>
-<?php
-use mvc\request\requestClass as request ?>
-<?php
-use mvc\view\viewClass as view ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
 
 
 
@@ -46,7 +40,7 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, TRUE) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputUsuario') or request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true))) ? request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) : ((isset($objUsuarioCredencial[0])) ? $objUsuarioCredencial[0]->$usuario_u : '') ?>">Seleccione usuario</option>
+                <option value="<?php echo (session::getInstance()->hasFlash('inputUsuario') or request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true))) ? request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) : ((isset($objUsuarioCredencial[0])) ? $objUsuarioCredencial[0]->$usuario_u : '') ?>"><?phpecho i18n::__('select_user')?>Seleccione Usuario</option>
                 <?php foreach ($objUsuario as $user): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objUsuarioCredencial[0]->$usuario_u) === true and $objUsuarioCredencial[0]->$usuario_u == $user->$usuario) ? 'selected' : '' ?> value="<?php echo $user->$usuario ?>"><!--validacion para traer dato  de foranea en editar-->
                         <?php echo $user->$nomUsuario ?><!--validacion para traer dato  de foranea en editar-->
@@ -69,7 +63,7 @@ use mvc\view\viewClass as view ?>
 
         <div class="col-xs-9">
             <select class="form-control" id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, TRUE) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputCredencial') or request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true))) ? request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) : ((isset($objUsuarioCredencial[0])) ? $objUsuarioCredencial[0]->$credencial_c : '') ?>">Seleccione credencial</option>
+                <option value="<?php echo (session::getInstance()->hasFlash('inputCredencial') or request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true))) ? request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) : ((isset($objUsuarioCredencial[0])) ? $objUsuarioCredencial[0]->$credencial_c : '') ?>"><?phpecho i18n::__('select_credential')?>Seleccione Credencial</option>
                 <?php foreach ($objCredencial as $cred): ?><!--validacion para traer dato  de foranea en editar-->
                     <option <?php echo (isset($objUsuarioCredencial[0]->$credencial_c) === true and $objUsuarioCredencial[0]->$credencial_c == $cred->$credencial) ? 'selected' : '' ?> value="<?php echo $cred->$credencial ?>"><!--validacion para traer dato  de foranea en editar-->
                         <?php echo $cred->$nombre ?><!--validacion para traer dato  de foranea en editar-->

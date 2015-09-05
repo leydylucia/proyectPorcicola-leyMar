@@ -44,7 +44,9 @@ class graficaActionClass extends controllerClass implements controllerActionInte
       
       
       foreach ($objSacrificioV as $objeto) {
-        $cosPoints[] = array($objeto->cantidad, tipovTableClass::getNameTipov($objeto->tipo_venta_id));
+        $cosPoints[0][] = array(tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);
+        $cosPoints[1][] = array(tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);
+//       $cosPoints[2][] = array(tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);/*hay que ser un ciclo*/
       }
       $this->cosPoints = $cosPoints;
        
@@ -91,7 +93,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 ////                rand(4, 10),
 ////            );
 //
-//
+
 
 
             $this->defineView('grafica', 'reporte', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */

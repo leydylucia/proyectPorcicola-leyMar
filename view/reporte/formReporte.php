@@ -64,18 +64,18 @@ use mvc\view\viewClass as view ?>
 
 
     
-<!--         <div class="form-group">
-                            <label for="filterNombre" class="col-sm-2 control-label">//<?php echo i18n::__('pig') ?></label>
+         <div class="form-group">
+                            <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="//<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" name="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>">
-                                    <option value="">//<?php echo i18n::__('pig') ?></option>
+                                <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>" name="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true) ?>">
+                                    <option value=""><?php echo i18n::__('pig') ?></option>
                                     <?php foreach ($objHojaVida as $hoja): ?>
-                                     <option //<?php echo (isset($objSacrificioV[0]->$cerdo) === true and $objSacrificioV[0]->$cerdo == $hoja->$cerdo_c ) ? 'selected' : '' ?> value="<?php echo $hoja->$cerdo_c ?>"> <?php echo $hoja->$nombre ?></option>
+                                     <option <?php echo (isset($objSacrificioV[0]->$cerdo) === true and $objSacrificioV[0]->$cerdo == $hoja->$cerdo_c ) ? 'selected' : '' ?> value="<?php echo $hoja->$cerdo_c ?>"> <?php echo $hoja->$nombre ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>     
-        -->
+        
             
         <?php if (session::getInstance()->hasError('inputNombre')): ?>
             <div class="alert alert-danger alert-dismissible" role="alert">

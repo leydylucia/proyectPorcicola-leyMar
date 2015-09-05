@@ -49,6 +49,14 @@ class insertDetalleSalidaActionClass extends controllerClass implements controll
             );
             $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
+            $fieldsLote = array(
+                loteTableClass::ID,
+                loteTableClass::DESC_LOTE
+            );
+            $orderByLote = array(
+                loteTableClass::DESC_LOTE
+            );
+            $this->objLote = loteTableClass::getAll($fieldsLote, true, $orderByLote, 'ASC');
 
 
 

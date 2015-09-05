@@ -166,7 +166,7 @@ dictionary:
     
     
     #Control Peso#
-    pig weight:                Peso Cerdo               
+    pig_weight:                Peso Cerdo               
     employee:                  Empleado
     weight control:            Control Peso
     control:                   Control
@@ -240,9 +240,26 @@ dictionary:
     description:           Descripcion
     graphic:               Grafica
     
+    detail_curriculum_vitae: Detalle Hoja De Vida
+    new_detaill_curriculum_vitae: Nuevo Detalle Hoja De Vida
+    edit_detaill_curriculum_vitae: Editar Detalle Hoja De Vida
+    
     select_pig:            Seleccione Cerdo
     select_type_sale:      Seleccione Tipo Venta
     select_unit_measure:   Seleccione Unidad Medida
+    select_city:           Seleccione Ciudad
+    select_department:     Seleccione Departamento
+    select_type_product:   Seleccione Tipo insumo
+    select_provider:       Seleccione Proveedor
+    select_gender:         Seleccione Genero
+    select_batch:          Seleccione lote
+    select_state:          Seleccione Estado
+    select_race:           Seleccione Raza
+    select_product:        Seleccione Insumo
+    select_employee:       Seleccione Empleado
+    select_user:           Seleccione Usuario
+    type_id:               Seleccione Tipo Identificación
+    select_credential:     Seleccione Credencial
     
     ##errores##
     errorLength:             este campo excede la longitud

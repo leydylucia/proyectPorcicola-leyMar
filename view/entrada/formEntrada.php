@@ -39,7 +39,7 @@
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, TRUE) ?>" name="<?php echo entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, TRUE); ?>">
-          <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$empleado_id_e : '') ?>">Seleccione empleado</option>
+            <option value="<?php echo (session::getInstance()->hasFlash('inputEmpleado') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$empleado_id_e : '') ?>"><?php echo i18n::__('select_employee')?></option>
           <?php foreach ($objEmpleado as $empleado): ?>
           <option <?php echo (isset($objEntrada[0]->$empleado_id_e) === true and $objEntrada[0]->$empleado_id_e == $empleado->$empleado_id) ? 'selected' : '' ?> value="<?php echo $empleado->$empleado_id ?>">
           <?php  echo $empleado->$nombre_em . ' ' . $empleado->$apellido?>
@@ -61,7 +61,7 @@
 
       <div class="col-xs-9">
         <select class="form-control" id="<?php entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, TRUE) ?>" name="<?php echo entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, TRUE); ?>">
-          <option value="<?php echo (session::getInstance()->hasFlash('inputProveedor') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$proveedor_id_em : '') ?>">Seleccione empleado</option>
+            <option value="<?php echo (session::getInstance()->hasFlash('inputProveedor') or request::getInstance()->hasPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true))) ? request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true)) : ((isset($objEntrada[0])) ? $objEntrada[0]->$proveedor_id_em : '') ?>"><?php echo i18n::__('select_product')?></option>
           <?php foreach ($objProveedor as $proveedor): ?>
           <option <?php echo (isset($objEntrada[0]->$proveedor_id_em) === true and $objEntrada[0]->$proveedor_id_em == $proveedor->$proveedor_id) ? 'selected' : '' ?> value="<?php echo $proveedor->$proveedor_id ?>">
           <?php  echo $proveedor->$nombre . ' ' . $proveedor->$apellido_c ?>

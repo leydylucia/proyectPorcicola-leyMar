@@ -28,6 +28,7 @@ class editDetalleSalidaActionClass extends controllerClass implements controller
                     detalleSalidaTableClass::SALIDA_BODEGA_ID,
                     detalleSalidaTableClass::INSUMO_ID,
                     detalleSalidaTableClass::UNIDAD_MEDIDA_ID,
+                    detalleSalidaTableClass::LOTE_ID,
                 );
                 $where = array(
                     detalleSalidaTableClass::ID => request::getInstance()->getGet(detalleSalidaTableClass::ID)
@@ -61,7 +62,15 @@ class editDetalleSalidaActionClass extends controllerClass implements controller
                 );
                 $this->objUnidadMedida = unidadMedidaTableClass::getAll($fieldsUnidad, true, $orderByUnidad, 'ASC');
 
-                
+                 $fieldsLote = array(
+                    loteTableClass::ID,
+                    loteTableClass::DESC_LOTE
+                );
+                $orderByLote = array(
+                    loteTableClass::DESC_LOTE
+                );
+                $this->objLote = loteTableClass::getAll($fieldsLote, true, $orderByLote, 'ASC');
+
                 $this->id_salida_bodega =  request::getInstance()->getGet(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true));/*manda el id a la vista*/
                 $this->defineView('editDetalleSalida', 'detalleSalida', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
 

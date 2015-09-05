@@ -8,6 +8,7 @@ use mvc\validator\detalleSalidaValidatorClass as validator;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
@@ -37,6 +38,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
                 $salida_bodega = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, TRUE));
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
                 $unidad_medida = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true));
+                $lote = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true));
 
 //                echo $salida_bodega;
 //                exit();
@@ -49,6 +51,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
                     detalleSalidaTableClass::SALIDA_BODEGA_ID => $salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
                     detalleSalidaTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
+                    detalleSalidaTableClass::LOTE_ID => $lote,
                 );
 
 
@@ -56,7 +59,7 @@ class createDetalleSalidaActionClass extends controllerClass implements controll
 
                 session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
 //                log::register('insertar', detalleSalidaTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida',array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID,true) => $salida_bodega));//redireccionamiento para sostener el id
+                routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida', array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $salida_bodega)); //redireccionamiento para sostener el id
             } else {
                 routing::getInstance()->redirect('detalleSalida', 'indexDetalleSalida');
             }

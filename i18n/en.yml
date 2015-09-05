@@ -189,7 +189,7 @@ dictionary:
       #Credencial#
     credential:                Credential
     new_credential:            New Credential
-    cant:                      Amount
+    cant:                      Cant
     value:                     Value
     detail_entry:              Detail Entry
     new_detail_entry:          New Detail Entry
@@ -218,8 +218,19 @@ dictionary:
     select_pig:            Select Pig
     select_type_sale:      Select Type Sale
     select_unit_measure:   Select Unit Measure
-    
-    
+    select_city:           Select City
+    select_department:     Select Department
+    select_type_product:   Select Type Product
+    select_provider:       Select Provider
+    select_gender:         Select Gender
+    select_batch:          Select Batch
+    select_state:          Select State
+    select_race:           Select Race
+    select_product:        Select Product
+    select_employee:       Select Employee
+    select_user:           Select USer
+    type_id:               Select Type id
+    select_credential:     Select Credencial
  
 
 

@@ -188,6 +188,7 @@
 
                 <!--eliminado individual con ajax-->
                 <a href="#" data-target="#myModalDelete<?php echo $hojaVida->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array (detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $hojaVida->$id))?>" class="btn btn-default btn-xs"><?php echo i18n::__('detail') ?></a>
               </td>
             </tr>
 

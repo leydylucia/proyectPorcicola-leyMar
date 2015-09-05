@@ -25,6 +25,7 @@ use mvc\request\requestClass as request ?>
 <?php $descInsumo = insumoTableClass::DESC_INSUMO ?>
 
 <?php $unidad_medida = detalleSalidaTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $lote = detalleSalidaTableClass::LOTE_ID ?>
 <?php $fecha = detalleSalidaTableClass::CREATED_AT ?>
 <!--titulo-->
 <div class="container container-fluid">
@@ -98,7 +99,7 @@ use mvc\request\requestClass as request ?>
                     <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'reportDetalleSalida') ?>">
 
                         <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
@@ -160,7 +161,7 @@ use mvc\request\requestClass as request ?>
 
 
                         <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
+                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
                             </div>
@@ -227,6 +228,7 @@ use mvc\request\requestClass as request ?>
                             <th><?php echo i18n::__('quantity') ?></th>
                             <th><?php echo i18n::__('unit_measure') ?></th>
                             <th><?php echo i18n::__('describe_product') ?></th>  
+                            <th><?php echo i18n::__('batch') ?></th>
                             <th><?php echo i18n::__('date') ?></th>
                             <th><?php echo i18n::__('action') ?></th>
 
@@ -239,6 +241,7 @@ use mvc\request\requestClass as request ?>
                                 <td><?php echo $detalleSalida->$cantidad ?></td>
                                 <td><?php  echo unidadMedidaTableClass::getNameUnidadMedida($detalleSalida->$unidad_medida)  ?></td>
                                 <td><?php echo insumoTableClass::getNameInsumo($detalleSalida->$insumo) ?></td>
+                                <td><?php echo loteTableClass::getNameLote($detalleSalida->$lote) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($detalleSalida->$fecha)) ?></td>
                                 <td>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'verDetalleSalida', array(detalleSalidaTableClass::ID => $detalleSalida->$id, detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true) => $detalleSalidaId)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>

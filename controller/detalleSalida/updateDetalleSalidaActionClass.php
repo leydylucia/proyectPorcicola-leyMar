@@ -38,7 +38,7 @@ class updateDetalleSalidaActionClass extends controllerClass implements controll
 
                 $insumo = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID, true));
                 $unidad_medida = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true));
-//                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
+                $lote = request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true));
 
 
                 validator::validateEdit();
@@ -53,6 +53,7 @@ class updateDetalleSalidaActionClass extends controllerClass implements controll
                     detalleSalidaTableClass::SALIDA_BODEGA_ID => $id_salida_bodega,
                     detalleSalidaTableClass::INSUMO_ID => $insumo,
                     detalleSalidaTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
+                    detalleSalidaTableClass::LOTE_ID => $lote,
                 );
                 detalleSalidaTableClass::update($ids, $data);
 

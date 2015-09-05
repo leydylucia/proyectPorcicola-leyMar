@@ -1418,6 +1418,8 @@ animal_index:
     - model/loteTableClass.php
     - model/base/razaBaseTableClass.php
     - model/razaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
     - libs/validator/animal/animalValidatorClass.php
 
 animal_insert:
@@ -1555,6 +1557,180 @@ animal_reporte:
 animal_deleteFilters:
   url:    /borrar_filtros_animal
   param:  { module: animal, action: deleteFilters, format: html } 
+  
+##--------------------------Detalle Entrada Bodega----------------------------##
+detalleHoja_index:
+  url:    /detalleHoja/index
+  param:  { module: detalleHoja, action: index, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/estadoBaseTableClass.php
+    - model/estadoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
+    
+
+detalleHoja_insert:
+  url:    /detalleHoja/insertar
+  param:  { module: detalleHoja, action: insert, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+
+detalleHoja_create:
+  url:    /detalleHoja/crear
+  param:  { module: detalleHoja, action: create, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - libs/validator/detalleHoja/detalleHojaValidatorClass.php
+
+detalleHoja_edit:
+  url:    /detalleHoja/editar
+  param:  { module: detalleHoja, action: edit, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+
+detalleHoja_update:
+  url:    /detalleHoja/actualizar
+  param:  { module: detalleHoja, action: update, format: json }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - libs/validator/detalleHoja/detalleHojaValidatorClass.php
+    
+
+detalleHoja_delete:
+  url:    /detalleHoja/eliminar
+  param:  { module: detalleHoja, action: delete, format: json }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+detalleHoja_deleteSelect:
+  url:    /detalleHoja/eliminarSeleccion
+  param:  { module: detalleHoja, action: deleteSelect, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    
+    
+detalleHoja_ver:
+  url:    /detalleHoja/ver
+  param:  { module: detalleHoja, action: ver, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+
+
+detalleHoja_reporte:
+  url:    /detalleHoja/reporte
+  param:  { module: detalleHoja, action: report, format: pdf }
+  load:  
+    - libs/fpdf/fpdf.php  
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+    - model/base/generoBaseTableClass.php
+    - model/generoTableClass.php
+
+
+detalleHoja_deleteFilters:
+  url:    /borrar_filtros_detalleHoja
+  param:  { module: detalleHoja, action: deleteFilters, format: html }
+  load:
+    - model/base/hojaVidaBaseTableClass.php
+    - model/hojaVidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php   
     
 ##--------------------------Entrada Bodega----------------------------##
 entrada_index:
@@ -2170,6 +2346,8 @@ detalleSalida_index:
     - model/empleadoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
 
 detalleSalida_insert:
   url:    /detalleSalida/insertar
@@ -2183,6 +2361,8 @@ detalleSalida_insert:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 
 detalleSalida_create:
@@ -2197,6 +2377,8 @@ detalleSalida_create:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/detalleSalida/detalleSalidaValidatorClass.php
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
@@ -2215,6 +2397,8 @@ detalleSalida_edit:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
 #    - hooks/logHookClass.php
 #    - model/base/bitacoraBaseTableClass.php
 #    - model/bitacoraTableClass.php
@@ -2232,6 +2416,8 @@ detalleSalida_update:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/detalleSalida/detalleSalidaValidatorClass.php
   
     
@@ -2265,7 +2451,8 @@ detalleSalida_ver:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
-     
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
 detalleSalida_deleteFilters:
   url:    /borrar_filtros_detalleSalida
   param:  { module: detalleSalida, action: deleteFiltersDetalleSalida, format: html }
@@ -2292,6 +2479,8 @@ detalleSalida_reporte:
     - model/insumoTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
   #----------------------Reporte especial-----------------------------#
 reporte_index:
