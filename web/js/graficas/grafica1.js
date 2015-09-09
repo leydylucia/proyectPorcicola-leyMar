@@ -1,46 +1,40 @@
-function crearGrafica(cosPoints) {
+function crearGrafica(cosPoints, labels, datoMaximo) {
 // Some simple loops to build up data arrays.
-console.log(cosPoints);
-var plot3 = $.jqplot('chart1', cosPoints,/*[cosPoints] para ser individual*/
-{
-title: 'venta en carnes de cerdo',
-        legend: {show: false},
-        axes: {
-        pad: 1,
-                seriesDefaults: {
-                renderer: $.jqplot.BarRenderer
+    console.log(cosPoints);
+//    var cosPoints = [
+//        [['costilla 1', 1], ['costilla 2', 3], ['pulpa 1', 4], ['pulpa 2', 5], ['menudo 1', 6], ['menudo 2', 7]],
+//        [['costilla 1', 5], ['costilla 2', 2], ['pulpa 1', 1], ['pulpa 2', 3], ['menudo 1', 8], ['menudo 2', 2]],
+//        [['costilla 1', 2], ['costilla 2', 1], ['pulpa 1', 6], ['pulpa 2', 2], ['menudo 1', 10], ['menudo 2', 12]]
+//    ];
+    var plot3 = $.jqplot('chart1', cosPoints, /*[cosPoints] para ser individual*/
+            {
+//title: 'venta en carnes de cerdo',
+                legend: {
+                    show: true,
+                    location: 'e',
+                    placement: 'outside',
+                    labels: labels
                 },
-                xaxis: {
-                render: $.jqplot.CategoryAxisRenderer,
-                        label: 'eje x CANTIDADES DE CARNE',
-//                        renderer: $.jqplot.DateAxisRenderer /*para poner fecha*/
-                        renderer: $.jqplot.CategoryAxisRenderer/*poner letras en eje x*/
-                },
-                yaxis: {
-//                        render: $.jqplot.CategoryAxisRenderer,
-//                        label: 'eje y CANTIDADN DE CARNE',
-//                        renderer: $.jqplot.CategoryAxisRenderer/*poner letras en eje x*/
-                renderer: $.jqplot.CategoryAxisRenderer,
-          label: 'eje y TIPO DE CARNE',
-          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-          tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-          tickOptions: {
-              angle: 30,
-              fontFamily: 'Courier New',
-              fontSize: '9pt'
-          }
-
-                        },
+                axes: {
+                    pad: 1,
+                    xaxis: {
+                        label: 'eje x TIPO DE CARNE',
+                        renderer: $.jqplot.CategoryAxisRenderer /*poner letras en eje x*/
+                    },
+                    yaxis: {
+                        label: 'eje y CANTIDADES DE CARNE',
+                        max: datoMaximo,
+                    },
                 },
                 series: [
-                {
-                lineWidth: 2,
+                    {
+                        lineWidth: 2,
                         markerOptions: {style: 'dimaond'}, shadow: false,
-                },
+                    },
                 ]
-        }
-);
-        }
+            }
+    );
+}
 //function crearGrafica(cosPoints) {
 //    // Some simple loops to build up data arrays.
 //    var plot3 = $.jqplot('chart1', [cosPoints],

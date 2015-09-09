@@ -106,7 +106,7 @@ use mvc\session\sessionClass as session ?>
 
 
             <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'index') ?> "><?php // echo i18n::__('Report') ?></a></li>-->
+                <li><a href="<?php  echo routing::getInstance()->getUrlWeb('reporte', 'index') ?> "><?php  echo i18n::__('Report') ?></a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-user"> <?php echo session::getInstance()->getUserName() ?></i></a></li>
                 <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?> "><?php echo i18n::__('session') ?></a></li>
                 <li class="dropdown">

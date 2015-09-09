@@ -52,8 +52,8 @@ use mvc\session\sessionClass as session ?>
         <!--filtros-->
         <a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php echo i18n::__('deleteFilter') ?></a>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'insert') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('graphic') ?></a>
-       
+<!--        <a href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'insert') ?>" class="btn btn-info btn-xs"><?php echo i18n::__('graphic') ?></a>
+       -->
 
     </div>
 

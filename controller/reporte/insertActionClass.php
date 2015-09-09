@@ -19,11 +19,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
 
-//            if (session::getInstance()->hasAttribute('form_' . reporteTableClass::getNameTable())) {
-//                $this->reporte = session::getInstance()->getAttribute('form_' . reporteTableClass::getNameTable());
-//            }
-           //estos campo son para llamar las foraneas
-             /* fields para foraneas */
+
+            $id = array(
+            sacrificiovTableClass::ID =>  request::getInstance()->getRequest(sacrificiovTableClass::ID)
+            );
+//            print_r($id);
+//            exit();
+            session::getInstance()->setAttribute('idRegistro', $id);
+          
             $fields = array(
                 tipovTableClass::ID,
                 tipovTableClass::DESC_TIPOV
