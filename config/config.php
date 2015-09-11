@@ -36,7 +36,7 @@ config::setPathAbsolute('/var/www/html/proyectPorcicola-leyMar/');
 config::setUrlBase('http://www.porcicolatapasco.com/');
 //fin hosting
 
-//config::setUrlBase('http://localhost/proyectPorcicola-leyMar/web/');
+//config::setUrlBase('http://192.168.43.58/proyectPorcicola-leyMar/web/');
 
 config::setScope('prod'); // dev//prod
 
@@ -61,17 +61,17 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
 //host virtual
-config::setCookiePath('/www.porcicolatapasco.com/web/' . config::getIndexFile());
+//config::setCookiePath('/www.porcicolatapasco.com/web/' . config::getIndexFile());
 //fin hosting
 
 
-//config::setCookiePath('/proyectPorcicola-leyMar/web/' . config::getIndexFile());
+config::setCookiePath('/proyectPorcicola-leyMar/web/' . config::getIndexFile());
 
 //host virtual
 config::setCookieDomain('http://www.porcicolatapasco.com/');
 //fin hosting
 
-//config::setCookieDomain('http://localhost/');
+//config::setCookieDomain('http://192.168.43.58/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
 //config::setDefaultModule('default');

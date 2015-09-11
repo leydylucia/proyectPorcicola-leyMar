@@ -5,6 +5,7 @@ namespace mvc\model\table {
   use mvc\interfaces\tableInterface;
   use mvc\model\modelClass as model;
   use mvc\config\configClass as config;
+
 //  use mvc\session\sessionClass as session;
 
   /**
@@ -87,7 +88,7 @@ namespace mvc\model\table {
      * @return string
      */
     public static function getNameTable() {
-
+      
     }
 
     /**
@@ -120,7 +121,7 @@ namespace mvc\model\table {
         $line2 = substr($line2, 0, $newLeng) . ')';
 
         $sql = $sql . $line1 . $line2;
-        
+
 //        echo $sql;
 //        exit();
 
@@ -139,7 +140,7 @@ namespace mvc\model\table {
       }
     }
 
-   /**
+    /**
      * Método para leer todos los registros de una tabla
      *
      * @param string $table Nombre de la tabla
@@ -196,7 +197,28 @@ namespace mvc\model\table {
         if (is_array($where) === true) {
           foreach ($where as $field => $value) {
             if (is_array($value)) {
-              if ($flag === false) {
+              if ($field === 'OR') {
+                
+                
+                
+                
+                
+                foreach ($value as $key => $dato) {
+                  if ($flag === false) {
+                    $sql = $sql . ' WHERE ' . $key . ' = ' . ((is_numeric($dato)) ? $dato : "'$dato'");
+                    $flag = true;
+                  } else {
+                    $sql = $sql . ' OR ' . $key . ' = ' . ((is_numeric($dato)) ? $dato : "'$dato'");
+                  }
+                }
+                
+                
+                
+                
+                
+                
+                
+              } else if ($flag === false) {
                 $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
                 $flag = true;
               } else {
@@ -239,18 +261,17 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-        
-        
-    
-      
-//      print_r($sql);
+
+
+
+
+        print_r($sql . '<br>');
 //          exit();
         //SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE prueva% OR ubicacion LIKE %prueva% OR ubicacion LIKE %prueva ORDER BY lote.id ASC LIMIT 5 OFFSET 0
-       // SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE villa% OR ubicacion LIKE %villa% OR ubicacion LIKE %villa AND ORDER BY lote.id ASC LIMIT 5 OFFSET 0
-        
-          
-          return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-      
+        // SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE villa% OR ubicacion LIKE %villa% OR ubicacion LIKE %villa AND ORDER BY lote.id ASC LIMIT 5 OFFSET 0
+
+
+        return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {
         throw $exc;
       }

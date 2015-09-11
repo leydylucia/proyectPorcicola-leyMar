@@ -25,7 +25,7 @@ use mvc\request\requestClass as request ?>
 <?php $fecha = sacrificiovTableClass::CREATED_AT ?>
 
 <div class="container-fluid reporte">
-    <h1>venta de carne de cerdo</h1>
+    <h1>carne de cerdo</h1>
 
     <script>
 

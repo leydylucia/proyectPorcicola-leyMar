@@ -18,11 +18,11 @@ function crearGrafica(cosPoints, labels, datoMaximo) {
                 axes: {
                     pad: 1,
                     xaxis: {
-                        label: 'eje x TIPO DE CARNE',
+                        label: 'TIPO DE CARNE',
                         renderer: $.jqplot.CategoryAxisRenderer /*poner letras en eje x*/
                     },
                     yaxis: {
-                        label: 'eje y CANTIDADES DE CARNE',
+                        label: 'CANTIDADES DE CARNE',
                         max: datoMaximo,
                     },
                 },

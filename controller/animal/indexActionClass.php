@@ -18,6 +18,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
+        
+        session::getInstance()->deleteAttribute('dateReportSacrificio');/*desicion para el regresar en detalle hoja de vida*/
 
       /* filtros */
       $where = null;

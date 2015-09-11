@@ -106,7 +106,7 @@ use mvc\session\sessionClass as session ?>
         <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
 
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'report') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
-        <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('return') ?> </a>
+        <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb( (session::getInstance()->hasAttribute('dateReportSacrificio') === true) ? '@reporte_grafica' : '@animal_index' ) ?>"><?php echo i18n::__('return') ?> </a><!--desicion para regresar a hoja de vida o a el reporte-->
     </div>
 
     <!--filtro con reporte-->

@@ -30,37 +30,30 @@ use mvc\view\viewClass as view ?>
 
 <?php view::includeHandlerMessage() ?>
 
-<form   class="form-horizontal" id="filterForm" role="form"  action="<?php echo routing::getInstance()->getUrlWeb('reporte', 'create') ?>" method="POST" >
+<form   class="form-horizontal" id="filterForm" role="form"  action="<?php echo routing::getInstance()->getUrlWeb('reporte', 'grafica') ?>" method="POST" >
 
     <div class="container">
      
-<!--
-       
 
--->        
-<!--        <div class="form-group">
-        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('type_sale') ?>:</label>
-
-        <div class="col-xs-9">
-            <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputTipov') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$tipoVenta_v : '') ?>"><?php echo i18n::__('select_type_sale')?></option>
-                <?php foreach ($objTipoV as $tipoV): ?>
-                   <option <?php echo (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true)) === true and request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true)) == $tipoV->$tipoVenta) ? 'selected' : (isset($objSacrificioV[0]->$tipoVenta_v) === true and $objSacrificioV[0]->$tipoVenta_v== $tipoV->$tipoVenta) ? 'selected' : '' ?> value="<?php echo $tipoV->$tipoVenta ?>"><?php echo $tipoV->$desc_tipoV ?>
-                
-                    </option>
-                <?php endforeach; ?>
-            </select>
+          <div class="row j1" >
+          <label class="col-sm-2 control-label" for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('date') ?></label>
+          <div class="col-lg-5">
+            <input type="date" class="form-control" id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>">
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input type="date" class="form-control" id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2' ?>">
+          </div>
         </div>
-    </div>     
+        <br>
 
-
-    
--->         <div class="form-group">
+        
+        
+        <div class="form-group">
         <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
 
         <div class="col-xs-9">
-            <select class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>">
-                <option value="<?php echo (session::getInstance()->hasFlash('inputCerdo') or request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true))) ? request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) : ((isset($objSacrificioV[0])) ? $objSacrificioV[0]->$idCerdo_c : '') ?>"><?php  echo  i18n::__('select_pig')?></option>
+            <select class="cerdos" multiple class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>[]">
+                <option value="0"><?php  echo  i18n::__('select_pig')?></option>
                 <?php foreach ($objHojaVida as $hojaVida): ?>
                     <option <?php echo (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true and request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) == $hojaVida->$idCerdo) ? 'selected' : (isset($objSacrificioV[0]->$idCerdo_c) === true and $objSacrificioV[0]->$idCerdo_c== $hojaVida->$idCerdo) ? 'selected' : '' ?> value="<?php echo $hojaVida->$idCerdo ?>"><?php echo $hojaVida->$nombre ?>
                 <?php endforeach; ?>
