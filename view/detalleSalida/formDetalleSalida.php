@@ -64,6 +64,29 @@ use mvc\view\viewClass as view ?>
                 <?php endif ?>
             </div>
         </div>
+        
+          <?php if (session::getInstance()->hasError('inputUnidadMedida')): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUnidadMedida') ?><!--esta linea para actualizar demas formularios-->
+            </div>
+        <?php endif ?><!--se agrega antes de cada input-->
+
+
+        <div class="form-group">
+            <label for="<?php echo detallesalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('unit_measure') ?>:</label>
+
+            <div class="col-xs-9">
+                <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
+                    <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$unidad_medida_u : '') ?>"><?php echo i18n::__('select_unit_measure') ?></option>
+                    <?php foreach ($objUnidadMedida as $unidad): ?><!--validacion para traer dato  de foranea en editar-->
+                        <option <?php echo (request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) == $unidad->$unidad_medida) ? 'selected' : (isset($objDetalleSalida[0]->$unidad_medida_u) === true and $objDetalleSalida[0]->$unidad_medida_u == $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><?php echo $unidad->$desc_unidad ?></option><!--sostenimiento de dato en foranea-->
+                        <?php echo $unidad->$desc_unidad ?><!--validacion para traer dato  de foranea en editar-->
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
         <div class="form-group">
             <!--<label for="<?php // echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::ID, true)  ?>" class="control-label col-xs-3"><?php echo i18n::__('Hold_Out') ?>:</label>-->
 
@@ -101,35 +124,19 @@ use mvc\view\viewClass as view ?>
             </div>
         </div>
 
-        <?php if (session::getInstance()->hasError('inputUnidadMedida')): ?>
+       <?php if (session::getInstance()->hasError('inputLote')): ?><!--inicio de validaciones-->
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUnidadMedida') ?><!--esta linea para actualizar demas formularios-->
+                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputLote') ?><!--esta linea para actualizar demas formularios-->
             </div>
-        <?php endif ?><!--se agrega antes de cada input-->
-
-
-        <div class="form-group">
-            <label for="<?php echo detallesalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('unit_measure') ?>:</label>
-
-            <div class="col-xs-9">
-                <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, TRUE); ?>">
-                    <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$unidad_medida_u : '') ?>"><?php echo i18n::__('select_unit_measure') ?></option>
-                    <?php foreach ($objUnidadMedida as $unidad): ?><!--validacion para traer dato  de foranea en editar-->
-                        <option <?php echo (request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)) == $unidad->$unidad_medida) ? 'selected' : (isset($objDetalleSalida[0]->$unidad_medida_u) === true and $objDetalleSalida[0]->$unidad_medida_u == $unidad->$unidad_medida) ? 'selected' : '' ?> value="<?php echo $unidad->$unidad_medida ?>"><?php echo $unidad->$desc_unidad ?></option><!--sostenimiento de dato en foranea-->
-                        <?php echo $unidad->$desc_unidad ?><!--validacion para traer dato  de foranea en editar-->
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
+        <?php endif ?> 
 
         <div class="form-group">
             <label for="<?php echo detallesalidaTableClass::getNameField(detalleSalidaTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('batch') ?>:</label>
 
             <div class="col-xs-9">
                 <select class="form-control" id="<?php detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, TRUE) ?>" name="<?php echo detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, TRUE); ?>">
-                    <option value="<?php echo (session::getInstance()->hasFlash('inputUnidadMedida') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$lote_id_l : '') ?>"><?php echo i18n::__('select_batch') ?></option>
+                    <option value="<?php echo (session::getInstance()->hasFlash('inputLote') or request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true)) : ((isset($objDetalleSalida[0])) ? $objDetalleSalida[0]->$lote_id_l : '') ?>"><?php echo i18n::__('select_batch') ?></option>
                     <?php foreach ($objLote as $lote): ?><!--validacion para traer dato  de foranea en editar-->
                         <option <?php echo (request::getInstance()->hasPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::LOTE_ID, true)) == $lote->$lote_id) ? 'selected' : (isset($objDetalleSalida[0]->$lote_id_l) === true and $objDetalleSalida[0]->$lote_id_l == $lote->$lote_id) ? 'selected' : '' ?> value="<?php echo $lote->$lote_id ?>"><?php echo $lote->$desc_lote ?></option>sostenimiento de dato en foranea-->
                        

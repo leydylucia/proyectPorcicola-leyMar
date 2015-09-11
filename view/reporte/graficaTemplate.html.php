@@ -55,7 +55,7 @@ use mvc\request\requestClass as request ?>
 
                     <td><?php echo $cerdito['nombre'] ?></td>
                     <td><?php echo date('d-m-Y h:i:s a', strtotime($cerdito['fecha'])) ?></td>
-                    <td> <a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index', array('id' => $cerdito['id'])) ?>" class="btn btn-primary btn-xs">consultar en Hoja de Vida</a></td>
+                    <td> <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID,true) => $cerdito['id'])) ?>" class="btn btn-primary btn-xs">consultar en Hoja de Vida</a></td>
 <?php endforeach ?>
         </tbody>
 

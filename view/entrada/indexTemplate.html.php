@@ -10,6 +10,8 @@
 <?php $empleado_id_e = empleadoTableClass::ID?>
 <?php $nombre_em = empleadoTableClass::NOMBRE?>
 <?php $proveedor_id = entradaTableClass::PROVEEDOR_ID ?>
+<?php $proveedor_id_p = proveedorTableClass::ID ?>
+<?php $nombre = proveedorTableClass::NOMBRE ?>
 <?php $fecha = entradaTableClass::CREATED_AT ?>
 
 <!--titulo-->
@@ -38,17 +40,28 @@
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>">
               <div class="form-group">
-                <label for="filterempleado" class="col-sm-2 control-label"><?php echo i18n::__('employee') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[empleado]" name="filter[empleado]" placeholder="empleado">
-                </div>
-              </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
+                            <label for="filterEmpleado" class="col-sm-2 control-label"><?php echo i18n::__('empleyeed') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterEmpleado" name="filter[Empleado]">
+                                    <option value=""><?php echo i18n::__('empleyeed') ?></option>
+                                     <?php foreach ($objEmpleado as $trabajador): ?>
+                                        <option value="<?php echo $trabajador->$proveedor_id_p ?>"><?php echo $trabajador->$nombre ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div> 
+              
               <div class="form-group">
-                <label for="filterproveedor" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[proveedor]" name="filter[proveedor]" placeholder="proveedor">
-                </div>
-              </div>  
+                            <label for="filterProveedor" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="filterProveedor" name="filter[Proveedor]">
+                                    <option value=""><?php echo i18n::__('supplier') ?></option>
+                                     <?php foreach ($objProv as $prov): ?>
+                                        <option value="<?php echo $prov->$empleado_id_e ?>"><?php echo $prov->$nombre_em ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div> 
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>

@@ -44,10 +44,17 @@ namespace mvc\validator {
             } 
             
               //---------------------------------------------campo unidadMedida--------------------------------------------
-            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::INSUMO_ID, true)))) {
+            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::UNIDAD_MEDIDA_ID, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputUnidadMedida', true); /* input usuario biene del formulario */
                 session::getInstance()->setError('el campo unidad medida debe ser seleccionada no puede estar vacio', 'inputUnidadMedida');
+            } 
+            
+                //---------------------------------------------campo lote--------------------------------------------
+            if (self::notBlank(request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::LOTE_ID, true)))) {
+                $flag = true;
+                session::getInstance()->setFlash('inputLote', true); /* input usuario biene del formulario */
+                session::getInstance()->setError('el campo lote debe ser seleccionada no puede estar vacio', 'inputLote');
             } 
             
             $detalleSalidaId= request::getInstance()->getPost(\detalleSalidaTableClass::getNameField(\detalleSalidaTableClass::SALIDA_BODEGA_ID, true));;

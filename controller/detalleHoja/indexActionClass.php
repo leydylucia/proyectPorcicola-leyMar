@@ -32,16 +32,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter'); /* $filter si se encuentra en la vista?? */
 
-                if (isset($filter['Cantidad']) and $filter['Cantidad'] !== null and $filter['Cantidad'] !== '') {
-                    $where[detalleHojaTableClass::PESO_CERDO] = $filter['Cantidad'];
+                if (isset($filter['Peso']) and $filter['Peso'] !== null and $filter['Peso'] !== '') {
+                    $where[detalleHojaTableClass::PESO_CERDO] = $filter['Peso'];
                 }
-                if (isset($filter['Valor']) and $filter['Valor'] !== null and $filter['Valor'] !== '') {
-                    $where[detalleHojaTableClass::DOSIS] = $filter['Valor'];
-                }
-
-                if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
-                    $where[detalleHojaTableClass::INSUMO_ID] = $filter['Insumo'];
-                }
+               
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[detalleHojaTableClass::CREATED_AT] = array(
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),

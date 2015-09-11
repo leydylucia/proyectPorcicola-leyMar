@@ -1719,7 +1719,7 @@ detalleHoja_reporte:
 
 detalleHoja_deleteFilters:
   url:    /borrar_filtros_detalleHoja
-  param:  { module: detalleHoja, action: deleteFilters, format: html }
+  param:  { module: detalleHoja, action: deleteFiltersHoja, format: html }
   load:
     - model/base/hojaVidaBaseTableClass.php
     - model/hojaVidaTableClass.php
@@ -2497,7 +2497,8 @@ reporte_index:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
-    
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
 reporte_insert:
   url:    /reporte/insertar
   param:  { module: reporte, action: insert, format: html }
@@ -2512,6 +2513,8 @@ reporte_insert:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
     
 
 reporte_create:
@@ -2528,6 +2531,8 @@ reporte_create:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
     
 reporte_grafica:
   url:    /reporte/grafica
@@ -2543,6 +2548,8 @@ reporte_grafica:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
     
 reporte_pdf:
   url:    /reporte/pdf
@@ -2559,4 +2566,6 @@ reporte_pdf:
     - model/hojaVidaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php   
+    - model/base/detalleHojaBaseTableClass.php
+    - model/detalleHojaTableClass.php
       

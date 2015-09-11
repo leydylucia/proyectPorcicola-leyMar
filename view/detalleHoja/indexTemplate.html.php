@@ -98,7 +98,7 @@ use mvc\session\sessionClass as session ?>
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'insert', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $detalleHojaId)) ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
         <!--<a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php // echo i18n::__('deleteall') ?></a>-->
 
-        <!--<button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php // echo i18n::__('filter') ?></button>-->
+        <button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php  echo i18n::__('filter') ?></button>
 
 
         <!--filtros-->
@@ -194,49 +194,14 @@ use mvc\session\sessionClass as session ?>
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index') ?>">
-
-                        <?php if (session::getInstance()->hasError('inputDescInsumo')): ?><!--inicio de validaciones-->
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescInsumo') ?><!--esta linea para actualizar demas formularios-->
-                            </div>
-                        <?php endif ?> 
-
-                        <!--                        <div class="form-group">
-                                                    <label for="filterDesc_insumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="filter[desc_insumo]" name="filter[<?php echo insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true) ?>]" placeholder="desc_insumo">
-                                                    </div>
-                                                </div>    PONER CORCHER  EN NAME filter[insumo]-->
-
-
+                    <form class="form-horizontal" role="form" id="filterForm" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $detalleHojaId)) ?>">
 
                         <div class="form-group">
-                            <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
+                            <label for="filterPeso" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="filterTipo_insumo" name="filter[Tipo_insumo]">
-                                    <option value=""><?php echo i18n::__('type_product') ?></option>
-                                    <?php foreach ($objTipoin as $ciudad): ?>
-                                        <option value="<?php echo $ciudad->$idTipoInsumo ?>"><?php echo $ciudad->$desTipoInsumo ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <input type="text" class="form-control" id="filter[Peso]" name="filter[Peso]" placeholder="peso cerdo">
                             </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="filterTipo_insumo" name="filter[Proveedor]">
-                                    <option value=""><?php echo i18n::__('provisioner') ?></option>
-                                    <?php foreach ($objProv as $proveedor): ?>
-                                        <option value="<?php echo $proveedor->$idproveedor ?>"><?php echo $proveedor->$nomproveedor ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-
+                        </div> 
                         <div class="form-group">
                             <label for="filterFecha_fabricacion" class="col-sm-2 control-label"><?php echo i18n::__('Date_of_manufacture_or_purchase') ?></label>
                             <div class="col-sm-10">
@@ -293,7 +258,7 @@ use mvc\session\sessionClass as session ?>
                             <th><input type="checkbox" id="chkAll"></th>
                             <th><?php echo i18n::__('pig_weight') ?></th>
                             <th><?php echo i18n::__('unit_measure') ?></th>
-                            <th><?php echo i18n::__('Dose') ?></th>
+                            <th><?php echo i18n::__('Dose_Vaccination') ?></th>
                             <th><?php echo i18n::__('product') ?></th>
                             <th><?php echo i18n::__('type_product') ?></th>
                             <th><?php echo i18n::__('date') ?></th>

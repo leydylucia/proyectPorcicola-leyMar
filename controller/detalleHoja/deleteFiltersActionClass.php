@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;

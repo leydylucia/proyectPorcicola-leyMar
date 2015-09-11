@@ -178,7 +178,7 @@ dictionary:
   
     
     #vacunacion#
-    Dose:                    Dosis
+    Dose_Vaccination :       Dosis Vacunacion En ML
     Time:                    Hora
     Vaccination:             Vacunacion
     New_Vaccination:         Nueva Vacunacion

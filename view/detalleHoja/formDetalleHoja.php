@@ -101,7 +101,7 @@ use mvc\view\viewClass as view ?>
 
 
         <div class="form-group <?php echo (session::getInstance()->hasFlash(detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Dose') ?>:</label>
+            <label for="<?php echo detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('Dose_Vaccination') ?>:</label>
             <div class="col-xs-9">
                 <input id="<?php echo detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true) ?>" class="form-control" value="<?php echo request::getInstance()->hasPost(detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true)) ? request::getInstance()->getPost(detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true)) : ((isset($objDetalleHoja) == true) ? $objDetalleHoja[0]->$dosis : '') ?>" type="text" name="<?php echo detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true) ?>">
                 <?php if (session::getInstance()->hasFlash(detalleHojaTableClass::getNameField(detalleHojaTableClass::DOSIS, true)) === true): ?>
