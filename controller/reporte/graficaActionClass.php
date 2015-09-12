@@ -59,17 +59,27 @@ class graficaActionClass extends controllerClass implements controllerActionInte
                     sacrificiovTableClass::TIPO_VENTA_ID
                 );
                 
-                $where = array(
-                    'OR' => array(
-                        sacrificiovTableClass::ID_CERDO . '_1' => 1,/*tener en cuenta esta parte*/
-                        sacrificiovTableClass::ID_CERDO . '_2' => 5
-                    )
-                );
                 
-                echo 'hola<br>';/*esta parte es nueva*/
+                $strWhere = '(';
+                foreach ($cerdo as $idCerdo) {
+                  if ($idCerdo == 0) {
+                    $strWhere = null;
+                  } else {
+                    $strWhere .= sacrificiovTableClass::ID_CERDO . ' = ' . $idCerdo . ' OR ';
+                  }
+                }
+
+                if ($strWhere !== null) { 
+                  $strWhere = substr($strWhere, 0, -4) . ') ';
+                }
+                
+                /**
+                 * Hay que notar que lo que se hizo fue crear algo así como lo siguiente
+                 * (id_cerdo = 1 OR id_cerdo = 2 OR id_cerdo = 3)
+                 */
+                $where = array($strWhere);
+
                 $objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
-                exit();
-                
                 
                 $cosPoints = array();
                 $cerdos = array();
