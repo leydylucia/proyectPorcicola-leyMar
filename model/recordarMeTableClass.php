@@ -1,12 +1,12 @@
 <?php
 
 use mvc\model\modelClass as model;
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 
 /**
  * Description of recordarMeTableClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class recordarMeTableClass extends recordarMeBaseTableClass {
 

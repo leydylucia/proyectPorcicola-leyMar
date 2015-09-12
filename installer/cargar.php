@@ -2,7 +2,7 @@
 
 $config = "<?php
 
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
 config::setRowGrid($RowGrid);

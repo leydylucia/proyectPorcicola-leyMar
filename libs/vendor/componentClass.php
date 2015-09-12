@@ -5,7 +5,7 @@ namespace mvc\component {
   /**
    * Description of componentClass
    *
-   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class componentClass {
     private $view;

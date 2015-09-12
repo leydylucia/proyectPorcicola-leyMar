@@ -2,7 +2,7 @@
 
 use mvc\interfaces\detalleEntradalerActionInterface;
 use mvc\detalleEntradaler\detalleEntradalerClass;
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\request\requestClass as request;
 use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;

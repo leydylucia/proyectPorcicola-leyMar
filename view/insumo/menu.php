@@ -7,7 +7,7 @@ use mvc\routing\routingClass as routing ?>
 use mvc\view\viewClass as view ?> 
 <?php
 
-use mvc\config\configClass as config ?>
+use mvc\config\myConfigClass as config ?>
 <?php
 use mvc\request\requestClass as request ?>
 <?php

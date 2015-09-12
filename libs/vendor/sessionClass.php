@@ -7,7 +7,7 @@ namespace mvc\session {
   /**
    * Description of sessionClass
    *
-   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class sessionClass implements sessionInterface {
 
@@ -132,6 +132,10 @@ namespace mvc\session {
         unset($_SESSION['mvcError']);
       }
       return $answer;
+    }
+
+    public function deleteError($key) {
+      unset($_SESSION['mvcError'][$key]);
     }
 
     /**
@@ -277,6 +281,14 @@ namespace mvc\session {
       $_SESSION['mvcCache'][$cache] = $value;
     }
 
+    public function deleteCache($cache = null) {
+      if ($cache !== null) {
+        unset($_SESSION['mvcCache'][$cache]);
+      } else {
+        unset($_SESSION['mvcCache']);
+      }
+    }
+
     public function deleteAttribute($attribute) {
       unset($_SESSION[$attribute]);
     }
@@ -292,11 +304,11 @@ namespace mvc\session {
     public function hasDefaultCulture() {
       return $this->hasAttribute('mvcDefaultCulture');
     }
-    
+
     public function setDefaultCulture($default_culture) {
       $this->setAttribute('mvcDefaultCulture', $default_culture);
     }
-    
+
     public function getDefaultCulture() {
       return $this->getAttribute('mvcDefaultCulture');
     }

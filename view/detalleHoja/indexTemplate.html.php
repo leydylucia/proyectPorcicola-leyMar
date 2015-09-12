@@ -9,7 +9,7 @@ use mvc\view\viewClass as view ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
 <?php
-use mvc\config\configClass as confing ?>
+use mvc\config\myConfigClass as confing ?>
 <?php
 use mvc\request\requestClass as request ?>
 <?php

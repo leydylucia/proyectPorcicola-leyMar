@@ -4,7 +4,7 @@ namespace hook\log {
 
   use mvc\interfaces\hookInterface;
   use mvc\session\sessionClass as session;
-  use mvc\config\configClass as config;
+  use mvc\config\myConfigClass as config;
 
   /**
    * Description of logHookClass

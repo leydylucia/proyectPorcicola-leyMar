@@ -2,7 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?> 
 <?php use mvc\view\viewClass as view ?> 
 <?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\config\configClass as config ?>
+<?php use mvc\config\myConfigClass as config ?>
 <?php use mvc\request\requestClass as request ?>
 
 <?php $id = entradaTableClass::ID ?>

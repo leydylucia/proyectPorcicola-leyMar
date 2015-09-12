@@ -1,7 +1,7 @@
 <?php
 
 use mvc\model\modelClass as model;
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;

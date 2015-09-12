@@ -2,7 +2,7 @@
 
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\request\requestClass as request;
 use mvc\validator\detalleSalidaValidatorClass as validator;
 use mvc\routing\routingClass as routing;

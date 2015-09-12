@@ -8,7 +8,7 @@ namespace mvc\model {
   /**
    * Description of modelClass
    *
-   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class modelClass {
 

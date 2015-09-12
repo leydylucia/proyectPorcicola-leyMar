@@ -1,7 +1,7 @@
 <?php
 
 //use mvc\config\myConfigClass as config;
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
 config::setRowGrid(3);
@@ -38,7 +38,7 @@ config::setUrlBase('http://www.porcicolatapasco.com/');
 
 //config::setUrlBase('http://192.168.43.58/proyectPorcicola-leyMar/web/');
 
-config::setScope('prod'); // dev//prod
+config::setScope('dev'); // dev//prod
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');

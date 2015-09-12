@@ -5,13 +5,13 @@ namespace mvc\model\table {
   use mvc\interfaces\tableInterface;
   use mvc\model\modelClass as model;
   use mvc\config\configClass as config;
-
-//  use mvc\session\sessionClass as session;
+  use mvc\session\sessionClass as session;
+  use mvc\camelCase\camelCaseClass as camelCase;
 
   /**
    * Clase general para las tablas el cual define el CRUD
    *
-   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class tableBaseClass implements tableInterface {
 
@@ -122,9 +122,6 @@ namespace mvc\model\table {
 
         $sql = $sql . $line1 . $line2;
 
-//        echo $sql;
-//        exit();
-
         model::getInstance()->beginTransaction();
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
@@ -197,28 +194,7 @@ namespace mvc\model\table {
         if (is_array($where) === true) {
           foreach ($where as $field => $value) {
             if (is_array($value)) {
-              if ($field === 'OR') {
-                
-                
-                
-                
-                
-                foreach ($value as $key => $dato) {
-                  if ($flag === false) {
-                    $sql = $sql . ' WHERE ' . $key . ' = ' . ((is_numeric($dato)) ? $dato : "'$dato'");
-                    $flag = true;
-                  } else {
-                    $sql = $sql . ' OR ' . $key . ' = ' . ((is_numeric($dato)) ? $dato : "'$dato'");
-                  }
-                }
-                
-                
-                
-                
-                
-                
-                
-              } else if ($flag === false) {
+              if ($flag === false) {
                 $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
                 $flag = true;
               } else {

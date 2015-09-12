@@ -5,7 +5,7 @@ namespace mvc\camelCase {
   /**
    * Description of camelCaseClass
    *
-   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class camelCaseClass {
 
