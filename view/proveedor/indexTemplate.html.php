@@ -159,7 +159,7 @@
         <thead>
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
-            <th><?php echo i18n::__('name') ?></th>
+            <th><?php echo i18n::__('name_complet') ?></th>
 <!--            <th><?php echo i18n::__('lastname') ?></th>-->
             <th><?php echo i18n::__('direction') ?></th>
             <th><?php echo i18n::__('email') ?></th>

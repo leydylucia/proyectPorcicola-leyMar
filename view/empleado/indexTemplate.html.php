@@ -146,7 +146,7 @@
         <thead>
           <tr class="active">
             <th><input type="checkbox" id="chkAll"></th>
-            <th><?php echo i18n::__('name') ?></th>
+            <th><?php echo i18n::__('name_complet') ?></th>
             <th><?php echo i18n::__('name_user') ?></th>
             <th><?php echo i18n::__('type_id') ?></th>
             <th><?php echo i18n::__('document') ?></th>

@@ -40,7 +40,8 @@ dictionary:
     id_father:                    Id the Father
   
    #Proveedor#
-    name:                         Name
+    name:                          Name
+    name_complet:                 Name Complet
     lastname:                     Lastname 
     direction:                    Direction 
     email:                        Email

@@ -241,8 +241,8 @@ namespace mvc\model\table {
 
 
 
-//        print_r($sql . '<br>');
-//          exit();
+        // print_r($sql . '<br>');
+        // exit();
         //SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE prueva% OR ubicacion LIKE %prueva% OR ubicacion LIKE %prueva ORDER BY lote.id ASC LIMIT 5 OFFSET 0
         // SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE villa% OR ubicacion LIKE %villa% OR ubicacion LIKE %villa AND ORDER BY lote.id ASC LIMIT 5 OFFSET 0
 

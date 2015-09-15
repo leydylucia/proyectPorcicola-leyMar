@@ -18,14 +18,18 @@ class insertActionClass extends controllerClass implements controllerActionInter
 
     public function execute() {
         try {
+          
+
+          session::getInstance()->deleteAttribute('dateReportSacrificio');/*se agrega esta linea para limpiar la informacion de la grafica hacia el formulario*/
+          $id_reporte = request::getInstance()->getGet(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
 
 
-            $id = array(
-            sacrificiovTableClass::ID =>  request::getInstance()->getRequest(sacrificiovTableClass::ID)
-            );
-//            print_r($id);
-//            exit();
-            session::getInstance()->setAttribute('idRegistro', $id);
+//            $id = array(
+//            sacrificiovTableClass::ID =>  request::getInstance()->getRequest(sacrificiovTableClass::ID)
+//            );
+////            print_r($id);
+////            exit();
+//            session::getInstance()->setAttribute('idRegistro', $id);
           
             $fields = array(
                 tipovTableClass::ID,
@@ -44,10 +48,10 @@ class insertActionClass extends controllerClass implements controllerActionInter
                 hojaVidaTableClass::NOMBRE_CERDO
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-
+            $this->id_reporte = $id_reporte;
  
 
-
+//$this->id_reporte = request::getInstance()->getGet(reporteTableClass::getNameField(reporteTableClass::ID, true)); /* manda el id a la vista */
             $this->defineView('insert', 'reporte', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

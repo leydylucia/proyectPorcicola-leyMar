@@ -18,115 +18,156 @@ use mvc\i18n\i18nClass as i18n;
  * @category modulo sacrificio venta
  */
 class graficaActionClass extends controllerClass implements controllerActionInterface {
-    /* public function execute inicializa las returniables
-     * @return $valor=> valor
-     * @return $tipoVenta=> tipo venta
-     * @return $idCerdo=> id cerdo
-     * * todas estos datos se pasa en la varible @var $data
+  /* public function execute inicializa las returniables
+   * @return $valor=> valor
+   * @return $tipoVenta=> tipo venta
+   * @return $idCerdo=> id cerdo
+   * * todas estos datos se pasa en la varible @var $data
 
-     * ** */
+   * ** */
 
-    public function execute() {
-        try {
+  public function execute() {
+    try {
+      $id_reporte = request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
+      if (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === false
+              and ( request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === false
+              or request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === '')
+              and ( request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2') === false
+              or
+              request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2') === '')
+      ) {
+        $cerdo[0] = 0;
+      } else if (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === false and request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === true and request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2') === true) {
+        $fechaInicial = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1');
+        $fechaFin = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2');
+        $cerdo = null;
+      } else if (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === true
+              and ( request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === false
+              or
+              request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === ''
+              or
+              request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2') === false
+              or request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2') === '')
+      ) {
+        $fechaInicial = null;
+        $fechaFin = null;
+        $cerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
+      } else {
+        $cerdo = null;
+      }
 
-            $cerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
-            $fechaInicial = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1');
-            $fechaFin = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2');
+      $where = null; //session::getInstance()->getAttribute('graficaWhere');
 
-           $where = null; //session::getInstance()->getAttribute('graficaWhere');
-           
-//       print_r($where);
-//       exit();
+      if (session::getInstance()->hasAttribute('dateReportSacrificio') === true) {/* decision para el devolver en detalle hoja vida se guardo la informacion en session */
+        /* aqui se prepara para enviar los datos visualiza la parte inferior ahi se declaran */
+        $dato = session::getInstance()->getAttribute('dateReportSacrificio');
 
-            if (session::getInstance()->hasAttribute('dateReportSacrificio') === true) {/* decision para el devolver en detalle hoja vida se guardo la informacion en session */
+        $this->cosPoints = $dato['cosPoints'];
+        $this->labels = $dato['labels'];
+        $this->datoMaximo = $dato['datoMaximo'];
+        $this->cerdos = $dato['cerdos'];
+      } /* fin de llaves */ else {
 
-                $dato = session::getInstance()->getAttribute('dateReportSacrificio');
+        $fields = array(
+            sacrificiovTableClass::CANTIDAD,
+            sacrificiovTableClass::TIPO_VENTA_ID,
+            sacrificiovTableClass::ID_CERDO,
+            sacrificiovTableClass::CREATED_AT
+        );
+        $orderBy = array(
+            sacrificiovTableClass::ID_CERDO,
+            sacrificiovTableClass::TIPO_VENTA_ID
+        );
 
-                $this->cosPoints = $dato['cosPoints'];
-                $this->labels = $dato['labels'];
-                $this->datoMaximo = $dato['datoMaximo'];
-                $this->cerdos = $dato['cerdos'];
-            } /* fin de llaves */ else {
 
-                $fields = array(
-                    sacrificiovTableClass::CANTIDAD,
-                    sacrificiovTableClass::TIPO_VENTA_ID,
-                    sacrificiovTableClass::ID_CERDO,
-                    sacrificiovTableClass::CREATED_AT
-                );
-                $orderBy = array(
-                    sacrificiovTableClass::ID_CERDO,
-                    sacrificiovTableClass::TIPO_VENTA_ID
-                );
-                
-                
-                $strWhere = '(';
-                foreach ($cerdo as $idCerdo) {
-                  if ($idCerdo == 0) {
-                    $strWhere = null;
-                  } else {
-                    $strWhere .= sacrificiovTableClass::ID_CERDO . ' = ' . $idCerdo . ' OR ';
-                  }
-                }
+        $strWhere = null;
+        if ($cerdo !== null) {
+          $strWhere = '(';
+          foreach ($cerdo as $idCerdo) {
+            if ($idCerdo == 0) {
+              $strWhere = null;
+            } else {
+              $strWhere .= sacrificiovTableClass::ID_CERDO . ' = ' . $idCerdo . ' OR ';
+//                     ' AND ' . '(' . sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
+        }
 
-                if ($strWhere !== null) { 
-                  $strWhere = substr($strWhere, 0, -4) . ') ';
-                }
-                
-                /**
-                 * Hay que notar que lo que se hizo fue crear algo así como lo siguiente
-                 * (id_cerdo = 1 OR id_cerdo = 2 OR id_cerdo = 3)
-                 */
-                $where = array($strWhere);
+        if ($strWhere !== null) {
+          $strWhere = substr($strWhere, 0, -4) . ') ';
+        }
 
-                $objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
-                
-                $cosPoints = array();
-                $cerdos = array();
+        /**
+         * Hay que notar que lo que se hizo fue crear algo así como lo siguiente
+         * (id_cerdo = 1 OR id_cerdo = 2 OR id_cerdo = 3)
+         */
+        if ($strWhere === null) {
+          $where = $strWhere;
+        } else {
+          $where = array($strWhere);
+        }
 
-                /* $datoMaximo => es para dar el numero mas grande en grafico
-                  $labels =>
-                 * $cerdo => para sacar la informacion en grilla */
-                $x = -1;
-                $cerdo = null;
-                $labels = array();
-                $datoMaximo = 0;
-                foreach ($objSacrificioV as $objeto) {
-                    if ($objeto->id_cerdo != $cerdo) {
-                        $cerdo = $objeto->id_cerdo;
-                        $labels[] = hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo);
-                        $cerdos[$x] = array(
-                            'id' => $objeto->id_cerdo,
-                            'nombre' => hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo),
-                            'fecha' => $objeto->created_at
-                        );
-                        $x++;
-                    }
-                    if ($objeto->cantidad > $datoMaximo) {
-                        $datoMaximo = $objeto->cantidad + 1;
-                    }
-                    $cosPoints[$x][] = array(
-                        tipovTableClass::getNameTipov($objeto->tipo_venta_id),
-                        $objeto->cantidad
-                    );
+        if (isset($fechaInicial) and $fechaInicial !== null and isset($fechaFin) and $fechaFin !== null) {
+          $where = array(
+              sacrificiovTableClass::CREATED_AT => array(
+                  $fechaInicial, $fechaFin
+              )
+          );
+        }
 
-                    // $cosPoints[0][] = array(hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo). ' ' .tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);
+//                  print_r($where);
+//                   exit();
+
+        $objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+
+        $cosPoints = array();
+        $cerdos = array();
+
+        /* $datoMaximo => es para dar el numero mas grande en grafico
+          $labels =>
+         * $cerdo => para sacar la informacion en grilla */
+        $x = -1;
+        $cerdo = null;
+        $labels = array();
+        $datoMaximo = 0;
+        foreach ($objSacrificioV as $objeto) {
+          if ($objeto->id_cerdo != $cerdo) {
+            $cerdo = $objeto->id_cerdo;
+            $labels[] = hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo);
+            $cerdos[$x] = array(
+                'id' => $objeto->id_cerdo,
+                'nombre' => hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo),
+                'fecha' => $objeto->created_at
+            );
+            $x++;
+          }
+          if ($objeto->cantidad > $datoMaximo) {
+            $datoMaximo = $objeto->cantidad + 1;
+          }
+          $cosPoints[$x][] = array(
+              tipovTableClass::getNameTipov($objeto->tipo_venta_id),
+              $objeto->cantidad
+          );
+
+          // $cosPoints[0][] = array(hojaVidaTableClass::getNameHojaVida($objeto->id_cerdo). ' ' .tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);
 //        $cosPoints[1][] = array(tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);
 //       $cosPoints[2][] = array(tipovTableClass::getNameTipov($objeto->tipo_venta_id), $objeto->cantidad);/*hay que ser un ciclo*/
-                }
+        }
+        
 
-                $this->cosPoints = $cosPoints;
-                $this->labels = $labels;
-                $this->datoMaximo = $datoMaximo;
-                $this->cerdos = $cerdos;
-
-                session::getInstance()->setAttribute('dateReportSacrificio', array(
-                    'cosPoints' => $cosPoints,
-                    'labels' => $labels,
-                    'datoMaximo' => $datoMaximo,
-                    'cerdos' => $cerdos
-                ));
-            }
+        $this->cosPoints = $cosPoints;
+        $this->labels = $labels;
+        $this->datoMaximo = $datoMaximo;
+        $this->cerdos = $cerdos;
+        /* datos de session esta es la que nesecitas como se declaran */
+        session::getInstance()->setAttribute('dateReportSacrificio', array(
+            'cosPoints' => $cosPoints,
+            'labels' => $labels,
+            'datoMaximo' => $datoMaximo,
+            'cerdos' => $cerdos,
+            'where' => $where
+        ));
+      }
 
 
 
@@ -161,14 +202,14 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 ////                rand(4, 10),
 ////            );
 //
-            //$this->objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, null);
+      //$this->objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, null);
+      $this->id_reporte = $id_reporte;
+      $this->defineView('grafica', 'reporte', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
+    } catch (PDOException $exc) {
 
-            $this->defineView('grafica', 'reporte', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
-        } catch (PDOException $exc) {
-
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

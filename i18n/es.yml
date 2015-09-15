@@ -41,6 +41,7 @@ dictionary:
     father:                       Padre
     #Proveedor#
     name:                         Nombre
+    name_complet:                 Nombre Completo
     lastname:                     Apellido
     direction:                    Direccion 
     

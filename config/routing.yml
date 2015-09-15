@@ -1,9 +1,6 @@
 homepage:
   url:    /
-  param:  { module: default, action: index, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
+  param:  { module: paginaPrincipal, action: index, format: html }
 
 #traduccion:
 #  url:    /traducion
