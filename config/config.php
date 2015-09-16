@@ -61,7 +61,7 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
 //host virtual
-//config::setCookiePath('/www.porcicolatapasco.com/web/' . config::getIndexFile());
+config::setCookiePath('/www.porcicolatapasco.com/web/' . config::getIndexFile());
 //fin hosting
 
 

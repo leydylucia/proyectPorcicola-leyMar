@@ -19,20 +19,21 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         try {
 
             $fields = array(
-                detalleEntradaTableClass::ID,
-                detalleEntradaTableClass::CANTIDAD,
-                detalleEntradaTableClass::VALOR,
-                detalleEntradaTableClass::ENTRADA_BODEGA_ID,
-                detalleEntradaTableClass::INSUMO_ID,
-                detalleEntradaTableClass::UNIDAD_MEDIDA_ID,
-                detalleEntradaTableClass::CREATED_AT,
+                detalleHojaTableClass::ID,
+                detalleHojaTableClass::PESO_CERDO,
+                detalleHojaTableClass::UNIDAD_MEDIDA_ID,
+                detalleHojaTableClass::DOSIS,
+                detalleHojaTableClass::INSUMO_ID,
+                detalleHojaTableClass::TIPO_INSUMO_ID,
+                detalleHojaTableClass::CREATED_AT,
+         
             );
             $where = array(
-                detalleEntradaTableClass::ID => request::getInstance()->getRequest(detalleEntradaTableClass::ID)
+                detalleHojaTableClass::ID => request::getInstance()->getRequest(detalleHojaTableClass::ID)
             );
-            $this->objDetalle = detalleEntradaTableClass::getAll($fields, true, null, null, null, nULL, $where);
-            $this->detalleEntradaId = request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true));
-            $this->defineView('ver', 'detalle', session::getInstance()->getFormatOutput());
+            $this->objDetalleHoja = detalleHojaTableClass::getAll($fields, true, null, null, null, nULL, $where);
+            $this->detalleHojaId = request::getInstance()->getGet(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true));
+            $this->defineView('ver', 'detalleHoja', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

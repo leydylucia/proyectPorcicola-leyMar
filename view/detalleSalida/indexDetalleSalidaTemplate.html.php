@@ -98,25 +98,7 @@ use mvc\request\requestClass as request ?>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" id="report" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('detalleSalida', 'reportDetalleSalida') ?>">
 
-                        <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
-                            </div>
-                        </div> 
 
-
-                        <div class="form-group">
-                            <label for="filterSalidaBodega" class="col-sm-2 control-label"><?php echo i18n::__('Hold_Out') ?></label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="filterSalidaBodega" name="filter[SalidaBodega]">
-                                    <option value=""><?php echo i18n::__('Hold_Out') ?></option>
-                                    <?php foreach ($objSalidaBodega as $salida): ?>
-                                        <option value="<?php echo $salida->$idSalida_bodega ?>"><?php echo $salida->$idSalida_bodega ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
@@ -160,25 +142,7 @@ use mvc\request\requestClass as request ?>
                         <?php endif; ?>
 
 
-                        <div class="form-group">
-                            <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cant') ?></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="filter[Cantidad]" name="filter[Cantidad]" placeholder="cantidad">
-                            </div>
-                        </div> 
-
-
-                        <!--                        <div class="form-group">
-                                                    <label for="filterSalidaBodega" class="col-sm-2 control-label"><?php echo i18n::__('Hold_Out') ?></label>
-                                                    <div class="col-sm-10">
-                                                        <select class="form-control" id="filterSalidaBodega" name="filter[SalidaBodega]">
-                                                            <option value=""><?php // echo i18n::__('Hold_Out')  ?></option>
-                        <?php // foreach ($objSalidaBodega as $salida): ?>
-                                                                    <option value="<?php // echo $salida->$idSalida_bodega  ?>"><?php // echo $salida->$idSalida_bodega  ?></option>
-                        <?php // endforeach; ?>
-                                                        </select>
-                                                    </div>
-                                                </div>-->
+                       
 
                         <div class="form-group">
                             <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>

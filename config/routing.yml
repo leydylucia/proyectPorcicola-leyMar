@@ -1676,7 +1676,7 @@ detalleHoja_deleteSelect:
     
     
 detalleHoja_ver:
-  url:    /detalleHoja/ver
+  url:    /detalleHoja/ver_detalleHoja
   param:  { module: detalleHoja, action: ver, format: html }
   load:
     - model/base/hojaVidaBaseTableClass.php
@@ -1714,20 +1714,20 @@ detalleHoja_reporte:
     - model/generoTableClass.php
 
 
-detalleHoja_deleteFilters:
-  url:    /borrar_filtros_detalleHoja
-  param:  { module: detalleHoja, action: deleteFiltersHoja, format: html }
-  load:
-    - model/base/hojaVidaBaseTableClass.php
-    - model/hojaVidaTableClass.php
-    - model/base/detalleHojaBaseTableClass.php
-    - model/detalleHojaTableClass.php
-    - model/base/tipoInsumoBaseTableClass.php
-    - model/tipoInsumoTableClass.php
-    - model/base/unidadMedidaBaseTableClass.php
-    - model/unidadMedidaTableClass.php
-    - model/base/insumoBaseTableClass.php
-    - model/insumoTableClass.php   
+#detalleHoja_deleteFilters:
+#  url:    /borrar_filtros_detalleHoja
+#  param:  { module: detalleHoja, action: deleteFiltersHoja, format: html }
+#  load:
+#    - model/base/hojaVidaBaseTableClass.php
+#    - model/hojaVidaTableClass.php
+#    - model/base/detalleHojaBaseTableClass.php
+#    - model/detalleHojaTableClass.php
+#    - model/base/tipoInsumoBaseTableClass.php
+#    - model/tipoInsumoTableClass.php
+#    - model/base/unidadMedidaBaseTableClass.php
+#    - model/unidadMedidaTableClass.php
+#    - model/base/insumoBaseTableClass.php
+#    - model/insumoTableClass.php   
     
 ##--------------------------Entrada Bodega----------------------------##
 entrada_index:
@@ -2020,6 +2020,14 @@ detalle_ver:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
 
+detalle_deleteFilters:
+  url:    /borrar_filtros_detalle
+  param:  { module: detalle, action: deleteFilters, format: html }
+  load:
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
 
 detalle_reporte:
   url:    /detalle/reporte
@@ -2512,6 +2520,7 @@ reporte_insert:
     - model/unidadMedidaTableClass.php
     - model/base/detalleHojaBaseTableClass.php
     - model/detalleHojaTableClass.php
+    - libs/validator/reporte/reporteValidatorClass.php
     
 
 reporte_create:
@@ -2547,6 +2556,7 @@ reporte_grafica:
     - model/unidadMedidaTableClass.php
     - model/base/detalleHojaBaseTableClass.php
     - model/detalleHojaTableClass.php
+    - libs/validator/reporte/reporteValidatorClass.php
     
 reporte_pdf:
   url:    /reporte/pdf

@@ -50,7 +50,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
         hojaVidaTableClass::update($ids, $data);
 
-        session::getInstance()->setSuccess('Registro Exitoso');
+        session::getInstance()->setSuccess('El registro se modifico con exito');
 
         routing::getInstance()->redirect('animal', 'index');
       } else {

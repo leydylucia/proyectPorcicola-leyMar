@@ -28,31 +28,46 @@ use mvc\view\viewClass as view ?>
 
 
 <?php view::includeHandlerMessage() ?>
-<div class="container">
-<form   class="form-horizontal" id="filterForm" role="form"  action="<?php echo routing::getInstance()->getUrlWeb('reporte', 'grafica') ?>" method="POST" >
 
-    <div class="container">
+<form   class="form-horizontal" id="filterForm" role="form"  action="<?php echo routing::getInstance()->getUrlWeb('reporte', 'grafica') ?>" method="POST" >
+<div class="container">
+    
      
-      <input type="hidden" name="<?php echo reporteTableClass::getNameField(reporteTableClass::ID, TRUE)?>" value="<?php echo $id_reporte?>">
-          <div class="row j1" >
+      <!--<input type="hidden" name="<?php // echo reporteTableClass::getNameField(reporteTableClass::ID, TRUE)?>" value="<?php // echo $id_reporte?>">-->
+          
+  <?php if(session::getInstance()->hasError('inputFecha1')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha1') ?>
+    </div>
+    <?php endif ?>
+  
+  <div class="form-group" >
           <label class="col-sm-2 control-label" for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('date') ?></label>
           <div class="col-lg-5">
             <input type="date" class="form-control" id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1' ?>">
           </div>
            </div>
-       <br>
-       <div class="row j1" >
+  
+   <?php if(session::getInstance()->hasError('inputFecha2')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha2') ?>
+    </div>
+    <?php endif ?>
+       
+       <div class="form-group" >
           <label class="col-sm-2 control-label" for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2' ?>" >Fecha Fin</label>
           <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
             <input type="date" class="form-control" id="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2' ?>">
           </div>
         </div>
-        <br>
+        
 
         
         
-        <div class="form-group">
-        <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
+        <div class="form-group" id="centrar">
+          <label for="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID, true) ?>" class="control-label col-xs-3"><?php echo i18n::__('pig') ?>:</label>
 
         <div class="col-xs-9">
             <select class="cerdos" multiple class="form-control" id="<?php sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE) ?>" name="<?php echo sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, TRUE); ?>[]">
@@ -73,7 +88,7 @@ use mvc\view\viewClass as view ?>
         <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'index') ?>"><?php echo i18n::__('return') ?> </a></button>
 
 
-   
+    </div>
 
 </form>
- </div>
+

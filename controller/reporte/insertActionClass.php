@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\reporteValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -21,7 +22,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
           
 
           session::getInstance()->deleteAttribute('dateReportSacrificio');/*se agrega esta linea para limpiar la informacion de la grafica hacia el formulario*/
-          $id_reporte = request::getInstance()->getGet(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
+//          $id_reporte = request::getInstance()->getGet(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
 
 
 //            $id = array(
@@ -30,7 +31,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
 ////            print_r($id);
 ////            exit();
 //            session::getInstance()->setAttribute('idRegistro', $id);
-          
+          validator::validateInsert();
             $fields = array(
                 tipovTableClass::ID,
                 tipovTableClass::DESC_TIPOV
@@ -48,7 +49,8 @@ class insertActionClass extends controllerClass implements controllerActionInter
                 hojaVidaTableClass::NOMBRE_CERDO
             );
             $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-            $this->id_reporte = $id_reporte;
+//            $this->id_reporte = $id_reporte;
+           
  
 
 //$this->id_reporte = request::getInstance()->getGet(reporteTableClass::getNameField(reporteTableClass::ID, true)); /* manda el id a la vista */

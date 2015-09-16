@@ -22,8 +22,8 @@ use mvc\request\requestClass as request ?>
 <?php $cerdo = hojaVidaTableClass::ID ?>
 <?php $nombre = hojaVidaTableClass::NOMBRE_CERDO ?>
 <?php $fecha = sacrificiovTableClass::CREATED_AT ?>
-<?php echo $id_reporte ?>
-<?php $ids = reporteTableClass:: ID?>
+<?php // echo $id_reporte ?>
+<?php // $ids = reporteTableClass:: ID?>
 <div class="container-fluid reporte">
     <h1>carne de cerdo</h1>
 
@@ -39,7 +39,7 @@ use mvc\request\requestClass as request ?>
     <a target="_NEW" class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'report') ?>" >Importar pdf</a>
     <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert') ?>"><?php // echo i18n::__('return') ?> </a></button>-->
   
-    <button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'insert',array(reporteTableClass::getNameField(reporteTableClass::ID, TRUE) => $id_reporte)) ?>"><?php echo i18n::__('return') ?> </a></button>
+    <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert',array(reporteTableClass::getNameField(reporteTableClass::ID, TRUE) => $id_reporte)) ?>"><?php echo i18n::__('return') ?> </a></button>-->
 
     <table class="table table-bordered table-striped table-condensed mitabla">
         <thead>

@@ -81,8 +81,8 @@ use mvc\session\sessionClass as session ?>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('animal', 'index') ?>"><?php echo i18n::__('curriculum vitae') ?></a></li>
                     <li><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexTipov') ?>"><?php echo i18n::__('type_sale') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('sacrificioVenta', 'indexSacrificioVenta') ?>"><?php echo i18n::__('sacrifice') ?></a></li>
-                    <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>"><?php echo i18n::__('Vaccination') ?></a></li>
-                    <li><a  href="<?php echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php echo i18n::__('weight control') ?></a></li>
+<!--                    <li class="dropdown"><a href="<?php // echo routing::getInstance()->getUrlWeb('vacunacion', 'indexVacunacion') ?>"><?php // echo i18n::__('Vaccination') ?></a></li>
+                    <li><a  href="<?php // echo routing::getInstance()->getUrlWeb('control', 'index') ?>"><?php // echo i18n::__('weight control') ?></a></li>-->
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('parto', 'index') ?>"><?php echo i18n::__('delivery') ?></a></li>
 
                     

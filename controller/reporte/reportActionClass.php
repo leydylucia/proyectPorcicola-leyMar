@@ -9,20 +9,14 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @author Leydy Lucia Castillo Mosquera
  * @date: fecha de inicio del desarrollo.
- * @category: modulo de defautl.
+ * @category: modulo de Reporte.
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
   /**
-   * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
-   * @date: fecha de inicio del desarrollo.
-   * @return   usuarioTableClass::ID retorna (integer),
-    usuarioTableClass::USUARIO retorna  (string),
-    usuarioTableClass::CREATED_AT retorna  (timestamp),
-    usuarioTableClass::ACTIVED retorna  (integer),
-   * estos datos retornan en la variable $fields
+  
    */
   public function execute() {
     try {

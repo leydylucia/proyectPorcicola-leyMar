@@ -98,14 +98,14 @@ use mvc\session\sessionClass as session ?>
         <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'insert', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $detalleHojaId)) ?>" class="btn btn-success btn-xs"><?php echo i18n::__('new') ?></a>
         <!--<a href="javascrip:eliminarMasivo()" class="btn btn-danger btn-xs " data-target="#myModalDeleteMasivo" data-toggle="modal"id="btnDeleteMasivo" ><?php // echo i18n::__('deleteall') ?></a>-->
 
-        <button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php  echo i18n::__('filter') ?></button>
+        <!--<button type="button" class="btn btn-primary btn-xs" id="btnFilter"data-toggle="modal" data-target="#myModalFilters" ><?php //  echo i18n::__('filter') ?></button>-->
 
+<!--
+        filtros
+        <a href="<?php // echo routing::getInstance()->getUrlWeb('detalleHoja', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php // echo i18n::__('deleteFilter') ?></a>
+        <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php // echo i18n::__('report') ?></button>-->
 
-        <!--filtros-->
-        <!--<a href="<?php // echo routing::getInstance()->getUrlWeb('detalleHoja', 'deleteFilters') ?>" class="btn btn-default btn-xs " id="btndeletefilter" ><?php // echo i18n::__('deleteFilter') ?></a>-->
-        <button type="button" class="btn btn-warning btn-xs"class="" id="btnFilter"data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('report') ?></button>
-
-        <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'report') ?>"class="btn btn-info btn-xs"><?php echo i18n::__('printOut') ?></a>
+        <!--<a href="<?php // echo routing::getInstance()->getUrlWeb('detalleHoja', 'report') ?>"class="btn btn-info btn-xs"><?php // echo i18n::__('printOut') ?></a>-->
         <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb( (session::getInstance()->hasAttribute('dateReportSacrificio') === true) ? '@reporte_grafica' : '@animal_index' ) ?>"><?php echo i18n::__('return') ?> </a><!--desicion para regresar a hoja de vida o a el reporte-->
     </div>
 
@@ -277,7 +277,7 @@ use mvc\session\sessionClass as session ?>
                                 <td><?php echo tipoInsumoTableClass::getNameTipoin($detalle->$tipoInsumo) ?></td>
                                 <td><?php echo date('d-m-Y h:i:s a', strtotime($detalle->$fecha)) ?></td>
                                 <td>
-                                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'ver', array(detalleHojaTableClass::ID => $detalle->$id)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
+                                    <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'ver',array(detalleHojaTableClass::ID => $detalle->$id, detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $detalleHojaId)) ?>"class="btn btn-warning btn-xs"><?php echo i18n::__('see') ?></a>
                                     <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'edit', array(detalleHojaTableClass::ID => $detalle->$id, detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $detalleHojaId)) ?>" class="btn btn-primary btn-xs"><?php echo i18n::__('publish') ?></a>
 
                                     <!--eliminado individual con ajax-->

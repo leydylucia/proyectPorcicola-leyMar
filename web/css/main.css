@@ -103,6 +103,10 @@ h2{
 
 .cerdos {
     padding: 10px;
-    width: 100%;
+    width: 85%;
     height: 120px !important;
+}
+
+#centrar{
+  margin-right:390px;
 }

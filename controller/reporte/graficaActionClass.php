@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\reporteValidatorClass as validator;
 
 //use hook\log\logHookClass as log; /* linea de la bitacora */
 
@@ -28,7 +29,11 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
   public function execute() {
     try {
-      $id_reporte = request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
+      validator::validateInsert();
+      
+//      $id_reporte = request::getInstance()->getPost(reporteTableClass::getNameField(reporteTableClass::ID, TRUE));
+      
+      /*Esta desicion corresponde  a escojer entre fecha o escojer cerdo*/
       if (request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true)) === false
               and ( request::getInstance()->hasPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === false
               or request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1') === '')
@@ -59,7 +64,8 @@ class graficaActionClass extends controllerClass implements controllerActionInte
       $where = null; //session::getInstance()->getAttribute('graficaWhere');
 
       if (session::getInstance()->hasAttribute('dateReportSacrificio') === true) {/* decision para el devolver en detalle hoja vida se guardo la informacion en session */
-        /* aqui se prepara para enviar los datos visualiza la parte inferior ahi se declaran */
+        /* $dato=> 'dateReportSacrificio' se enviara a la vista en el
+         * boton volver en detalleHoja para enviar los datos de session  */
         $dato = session::getInstance()->getAttribute('dateReportSacrificio');
 
         $this->cosPoints = $dato['cosPoints'];
@@ -79,7 +85,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
             sacrificiovTableClass::TIPO_VENTA_ID
         );
 
-
+/*$strWhere=> aqui se hace una desicion para escojer entre un cerdo o varios*/
         $strWhere = null;
         if ($cerdo !== null) {
           $strWhere = '(';
@@ -88,7 +94,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
               $strWhere = null;
             } else {
               $strWhere .= sacrificiovTableClass::ID_CERDO . ' = ' . $idCerdo . ' OR ';
-//                     ' AND ' . '(' . sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+//                     
             }
           }
         }
@@ -203,7 +209,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 ////            );
 //
       //$this->objSacrificioV = sacrificiovTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, null);
-      $this->id_reporte = $id_reporte;
+//      $this->id_reporte = $id_reporte;
       $this->defineView('grafica', 'reporte', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
     } catch (PDOException $exc) {
 
