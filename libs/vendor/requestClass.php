@@ -44,6 +44,7 @@ namespace mvc\request {
      */
     public static function getInstance() {
       if (!isset(self::$instance)) {
+//        self::$instance = new self($_POST, $_GET, $_REQUEST, $_COOKIE, $_FILES, $_SERVER, $_ENV);
         self::$instance = new self(\filter_input_array(\INPUT_POST), \filter_input_array(\INPUT_GET), $_REQUEST, \filter_input_array(\INPUT_COOKIE), $_FILES, \filter_input_array(\INPUT_SERVER), \filter_input_array(\INPUT_ENV));
       }
       return self::$instance;

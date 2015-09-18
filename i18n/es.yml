@@ -240,6 +240,8 @@ dictionary:
     Report:                Reporte
     description:           Descripcion
     graphic:               Grafica
+    date_sacrifice:        Fecha De Sacrificio
+    date_end:              Fecha Fin
     
     detail_curriculum_vitae: Detalle Hoja De Vida
     new_detaill_curriculum_vitae: Nuevo Detalle Hoja De Vida

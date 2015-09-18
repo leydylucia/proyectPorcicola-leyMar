@@ -75,7 +75,7 @@
                 <label for="filterciudad" class="col-sm-2 control-label"><?php echo i18n::__('name_city') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filterciudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('city') ?></option>
+                    <option value=""><?php echo i18n::__('select_city') ?></option>
                     <?php foreach ($objCiudad as $ciudad): ?>
                       <option value="<?php echo $ciudad->$ciudad_id_p ?>"><?php echo $ciudad->$nom_ciudad ?></option>
 <?php endforeach; ?>

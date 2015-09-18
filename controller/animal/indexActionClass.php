@@ -18,8 +18,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
-        
-        session::getInstance()->deleteAttribute('dateReportSacrificio');/*desicion para el regresar en detalle hoja de vida*/
+
+      session::getInstance()->deleteAttribute('dateReportSacrificio'); /* desicion para el regresar en detalle hoja de vida */
 
       /* filtros */
       $where = null;
@@ -28,6 +28,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
         if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
           $where[hojaVIdaTableClass::GENERO_ID] = $filter['genero'];
+        }
+        
+        if (isset($filter['Estado']) and $filter['Estado'] !== null and $filter['Estado'] !== '') {
+          $where[hojaVIdaTableClass::ESTADO_ID] = $filter['Estado'];
         }
 //        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {
 //          $where[hojaVidaTableClass::ID_MADRE] = $filter['madre'];
@@ -78,7 +82,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
        * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
        * config::getRowGrid()=> va con el paginado y hace una funcion
        * @var $this->objInsumo para enviar los datos a la vista      */
-      
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $fields = array(
           generoTableClass::ID,
@@ -89,9 +92,19 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       );
       $this->objGenero = generoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
+      $fields = array(
+          estadoTableClass::ID,
+          estadoTableClass::DESC_ESTADO
+      );
+      $orderBy = array(
+          estadoTableClass::DESC_ESTADO
+      );
+      $this->objEstado = estadoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
       $this->defineView('index', 'animal', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       routing::getInstance()->redirect('animal', 'index');
     }
   }
+
 }

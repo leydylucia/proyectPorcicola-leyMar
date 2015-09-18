@@ -84,7 +84,7 @@ use mvc\request\requestClass as request ?>
                             <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Tipo_insumo]">
-                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                    <option value=""><?php echo i18n::__('select_type_product') ?></option>
                                     <?php foreach ($objTipoin as $ciudad): ?>
                                         <option value="<?php echo $ciudad->$idTipoInsumo ?>"><?php echo $ciudad->$desTipoInsumo ?></option>
                                     <?php endforeach; ?>
@@ -97,7 +97,7 @@ use mvc\request\requestClass as request ?>
                             <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Proveedor]">
-                                    <option value=""><?php echo i18n::__('provisioner') ?></option>
+                                    <option value=""><?php echo i18n::__('select_provider') ?></option>
                                     <?php foreach ($objProv as $proveedor): ?>
                                         <option value="<?php echo $proveedor->$idproveedor ?>"><?php echo $proveedor->$nomproveedor ?></option>
                                     <?php endforeach; ?>
@@ -167,7 +167,7 @@ use mvc\request\requestClass as request ?>
                             <label for="filterTipo_insumo" class="col-sm-2 control-label"><?php echo i18n::__('type_product') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Tipo_insumo]">
-                                    <option value=""><?php echo i18n::__('type_product') ?></option>
+                                    <option value=""><?php echo i18n::__('select_type_product') ?></option>
                                     <?php foreach ($objTipoin as $ciudad): ?>
                                         <option value="<?php echo $ciudad->$idTipoInsumo ?>"><?php echo $ciudad->$desTipoInsumo ?></option>
                                     <?php endforeach; ?>
@@ -180,7 +180,7 @@ use mvc\request\requestClass as request ?>
                             <label for="filterProveedo" class="col-sm-2 control-label"><?php echo i18n::__('provisioner') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_insumo" name="filter[Proveedor]">
-                                    <option value=""><?php echo i18n::__('provisioner') ?></option>
+                                    <option value=""><?php echo i18n::__('select_provider') ?></option>
                                     <?php foreach ($objProv as $proveedor): ?>
                                         <option value="<?php echo $proveedor->$idproveedor ?>"><?php echo $proveedor->$nomproveedor ?></option>
                                     <?php endforeach; ?>

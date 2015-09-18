@@ -118,7 +118,7 @@ use mvc\request\requestClass as request ?>
               <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
               <div class="col-sm-10">
                 <select class="form-control" id="filterInsumo" name="filter[Insumo]">
-                  <option value=""><?php echo i18n::__('describe_product') ?></option>
+                  <option value=""><?php echo i18n::__('select_product') ?></option>
                   <?php foreach ($objInsumo as $producto): ?>
                     <option value="<?php echo $producto->$insumo_i ?>"><?php echo $producto->$descInsumo ?></option>
                   <?php endforeach; ?>
@@ -176,7 +176,7 @@ use mvc\request\requestClass as request ?>
               <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('describe_product') ?></label>
               <div class="col-sm-10">
                 <select class="form-control" id="filterInsumo" name="filter[Insumo]">
-                  <option value=""><?php echo i18n::__('describe_product') ?></option>
+                  <option value=""><?php echo i18n::__('select_product') ?></option>
                   <?php foreach ($objInsumo as $producto): ?>
                     <option value="<?php echo $producto->$insumo_i ?>"><?php echo $producto->$descInsumo ?></option>
                   <?php endforeach; ?>

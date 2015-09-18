@@ -46,7 +46,7 @@ use mvc\request\requestClass as request ?>
             <tr class="active">
 
                 <th><?php echo i18n::__('pig') ?></th>
-                <th><?php echo i18n::__('date') ?></th>
+                <th><?php echo i18n::__('date_sacrifice') ?></th>
                 <th><?php echo i18n::__('action') ?></th>
 
 

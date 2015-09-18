@@ -57,7 +57,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <label for="filterEmpleado" class="col-sm-2 control-label"><?php echo i18n::__('empleyeed') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterEmpleado" name="filter[Empleado]">
-                                    <option value=""><?php echo i18n::__('empleyeed') ?></option>
+                                    <option value=""><?php echo i18n::__('select_employee') ?></option>
                                      <?php foreach ($objEmpleado as $trabajador): ?>
                                         <option value="<?php echo $trabajador->$idEmpleado ?>"><?php echo $trabajador->$nombre ?></option>
                                      <?php endforeach; ?>

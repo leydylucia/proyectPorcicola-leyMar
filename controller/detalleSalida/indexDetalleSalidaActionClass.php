@@ -43,6 +43,10 @@ class indexDetalleSalidaActionClass extends controllerClass implements controlle
                 if (isset($filter['Insumo']) and $filter['Insumo'] !== null and $filter['Insumo'] !== '') {
                     $where[detalleSalidaTableClass::INSUMO_ID] = $filter['Insumo'];
                 }
+                if (isset($filter['Lote']) and $filter['Lote'] !== null and $filter['Lote'] !== '') {
+                    $where[detalleSalidaTableClass::LOTE_ID] = $filter['Lote'];
+                }
+                
                 if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
                     $where[insumoTableClass::CREATED_AT] = array(
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),

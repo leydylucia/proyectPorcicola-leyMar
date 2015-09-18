@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.4
 -- Dumped by pg_dump version 9.3.4
--- Started on 2015-09-15 15:46:18 COT
+-- Started on 2015-09-17 18:51:12 COT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1426,6 +1426,55 @@ INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fech
 INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (97, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-14 14:06:17');
 INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (98, 1, 'insertar', 'proveedor', NULL, NULL, '2015-09-14 15:35:22');
 INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (99, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 14:29:35');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (100, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 16:00:15');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (101, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 16:22:50');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (102, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 16:28:18');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (103, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 16:31:28');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (104, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 16:31:37');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (105, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 16:44:54');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (106, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 16:45:29');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (107, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 16:47:00');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (108, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 16:50:20');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (109, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:01:33');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (110, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:03:01');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (111, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:06:30');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (112, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:12:19');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (113, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:13:39');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (114, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:15:20');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (115, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:21:21');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (116, 1, 'insertar', 'hoja_vida', NULL, NULL, '2015-09-15 17:22:16');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (117, 1, 'editar', 'insumo', NULL, NULL, '2015-09-15 17:47:23');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (118, 1, 'editar', 'insumo', NULL, NULL, '2015-09-15 17:47:36');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (119, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 18:01:01');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (120, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 18:07:56');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (121, 1, 'editar', 'tipo_venta', NULL, NULL, '2015-09-15 18:17:26');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (122, 1, 'editar', 'tipo_venta', NULL, NULL, '2015-09-15 18:17:36');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (123, 1, 'editar', 'tipo_venta', NULL, NULL, '2015-09-15 18:17:51');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (124, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 18:23:53');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (125, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 18:25:27');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (126, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-15 19:12:52');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (127, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 09:00:08');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (128, 1, 'editar', 'insumo', NULL, NULL, '2015-09-16 09:42:10');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (129, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 10:20:40');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (130, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 11:03:13');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (131, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 12:21:15');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (132, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 15:57:07');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (133, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 16:13:39');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (134, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 16:13:49');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (135, 1, 'insertar', 'insumo', NULL, NULL, '2015-09-16 17:28:02');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (136, 1, 'insertar', 'insumo', NULL, NULL, '2015-09-16 17:28:23');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (137, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-16 17:55:11');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (138, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 10:58:06');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (139, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 11:18:59');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (140, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 11:35:48');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (141, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 11:36:15');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (142, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 11:39:33');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (143, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 12:03:32');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (144, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 14:21:38');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (145, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 15:54:29');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (146, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 17:29:38');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (147, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 17:40:57');
+INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fecha) VALUES (148, 1, 'identificación', 'NINGUNA', NULL, NULL, '2015-09-17 18:45:33');
 
 
 --
@@ -1434,7 +1483,7 @@ INSERT INTO bitacora (id, usuario_id, accion, tabla, registro, observacion, fech
 -- Name: bitacora_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('bitacora_id_seq', 99, true);
+SELECT pg_catalog.setval('bitacora_id_seq', 148, true);
 
 
 --
@@ -1443,8 +1492,9 @@ SELECT pg_catalog.setval('bitacora_id_seq', 99, true);
 -- Data for Name: ciudad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO ciudad (id, nom_ciudad, depto_id, created_at, updated_at, deleted_at) VALUES (2, 'cali', 1, '2015-09-03 15:54:05.888266', '2015-09-03 15:54:05.888266', NULL);
 INSERT INTO ciudad (id, nom_ciudad, depto_id, created_at, updated_at, deleted_at) VALUES (3, 'Pradera', 1, '2015-09-12 20:36:32.927171', '2015-09-12 20:36:32.927171', NULL);
+INSERT INTO ciudad (id, nom_ciudad, depto_id, created_at, updated_at, deleted_at) VALUES (2, 'Cali', 1, '2015-09-03 15:54:05.888266', '2015-09-03 15:54:05.888266', NULL);
+INSERT INTO ciudad (id, nom_ciudad, depto_id, created_at, updated_at, deleted_at) VALUES (4, 'Florida', 1, '2015-09-16 18:24:23.371345', '2015-09-16 18:24:23.371345', NULL);
 
 
 --
@@ -1453,7 +1503,7 @@ INSERT INTO ciudad (id, nom_ciudad, depto_id, created_at, updated_at, deleted_at
 -- Name: ciudad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('ciudad_id_seq', 3, true);
+SELECT pg_catalog.setval('ciudad_id_seq', 4, true);
 
 
 --
@@ -1470,7 +1520,7 @@ SELECT pg_catalog.setval('ciudad_id_seq', 3, true);
 -- Name: control_peso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('control_peso_id_seq', 9, true);
+SELECT pg_catalog.setval('control_peso_id_seq', 33, true);
 
 
 --
@@ -1498,7 +1548,38 @@ SELECT pg_catalog.setval('credencial_id_seq', 2, true);
 -- Data for Name: depto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (1, 'valle del cauca', '2015-09-03 15:53:52.672201', '2015-09-03 15:53:52.672201', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (2, 'Antioquia', '2015-09-15 16:33:30.403702', '2015-09-15 16:33:30.403702', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (1, 'Valle del cauca', '2015-09-03 15:53:52.672201', '2015-09-03 15:53:52.672201', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (3, 'Arauca', '2015-09-16 09:07:02.304859', '2015-09-16 09:07:02.304859', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (4, 'Atlantico', '2015-09-16 09:07:11.738896', '2015-09-16 09:07:11.738896', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (5, 'Bolivar', '2015-09-16 09:07:20.661766', '2015-09-16 09:07:20.661766', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (6, 'Boyaca', '2015-09-16 09:07:26.103519', '2015-09-16 09:07:26.103519', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (7, 'Caldas', '2015-09-16 09:07:30.706038', '2015-09-16 09:07:30.706038', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (8, 'Caqueta', '2015-09-16 09:07:36.592692', '2015-09-16 09:07:36.592692', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (9, 'Casanare', '2015-09-16 09:07:46.714354', '2015-09-16 09:07:46.714354', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (10, 'Cauca', '2015-09-16 09:07:52.125938', '2015-09-16 09:07:52.125938', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (11, 'Cesar', '2015-09-16 09:07:56.434888', '2015-09-16 09:07:56.434888', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (12, 'Choco', '2015-09-16 09:08:02.661005', '2015-09-16 09:08:02.661005', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (13, 'Cordoba', '2015-09-16 09:08:10.74141', '2015-09-16 09:08:10.74141', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (14, 'Cundinamarca', '2015-09-16 09:08:21.331047', '2015-09-16 09:08:21.331047', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (15, 'Guainia', '2015-09-16 09:08:28.250601', '2015-09-16 09:08:28.250601', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (16, 'Guaviare', '2015-09-16 09:08:34.72662', '2015-09-16 09:08:34.72662', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (17, 'Huila', '2015-09-16 09:08:38.8304', '2015-09-16 09:08:38.8304', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (18, 'La Guajira', '2015-09-16 09:08:59.563446', '2015-09-16 09:08:59.563446', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (19, 'Magdalena', '2015-09-16 09:09:06.737666', '2015-09-16 09:09:06.737666', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (20, 'Meta', '2015-09-16 09:09:11.672997', '2015-09-16 09:09:11.672997', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (21, 'Narino', '2015-09-16 09:09:19.24917', '2015-09-16 09:09:19.24917', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (22, 'Norte De Santander', '2015-09-16 09:09:30.931622', '2015-09-16 09:09:30.931622', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (23, 'Putumayo', '2015-09-16 09:09:37.482835', '2015-09-16 09:09:37.482835', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (24, 'Quindio', '2015-09-16 09:09:42.3875', '2015-09-16 09:09:42.3875', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (25, 'Risaralda', '2015-09-16 09:09:47.866653', '2015-09-16 09:09:47.866653', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (26, 'San Andres Y Providencia', '2015-09-16 09:10:00.72009', '2015-09-16 09:10:00.72009', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (27, 'Santander', '2015-09-16 09:10:06.184875', '2015-09-16 09:10:06.184875', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (28, 'Sucre', '2015-09-16 09:10:12.048962', '2015-09-16 09:10:12.048962', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (29, 'Tolima', '2015-09-16 09:10:16.200368', '2015-09-16 09:10:16.200368', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (30, 'Amazonas', '2015-09-16 09:10:22.555779', '2015-09-16 09:10:22.555779', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (31, 'Vaupes', '2015-09-16 09:10:29.457174', '2015-09-16 09:10:29.457174', NULL);
+INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (32, 'Valle Del Cauca', '2015-09-16 09:10:42.676236', '2015-09-16 09:10:42.676236', NULL);
 
 
 --
@@ -1507,7 +1588,7 @@ INSERT INTO depto (id, nom_depto, created_at, updated_at, deleted_at) VALUES (1,
 -- Name: depto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('depto_id_seq', 1, true);
+SELECT pg_catalog.setval('depto_id_seq', 32, true);
 
 
 --
@@ -1516,9 +1597,12 @@ SELECT pg_catalog.setval('depto_id_seq', 1, true);
 -- Data for Name: detalle_entrada; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (1, 1, 5000, 1, 3, 1, '2015-09-09 10:26:37.935637', '2015-09-09 10:26:37.935637', NULL);
-INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (2, 1, 123, 1, 4, 2, '2015-09-09 10:28:26.120365', '2015-09-09 10:28:26.120365', NULL);
-INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (3, 1, 123, 2, 4, 2, '2015-09-12 21:25:31.057609', '2015-09-12 21:25:31.057609', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (2, 40, 50000, 1, 4, 2, '2015-09-09 10:28:26.120365', '2015-09-09 10:28:26.120365', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (4, 1, 5000, 1, 3, 2, '2015-09-16 11:17:52.965886', '2015-09-16 11:17:52.965886', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (1, 30, 10000, 1, 5, 1, '2015-09-09 10:26:37.935637', '2015-09-09 10:26:37.935637', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (3, 40, 50000, 2, 4, 2, '2015-09-12 21:25:31.057609', '2015-09-12 21:25:31.057609', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (5, 2, 5000, 2, 3, 1, '2015-09-16 17:33:29.019518', '2015-09-16 17:33:29.019518', NULL);
+INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, unidad_medida_id, created_at, updated_at, deleted_at) VALUES (6, 30, 5000, 2, 6, 1, '2015-09-16 17:34:37.796317', '2015-09-16 17:34:37.796317', NULL);
 
 
 --
@@ -1527,7 +1611,7 @@ INSERT INTO detalle_entrada (id, cantidad, valor, entrada_bodega_id, insumo_id, 
 -- Name: detalle_entrada_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('detalle_entrada_id_seq', 3, true);
+SELECT pg_catalog.setval('detalle_entrada_id_seq', 6, true);
 
 
 --
@@ -1536,15 +1620,39 @@ SELECT pg_catalog.setval('detalle_entrada_id_seq', 3, true);
 -- Data for Name: detalle_hoja; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (1, 30, 2, 1, 12, 3, 2, '2015-09-03 15:57:05.174447', '2015-09-03 15:57:05.174447', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (2, 30, 2, 2, 12, 3, 2, '2015-09-04 14:35:33.951381', '2015-09-04 14:35:33.951381', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (3, 50, 2, 2, 12, 3, 2, '2015-09-04 14:35:56.424671', '2015-09-04 14:35:56.424671', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (4, 100, 2, 2, 12, 3, 2, '2015-09-04 14:36:11.441929', '2015-09-04 14:36:11.441929', NULL);
 INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (5, 32, 2, 3, 12, 3, 1, '2015-09-04 14:36:44.557322', '2015-09-04 14:36:44.557322', NULL);
 INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (6, 52, 2, 3, 0, 2, 3, '2015-09-04 14:37:17.38458', '2015-09-04 14:37:17.38458', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (7, 100, 2, 3, 12, 3, 2, '2015-09-04 14:37:32.696391', '2015-09-04 14:37:32.696391', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (8, 32, 2, 1, 12, 3, 1, '2015-09-04 17:41:30.027007', '2015-09-04 17:41:30.027007', NULL);
-INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (9, 50, 2, 1, 12, 3, 2, '2015-09-09 16:28:34.390254', '2015-09-09 16:28:34.390254', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (10, 30, 2, 5, 2, 3, 2, '2015-09-15 17:45:57.299534', '2015-09-15 17:45:57.299534', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (11, 50, 2, 5, 2, 3, 3, '2015-09-15 17:47:13.115026', '2015-09-15 17:47:13.115026', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (12, 62, 2, 5, 2, 3, 2, '2015-09-15 18:10:33.195201', '2015-09-15 18:10:33.195201', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (13, 30, 2, 9, 2, 3, 2, '2015-09-15 18:15:29.850089', '2015-09-15 18:15:29.850089', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (14, 50, 2, 9, 2, 3, 2, '2015-09-15 18:15:57.348055', '2015-09-15 18:15:57.348055', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (15, 70, 2, 9, 0, 2, 3, '2015-09-15 18:16:30.958762', '2015-09-15 18:16:30.958762', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (16, 30, 2, 11, 2, 4, 2, '2015-09-15 18:25:38.63362', '2015-09-15 18:25:38.63362', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (17, 50, 2, 11, 2, 4, 2, '2015-09-15 18:26:02.227106', '2015-09-15 18:26:02.227106', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (18, 60, 2, 11, 0, 2, 3, '2015-09-15 18:26:24.011937', '2015-09-15 18:26:24.011937', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (2, 30, 2, 2, 2, 3, 2, '2015-09-04 14:35:33.951381', '2015-09-04 14:35:33.951381', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (3, 50, 2, 2, 2, 3, 2, '2015-09-04 14:35:56.424671', '2015-09-04 14:35:56.424671', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (4, 100, 2, 2, 2, 3, 2, '2015-09-04 14:36:11.441929', '2015-09-04 14:36:11.441929', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (19, 30, 2, 12, 2, 3, 2, '2015-09-15 18:27:17.919235', '2015-09-15 18:27:17.919235', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (20, 50, 2, 12, 2, 3, 2, '2015-09-15 18:27:39.919529', '2015-09-15 18:27:39.919529', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (21, 65, 2, 12, 0, 2, 3, '2015-09-15 18:29:07.188305', '2015-09-15 18:29:07.188305', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (22, 50, 2, 14, 2, 3, 2, '2015-09-15 18:31:09.744078', '2015-09-15 18:31:09.744078', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (23, 50, 2, 14, 2, 3, 2, '2015-09-15 18:31:33.042194', '2015-09-15 18:31:33.042194', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (25, 30, 2, 15, 2, 3, 2, '2015-09-15 18:32:35.829001', '2015-09-15 18:32:35.829001', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (26, 50, 2, 15, 2, 3, 2, '2015-09-15 18:32:58.055957', '2015-09-15 18:32:58.055957', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (27, 65, 2, 15, 0, 2, 3, '2015-09-15 18:34:57.750635', '2015-09-15 18:34:57.750635', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (1, 30, 2, 1, 2, 3, 2, '2015-09-03 15:57:05.174447', '2015-09-03 15:57:05.174447', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (8, 32, 2, 1, 2, 3, 1, '2015-09-04 17:41:30.027007', '2015-09-04 17:41:30.027007', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (9, 50, 2, 1, 2, 3, 2, '2015-09-09 16:28:34.390254', '2015-09-09 16:28:34.390254', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (28, 30, 2, 16, 2, 3, 2, '2015-09-16 16:27:56.789506', '2015-09-16 16:27:56.789506', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (29, 52, 2, 16, 0, 2, 3, '2015-09-16 16:28:32.317046', '2015-09-16 16:28:32.317046', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (30, 73, 2, 16, 2, 3, 2, '2015-09-16 16:29:01.40315', '2015-09-16 16:29:01.40315', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (31, 0, 4, 1, 2, 3, 2, '2015-09-17 17:34:52.023474', '2015-09-17 17:34:52.023474', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (32, 0, 4, 1, 2, 3, 2, '2015-09-17 17:35:46.898192', '2015-09-17 17:35:46.898192', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (33, 70, 2, 1, 0, 2, 3, '2015-09-17 17:36:44.084033', '2015-09-17 17:36:44.084033', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (24, 70, 2, 14, 0, 2, 3, '2015-09-15 18:31:55.175765', '2015-09-15 18:31:55.175765', NULL);
+INSERT INTO detalle_hoja (id, peso_cerdo, unidad_medida_id, hoja_vida_id, dosis, insumo_id, tipo_insumo_id, created_at, updated_at, deleted_at) VALUES (7, 60, 2, 3, 12, 3, 2, '2015-09-04 14:37:32.696391', '2015-09-04 14:37:32.696391', NULL);
 
 
 --
@@ -1562,11 +1670,36 @@ SELECT pg_catalog.setval('detalle_hoja_id_seq', 1, false);
 -- Data for Name: detalle_salida; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (1, 1, 1, 3, 2, 1, '2015-09-03 16:25:54.420915', '2015-09-03 16:25:54.420915', NULL);
 INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (3, 1, 1, 4, 2, 1, '2015-09-09 16:42:29.49698', '2015-09-09 16:42:29.49698', NULL);
-INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (2, 2, 1, 4, 2, 2, '2015-09-09 10:32:24.705913', '2015-09-09 10:32:24.705913', NULL);
-INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (4, 2, 1, 2, 2, 2, '2015-09-10 14:35:57.462131', '2015-09-10 14:35:57.462131', NULL);
-INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (5, 1, 1, 3, 1, 1, '2015-09-10 14:36:40.719386', '2015-09-10 14:36:40.719386', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (1, 2, 1, 3, 3, 1, '2015-09-03 16:25:54.420915', '2015-09-03 16:25:54.420915', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (5, 1, 1, 4, 1, 1, '2015-09-10 14:36:40.719386', '2015-09-10 14:36:40.719386', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (2, 4, 1, 4, 2, 2, '2015-09-09 10:32:24.705913', '2015-09-09 10:32:24.705913', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (4, 4, 1, 5, 2, 2, '2015-09-10 14:35:57.462131', '2015-09-10 14:35:57.462131', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (6, 8, 1, 3, 3, 2, '2015-09-16 16:52:32.799978', '2015-09-16 16:52:32.799978', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (7, 8, 1, 6, 1, 2, '2015-09-16 17:50:37.701131', '2015-09-16 17:50:37.701131', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (8, 1, 2, 4, 2, 1, '2015-09-16 17:56:54.18476', '2015-09-16 17:56:54.18476', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (9, 1, 2, 4, 1, 1, '2015-09-16 17:57:57.665488', '2015-09-16 17:57:57.665488', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (10, 2, 2, 3, 3, 1, '2015-09-16 17:58:41.147829', '2015-09-16 17:58:41.147829', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (11, 4, 2, 4, 2, 2, '2015-09-16 18:02:43.384699', '2015-09-16 18:02:43.384699', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (12, 4, 2, 5, 2, 2, '2015-09-16 18:03:49.142373', '2015-09-16 18:03:49.142373', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (13, 8, 2, 3, 3, 2, '2015-09-16 18:05:57.050763', '2015-09-16 18:05:57.050763', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (14, 8, 2, 6, 1, 2, '2015-09-16 18:06:33.628821', '2015-09-16 18:06:33.628821', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (15, 1, 1, 5, 2, 1, '2015-09-16 18:12:43.817677', '2015-09-16 18:12:43.817677', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (16, 1, 3, 4, 2, 1, '2015-09-16 18:18:20.898592', '2015-09-16 18:18:20.898592', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (17, 1, 3, 4, 1, 1, '2015-09-16 18:18:50.149562', '2015-09-16 18:18:50.149562', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (18, 2, 3, 3, 3, 1, '2015-09-16 18:19:17.650639', '2015-09-16 18:19:17.650639', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (19, 4, 3, 4, 2, 2, '2015-09-16 18:19:57.611115', '2015-09-16 18:19:57.611115', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (20, 4, 3, 5, 2, 2, '2015-09-16 18:20:20.097897', '2015-09-16 18:20:20.097897', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (21, 8, 3, 3, 3, 2, '2015-09-16 18:20:53.705808', '2015-09-16 18:20:53.705808', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (22, 8, 3, 6, 1, 2, '2015-09-16 18:21:56.338454', '2015-09-16 18:21:56.338454', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (23, 8, 1, 5, 2, 2, '2015-09-17 14:22:17.634448', '2015-09-17 14:22:17.634448', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (24, 1, 1, 6, 2, 2, '2015-09-17 14:22:33.306053', '2015-09-17 14:22:33.306053', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (25, 1, 1, 4, 2, 2, '2015-09-17 14:22:58.817752', '2015-09-17 14:22:58.817752', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (26, 8, 1, 4, 2, 2, '2015-09-17 14:23:33.018585', '2015-09-17 14:23:33.018585', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (27, 9, 1, 5, 2, 2, '2015-09-17 14:24:12.854142', '2015-09-17 14:24:12.854142', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (28, 3, 1, 4, 2, 1, '2015-09-17 14:24:46.570937', '2015-09-17 14:24:46.570937', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (29, 1, 1, 5, 2, 1, '2015-09-17 14:25:24.987146', '2015-09-17 14:25:24.987146', NULL);
+INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_medida_id, lote_id, created_at, updated_at, deleted_at) VALUES (30, 2, 1, 6, 2, 1, '2015-09-17 14:26:49.530068', '2015-09-17 14:26:49.530068', NULL);
 
 
 --
@@ -1575,7 +1708,7 @@ INSERT INTO detalle_salida (id, cantidad, salida_bodega_id, insumo_id, unidad_me
 -- Name: detalle_salida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('detalle_salida_id_seq', 5, true);
+SELECT pg_catalog.setval('detalle_salida_id_seq', 30, true);
 
 
 --
@@ -1584,8 +1717,8 @@ SELECT pg_catalog.setval('detalle_salida_id_seq', 5, true);
 -- Data for Name: empleado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO empleado (id, nombre, apellido, direccion, correo, telefono, tipo_id_id, usuario_id, documento, created_at, updated_at, deleted_at) VALUES (1, 'elias', 'tapasco', 'car12#1234', 'elias@hotmail.com', '234123', 1, 1, 645643, '2015-09-03 15:53:36.116107', '2015-09-03 15:53:36.116107', NULL);
-INSERT INTO empleado (id, nombre, apellido, direccion, correo, telefono, tipo_id_id, usuario_id, documento, created_at, updated_at, deleted_at) VALUES (2, 'humberto', 'estrada', 'car 19 n 345', 'humberto@hotmail.com', '2345678', 1, 1, 1234456, '2015-09-03 16:03:38.942233', '2015-09-03 16:03:38.942233', NULL);
+INSERT INTO empleado (id, nombre, apellido, direccion, correo, telefono, tipo_id_id, usuario_id, documento, created_at, updated_at, deleted_at) VALUES (1, 'Elias', 'Tapasco', 'car12#1234', 'elias@hotmail.com', '234123', 1, 1, 645643, '2015-09-03 15:53:36.116107', '2015-09-03 15:53:36.116107', NULL);
+INSERT INTO empleado (id, nombre, apellido, direccion, correo, telefono, tipo_id_id, usuario_id, documento, created_at, updated_at, deleted_at) VALUES (2, 'Humberto', 'Estrada', 'car 19 n 345', 'humberto@hotmail.com', '2345678', 1, 1, 1234456, '2015-09-03 16:03:38.942233', '2015-09-03 16:03:38.942233', NULL);
 
 
 --
@@ -1660,10 +1793,22 @@ SELECT pg_catalog.setval('genero_id_seq', 2, true);
 -- Data for Name: hoja_vida; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (1, 1, '2012-01-12', 1, 1, 1, 'muñeca', '2015-09-03 15:51:48.772893', '2015-09-03 15:51:48.772893', NULL);
-INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (3, 1, '2015-09-04', 1, 2, 1, 'mimi', '2015-09-04 14:33:39.413383', '2015-09-04 14:33:39.413383', NULL);
-INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (4, 2, '2015-09-04', 1, 2, 1, 'pancho', '2015-09-04 14:34:10.284282', '2015-09-04 14:34:10.284282', NULL);
-INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (2, 2, '2013-01-01', 1, 2, 1, 'Rozo', '2015-09-03 15:52:19.999448', '2015-09-03 15:52:19.999448', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (2, 2, '2015-09-01', 16, 2, 1, 'Rozo', '2015-09-03 15:52:19.999448', '2015-09-03 15:52:19.999448', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (3, 1, '2015-09-01', 16, 2, 2, 'Mimi', '2015-09-04 14:33:39.413383', '2015-09-04 14:33:39.413383', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (4, 2, '2015-03-04', 16, 2, 1, 'Pancho', '2015-09-04 14:34:10.284282', '2015-09-04 14:34:10.284282', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (5, 1, '2015-09-01', 16, 2, 2, 'Lucy', '2015-09-15 16:44:54.856655', '2015-09-15 16:44:54.856655', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (6, 1, '2015-09-01', 16, 2, 1, 'Pancha', '2015-09-15 16:45:29.539626', '2015-09-15 16:45:29.539626', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (7, 1, '2015-09-01', 16, 2, 1, 'Mona', '2015-09-15 16:46:59.995157', '2015-09-15 16:46:59.995157', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (8, 2, '2015-09-01', 16, 2, 1, 'Pepe', '2015-09-15 16:50:20.270127', '2015-09-15 16:50:20.270127', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (9, 1, '2015-03-04', 16, 2, 2, 'Magi', '2015-09-15 17:01:33.216673', '2015-09-15 17:01:33.216673', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (10, 1, '2015-03-04', 16, 2, 1, 'Pecas', '2015-09-15 17:03:01.656716', '2015-09-15 17:03:01.656716', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (11, 1, '2015-09-01', 16, 2, 2, 'Lauarel', '2015-09-15 17:06:30.560309', '2015-09-15 17:06:30.560309', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (12, 1, '2015-03-04', 16, 2, 2, 'Anabel', '2015-09-15 17:12:19.028885', '2015-09-15 17:12:19.028885', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (13, 1, '2015-03-04', 16, 2, 1, 'Pepa', '2015-09-15 17:13:39.72528', '2015-09-15 17:13:39.72528', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (14, 1, '2015-09-01', 16, 2, 2, 'Luz', '2015-09-15 17:15:20.72114', '2015-09-15 17:15:20.72114', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (15, 2, '2015-03-04', 16, 2, 2, 'Luigi', '2015-09-15 17:21:21.984636', '2015-09-15 17:21:21.984636', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (16, 2, '2015-03-04', 16, 2, 2, 'Beto', '2015-09-15 17:22:16.164637', '2015-09-15 17:22:16.164637', NULL);
+INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado_id, nombre_cerdo, created_at, updated_at, deleted_at) VALUES (1, 1, '2012-01-12', 16, 1, 1, 'Muñeca', '2015-09-03 15:51:48.772893', '2015-09-03 15:51:48.772893', NULL);
 
 
 --
@@ -1672,7 +1817,7 @@ INSERT INTO hoja_vida (id, genero_id, fecha_nacimiento, raza_id, lote_id, estado
 -- Name: hoja_vida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('hoja_vida_id_seq', 4, true);
+SELECT pg_catalog.setval('hoja_vida_id_seq', 16, true);
 
 
 --
@@ -1681,9 +1826,11 @@ SELECT pg_catalog.setval('hoja_vida_id_seq', 4, true);
 -- Data for Name: insumo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (3, 'fenbendazol', 2, '2015-09-03', '2015-09-03', 2, '2015-09-03 15:56:44.572293', '2015-09-03 15:56:44.572293', NULL);
-INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (2, 'ninguno', 3, '2015-12-12', '2015-12-12', 2, '2015-09-03 15:55:58.126994', '2015-09-03 15:55:58.126994', NULL);
-INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (4, 'Chanchito', 1, '2015-09-09', '2015-10-31', 2, '2015-09-09 10:28:09.451111', '2015-09-09 10:28:09.451111', NULL);
+INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (2, 'Ninguno', 3, '2015-12-12', '2015-12-12', 2, '2015-09-03 15:55:58.126994', '2015-09-03 15:55:58.126994', NULL);
+INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (3, 'Fenbendazol', 2, '2015-09-03', '2015-09-03', 2, '2015-09-03 15:56:44.572293', '2015-09-03 15:56:44.572293', NULL);
+INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (4, 'Chanchito', 1, '2015-09-09', '2015-10-31', 3, '2015-09-09 10:28:09.451111', '2015-09-09 10:28:09.451111', NULL);
+INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (5, 'Mogolla', 1, '2015-09-16', '2015-09-19', 3, '2015-09-16 17:28:02.089645', '2015-09-16 17:28:02.089645', NULL);
+INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_vencimiento, proveedor_id, created_at, updated_at, deleted_at) VALUES (6, 'Maiz', 1, '2015-09-15', '2015-09-18', 3, '2015-09-16 17:28:23.057602', '2015-09-16 17:28:23.057602', NULL);
 
 
 --
@@ -1692,7 +1839,7 @@ INSERT INTO insumo (id, desc_insumo, tipo_insumo_id, fecha_fabricacion, fecha_ve
 -- Name: insumo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('insumo_id_seq', 4, true);
+SELECT pg_catalog.setval('insumo_id_seq', 6, true);
 
 
 --
@@ -1737,8 +1884,8 @@ SELECT pg_catalog.setval('lote_id_seq', 2, true);
 -- Data for Name: parto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO parto (id, fecha_nacimiento, num_nacidos, num_vivos, num_muertos, num_hembras, num_machos, fecha_montada, id_padre, hoja_vida_id, created_at, updated_at, deleted_at) VALUES (1, '2015-09-01', 5, 5, 0, 3, 2, '2015-08-01', 'proveedor', 1, '2015-09-04 17:45:11.241823', '2015-09-04 17:45:11.241823', NULL);
-INSERT INTO parto (id, fecha_nacimiento, num_nacidos, num_vivos, num_muertos, num_hembras, num_machos, fecha_montada, id_padre, hoja_vida_id, created_at, updated_at, deleted_at) VALUES (2, '2015-09-04', 7, 6, 1, 6, 1, '2015-08-04', 'proveedor', 1, '2015-09-04 17:46:57.311081', '2015-09-04 17:46:57.311081', NULL);
+INSERT INTO parto (id, fecha_nacimiento, num_nacidos, num_vivos, num_muertos, num_hembras, num_machos, fecha_montada, id_padre, hoja_vida_id, created_at, updated_at, deleted_at) VALUES (2, '2015-09-04', 8, 6, 2, 6, 2, '2015-08-04', 'proveedor', 1, '2015-09-04 17:46:57.311081', '2015-09-04 17:46:57.311081', NULL);
+INSERT INTO parto (id, fecha_nacimiento, num_nacidos, num_vivos, num_muertos, num_hembras, num_machos, fecha_montada, id_padre, hoja_vida_id, created_at, updated_at, deleted_at) VALUES (1, '2015-03-01', 8, 6, 2, 4, 2, '2015-02-01', 'proveedor', 1, '2015-09-04 17:45:11.241823', '2015-09-04 17:45:11.241823', NULL);
 
 
 --
@@ -1756,9 +1903,9 @@ SELECT pg_catalog.setval('parto_id_seq', 2, true);
 -- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (2, 'emma', 'castaneda', 'car12-er', 'ema@hotmail.com', '234567', 2, '2015-09-03 15:55:07.828964', '2015-09-03 15:55:07.828964', NULL);
-INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (3, 'arbeys', 'ceron', 'cal 12 carrera 20 #123', 'arbey@gmail.com', '3145212214', 2, '2015-09-09 10:39:34.335298', '2015-09-09 10:39:34.335298', NULL);
-INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (4, 'jose maria', 'rocha', 'Carrea 10 # 56 - 98', 'josem@gmail.com', '313456765', 3, '2015-09-14 15:35:21.954515', '2015-09-14 15:35:21.954515', NULL);
+INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (3, 'Arbeys', 'Ceron', 'cal 12 carrera 20 #123', 'arbey@gmail.com', '3145212214', 2, '2015-09-09 10:39:34.335298', '2015-09-09 10:39:34.335298', NULL);
+INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (4, 'Jose Maria', 'Rocha', 'Carrea 10 # 56 - 98', 'josem@gmail.com', '313456765', 3, '2015-09-14 15:35:21.954515', '2015-09-14 15:35:21.954515', NULL);
+INSERT INTO proveedor (id, nombre, apellido, direccion, correo, telefono, ciudad_id, created_at, updated_at, deleted_at) VALUES (2, 'Emma', 'Castaneda', 'calle 60 bis 4-20', 'ema@hotmail.com', '234567', 2, '2015-09-03 15:55:07.828964', '2015-09-03 15:55:07.828964', NULL);
 
 
 --
@@ -1776,8 +1923,32 @@ SELECT pg_catalog.setval('proveedor_id_seq', 4, true);
 -- Data for Name: raza; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (1, 'Doruc', '2015-09-03 15:51:09.474138', '2015-09-03 15:51:09.474138', NULL);
-INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (2, 'Landrance', '2015-09-03 15:51:16.198421', '2015-09-03 15:51:16.198421', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (1, 'Baztan', '2015-09-03 15:51:09.474138', '2015-09-03 15:51:09.474138', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (2, 'Berkshire', '2015-09-03 15:51:16.198421', '2015-09-03 15:51:16.198421', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (3, 'Camboroug 22', '2015-09-16 09:17:50.81446', '2015-09-16 09:17:50.81446', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (4, 'Cerdo Casque Mula', '2015-09-16 09:22:43.15091', '2015-09-16 09:22:43.15091', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (5, 'Cerdo Celta', '2015-09-16 09:22:54.444274', '2015-09-16 09:22:54.444274', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (6, 'Cerdo Chocuano', '2015-09-16 09:23:03.768197', '2015-09-16 09:23:03.768197', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (7, 'Cerdi Curi', '2015-09-16 09:23:17.45955', '2015-09-16 09:23:17.45955', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (8, 'Cerdo Iberico', '2015-09-16 09:23:26.269426', '2015-09-16 09:23:26.269426', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (9, 'Cerdo Sampedreño', '2015-09-16 09:23:36.534321', '2015-09-16 09:23:36.534321', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (10, 'Cerdo Zungo', '2015-09-16 09:23:45.141293', '2015-09-16 09:23:45.141293', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (11, 'Chester White', '2015-09-16 09:23:57.19305', '2015-09-16 09:23:57.19305', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (12, 'Congo Sampedreno', '2015-09-16 09:24:11.588303', '2015-09-16 09:24:11.588303', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (13, 'Duroc Jersey', '2015-09-16 09:24:21.277661', '2015-09-16 09:24:21.277661', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (14, 'Hampshire', '2015-09-16 09:24:58.029444', '2015-09-16 09:24:58.029444', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (15, 'Iberico', '2015-09-16 09:25:04.613951', '2015-09-16 09:25:04.613951', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (16, 'Landrace', '2015-09-16 09:25:12.863614', '2015-09-16 09:25:12.863614', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (17, 'Pickboard 326', '2015-09-16 09:25:26.099252', '2015-09-16 09:25:26.099252', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (19, 'Pickboard 406', '2015-09-16 09:26:07.336114', '2015-09-16 09:26:07.336114', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (18, 'Pickboard 359-GL', '2015-09-16 09:25:46.8468', '2015-09-16 09:25:46.8468', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (20, 'Pickboard 420-GL', '2015-09-16 09:26:40.748744', '2015-09-16 09:26:40.748744', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (21, 'Pietrain', '2015-09-16 09:26:53.352693', '2015-09-16 09:26:53.352693', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (22, 'Poland China', '2015-09-16 09:27:04.752409', '2015-09-16 09:27:04.752409', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (23, 'Spotted Poland', '2015-09-16 09:27:29.805656', '2015-09-16 09:27:29.805656', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (24, 'Tamworth', '2015-09-16 09:27:53.39399', '2015-09-16 09:27:53.39399', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (25, 'Wesse.V Saddleback', '2015-09-16 09:28:12.954133', '2015-09-16 09:28:12.954133', NULL);
+INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (26, 'Yorkshire', '2015-09-16 09:28:30.693186', '2015-09-16 09:28:30.693186', NULL);
 
 
 --
@@ -1786,7 +1957,7 @@ INSERT INTO raza (id, desc_raza, created_at, updated_at, deleted_at) VALUES (2, 
 -- Name: raza_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('raza_id_seq', 2, true);
+SELECT pg_catalog.setval('raza_id_seq', 26, true);
 
 
 --
@@ -1832,11 +2003,28 @@ SELECT pg_catalog.setval('reporte_id_seq', 1, true);
 
 INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (1, 5000, 2, 2, 1, 3, '2015-09-04 14:38:48.247642', '2015-09-04 14:38:48.247642', NULL);
 INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (2, 5000, 3, 2, 2, 3, '2015-09-04 14:39:10.87174', '2015-09-04 14:39:10.87174', NULL);
-INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (3, 3000, 1, 2, 1, 4, '2015-09-04 14:39:27.411027', '2015-09-04 14:39:27.411027', NULL);
-INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (4, 4500, 12, 2, 3, 4, '2015-09-04 14:40:38.718529', '2015-09-04 14:40:38.718529', NULL);
-INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (5, 5000, 5, 2, 2, 4, '2015-09-04 15:21:30.575686', '2015-09-04 15:21:30.575686', NULL);
 INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (6, 5000, 2, 2, 3, 3, '2015-09-04 15:21:59.652979', '2015-09-04 15:21:59.652979', NULL);
-INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (7, 5000, 3, 2, 1, 2, '2015-09-07 20:53:24.849218', '2015-09-07 20:53:24.849218', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (8, 5000, 1, 2, 1, 12, '2015-09-16 16:21:05.982913', '2015-09-16 16:21:05.982913', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (9, 4500, 6, 2, 3, 12, '2015-09-16 16:22:18.799367', '2015-09-16 16:22:18.799367', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (10, 5000, 4, 2, 2, 12, '2015-09-16 16:26:45.912748', '2015-09-16 16:26:45.912748', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (11, 6200, 3, 2, 1, 16, '2015-09-16 16:30:07.077547', '2015-09-16 16:30:07.077547', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (12, 5800, 3, 2, 3, 16, '2015-09-16 16:31:07.537268', '2015-09-16 16:31:07.537268', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (13, 5000, 8, 2, 2, 16, '2015-09-16 16:31:57.435846', '2015-09-16 16:31:57.435846', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (14, 5000, 2, 2, 1, 11, '2015-09-16 16:33:33.201704', '2015-09-16 16:33:33.201704', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (15, 5000, 2, 2, 3, 11, '2015-09-16 16:34:03.414435', '2015-09-16 16:34:03.414435', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (16, 12000, 10, 2, 2, 11, '2015-09-16 16:34:30.356103', '2015-09-16 16:34:30.356103', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (17, 5000, 3, 2, 1, 5, '2015-09-16 16:35:28.566907', '2015-09-16 16:35:28.566907', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (19, 7000, 9, 2, 2, 5, '2015-09-16 16:38:49.460087', '2015-09-16 16:38:49.460087', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (20, 9000, 6, 2, 1, 15, '2015-09-16 16:39:34.436112', '2015-09-16 16:39:34.436112', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (21, 11500, 10, 2, 3, 15, '2015-09-16 16:41:00.787607', '2015-09-16 16:41:00.787607', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (22, 22000, 16, 2, 2, 15, '2015-09-16 16:41:56.618328', '2015-09-16 16:41:56.618328', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (3, 3000, 1, 2, 1, 14, '2015-09-04 14:39:27.411027', '2015-09-04 14:39:27.411027', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (4, 4500, 12, 2, 3, 14, '2015-09-04 14:40:38.718529', '2015-09-04 14:40:38.718529', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (5, 5000, 5, 2, 2, 14, '2015-09-04 15:21:30.575686', '2015-09-04 15:21:30.575686', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (7, 5000, 3, 2, 1, 9, '2015-09-07 20:53:24.849218', '2015-09-07 20:53:24.849218', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (23, 6000, 4, 2, 3, 9, '2015-09-16 17:11:58.433208', '2015-09-16 17:11:58.433208', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (24, 26000, 18, 2, 2, 9, '2015-09-16 17:16:30.846541', '2015-09-16 17:16:30.846541', NULL);
+INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_id, id_cerdo, created_at, updated_at, deleted_at) VALUES (18, 12000, 10, 2, 3, 5, '2015-09-16 16:38:01.652414', '2015-09-16 16:38:01.652414', NULL);
 
 
 --
@@ -1845,7 +2033,7 @@ INSERT INTO sacrificio_venta (id, valor, cantidad, unidad_medida_id, tipo_venta_
 -- Name: sacrificio_venta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('sacrificio_venta_id_seq', 7, true);
+SELECT pg_catalog.setval('sacrificio_venta_id_seq', 24, true);
 
 
 --
@@ -1856,6 +2044,7 @@ SELECT pg_catalog.setval('sacrificio_venta_id_seq', 7, true);
 
 INSERT INTO salida_bodega (id, empleado_id, created_at, updated_at, deleted_at) VALUES (1, 1, '2015-09-03 15:58:13.34835', '2015-09-03 15:58:13.34835', NULL);
 INSERT INTO salida_bodega (id, empleado_id, created_at, updated_at, deleted_at) VALUES (2, 2, '2015-09-03 16:03:47.30387', '2015-09-03 16:03:47.30387', NULL);
+INSERT INTO salida_bodega (id, empleado_id, created_at, updated_at, deleted_at) VALUES (3, 1, '2015-09-16 18:17:25.84325', '2015-09-16 18:17:25.84325', NULL);
 
 
 --
@@ -1864,7 +2053,7 @@ INSERT INTO salida_bodega (id, empleado_id, created_at, updated_at, deleted_at) 
 -- Name: salida_bodega_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('salida_bodega_id_seq', 2, true);
+SELECT pg_catalog.setval('salida_bodega_id_seq', 3, true);
 
 
 --
@@ -1890,7 +2079,11 @@ SELECT pg_catalog.setval('tipo_doc_id_seq', 1, false);
 -- Data for Name: tipo_id; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (1, 'Cedula', '2015-09-03 15:49:18.105587', '2015-09-03 15:49:18.105587', NULL);
+INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (2, 'Tarjeta De Identidad', '2015-09-16 09:35:15.013111', '2015-09-16 09:35:15.013111', NULL);
+INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (3, 'Registro Civil', '2015-09-16 09:35:33.200243', '2015-09-16 09:35:33.200243', NULL);
+INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (1, 'Cedula De Ciudadania', '2015-09-03 15:49:18.105587', '2015-09-03 15:49:18.105587', NULL);
+INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (4, 'Cedula Extranjeria', '2015-09-16 09:35:51.778037', '2015-09-16 09:35:51.778037', NULL);
+INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUES (5, 'Libreta Militar', '2015-09-16 09:36:06.604406', '2015-09-16 09:36:06.604406', NULL);
 
 
 --
@@ -1899,7 +2092,7 @@ INSERT INTO tipo_id (id, desc_tipo_id, created_at, updated_at, deleted_at) VALUE
 -- Name: tipo_id_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tipo_id_id_seq', 1, true);
+SELECT pg_catalog.setval('tipo_id_id_seq', 5, true);
 
 
 --
@@ -1910,8 +2103,8 @@ SELECT pg_catalog.setval('tipo_id_id_seq', 1, true);
 
 INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (1, 'Alimento', '2015-09-03 15:48:54.529272', '2015-09-03 15:48:54.529272', NULL);
 INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (2, 'Vacuna', '2015-09-03 15:49:04.345723', '2015-09-03 15:49:04.345723', NULL);
-INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (3, 'ninguno', '2015-09-03 15:56:26.894069', '2015-09-03 15:56:26.894069', NULL);
-INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (4, 'aseo', '2015-09-11 18:00:16.15971', '2015-09-11 18:00:16.15971', NULL);
+INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (4, 'Aseo', '2015-09-11 18:00:16.15971', '2015-09-11 18:00:16.15971', NULL);
+INSERT INTO tipo_insumo (id, desc_tipoin, created_at, updated_at, deleted_at) VALUES (3, 'Ninguno', '2015-09-03 15:56:26.894069', '2015-09-03 15:56:26.894069', NULL);
 
 
 --
@@ -1929,9 +2122,9 @@ SELECT pg_catalog.setval('tipo_insumo_id_seq', 4, true);
 -- Data for Name: tipo_venta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (1, 'costilla', '2015-09-04 14:38:20.230117', '2015-09-04 14:38:20.230117', NULL);
-INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (2, 'pulpa', '2015-09-04 14:38:25.330188', '2015-09-04 14:38:25.330188', NULL);
-INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (3, 'menudo', '2015-09-04 14:38:30.869407', '2015-09-04 14:38:30.869407', NULL);
+INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (1, 'Costilla', '2015-09-04 14:38:20.230117', '2015-09-04 14:38:20.230117', NULL);
+INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (3, 'Menudo', '2015-09-04 14:38:30.869407', '2015-09-04 14:38:30.869407', NULL);
+INSERT INTO tipo_venta (id, desc_tipov, created_at, updated_at, deleted_at) VALUES (2, 'Pulpa', '2015-09-04 14:38:25.330188', '2015-09-04 14:38:25.330188', NULL);
 
 
 --
@@ -1951,6 +2144,8 @@ SELECT pg_catalog.setval('tipo_venta_id_seq', 3, true);
 
 INSERT INTO unidad_medida (id, descripcion, created_at, updated_at, deleted_at) VALUES (1, 'Libra', '2015-09-03 15:49:30.545601', '2015-09-03 15:49:30.545601', NULL);
 INSERT INTO unidad_medida (id, descripcion, created_at, updated_at, deleted_at) VALUES (2, 'Kilo', '2015-09-03 15:49:34.876997', '2015-09-03 15:49:34.876997', NULL);
+INSERT INTO unidad_medida (id, descripcion, created_at, updated_at, deleted_at) VALUES (3, 'Gramo', '2015-09-16 17:38:23.784024', '2015-09-16 17:38:23.784024', NULL);
+INSERT INTO unidad_medida (id, descripcion, created_at, updated_at, deleted_at) VALUES (4, 'Ninguno', '2015-09-17 17:33:19.024256', '2015-09-17 17:33:19.024256', NULL);
 
 
 --
@@ -1959,7 +2154,7 @@ INSERT INTO unidad_medida (id, descripcion, created_at, updated_at, deleted_at) 
 -- Name: unidad_medida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('unidad_medida_id_seq', 2, true);
+SELECT pg_catalog.setval('unidad_medida_id_seq', 4, true);
 
 
 --
@@ -1968,7 +2163,7 @@ SELECT pg_catalog.setval('unidad_medida_id_seq', 2, true);
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO usuario (id, user_name, password, actived, last_login_at, created_at, updated_at, deleted_at) VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', true, '2015-09-15 14:29:35', '2015-09-03 15:47:13.837593', '2015-09-03 15:47:13.837593', NULL);
+INSERT INTO usuario (id, user_name, password, actived, last_login_at, created_at, updated_at, deleted_at) VALUES (1, 'admin', '202cb962ac59075b964b07152d234b70', true, '2015-09-17 18:45:33', '2015-09-03 15:47:13.837593', '2015-09-03 15:47:13.837593', NULL);
 
 
 --
@@ -2721,7 +2916,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2015-09-15 15:46:19 COT
+-- Completed on 2015-09-17 18:51:12 COT
 
 --
 -- PostgreSQL database dump complete

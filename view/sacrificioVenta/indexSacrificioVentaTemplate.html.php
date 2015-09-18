@@ -86,7 +86,7 @@ use mvc\session\sessionClass as session ?>
                             <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
-                                    <option value=""><?php echo i18n::__('type_sale') ?></option>
+                                    <option value=""><?php echo i18n::__('select_type_sale') ?></option>
                                     <?php foreach ($objTipoV as $venta): ?>
                                         <option value="<?php echo $venta->$tipoVenta_t ?>"><?php echo $venta->$descripcion ?></option>
                                     <?php endforeach; ?>
@@ -149,7 +149,7 @@ use mvc\session\sessionClass as session ?>
                         </div> 
 
                         <div class="form-group">
-                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('type_sale') ?></label>
+                            <label for="filterTipo_venta" class="col-sm-2 control-label"><?php echo i18n::__('select_type_sale') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterTipo_venta" name="filter[Tipo_venta]">
                                     <option value=""><?php echo i18n::__('type_sale') ?></option>
@@ -164,7 +164,7 @@ use mvc\session\sessionClass as session ?>
                             <label for="filterCerdo" class="col-sm-2 control-label"><?php echo i18n::__('pig') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterCerdo" name="filter[Cerdo]">
-                                    <option value=""><?php echo i18n::__('pig') ?></option>
+                                    <option value=""><?php echo i18n::__('select_pig') ?></option>
                                     <?php foreach ($objHojaVida as $hoja): ?>
                                         <option value="<?php echo $hoja ->$cerdo ?>"><?php echo $hoja-> $nombre ?></option>
                                     <?php endforeach; ?>

@@ -43,7 +43,7 @@
                             <label for="filterEmpleado" class="col-sm-2 control-label"><?php echo i18n::__('empleyeed') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterEmpleado" name="filter[Empleado]">
-                                    <option value=""><?php echo i18n::__('empleyeed') ?></option>
+                                    <option value=""><?php echo i18n::__('select_employee') ?></option>
                                      <?php foreach ($objEmpleado as $trabajador): ?>
                                         <option value="<?php echo $trabajador->$proveedor_id_p ?>"><?php echo $trabajador->$nombre ?></option>
                                      <?php endforeach; ?>
@@ -55,7 +55,7 @@
                             <label for="filterProveedor" class="col-sm-2 control-label"><?php echo i18n::__('supplier') ?></label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="filterProveedor" name="filter[Proveedor]">
-                                    <option value=""><?php echo i18n::__('supplier') ?></option>
+                                    <option value=""><?php echo i18n::__('select_provider') ?></option>
                                      <?php foreach ($objProv as $prov): ?>
                                         <option value="<?php echo $prov->$empleado_id_e ?>"><?php echo $prov->$nombre_em ?></option>
                                      <?php endforeach; ?>

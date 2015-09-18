@@ -1,10 +1,19 @@
 <?php mvc\view\viewClass::includePartial('insumo/menu') ?>
-<?php use mvc\routing\routingClass as routing ?> 
-<?php use mvc\view\viewClass as view ?> 
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\config\myConfigClass as config ?>
-<?php use mvc\request\requestClass as request ?>
-<?php use mvc\session\sessionClass as session ?>
+<?php
+
+use mvc\routing\routingClass as routing ?> 
+<?php
+
+use mvc\view\viewClass as view ?> 
+<?php
+
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\config\myConfigClass as config ?>
+<?php
+use mvc\request\requestClass as request ?>
+<?php
+use mvc\session\sessionClass as session ?>
 
 <?php $id = hojaVidaTableClass::ID ?>
 <?php $genero_id = hojaVidaTableClass::GENERO_ID ?>
@@ -13,6 +22,8 @@
 <?php $fecha_nacimiento = hojaVidaTableClass::FECHA_NACIMIENTO ?>
 <?php $nombre_cerdo = hojaVidaTableClass::NOMBRE_CERDO ?>
 <?php $estado_id = hojaVidaTableClass::ESTADO_ID ?>
+<?php $estados = estadoTableClass::ID ?>
+<?php $nombre_estado = estadoTableClass::DESC_ESTADO ?>
 <?php $lote_id = hojaVidaTableClass::LOTE_ID ?>
 <?php $raza_id = hojaVidaTableClass::RAZA_ID ?>
 </?php $id_madre = hojaVidaTableClass::ID_MADRE ?>
@@ -47,34 +58,48 @@
                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                   <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputGenero') ?><!--esta linea para actualizar demas formularios-->
                 </div>
-<?php endif ?> 
+                    <?php endif ?> 
 
-              
+
               <div class="form-group">
                 <label for="filtergenero" class="col-sm-2 control-label"><?php echo i18n::__('genre') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filtergenero" name="filter[genero]">
-                    <option value=""><?php echo i18n::__('genre') ?></option>
-                    <?php foreach ($objGenero as $genero): ?>
+                    <option value=""><?php echo i18n::__('select_gender') ?></option>
+<?php foreach ($objGenero as $genero): ?>
                       <option value="<?php echo $genero->$genero_id_b ?>"><?php echo $genero->$descripcion ?></option>
-<?php endforeach; ?>
+                    <?php endforeach; ?>
                   </select>
                 </div>
               </div>
               
-              
-<!--              <div class="form-group">
-                <label for="filtergenero" class="col-sm-2 control-label"></?php echo i18n::__('genre') ?></label>
+               <div class="form-group">
+                <label for="filterEstado" class="col-sm-2 control-label"><?php echo i18n::__('desc_state') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[genero]" name="</?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, true) ?>" placeholder="genero">
+                  <select class="form-control" id="filterEstado" name="filter[Estado]">
+                    <option value=""><?php echo i18n::__('select_state') ?></option>
+<?php foreach ($objEstado as $estado): ?>
+                      <option value="<?php echo $estado->$estados ?>"><?php echo $estado->$nombre_estado ?></option>
+                    <?php endforeach; ?>
+                  </select>
                 </div>
-              </div>    PONER CORCHER  EN NAME filter[insumo]-->
-<!--              <div class="form-group">
-                <label for="filtermadre" class="col-sm-2 control-label"></?php echo i18n::__('mother') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
-                </div>
-              </div>  -->
+              </div>
+
+
+
+
+              <!--              <div class="form-group">
+                              <label for="filtergenero" class="col-sm-2 control-label"></?php echo i18n::__('genre') ?></label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="filter[genero]" name="</?php echo hojaVidaTableClass::getNameField(hojaVidaTableClass::GENERO, true) ?>" placeholder="genero">
+                              </div>
+                            </div>    PONER CORCHER  EN NAME filter[insumo]-->
+              <!--              <div class="form-group">
+                              <label for="filtermadre" class="col-sm-2 control-label"></?php echo i18n::__('mother') ?></label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="filter[madre]" name="filter[madre]" placeholder="madre">
+                              </div>
+                            </div>  -->
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('date_creation') ?></label>
@@ -111,13 +136,13 @@
                 <div class="col-sm-10">
                   <select class="form-control" id="filtergenero" name="filter[genero]">
                     <option value=""><?php echo i18n::__('genre') ?></option>
-                    <?php foreach ($objGenero as $genero): ?>
+<?php foreach ($objGenero as $genero): ?>
                       <option value="<?php echo $genero->$genero_id_b ?>"><?php echo $genero->$descripcion ?></option>
 <?php endforeach; ?>
                   </select>
                 </div>
               </div>    <!--PONER CORCHER  EN NAME filter[insumo]-->
-              
+
               <!--              <div class="form-group">
                               <label for="filtermadre" class="col-sm-2 control-label"></?php // echo i18n::__('mother')  ?></label>
                               <div class="col-sm-10">
@@ -188,7 +213,7 @@
 
                 <!--eliminado individual con ajax-->
                 <a href="#" data-target="#myModalDelete<?php echo $hojaVida->$id ?>" data-toggle="modal" class="btn btn-danger btn-xs"><?php echo i18n::__('delete') ?></a>
-                <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array (detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $hojaVida->$id))?>" class="btn btn-default btn-xs"><?php echo i18n::__('detail') ?></a>
+                <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $hojaVida->$id)) ?>" class="btn btn-default btn-xs"><?php echo i18n::__('detail') ?></a>
               </td>
             </tr>
 

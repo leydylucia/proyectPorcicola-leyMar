@@ -215,6 +215,7 @@ dictionary:
     
     Report:                Report
     description:           Description
+    date_sacrifice:        Date Sacrifice
     
     select_pig:            Select Pig
     select_type_sale:      Select Type Sale

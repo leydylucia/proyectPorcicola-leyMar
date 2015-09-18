@@ -22,7 +22,7 @@ function crearGrafica(cosPoints, labels, datoMaximo) {
                         renderer: $.jqplot.CategoryAxisRenderer /*poner letras en eje x*/
                     },
                     yaxis: {
-                        label: 'CANTIDADES DE CARNE',
+                        label: 'CANTIDADES DE CARNE EN KL',
                         max: datoMaximo,
                     },
                 },
