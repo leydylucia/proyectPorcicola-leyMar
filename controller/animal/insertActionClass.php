@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of insertActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de insertar datos
  *
  * @author Alexandra Florez
  */
@@ -21,8 +22,8 @@ class insertActionClass extends controllerClass implements controllerActionInter
         $this->hojaVida = session::getInstance()->getAttribute('form_' . hojaVidaTableClass::getNameTable());
       }
 
-      // para editar foraneas tabla genero
-      $fieldsT = array(
+     
+      $fieldsT = array(// para llamar las foraneas tabla genero
           generoTableClass::ID,
           generoTableClass::DESCRIPCION
       );
@@ -31,8 +32,8 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objGenero = generoTableClass::getAll($fieldsT, true, $orderByT, 'ASC');
       //fin
-      // para editar foraneas tabla estado
-      $fields = array(
+      
+      $fields = array(// para editar foraneas tabla estado
           estadoTableClass::ID,
           estadoTableClass::DESC_ESTADO
       );
@@ -41,8 +42,8 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objEstado = estadoTableClass::getAll($fields, true, $orderBy, 'ASC');
       //fin
-      // para editar foraneas tabla lote
-      $fields = array(
+      
+      $fields = array(// para editar foraneas tabla lote
           loteTableClass::ID,
           loteTableClass::DESC_LOTE
       );
@@ -51,8 +52,8 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
       //fin
-      // para editar foraneas tabla raza
-      $fields = array(
+      
+      $fields = array(// para editar foraneas tabla raza
           razaTableClass::ID,
           razaTableClass::DESC_RAZA
       );

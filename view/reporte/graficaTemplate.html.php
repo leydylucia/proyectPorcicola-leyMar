@@ -25,45 +25,45 @@ use mvc\request\requestClass as request ?>
 <?php // echo $id_reporte ?>
 <?php // $ids = reporteTableClass:: ID?>
 <div class="container-fluid reporte">
-    <h1>carne de cerdo</h1>
+  <h1>carne de cerdo</h1>
 
-    <script>
+  <script>
 
-        $(document).ready(function () {
-            crearGrafica(<?php echo json_encode($cosPoints) ?>, <?php echo json_encode($labels) ?>, <?php echo $datoMaximo ?>);
-        });
-    </script> 
+    $(document).ready(function () {
+      crearGrafica(<?php echo json_encode($cosPoints) ?>, <?php echo json_encode($labels) ?>, <?php echo $datoMaximo ?>);
+    });
+  </script> 
 
-    <div id="chart1" style="width: 700px;height: 500px;"></div>
+  <div id="chart1" style="width: 700px;height: 500px;"></div>
 
-    <a target="_NEW" class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'report') ?>" >Importar pdf</a>
-    <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert') ?>"><?php // echo i18n::__('return') ?> </a></button>-->
-  
-    <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert',array(reporteTableClass::getNameField(reporteTableClass::ID, TRUE) => $id_reporte)) ?>"><?php echo i18n::__('return') ?> </a></button>-->
+  <a target="_NEW" class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reporte', 'report') ?>" >Importar pdf</a>
+  <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert')  ?>"><?php // echo i18n::__('return')  ?> </a></button>-->
 
-    <table class="table table-bordered table-striped table-condensed mitabla">
-        <thead>
-            <tr class="active">
+  <!--<button type="button" class="btn btn-info btn-xs"><a class="btn btn-info btn-xs" href="<?php // echo routing::getInstance()->getUrlWeb('reporte', 'insert',array(reporteTableClass::getNameField(reporteTableClass::ID, TRUE) => $id_reporte))  ?>"><?php echo i18n::__('return') ?> </a></button>-->
 
-                <th><?php echo i18n::__('pig') ?></th>
-                <th><?php echo i18n::__('date_sacrifice') ?></th>
-                <th><?php echo i18n::__('action') ?></th>
+  <table class="table table-bordered table-striped table-condensed mitabla">
+    <thead>
+      <tr class="active">
 
-
-            </tr>        
-        </thead>
-        <tbody>
-                <?php foreach ($cerdos as $cerdito): ?> 
-                <tr class="text-info bg-info">
-
-                    <td><?php echo $cerdito['nombre'] ?></td>
-                    <td><?php echo date('d-m-Y h:i:s a', strtotime($cerdito['fecha'])) ?></td>
-                    <td> <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID,true) => $cerdito['id'])) ?>" class="btn btn-primary btn-xs">consultar en Hoja de Vida</a></td>
-<?php endforeach ?>
-        </tbody>
+        <th><?php echo i18n::__('pig') ?></th>
+        <th><?php echo i18n::__('date_sacrifice') ?></th>
+        <th><?php echo i18n::__('action') ?></th>
 
 
+      </tr>        
+    </thead>
+    <tbody>
+      <?php foreach ($cerdos as $cerdito): ?> 
+        <tr class="text-info bg-info">
 
-    </table>  
+          <td><?php echo $cerdito['nombre'] ?></td>
+          <td><?php echo date('d-m-Y h:i:s a', strtotime($cerdito['fecha'])) ?></td>
+          <td> <a href="<?php echo routing::getInstance()->getUrlWeb('detalleHoja', 'index', array(detalleHojaTableClass::getNameField(detalleHojaTableClass::HOJA_VIDA_ID, true) => $cerdito['id'])) ?>" class="btn btn-primary btn-xs">consultar en Hoja de Vida</a></td>
+        <?php endforeach ?>
+    </tbody>
+
+
+
+  </table>  
 
 </div>

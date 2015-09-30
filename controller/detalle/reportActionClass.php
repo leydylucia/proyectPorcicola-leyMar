@@ -9,10 +9,10 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
-  Description of reportInsumoActionClass esta clase sirve para realizar los reportes
+  Description of reportActionClass esta clase sirve para realizar los reportes
  * ** @category insumo
- * @author Leydy Lucia Castillo <leydylucia@hotmail.com>
- * @var $filter para hacer filtros,$where
+ * @author alexandra marcela florez
+ * @category modulo detalle
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
@@ -74,7 +74,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
             $this->objDetalle = detalleEntradaTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
 
             //estos campo son para llamar las foraneas
-            $fields = array(/* foranea salidaBodega */
+            $fields = array(/* foranea entradaBodega */
                 entradaTableClass::ID,
             );
             $orderBy = array(
@@ -91,7 +91,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
             );
             $this->objInsumo = insumoTableClass::getAll($fieldsInsumo, true, $orderByInsumo, 'ASC');
 
-            $fieldsUnidad = array(
+            $fieldsUnidad = array(/* foranea insumo */
                 unidadMedidaTableClass::ID,
                 unidadMedidaTableClass::DESCRIPCION
             );

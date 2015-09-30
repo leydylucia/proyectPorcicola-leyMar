@@ -808,6 +808,24 @@ insumo_reporte:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
     
+insumo_inventario:
+  url:    /insumo/inventario
+  param:  { module: insumo, action: inventarioInsumo, format: html }
+  load:  
+    - model/base/insumoBaseTableClass.php
+    - model/insumoTableClass.php
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    - model/base/entradaBaseTableClass.php
+    - model/entradaTableClass.php
+    - model/base/detalleEntradaBaseTableClass.php
+    - model/detalleEntradaTableClass.php
+    - model/base/salidaBodegaBaseTableClass.php
+    - model/salidaBodegaTableClass.php 
+    - model/base/detalleSalidaBaseTableClass.php
+    - model/detalleSalidaTableClass.php
+  
+    
 ##-------------------------------------------TIPO VENTA--------------------##
 tipoVenta_index:
   url:    /tipoVenta/index

@@ -10,9 +10,10 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\partoValidatorClass as validator;
 
 /**
- * Description of ejemploClass
+ *Description of indexActionClass trae datos para visualizarlos en vista indextemplated
  *
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 

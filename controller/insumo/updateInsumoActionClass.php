@@ -18,60 +18,60 @@ use mvc\i18n\i18nClass as i18n;
  */
 class updateInsumoActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        try {
-            if (request::getInstance()->isMethod('POST')) {
-                /* public function execute inicializa las variables 
-                 * @return $desc_insumo=> descripcion insumo (string)
-                 * @return $precio=> precio (numerico)
-                 * @return $tipoInsumo=> id tipo insumo (bigint)
-                 * @return $fechaFabricacion=> fecha fabricacion(date)
-                 * @return $fechaVencimiento=> fecha vencimiento(date)
-                 * @return $proveedorId =>id del proveedor (bigint)
-                 * todas estos datos se pasa en la varible @var $data
-                 * ** */
+  public function execute() {
+    try {
+      if (request::getInstance()->isMethod('POST')) {
+        /* public function execute inicializa las variables 
+         * @return $desc_insumo=> descripcion insumo (string)
+         * @return $precio=> precio (numerico)
+         * @return $tipoInsumo=> id tipo insumo (bigint)
+         * @return $fechaFabricacion=> fecha fabricacion(date)
+         * @return $fechaVencimiento=> fecha vencimiento(date)
+         * @return $proveedorId =>id del proveedor (bigint)
+         * todas estos datos se pasa en la varible @var $data
+         * ** */
 
-                $id = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID, true));
-                $desc_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
+        $id = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::ID, true));
+        $desc_insumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::DESC_INSUMO, true));
 //                $precio = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PRECIO, true));
-                $tipoInsumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true));
-                $fechaFabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true));
-                $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
-                $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
+        $tipoInsumo = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID, true));
+        $fechaFabricacion = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_FABRICACION, true));
+        $fechaVencimiento = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::FECHA_VENCIMIENTO, true));
+        $proveedorId = request::getInstance()->getPost(insumoTableClass::getNameField(insumoTableClass::PROVEEDOR_ID, true));
 
 //                $this->Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento);/* @validate para inicializar varivles para validar*/
-                validator::validateEdit();
+        validator::validateEdit();
 
-                $ids = array(
-                    insumoTableClass::ID => $id
-                );
-/**@var $data recorre los datos de la tabla en model
- 
- */
-                $data = array(
-                    insumoTableClass::DESC_INSUMO => $desc_insumo,
+        $ids = array(
+            insumoTableClass::ID => $id
+        );
+        /*         * @var $data recorre los datos de la tabla en model
+
+         */
+        $data = array(
+            insumoTableClass::DESC_INSUMO => $desc_insumo,
 //                    insumoTableClass::PRECIO => $precio,
-                    insumoTableClass::TIPO_INSUMO_ID => $tipoInsumo,
-                    insumoTableClass::FECHA_FABRICACION => $fechaFabricacion,
-                    insumoTableClass::FECHA_VENCIMIENTO => $fechaVencimiento,
-                    insumoTableClass::PROVEEDOR_ID => $proveedorId,
-                );
+            insumoTableClass::TIPO_INSUMO_ID => $tipoInsumo,
+            insumoTableClass::FECHA_FABRICACION => $fechaFabricacion,
+            insumoTableClass::FECHA_VENCIMIENTO => $fechaVencimiento,
+            insumoTableClass::PROVEEDOR_ID => $proveedorId,
+        );
 
-                insumoTableClass::update($ids, $data);
-                session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-                routing::getInstance()->redirect('insumo', 'indexInsumo');
-            } else {
-                
-                routing::getInstance()->redirect('insumo', 'indexInsumo');
-            }
-        } catch (PDOException $exc) {
+        insumoTableClass::update($ids, $data);
+        session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
+        routing::getInstance()->redirect('insumo', 'indexInsumo');
+      } else {
 
-            routing::getInstance()->forward('insumo', 'editInsumo');
-            session::getInstance()->setFlash('exc', $exc);
-        }
+        routing::getInstance()->redirect('insumo', 'indexInsumo');
+      }
+    } catch (PDOException $exc) {
+
+      routing::getInstance()->forward('insumo', 'editInsumo');
+      session::getInstance()->setFlash('exc', $exc);
     }
+  }
 
-    /* @ funcion para validar campos */
+  /* @ funcion para validar campos */
 //    private function Validate($desc_insumo, $precio, $fechaFabricacion, $fechaVencimiento) {
 //        $flag = false;
 //        if (strlen($desc_insumo) > insumoTableClass::DESC_INSUMO_LENGTH) {

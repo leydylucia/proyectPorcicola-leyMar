@@ -7,14 +7,24 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\animalValidatorClass as validator;
+use mvc\validator\animalValidatorClass as validator; /* llama las validaciones esta linea debe estar tambien en routin y validator en carpeta libs */
 
 /**
- * Description of ejemploClass
+ * Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
  * @author Alexandra Florez
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $genero_id=> genero (bigint)
+   * @return $fecha_nacimiento=> fecha nacimiento (date)
+   * @return $estado_id=> estado (bigint)
+   * @return $lote_id=> lote(bigint)
+   * @return $raza_id=> raza(bigint)
+   * @return $nombre_cerdo =>nombre del cerdo (varchar)
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
   public function execute() {
     try {
@@ -28,11 +38,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $raza_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true));
         $nombre_cerdo = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true));
         //$id_madre = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, true));
+        //       $this->Validate($genero, $id_madre);
 
-
- //       $this->Validate($genero, $id_madre);
-        
-        validator::validateEdit();
+        validator::validateEdit(); /* este maneja las validaciones para modificar */
 
         $ids = array(
             hojaVidaTableClass::ID => $id
@@ -45,7 +53,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             hojaVidaTableClass::LOTE_ID => $lote_id,
             hojaVidaTableClass::RAZA_ID => $raza_id,
             hojaVidaTableClass::NOMBRE_CERDO => $nombre_cerdo
-           // hojaVidaTableClass::ID_MADRE => $id_madre
+                // hojaVidaTableClass::ID_MADRE => $id_madre
         );
 
         hojaVidaTableClass::update($ids, $data);
@@ -101,5 +109,4 @@ class updateActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('animal', 'edit');
 //    }
 //  }
-
 }

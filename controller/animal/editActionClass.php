@@ -7,14 +7,31 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+
 //use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  *
  * @author Alexandra Florez
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $genero_id=> genero (bigint)
+   * @return $fecha_nacimiento=> fecha nacimiento (date)
+   * @return $estado_id=> estado (bigint)
+   * @return $lote_id=> lote(bigint)
+   * @return $raza_id=> raza(bigint)
+   * @return $nombre_cerdo =>nombre del cerdo (varchar)
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
+  /* public function execute inicializa las variables 
+   * @return $fields=> son los campos que trae de la base de datos
+   * @return $this=> es el que lleva los datos a la vista
+   * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {
@@ -27,15 +44,15 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             hojaVidaTableClass::LOTE_ID,
             hojaVidaTableClass::RAZA_ID,
             hojaVidaTableClass::NOMBRE_CERDO
-            //hojaVidaTableClass::ID_MADRE
+                //hojaVidaTableClass::ID_MADRE
         );
 
         $where = array(
             hojaVidaTableClass::ID => request::getInstance()->getGet(hojaVidaTableClass::ID)
         );
         $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, null, null, null, null, $where);
-        
-        
+
+
         // para editar foraneas tabla genero
         $fieldsU = array(
             generoTableClass::ID,
@@ -46,7 +63,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objGenero = generoTableClass::getAll($fieldsU, true, $orderByU, 'ASC');
         //fin
-        
         // para editar foraneas tabla estado
         $fields = array(
             estadoTableClass::ID,
@@ -57,7 +73,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objEstado = estadoTableClass::getAll($fields, true, $orderBy, 'ASC');
         //fin
-        
         // para editar foraneas tabla lote
         $fields = array(
             loteTableClass::ID,
@@ -68,7 +83,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
         //fin
-        
         // para editar foraneas tabla raza
         $fields = array(
             razaTableClass::ID,
@@ -79,7 +93,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objRaza = razaTableClass::getAll($fields, true, $orderBy, 'ASC');
         //fin
-        
         // para editar foraneas tabla raza
 //        $fieldy = array(
 //            hojaVidaTableClass::ID_MADRE
@@ -89,7 +102,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 //        );
 //        $this->objHojaVida = hojaVidaTableClass::getAll($fieldy, true, $orderBr, 'ASC');
         // fin
-        
+
         $this->defineView('edit', 'animal', session::getInstance()->getFormatOutput());
         //session::getInstance()->setSuccess('El registro se modifico exitosamente');
 //        log::register('insertar', hojaVidaTableClass::getNameTable());

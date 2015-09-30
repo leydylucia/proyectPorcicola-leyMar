@@ -17,20 +17,19 @@ class insertCiudadActionClass extends controllerClass implements controllerActio
 
   public function execute() {
     try {
-        if(session::getInstance()->hasAttribute('form_' . ciudadTableClass::getNameTable())){
-                $this->ciudad = session::getInstance()->getAttribute('form_' . ciudadTableClass::getNameTable());
-                
-            }
-            /* fields para foraneas*/
-            $fields = array(
-            deptoTableClass::ID,
-            deptoTableClass::NOM_DEPTO
-            );
-            $orderBy = array(
-           deptoTableClass::NOM_DEPTO
-            );
-            $this->objDepto = deptoTableClass::getAll($fields, true , $orderBy,'ASC');
-    
+      if (session::getInstance()->hasAttribute('form_' . ciudadTableClass::getNameTable())) {
+        $this->ciudad = session::getInstance()->getAttribute('form_' . ciudadTableClass::getNameTable());
+      }
+      /* fields para foraneas */
+      $fields = array(
+          deptoTableClass::ID,
+          deptoTableClass::NOM_DEPTO
+      );
+      $orderBy = array(
+          deptoTableClass::NOM_DEPTO
+      );
+      $this->objDepto = deptoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
       $this->defineView('insertCiudad', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

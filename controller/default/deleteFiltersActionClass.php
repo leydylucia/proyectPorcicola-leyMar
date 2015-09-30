@@ -19,10 +19,10 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
 
   public function execute() {
     try {
-    if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-   session::getInstance()->deleteAttribute('defaultIndexFilters');
-}
-routing::getInstance()->redirect('default','index');
+      if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+        session::getInstance()->deleteAttribute('defaultIndexFilters');
+      }
+      routing::getInstance()->redirect('default', 'index');
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+
 //use hook\log\logHookClass as log;
 
 /**
@@ -14,16 +15,14 @@ use mvc\i18n\i18nClass as i18n;
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo proveedor
  */
-
 class editCiudadActionClass extends controllerClass implements controllerActionInterface {
-  
   /* public function execute inicializa las variables 
-     * @return $fields=> son los campos que trae de la base de datos
-     * @return $this=> es el que lleva los datos a la vista
-     * @return $where=>
-     * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
+   * @return $fields=> son los campos que trae de la base de datos
+   * @return $this=> es el que lleva los datos a la vista
+   * @return $where=>
+   * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {

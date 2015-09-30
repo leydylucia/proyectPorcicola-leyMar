@@ -10,11 +10,12 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\animalValidatorClass as validator;
 
 /**
- * Description of ejemploClass
+ * Description of indexActionClass trae datos para visualizarlos en vista indextemplated
  *
  * @author Alexandra Florez
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
+    
 
   public function execute() {
     try {
@@ -29,7 +30,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
           $where[hojaVIdaTableClass::GENERO_ID] = $filter['genero'];
         }
-        
+
         if (isset($filter['Estado']) and $filter['Estado'] !== null and $filter['Estado'] !== '') {
           $where[hojaVIdaTableClass::ESTADO_ID] = $filter['Estado'];
         }
@@ -45,6 +46,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $filter['Date2']
         );
       }
+      /* fin filtros */
 
 
       $fields = array(
@@ -76,14 +78,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       /** @var $where => para filtros
        * *@var $page => para el paginado
-       * *@var $fileds => para declarar los cmpos de la table en la bd
+       * *@var $fileds => para declarar los campos de la table en la bd
        * @var $orderBy => ordernar por el campo deseado
        *  true=> es el borrado logico si lo tienes en la bd pones true sino false
        * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
        * config::getRowGrid()=> va con el paginado y hace una funcion
        * @var $this->objInsumo para enviar los datos a la vista      */
       $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
-      $fields = array(
+
+      /* para buscar en los select en filtros */
+      $fields = array(/* busqueda para genero */
           generoTableClass::ID,
           generoTableClass::DESCRIPCION
       );
@@ -92,7 +96,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       );
       $this->objGenero = generoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
-      $fields = array(
+      $fields = array(/* busqueda para estado */
           estadoTableClass::ID,
           estadoTableClass::DESC_ESTADO
       );

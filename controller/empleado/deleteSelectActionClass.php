@@ -9,15 +9,16 @@ use mvc\session\sessionClass as session;
 use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 /**
- * Description of ejemploClass
- *
- * @author leydy lucia castillo mosquera
+ * Description of deleterSelectActionClass esta clase sirve para eliminar datos en masa
+  *@author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo empleado
  */
 class deleteSelectActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {/*se grago el and resquest etc..*/
-      if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk'))  {
+      if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) /*el chk es para escojer varios dator por medio del cheklist*/
+        {
           
           
         

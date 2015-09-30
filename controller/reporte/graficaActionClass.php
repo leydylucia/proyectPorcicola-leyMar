@@ -16,14 +16,14 @@ use mvc\i18n\i18nClass as i18n;
  *  el create carge datos de la tabla y cumple con la funcion de insertar
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category modulo sacrificio venta
+ * @category modulo reporte
  */
 class graficaActionClass extends controllerClass implements controllerActionInterface {
   /* public function execute inicializa las returniables
-   * @return $valor=> valor
-   * @return $tipoVenta=> tipo venta
-   * @return $idCerdo=> id cerdo
-   * * todas estos datos se pasa en la varible @var $data
+   * @return $cerdor=> cerdo
+   * @return $fechaInicial=> fechaInicial
+   * @return $fechaFin=> fechaFin
+
 
    * ** */
 
@@ -130,7 +130,9 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         $cosPoints = array();
         $cerdos = array();
 
-        /* $datoMaximo => es para dar el numero mas grande en grafico
+        /* estos datos se pasan a la grafica templated
+         * 
+         * $datoMaximo => es para dar el numero mas grande en grafico
           $labels =>
          * $cerdo => para sacar la informacion en grilla */
         $x = -1;
@@ -176,7 +178,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         ));
       }
 
-/*validacion de fecha*/
+      /* validacion de fecha */
       $fechaInicial = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_1');
       $fechaFin = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CREATED_AT, true) . '_2');
 
@@ -185,7 +187,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 //              session::getInstance()->setFlash('modalFilters', true);
         routing::getInstance()->forward('reporte', 'insert');
       }
-/*fin validacion de fecha*/
+      /* fin validacion de fecha */
 
       $this->defineView('grafica', 'reporte', session::getInstance()->getFormatOutput()); /* en caso de no funcionar addicionar en edit editInsumo */
     } catch (PDOException $exc) {

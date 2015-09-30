@@ -10,42 +10,48 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
- */
+  Description of createActionClass esta clase sirve para
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo entrada bodega */
 class createEnActionClass extends controllerClass implements controllerActionInterface {
+   /* public function execute inicializa las variables 
+   * @return $empleado id=> empleado(bigint)
+   * @return $proveedor id=> proveedor id (bigint)
 
-    public function execute() {
-        try {
-            if (request::getInstance()->isMethod('POST')) {
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
-                $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
-                $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
+  public function execute() {
+    try {
+      if (request::getInstance()->isMethod('POST')) {
 
-                //  $this->Validate($empleado_id, $proveedor_id); 
-                validator::validateInsert();
-                $data = array(
-                    entradaTableClass::EMPLEADO_ID => $empleado_id,
-                    entradaTableClass::PROVEEDOR_ID => $proveedor_id
-                );
+        $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
+        $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
 
-                entradaTableClass::insert
-                        ($data);
+        //  $this->Validate($empleado_id, $proveedor_id); 
+        validator::validateInsert(); /* para validas los campos de la tabla y se redirige al validator */
+        $data = array(
+            entradaTableClass::EMPLEADO_ID => $empleado_id,
+            entradaTableClass::PROVEEDOR_ID => $proveedor_id
+        );
 
-                session::getInstance()->setSuccess('Registro Exitoso');
+        entradaTableClass::insert
+                ($data);
 
-                routing::getInstance()->redirect('entrada', 'indexEn');
-            } else {
-                routing::getInstance()->redirect('entrada', 'indexEn');
-            }
-        } catch (PDOException $exc) {
-            routing::getInstance()->redirect('entrada', 'insertEn');
-            session::getInstance()->setFlash('exc', '$exc');
-        }
+        session::getInstance()->setSuccess('Registro Exitoso');
+
+        routing::getInstance()->redirect('entrada', 'indexEn');
+      } else {
+        routing::getInstance()->redirect('entrada', 'indexEn');
+      }
+    } catch (PDOException $exc) {
+      routing::getInstance()->redirect('entrada', 'insertEn');
+      session::getInstance()->setFlash('exc', '$exc');
     }
+  }
 
-    // VALIDACIONES
+  // VALIDACIONES
 //  private function Validate($empleado_id, $proveedor_id) {
 //    $bono = false;
 //    if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {

@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
-  Description of deleteInsumoActionClass esta clase sirve para eliminar datos individuales
+  Description of deleteActionClass esta clase sirve para eliminar datos individuales
  *
  * @author leydy lucia castillo mosquera
  * * @category modulo insumo

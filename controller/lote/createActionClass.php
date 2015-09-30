@@ -10,22 +10,17 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\loteValidatorClass as validator;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ *  Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo lote
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
-  
   /* public function execute inicializa las variables 
-     * @var $nombre=> nombre del lote
-     * @var $apellido=> apellido del lote
-     * @var $direccion=> direccion del lote
-     * @var $correo=> correo del lote
-     * @var $telefono=> telefono del lote
-     * @var $ciudad_id =>ciudad a la que pertenece el lote
-     * ** */
+   * @var $desc_lote=> nombre del lote
+   * @var $ubicacion=> apellido del lote
   
+   * ** */
 
   public function execute() {
     try {
@@ -35,9 +30,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
 
 
-  //      $this->Validate($desc_lote, $ubicacion);
-        
-        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
+        //      $this->Validate($desc_lote, $ubicacion);
+
+        validator::validateInsert();  /* para validas los campos de la tabla y se redirige al validator */
 
         $data = array(
             loteTableClass::DESC_LOTE => $desc_lote,
@@ -59,7 +54,7 @@ class createActionClass extends controllerClass implements controllerActionInter
     }
   }
 
-   /* @ function para validar campos de formulario*/
+  /* @ function para validar campos de formulario */
 //  private function Validate($desc_lote, $ubicacion) {
 //    $as = false;
 //    if (strlen($desc_lote) > loteTableClass::DESC_LOTE_LENGTH) {
@@ -99,5 +94,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('lote', 'insert');
 //    }
 //  }
-
 }

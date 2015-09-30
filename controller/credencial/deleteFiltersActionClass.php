@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+* Description este es la funcion que hace el boton eliminar filtros es decir 
+ * limpiar el campo despues de hacer un filtro o consulta
  *
   @author Alexandra Florez
  */

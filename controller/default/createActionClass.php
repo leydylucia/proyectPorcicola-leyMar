@@ -27,12 +27,12 @@ class createActionClass extends controllerClass implements controllerActionInter
         try {
             if (request::getInstance()->isMethod('POST') === true) {
                 /* public function execute inicializa las returniables 
-     * @return $user=> usuario
-     * @return $pass1=> password
-     * @return $pass2=> password verificar contraseñas
-     * * todas estos datos se pasa en la varible @var $data*/
-                
-                //trim para borrar los espacios en blanco del principio y del fin
+         * @return $user=> usuario =>(string)
+         * @return $pass1=> password =>(string)
+         * @return $pass2=> password verificar contraseñas
+         * * todas estos datos se pasa en la varible @var $data */
+
+        //trim para borrar los espacios en blanco del principio y del fin
                 $user = trim(request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true)));
                 $pass1 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_1');
                 $pass2 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2');

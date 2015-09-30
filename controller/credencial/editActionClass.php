@@ -10,21 +10,25 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log;
 
 /**
- * Description of editProvClass
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo credencial
  **/
 
 class editActionClass extends controllerClass implements controllerActionInterface {
+    /* public function execute inicializa las variables 
+   * @return $nombre=> nombre del a credencial (string)
+   
+   * ** */
 
   /* public function execute inicializa las variables 
-     * @return $fields=> son los campos que trae de la base de datos
-     * @return $this=> es el que lleva los datos a la vista
-     * @return $where=>
-     * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
-  
+   * @return $fields=> son los campos que trae de la base de datos
+   * @return $this=> es el que lleva los datos a la vista
+   * @return $orderBy=> es para dar orden ascendente o descendente de los datos que provienen de la base de datos
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
+
   public function execute() {
     try {
       if (request::getInstance()->hasGet(credencialTableClass::ID)) {

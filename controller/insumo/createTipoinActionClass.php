@@ -8,8 +8,8 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\validator\tipoInsumoValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
-use hook\log\logHookClass as log;/*linea de la bitacora*/
 /**
  *  Description of createActionClass esta clase sirve para 
  *  el create carge datos de la tabla y cumple con la funcion de insertar
@@ -18,43 +18,43 @@ use hook\log\logHookClass as log;/*linea de la bitacora*/
  * * @category modulo insumo
  */
 class createTipoinActionClass extends controllerClass implements controllerActionInterface {
-    /* public function execute inicializa las variable 
-     * @return $desc_tipoIn=> descripcion tipo insumo(varchar)
-     *  este dato se pasa en la varible @var $data
+  /* public function execute inicializa las variable 
+   * @return $desc_tipoIn=> descripcion tipo insumo(varchar)
+   *  este dato se pasa en la varible @var $data
 
-     * ** */
+   * ** */
 
-    public function execute() {
-        try {
-            if (request::getInstance()->isMethod('POST')) {
+  public function execute() {
+    try {
+      if (request::getInstance()->isMethod('POST')) {
 
-                $desc_tipoIn = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true));
+        $desc_tipoIn = request::getInstance()->getPost(tipoInsumoTableClass::getNameField(tipoInsumoTableClass::DESC_TIPOIN, true));
 
 
 
 //                $this->Validate($desc_tipoIn);/*@ $this->validate para validar campos*/
-                validator::validateInsert();
+        validator::validateInsert();
 
-                /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
-                $data = array(
-                    tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn
-                );
-                tipoInsumoTableClass::insert($data);
+        /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
+        $data = array(
+            tipoInsumoTableClass::DESC_TIPOIN => $desc_tipoIn
+        );
+        tipoInsumoTableClass::insert($data);
 
-                session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
-                 log::register('insertar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('insumo', 'indexTipoin');
-            } else {
-                routing::getInstance()->redirect('insumo', 'indexTipoin');
-            }
-        } catch (PDOException $exc) {
+        session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
+        log::register('insertar', tipoInsumoTableClass::getNameTable()); //linea de bitacora
+        routing::getInstance()->redirect('insumo', 'indexTipoin');
+      } else {
+        routing::getInstance()->redirect('insumo', 'indexTipoin');
+      }
+    } catch (PDOException $exc) {
 
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
-    /* @ function para validar campos de formulario */
+  /* @ function para validar campos de formulario */
 //        private function Validate($desc_tipoIn) {
 //        $flag = false;
 //        if (strlen($desc_tipoIn) > tipoInsumoTableClass::DESC_TIPOIN_LENGTH) {

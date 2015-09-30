@@ -16,30 +16,30 @@ use mvc\i18n\i18nClass as i18n;
  */
 class deleteSelectTipoinActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        try {/* se grago el and resquest etc.. */
-            if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
-                /* @var $idsToDelete  es para borrar id masivo con el checlist"chk" */
-                $idsToDelete = request::getInstance()->getPost('chk');
+  public function execute() {
+    try {/* se grago el and resquest etc.. */
+      if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
+        /* @var $idsToDelete  es para borrar id masivo con el checlist"chk" */
+        $idsToDelete = request::getInstance()->getPost('chk');
 
-                foreach ($idsToDelete as $id) {
-                    $ids = array(
-                        tipoInsumoTableClass::ID => $id
-                    );
-                    tipoInsumoTableClass::delete($ids, true);
-                }
-                /* session para  mensaje */
-                session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
-                //  session::getInstance()->setSucces('los Elementos seleccionas fueron eliminados con exito');
-
-                routing::getInstance()->redirect('insumo', 'indexTipoin');
-            } else {
-                routing::getInstance()->redirect('insumo', 'indexTipoin');
-            }
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+        foreach ($idsToDelete as $id) {
+          $ids = array(
+              tipoInsumoTableClass::ID => $id
+          );
+          tipoInsumoTableClass::delete($ids, true);
         }
+        /* session para  mensaje */
+        session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
+        //  session::getInstance()->setSucces('los Elementos seleccionas fueron eliminados con exito');
+
+        routing::getInstance()->redirect('insumo', 'indexTipoin');
+      } else {
+        routing::getInstance()->redirect('insumo', 'indexTipoin');
+      }
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

@@ -16,29 +16,29 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of ejemploClass traduce la pagina a ingles
  *
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * * @category sacrificio venta
  */
 class traductorSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
+  public function execute() {
 
-        try {
-            if (request::getInstance()->isMethod('POST') === true) {
-                $language = request::getInstance()->getPost('language');
-                $PATH_INFO = request::getInstance()->getServer('PATH_INFO');
-                session::getInstance()->setDefaultCulture($language);
-                $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
-                header('location: ' . $dir);
-            } else {
-                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
-            }
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+    try {
+      if (request::getInstance()->isMethod('POST') === true) {
+        $language = request::getInstance()->getPost('language');
+        $PATH_INFO = request::getInstance()->getServer('PATH_INFO');
+        session::getInstance()->setDefaultCulture($language);
+        $dir = config::getUrlBase() . config::getIndexFile() . $PATH_INFO;
+        header('location: ' . $dir);
+      } else {
+        routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+      }
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

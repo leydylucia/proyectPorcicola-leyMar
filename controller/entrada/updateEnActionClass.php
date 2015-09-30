@@ -9,11 +9,19 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ *  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
- * @author Alexandra Florez
+ * *@author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo entrada
  */
 class updateEnActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $empleado id=> empleado(bigint)
+   * @return $proveedor id=> proveedor id (bigint)
+
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
   public function execute() {
     try {
@@ -22,7 +30,7 @@ class updateEnActionClass extends controllerClass implements controllerActionInt
         $id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::ID, true));
         $empleado_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::EMPLEADO_ID, true));
         $proveedor_id = request::getInstance()->getPost(entradaTableClass::getNameField(entradaTableClass::PROVEEDOR_ID, true));
-        
+
 
         $ids = array(
             entradaTableClass::ID => $id
@@ -122,5 +130,4 @@ class updateEnActionClass extends controllerClass implements controllerActionInt
 //      routing::getInstance()->forward('proveedor', 'editProv');
 //    }
 //  }
-
 }

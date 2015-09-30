@@ -10,11 +10,17 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\credencialValidatorClass as validator;
 
 /**
- * Description of ejemploClass
+ *  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
  * @author Alexandra Florez
+ * @category modulo credencial
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $nombre=> nombre del a credencial (string)
+
+   * ** */
 
   public function execute() {
     try {
@@ -23,9 +29,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::ID, true));
         $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
 
-       // $this->Validate($nombre);
-        
-        validator::validateEdit();
+        // $this->Validate($nombre);
+
+        validator::validateEdit(); /* para validas los campos de la tabla y se redirige al validator */
 
         $ids = array(
             credencialTableClass::ID => $id
@@ -79,5 +85,4 @@ class updateActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('credencial', 'edit');
 //    }
 //  }
-
 }

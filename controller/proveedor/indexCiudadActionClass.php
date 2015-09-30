@@ -101,7 +101,7 @@ class indexCiudadActionClass extends controllerClass implements controllerAction
 
       $this->defineView('indexCiudad', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-       routing::getInstance()->redirect('proveedor', 'indexCiudad');
+      routing::getInstance()->redirect('proveedor', 'indexCiudad');
     }
   }
 

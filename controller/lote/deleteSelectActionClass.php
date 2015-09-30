@@ -9,9 +9,10 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description esta cumple una funcion es para el eliminado en masa
  *
- * @author leydy lucia castillo mosquera
+ * @author Alexandra Florez
+ * @category modulo lote
  */
 class deleteSelectActionClass extends controllerClass implements controllerActionInterface {
 

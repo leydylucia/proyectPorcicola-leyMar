@@ -11,22 +11,22 @@ use mvc\validator\proveedorValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
- * Description of createProvActionClass
+ * Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo proveedor
  */
 class createProvActionClass extends controllerClass implements controllerActionInterface {
-  
   /* public function execute inicializa las variables 
-     * @return $nombre=> nombre del proveedor (string)
-     * @return $apellido=> apellido del proveedor (string)
-     * @return $direccion=> direccion del proveedor (string)
-     * @return $correo=> correo del proveedor (string)
-     * @return $telefono=> telefono del proveedor (string)
-     * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
-  
+   * @return $nombre=> nombre del proveedor (string)
+   * @return $apellido=> apellido del proveedor (string)
+   * @return $direccion=> direccion del proveedor (string)
+   * @return $correo=> correo del proveedor (string)
+   * @return $telefono=> telefono del proveedor (string)
+   * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
+
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -39,9 +39,9 @@ class createProvActionClass extends controllerClass implements controllerActionI
         $ciudad_id = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true));
 
         // $this->Validate($nombre, $apellido, $direccion, $correo, $telefono); /*@ $this->validate para validar campos*/
-        
-        validator::validateInsert(); /*para validas los campos de la tabla y se redirige al validator*/
-        
+
+        validator::validateInsert(); /* para validas los campos de la tabla y se redirige al validator */
+
         /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
         $data = array(
             proveedorTableClass::NOMBRE => $nombre,
@@ -55,7 +55,7 @@ class createProvActionClass extends controllerClass implements controllerActionI
         proveedorTableClass::insert($data);
 
         session::getInstance()->setSuccess('Registro Exitoso');
-        
+
         log::register('insertar', proveedorTableClass::getNameTable());
 
         routing::getInstance()->redirect('proveedor', 'indexProv');
@@ -68,7 +68,7 @@ class createProvActionClass extends controllerClass implements controllerActionI
     }
   }
 
-   /* @ function para validar campos de formulario*/
+  /* @ function para validar campos de formulario */
 //  private function Validate($nombre, $apellido, $direccion, $correo, $telefono) {
 //    $bono = false;
 //    if (strlen($nombre) > proveedorTableClass::NOMBRE_LENGTH) {
@@ -143,5 +143,4 @@ class createProvActionClass extends controllerClass implements controllerActionI
 //      routing::getInstance()->forward('proveedor', 'insertProv');
 //    }
 //  }
-
 }

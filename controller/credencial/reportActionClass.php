@@ -8,24 +8,26 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-/*
- * DESCRIPCION DE LA CLASE
- * @autor Alexandra Marcela Florez
+/**
+ * Description of  esta clase sirve para realizar los reportes
+ *
+ * @author Alexandra Florez
+ * @category modulo credencial
  */
 
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      /* filtros */
+      /* filtros en reporte */
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
+
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[credencialTableClass::NOMBRE] = $filter['nombre'];
         }
-
         /* para mantener filtro con paginado */
         session::getInstance()->setAttribute('defaultIndexFilters', $where);
       } elseif (session::getInstance()->hasAttribute('defaultIndexFilters')) {
@@ -51,13 +53,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
 
 
       /** @var $where => para filtros
-       * *@var $page => para el paginado
-       * *@var $fileds => para declarar los cmpos de la table en la bd
+       * @var $fileds => para declarar los cmpos de la table en la bd
        * @var $orderBy => ordernar por el campo deseado
        *  true=> es el borrado logico si lo tienes en la bd pones true sino false
-       * ASC => es la forma como se va a ordenar si de forma ascendente o desendente
-       * config::getRowGrid()=> va con el paginado y hace una funcion
-       * @var $this->objInsumo para enviar los datos a la vista      */
+       * @var $this->objCredencial para enviar los datos a la vista      */
       $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
 
       $this->defineView('index', 'credencial', session::getInstance()->getFormatOutput());

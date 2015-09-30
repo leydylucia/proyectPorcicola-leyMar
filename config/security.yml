@@ -731,7 +731,44 @@ control:
     credentials:
       - [admin, usuario]
       
-         
+detalleHoja:
+  index:
+    security: true
+    credentials:
+      - [admin, empleado]
+  insert:
+    security: true
+    credentials:
+      - [admin, usuario]
+  create:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  edit:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  update:
+    security: true
+    credentials:
+      - [admin, usuario]
+  delete:
+    security: true 
+    credentials:
+      - [admin, usuario]
+  deleteSelect:
+    security: true
+    credentials:
+      - [admin, usuario]
+  ver:
+    security: true
+    credentials:
+      - [admin, usuario]
+  reporte:
+    security: true  
+    credentials:
+      - [admin, usuario]
+              
         
 
   

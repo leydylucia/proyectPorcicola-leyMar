@@ -9,41 +9,41 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description esta cumple una funcion es para el eliminado en masa
  *
  * @author leydy lucia castillo mosquera
  * * @category sacrificio venta
  */
 class deleteSelectSacrificioVentaActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        try {/* se grago el and resquest etc.. */
-            if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
+  public function execute() {
+    try {/* se grago el and resquest etc.. */
+      if (request::getInstance()->isMethod('POST') and request::getInstance()->hasPost('chk')) {
 
 
 
-                $idsToDelete = request::getInstance()->getPost('chk');
+        $idsToDelete = request::getInstance()->getPost('chk');
 
 
-                foreach ($idsToDelete as $id) {
-                    $ids = array(
-                        sacrificiovTableClass::ID => $id
-                    );
-                    sacrificiovTableClass::delete($ids, true);
-                }
-                /* session para  mensaje */
-                session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
+        foreach ($idsToDelete as $id) {
+          $ids = array(
+              sacrificiovTableClass::ID => $id
+          );
+          sacrificiovTableClass::delete($ids, true);
+        }
+        /* session para  mensaje */
+        session::getInstance()->setSuccess('los Elementos seleccionas fueron eliminados con exito');
 //        session::getInstance()->setSucces();
 
 
-                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
-            } else {
-                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
-            }
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+        routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+      } else {
+        routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+      }
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

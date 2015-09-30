@@ -7,18 +7,21 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+
 //use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  *
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      
+
       if (request::getInstance()->hasGet(partoTableClass::ID)) {
         $fields = array(
             partoTableClass::ID,
@@ -49,9 +52,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         //fin
 
         $this->defineView('edit', 'parto', session::getInstance()->getFormatOutput());
-        
+
 //        log::register('editar', partoTableClass::getNameTable());
-        
       } else {
         routing::getInstance()->redirect('parto', 'index');
       }

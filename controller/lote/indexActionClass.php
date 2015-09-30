@@ -10,9 +10,9 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\loteValidatorClass as validator;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ * Description of indexActionClass trae datos para visualizarlos en vista indextemplated
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo credencia
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
@@ -23,7 +23,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
-        
+
         if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESC_LOTE, true))) === false) {
 
           if (request::getInstance()->isMethod('POST')) {
@@ -39,7 +39,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         if (isset($filter['desc_lote']) and $filter['desc_lote'] !== null and $filter['desc_lote'] !== '') {
           $where[loteTableClass::DESC_LOTE] = $filter['desc_lote'];
         }
-        
+
 //        if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true))) === false) {
 //
 //          if (request::getInstance()->isMethod('POST')) {
@@ -51,7 +51,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //            }
 //          }
 //        }
-        
+
         if (isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== '') {
           $where[loteTableClass::UBICACION] = $filter['ubicacion'];
         }

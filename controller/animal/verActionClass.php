@@ -9,11 +9,20 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of verActionClass  sirve para ver un dato en la grilla 
  *
  * @author Alexandra Florez
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $genero_id=> genero (bigint)
+   * @return $fecha_nacimiento=> fecha nacimiento (date)
+   * @return $estado_id=> estado (bigint)
+   * @return $lote_id=> lote(bigint)
+   * @return $raza_id=> raza(bigint)
+   * @return $nombre_cerdo =>nombre del cerdo (varchar)
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
   public function execute() {
     try {

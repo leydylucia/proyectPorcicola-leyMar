@@ -9,11 +9,16 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of verActionClass  sirve para ver un dato en la grilla 
  *
  * @author Alexandra Florez
+ * @category modulo credencial
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
+   /* public function execute inicializa las variables 
+   * @return $nombre=> nombre del a credencial (string)
+
+   * ** */
 
   public function execute() {
     try {

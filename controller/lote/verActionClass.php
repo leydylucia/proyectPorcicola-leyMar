@@ -9,9 +9,10 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of verActionClass  sirve para ver un dato en la grilla 
  *
  * @author Alexandra Florez
+ * @category modulo lote
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
 

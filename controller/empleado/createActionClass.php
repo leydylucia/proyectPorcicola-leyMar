@@ -10,16 +10,27 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\empleadoValidatorClass as validator;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ * Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo empleado
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $nombre=> nombre(string)
+   * @return $usuario_id=> usuario id (bigint)
+   * @return $documento=> documento (bigint)
+   * @return $apellido=> apellido(string)
+   * @return $direccion=> direccion(string)
+   * @return $correo => correo (string)
+   * @return $telefono =>telefono (bigint)
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        
+
         $nombre = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true));
         $usuario_id = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::USUARIO_ID, true));
         $tipo_id_id = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TIPO_ID_ID, true));
@@ -29,9 +40,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         $correo = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true));
         $telefono = request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, true));
 
-  //     $this->Validate($nombre, $apellido, $direccion, $correo, $telefono);
-        
-        validator::validateInsert(); /*para validas los campos de la tabla y se redirige al validator*/
+        //     $this->Validate($nombre, $apellido, $direccion, $correo, $telefono);
+
+        validator::validateInsert(); /* para validas los campos de la tabla y se redirige al validator */
 
         $data = array(
             empleadoTableClass::NOMBRE => $nombre,
@@ -139,5 +150,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('empleado', 'insert');
 //    }
 //  }
-
 }

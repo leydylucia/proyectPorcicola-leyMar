@@ -10,38 +10,36 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of deleteCiudadActionClass
+ * Description of  esta clase sirve para eliminar datos individuales
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo proveedor
  */
 class deleteCiudadActionClass extends controllerClass implements controllerActionInterface {
-  
-    /* public function execute inicializa las variables 
-     * @return $id=> identificacion de la ciudad (bigInt)
-     * @return $ids=> declara con cual id va a borras
-     * @return $this=> es el que lleva los datos a la vista
-     * Todas estos datos se pasan en la variable @var $data 
-     * ** */
+  /* public function execute inicializa las variables 
+   * @return $id=> identificacion de la ciudad (bigInt)
+   * @return $ids=> declara con cual id va a borras
+   * @return $this=> es el que lleva los datos a la vista
+   * Todas estos datos se pasan en la variable @var $data 
+   * ** */
 
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
         $id = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::ID, true));
-        
+
         $ids = array(
             ciudadTableClass::ID => $id
         );
-        ciudadTableClass::delete($ids, true);/*el true es para el borrado logico false si no lo tiene*/
+        ciudadTableClass::delete($ids, true); /* el true es para el borrado logico false si no lo tiene */
         //routing::getInstance()->redirect('depto', 'index');
-        
-        /** @var $this->arrayAjax pasa los datos a la vista, es de tipo Ajax**/
-        $this->arrayAjax=array(
-           'code'=>200,
-           'msg' =>'la eliminacion fue exitosa'
-            
+
+        /** @var $this->arrayAjax pasa los datos a la vista, es de tipo Ajax* */
+        $this->arrayAjax = array(
+            'code' => 200,
+            'msg' => 'la eliminacion fue exitosa'
         );
-        $this->defineView('deleteCiudad', 'proveedor',session::getInstance()->getFormatOutput());
+        $this->defineView('deleteCiudad', 'proveedor', session::getInstance()->getFormatOutput());
         session::getInstance()->setSuccess('Eliminado con Exitoso');
       } else {
         routing::getInstance()->redirect('proveedor', 'indexCiudad');

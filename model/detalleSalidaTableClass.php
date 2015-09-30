@@ -40,6 +40,29 @@ class detalleSalidaTableClass extends detalleSalidaBaseTableClass {
             throw $exc;
         }
     }
+    
+    
+    public static function getInventario($detalleSalida){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. detalleSalidaTableClass::CANTIDAD  . ') ' . ' As total'
+             . '  FROM ' . detalleSalidaTableClass::getNameTable() . ',' . insumoTableClass::getNameTable() . ',' . tipoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  detalleSalidaTableClass::getNameField(detalleSalidaTableClass::INSUMO_ID) . ' = '. insumoTableClass::getNameField(insumoTableClass::ID) . ' AND ' .  insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID) . ' = '. tipoinsumoTableClass::getNameField(tipoinsumoTableClass::ID) .'  '
+             . ' AND ' . insumoTableClass::getNameTable() . '.'. insumoTableClass::ID . ' = ' . $detalleSalida. '  '
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
  /**
    * Método public static function getNameInsumo($id)  para foreanea
    *

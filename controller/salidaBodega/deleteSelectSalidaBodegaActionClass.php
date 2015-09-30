@@ -9,7 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\i18n\i18nClass as i18n;
 
 /**
-  Description of deleterSelectInsumoActionClass esta clase sirve para eliminar datos en masa
+  Description of deleterSelectActionClass esta clase sirve para eliminar datos en masa
  * @class deleteSelectInsumoActionClass borrado en masa
  * @author leydy lucia castillo mosquera
  *  @category modulo insumo

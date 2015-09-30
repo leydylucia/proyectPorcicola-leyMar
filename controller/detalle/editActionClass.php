@@ -11,13 +11,22 @@ use mvc\i18n\i18nClass as i18n;
 //use hook\log\logHookClass as log;/*linea de la bitacora*/
 
 /**
- * Description of editInsumoActionClass trae datos cuando tiene foraneas y cumplir con
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
  * el funcionamiento de modificar datos
  *
- * @author leydy lucia castillo moaquera
- *  @category modulo insumo
+   @author alexandra marcela florez
+ * @category modulo detalle
  */
 class editActionClass extends controllerClass implements controllerActionInterface {
+   /* public function execute inicializa las variables 
+     * @return $cantidad=> cantidad (bigint)
+     * @return $valor=> valor (bigint)
+     * @return $entrada_bodega=> entrada bodega id (bigint)
+     * @return $insumo=> insumo(bigint)
+     * @return $unidad_media=> unidad medida(bigint)
+    
+     * todas estos datos se pasa en la varible @var $data
+     * ** */
 
     public function execute() {
         try {

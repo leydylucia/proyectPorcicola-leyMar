@@ -9,9 +9,11 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ *  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
 
@@ -41,6 +43,5 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
-
 
 }

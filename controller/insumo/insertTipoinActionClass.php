@@ -16,14 +16,14 @@ use mvc\i18n\i18nClass as i18n;
  */
 class insertTipoinActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        try {
+  public function execute() {
+    try {
 
-            $this->defineView('insertTipoin', 'insumo', session::getInstance()->getFormatOutput());
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+      $this->defineView('insertTipoin', 'insumo', session::getInstance()->getFormatOutput());
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }

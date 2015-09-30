@@ -9,9 +9,10 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
+ * Description of insertActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de insertar datos
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class insertActionClass extends controllerClass implements controllerActionInterface {
 
@@ -21,17 +22,17 @@ class insertActionClass extends controllerClass implements controllerActionInter
         $this->parto = session::getInstance()->getAttribute('form_' . partoTableClass::getNameTable());
       }
       // para editar foraneas tabla estado
-        $fields = array(
-        hojaVidaTableClass::ID,
-        hojaVidaTableClass::NOMBRE_CERDO
-        );
-        $orderBy = array(
-            hojaVidaTableClass::NOMBRE_CERDO
-        );
-        $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
-        //fin
-        
-      
+      $fields = array(
+          hojaVidaTableClass::ID,
+          hojaVidaTableClass::NOMBRE_CERDO
+      );
+      $orderBy = array(
+          hojaVidaTableClass::NOMBRE_CERDO
+      );
+      $this->objHojaVida = hojaVidaTableClass::getAll($fields, true, $orderBy, 'ASC');
+      //fin
+
+
       $this->defineView('insert', 'parto', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

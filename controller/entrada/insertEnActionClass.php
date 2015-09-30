@@ -9,9 +9,11 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description of insertActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de insertar datos
  *
- * @author Alexandra Florez
+ * *@author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo entrada
  */
 class insertEnActionClass extends controllerClass implements controllerActionInterface {
 

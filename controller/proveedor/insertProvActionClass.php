@@ -17,21 +17,20 @@ class insertProvActionClass extends controllerClass implements controllerActionI
 
   public function execute() {
     try {
-         if(session::getInstance()->hasAttribute('form_' . proveedorTableClass::getNameTable())){
-                $this->proveedor = session::getInstance()->getAttribute('form_' . proveedorTableClass::getNameTable());
-                
-            }
-            /* fields para foraneas*/
-            $fields = array(
-            ciudadTableClass::ID,
-            ciudadTableClass::NOM_CIUDAD
-            );
-            $orderBy = array(
-           ciudadTableClass::NOM_CIUDAD
-            );
-            $this->objCiudad = ciudadTableClass::getAll($fields, true , $orderBy,'ASC');
-            
-    
+      if (session::getInstance()->hasAttribute('form_' . proveedorTableClass::getNameTable())) {
+        $this->proveedor = session::getInstance()->getAttribute('form_' . proveedorTableClass::getNameTable());
+      }
+      /* fields para foraneas */
+      $fields = array(
+          ciudadTableClass::ID,
+          ciudadTableClass::NOM_CIUDAD
+      );
+      $orderBy = array(
+          ciudadTableClass::NOM_CIUDAD
+      );
+      $this->objCiudad = ciudadTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+
       $this->defineView('insert', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

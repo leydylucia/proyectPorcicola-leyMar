@@ -11,11 +11,21 @@ use mvc\validator\animalValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
+ * Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
  *
  * @author Alexandra Florez
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+   * @return $genero_id=> genero (bigint)
+   * @return $fecha_nacimiento=> fecha nacimiento (date)
+   * @return $estado_id=> estado (bigint)
+   * @return $lote_id=> lote(bigint)
+   * @return $raza_id=> raza(bigint)
+   * @return $nombre_cerdo =>nombre del cerdo (varchar)
+   * todas estos datos se pasa en la varible @var $data
+   * ** */
 
   public function execute() {
     try {
@@ -28,11 +38,10 @@ class createActionClass extends controllerClass implements controllerActionInter
         $raza_id = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::RAZA_ID, true));
         $nombre_cerdo = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::NOMBRE_CERDO, true));
         //$id_madre = request::getInstance()->getPost(hojaVidaTableClass::getNameField(hojaVidaTableClass::ID_MADRE, true));
-       
 //        $this->Validate($genero, $id_madre);
 
-        validator::validateInsert();  /*para validas los campos de la tabla y se redirige al validator*/
-        
+        validator::validateInsert();  /* para validas los campos de la tabla y se redirige al validator */
+
         $data = array(
             hojaVidaTableClass::GENERO_ID => $genero_id,
             hojaVidaTableClass::FECHA_NACIMIENTO => $fecha_nacimiento,
@@ -40,12 +49,12 @@ class createActionClass extends controllerClass implements controllerActionInter
             hojaVidaTableClass::LOTE_ID => $lote_id,
             hojaVidaTableClass::RAZA_ID => $raza_id,
             hojaVidaTableClass::NOMBRE_CERDO => $nombre_cerdo
-            //hojaVidaTableClass::ID_MADRE => $id_madre
+                //hojaVidaTableClass::ID_MADRE => $id_madre
         );
 
         hojaVidaTableClass::insert($data);
         session::getInstance()->setSuccess('Registro Exitoso');
-        
+
         log::register('insertar', hojaVidaTableClass::getNameTable());
 
         routing::getInstance()->redirect('animal', 'index');
@@ -55,7 +64,6 @@ class createActionClass extends controllerClass implements controllerActionInter
     } catch (PDOException $exc) {
       routing::getInstance()->redirect('shfSecurity', 'exception');
       session::getInstance()->setFlash('exc', '$exc');
-      
     }
   }
 
@@ -98,5 +106,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //      routing::getInstance()->forward('animal', 'insert');
 //    }
 //  }
-
 }

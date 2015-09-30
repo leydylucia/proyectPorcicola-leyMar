@@ -29,7 +29,7 @@ class updateProvActionClass extends controllerClass implements controllerActionI
         $ciudad_id = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::CIUDAD_ID, true));
 
         // $this->Validate($nombre, $apellido, $direccion, $correo, $telefono);
-        
+
         validator::validateEdit();
 
         $ids = array(
@@ -135,5 +135,4 @@ class updateProvActionClass extends controllerClass implements controllerActionI
 //      routing::getInstance()->forward('proveedor', 'editProv');
 //    }
 //  }
-
 }

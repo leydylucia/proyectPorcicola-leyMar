@@ -17,43 +17,47 @@ use mvc\i18n\i18nClass as i18n;
  * @author leydy lucia castillo
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las returniables 
+   * @return $user=> usuario =>(string)
+   * @return $pass1=> password =>(string)
+   * * todas estos datos se pasa en la varible @var $data */
 
-    public function execute() {
-        try {
-            if (request::getInstance()->isMethod('POST')) {
+  public function execute() {
+    try {
+      if (request::getInstance()->isMethod('POST')) {
 
-                $id = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true));
-                $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
+        $id = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true));
+        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
 
-                if (request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true))) {
-                    $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
-                }
+        if (request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true))) {
+          $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
+        }
 
-                $ids = array(
-                    usuarioTableClass::ID => $id
-                );
+        $ids = array(
+            usuarioTableClass::ID => $id
+        );
 
 //                $this->Validate($usuario);
-                validator::validateEdit();
+        validator::validateEdit(); /* para validas los campos de la tabla y se redirige al validator */
 
-                $data = array(
-                usuarioTableClass::USER => $usuario,
+        $data = array(
+            usuarioTableClass::USER => $usuario,
 //                usuarioTableClass::PASSWORD => $password
-                usuarioTableClass::PASSWORD => md5($pass1)
-                );
+            usuarioTableClass::PASSWORD => md5($pass1)
+        );
 
-                usuarioTableClass::update($ids, $data);
-                session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
-                routing::getInstance()->redirect('default', 'index');
-            }else{
+        usuarioTableClass::update($ids, $data);
+        session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
+        routing::getInstance()->redirect('default', 'index');
+      } else {
 
-            routing::getInstance()->redirect('default', 'index');
-            }
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
-        }
+        routing::getInstance()->redirect('default', 'index');
+      }
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 //    private function Validate($usuario) {
 //        $flag = false;

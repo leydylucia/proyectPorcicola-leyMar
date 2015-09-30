@@ -19,53 +19,53 @@ use mvc\i18n\i18nClass as i18n;
  * @category modulo sacrificio venta
  */
 class createSacrificioventaActionClass extends controllerClass implements controllerActionInterface {
-    /* public function execute inicializa las returniables 
-     * @return $valor=> valor
-     * @return $tipoVenta=> tipo venta
-     * @return $idCerdo=> id cerdo
-     * * todas estos datos se pasa en la varible @var $data
+  /* public function execute inicializa las returniables 
+   * @return $valor=> valor
+   * @return $tipoVenta=> tipo venta
+   * @return $idCerdo=> id cerdo
+   * * todas estos datos se pasa en la varible @var $data
 
-     * ** */
+   * ** */
 
-    public function execute() {
-        try {
-            if (request::getInstance()->isMethod('POST')) {
+  public function execute() {
+    try {
+      if (request::getInstance()->isMethod('POST')) {
 
-                $valor = trim(request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::VALOR, true)));
-                $tipoVenta = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
-                $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
-                $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
-                $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true));
+        $valor = trim(request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::VALOR, true)));
+        $tipoVenta = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::TIPO_VENTA_ID, true));
+        $idCerdo = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::ID_CERDO, true));
+        $cantidad = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::CANTIDAD, true));
+        $unidad_medida = request::getInstance()->getPost(sacrificiovTableClass::getNameField(sacrificiovTableClass::UNIDAD_MEDIDA_ID, true));
 //                $this->Validate($valor,$idCerdo);/*@ $this->validate para validar campos*/
-                validator::validateInsert();
+        validator::validateInsert();
 
 
-                /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
-                $data = array(
-                    sacrificiovTableClass::VALOR => $valor,
-                    sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
-                    sacrificiovTableClass::ID_CERDO => $idCerdo,
-                    sacrificiovTableClass::CANTIDAD => $cantidad,
-                    sacrificiovTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
-                );
+        /** @return $data recorre el campo  o campos seleccionados de la tabla deseada* */
+        $data = array(
+            sacrificiovTableClass::VALOR => $valor,
+            sacrificiovTableClass::TIPO_VENTA_ID => $tipoVenta,
+            sacrificiovTableClass::ID_CERDO => $idCerdo,
+            sacrificiovTableClass::CANTIDAD => $cantidad,
+            sacrificiovTableClass::UNIDAD_MEDIDA_ID => $unidad_medida,
+        );
 
-                sacrificiovTableClass::insert($data);
+        sacrificiovTableClass::insert($data);
 
-                session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
+        session::getInstance()->setSuccess('Registro Exitoso'); //<?php echo i18n::__('mensaje1')?;/*mensaje de exito*/
 //                 log::register('insertar', sacrificiovTableClass::getNameTable()); //linea de bitacora
-                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
-            } else {
-                routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
-            }
-        } catch (PDOException $exc) {
+        routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+      } else {
+        routing::getInstance()->redirect('sacrificioVenta', 'indexSacrificioVenta');
+      }
+    } catch (PDOException $exc) {
 
-            routing::getInstance()->redirect('sacrificioVenta', 'insertSacrificioVenta');
-            session::getInstance()->setFlash('exc', $exc);
-            //routing::getInstance()->forward('shfSecurity', 'exception');    
-        }
+      routing::getInstance()->redirect('sacrificioVenta', 'insertSacrificioVenta');
+      session::getInstance()->setFlash('exc', $exc);
+      //routing::getInstance()->forward('shfSecurity', 'exception');    
     }
+  }
 
-    /* @ function para validar campos de formulario */
+  /* @ function para validar campos de formulario */
 //    static public function Validate($valor,$idCerdo) {
 //        $flag = false;
 //        

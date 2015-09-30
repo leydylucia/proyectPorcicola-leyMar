@@ -74,5 +74,27 @@ class insumoTableClass extends insumoBaseTableClass {
             throw $exc;
         }
     }
+    
+    public static function getInventario($idInsumo){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. detalleEntradaTableClass::CANTIDAD  . ') ' . ' As total'
+             . '  FROM ' . detalleEntradaTableClass::getNameTable() . ',' . insumoTableClass::getNameTable() . ',' . tipoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  detalleEntradaTableClass::getNameField(detalleEntradaTableClass::INSUMO_ID) . ' = '. insumoTableClass::getNameField(insumoTableClass::ID) . ' AND ' .  insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID) . ' = '. tipoinsumoTableClass::getNameField(tipoinsumoTableClass::ID) .'  '
+             . ' AND ' . insumoTableClass::getNameTable() . '.'. insumoTableClass::ID . ' = ' . $idInsumo. '  '
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
 }

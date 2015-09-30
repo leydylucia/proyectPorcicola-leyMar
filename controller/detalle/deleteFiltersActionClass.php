@@ -9,11 +9,11 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of deleterFilterActionClass esta clase sirve para eliminar filtros
+ * Description of deleterFilterActionClass esta clase sirve para eliminar filtros despues de hacer una consulta
  * 
  *
-  @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
- * @category modulo insumo
+  @author alexandra marcela florez
+ * @category modulo detalle
  */
 class deleteFiltersActionClass extends controllerClass implements controllerActionInterface {
 
@@ -22,7 +22,7 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
             if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
                 session::getInstance()->deleteAttribute('defaultIndexFilters');
             }
-              routing::getInstance()->redirect('detalle', 'index', array(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true)
+              routing::getInstance()->redirect('detalle', 'index', array(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true)/*se le agrega el array por que pasa el id entrada bodega que es de otra tabla*/
                 => request::getInstance()->getGet(detalleEntradaTableClass::getNameField(detalleEntradaTableClass::ENTRADA_BODEGA_ID, true))
 //               array(detalleSalidaTableClass::getNameField(detalleSalidaTableClass::SALIDA_BODEGA_ID, true)
 //                => request::getInstance()->getGet(detalleSalidaTableClass::SALIDA_BODEGA_ID)

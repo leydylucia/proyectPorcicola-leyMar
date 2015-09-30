@@ -43,7 +43,7 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[proveedorTableClass::NOMBRE] = $filter['nombre'];
         }
-        
+
         if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true))) === false) {
 
           if (request::getInstance()->isMethod('POST')) {
@@ -55,7 +55,7 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
             }
           }
         }
-        
+
         if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
           $where[proveedorTableClass::APELLIDO] = $filter['apellido'];
         }
@@ -124,7 +124,7 @@ class indexProvActionClass extends controllerClass implements controllerActionIn
       $this->defineView('index', 'proveedor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
 
-      
+
       routing::getInstance()->redirect('proveedor', 'indexProv');
 //      echo $exc->getMessage();
 //      echo '<br>';

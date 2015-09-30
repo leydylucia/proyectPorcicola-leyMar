@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use hook\log\logHookClass as log;/*linea de la bitacora*/
+use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
  * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
@@ -32,13 +32,11 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
-        
-        log::register('editar',  usuarioTableClass::getNameTable());//linea de bitacora
-   
+
+        log::register('editar', usuarioTableClass::getNameTable()); //linea de bitacora
       } else {
         routing::getInstance()->redirect('default', 'index');
         session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
-        
       }
 //      if (request::getInstance()->isMethod('POST')) {
 //

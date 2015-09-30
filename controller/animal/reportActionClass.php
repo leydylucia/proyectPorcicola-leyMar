@@ -9,7 +9,7 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /*
- * DESCRIPCION DE LA CLASE
+ * Description of  esta clase sirve para realizar los reportes
  * @autor Alexandra Marcela Florez
  */
 
@@ -17,12 +17,12 @@ class reportActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-      /* filtros */
+      /* filtros en reporte */
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
 
-      if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
+        if (isset($filter['genero']) and $filter['genero'] !== null and $filter['genero'] !== '') {
           $where[hojaVIdaTableClass::GENERO_ID] = $filter['genero'];
         }
 //        if (isset($filter['madre']) and $filter['madre'] !== null and $filter['madre'] !== '') {

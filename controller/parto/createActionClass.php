@@ -10,20 +10,24 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\partoValidatorClass as validator;
 //use hook\log\logHookClass as log;
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
+ *  Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ 
  * @category modulo parto
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
   
   /* public function execute inicializa las variables 
-     * @var 
-     * @var 
-     * @var 
-     * @var 
-     * @var 
-     * @var 
+     * @var $fecha_nacimiento=> fecha nacimiento type(string)
+     * @var $num_nacidos=>numero de nacidos type()
+     * @var $num_vivos=>numero vivostype()
+     * @var $num_muertos=>numero muertos type()
+     * @var $num_hembras=>numero hembras type()
+     * @var $num_machos=>numero machos type()
+   * * @var $fecha_montada=>fecha montada type(string)
+   * * @var $id_padre=>identificacion padre type(string)
+   * * @var $hoja_vida_id=>hoja vida id type()
      * ** */
   
 

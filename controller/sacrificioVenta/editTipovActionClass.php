@@ -10,9 +10,10 @@ use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log; /* linea de la bitacora */
 
 /**
- * Description of ejemploClass
+ * Description of editInsumoActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
  *
- *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * * @category sacrificio venta
  */
 class editTipovActionClass extends controllerClass implements controllerActionInterface {
@@ -21,22 +22,19 @@ class editTipovActionClass extends controllerClass implements controllerActionIn
     try {
       if (request::getInstance()->hasGet(tipovTableClass::ID)) {
         $fields = array(
-        tipovTableClass::ID,
-        tipovTableClass::DESC_TIPOV,
-          
+            tipovTableClass::ID,
+            tipovTableClass::DESC_TIPOV,
         );
         $where = array(
-        tipovTableClass::ID => request::getInstance()->getGet(tipovTableClass::ID)
+            tipovTableClass::ID => request::getInstance()->getGet(tipovTableClass::ID)
         );
-        $this->objTipoV= tipovTableClass::getAll($fields, true, null, null, null, null, $where);
+        $this->objTipoV = tipovTableClass::getAll($fields, true, null, null, null, null, $where);
         $this->defineView('editTipov', 'sacrificioVenta', session::getInstance()->getFormatOutput());
         log::register('editar', tipovTableClass::getNameTable()); //linea de bitacora
-        
       } else {
         routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
-        session::getInstance()->setSuccess('el registro se modifico exitosamente');/*mensaje de exito*/
+        session::getInstance()->setSuccess('el registro se modifico exitosamente'); /* mensaje de exito */
       }
-
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

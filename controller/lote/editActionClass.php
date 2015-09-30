@@ -9,10 +9,11 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Alexandra Florez
- */
+ * Description of editActionClass trae datos cuando tiene foraneas y cumplir con
+ * el funcionamiento de modificar datos
+ * @author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo lote
+ * */
 class editActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {

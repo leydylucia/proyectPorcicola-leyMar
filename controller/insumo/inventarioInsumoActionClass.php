@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  * @category modulo insumo
  * @author Leydy Lucia Castillo  <leydylucia@hotmail.com>
  */
-class verInsumoActionClass extends controllerClass implements controllerActionInterface {
+class inventarioInsumoActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -21,18 +21,13 @@ class verInsumoActionClass extends controllerClass implements controllerActionIn
       $fields = array(
           insumoTableClass::ID,
           insumoTableClass::DESC_INSUMO,
-//                insumoTableClass::PRECIO,
-          insumoTableClass::TIPO_INSUMO_ID,
-          insumoTableClass::FECHA_FABRICACION,
-          insumoTableClass::FECHA_VENCIMIENTO,
-          insumoTableClass::PROVEEDOR_ID,
-          insumoTableClass::CREATED_AT
+          insumoTableClass::TIPO_INSUMO_ID
+        
       );
-      $where = array(
-          insumoTableClass::ID => request::getInstance()->getRequest(insumoTableClass::ID)
-      );
-      $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, nULL, $where);
-      $this->defineView('ver', 'insumo', session::getInstance()->getFormatOutput());
+      $where=null;
+      $where[] = '( ' . insumoTableClass::getNameField(insumoTableClass::TIPO_INSUMO_ID ) . ' BETWEEN ' . "1" . " AND " . "2".' )';
+      $this->objInsumo = insumoTableClass::getAll($fields, true, null, null, null, nuLL, $where);
+      $this->defineView('inventarioInsumo', 'insumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

@@ -8,9 +8,11 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\empleadoValidatorClass as validator;
 
 /**
- * Description of ejemploClass
+ *  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
- * @author Alexandra Florez
+ **@author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo empleado
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 

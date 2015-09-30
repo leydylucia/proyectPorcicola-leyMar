@@ -10,42 +10,42 @@ use mvc\validator\tipoVentaValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *@category modulo sacrificio venta
- *@author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+ * Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
+ * @category modulo sacrificio venta
+ * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class updateTipovActionClass extends controllerClass implements controllerActionInterface {
-      /* public function execute inicializa las variable 
-     * @var $desc_tipoV=> descripcion tipo venta
+  /* public function execute inicializa las variable 
+   * @var $desc_tipoV=> descripcion tipo venta
 
-     * ** */
+   * ** */
 
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
 
         $id = request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::ID, true));
-        $desc_tipoV= request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
-       
+        $desc_tipoV = request::getInstance()->getPost(tipovTableClass::getNameField(tipovTableClass::DESC_TIPOV, true));
+
 //         $this->Validate($desc_tipoV);
-           validator::validateEdit();
-        
+        validator::validateEdit();
+
         $ids = array(
-        tipovTableClass::ID => $id
+            tipovTableClass::ID => $id
         );
 
         $data = array(
-        tipovTableClass::DESC_TIPOV => $desc_tipoV,
-           
+            tipovTableClass::DESC_TIPOV => $desc_tipoV,
         );
-      
 
-       tipovTableClass::update($ids, $data);
-       session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
-       routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
-      }else{
 
-      routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
+        tipovTableClass::update($ids, $data);
+        session::getInstance()->setSuccess('Registro se modifico con  Exitoso');
+        routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
+      } else {
+
+        routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();
@@ -55,6 +55,7 @@ class updateTipovActionClass extends controllerClass implements controllerAction
       echo '</pre>';
     }
   }
+
 //  private function Validate($desc_tipoV) {
 //        $flag = false;
 //        if (strlen($desc_tipoV) > tipovTableClass::DESC_TIPOV_LENGTH) {

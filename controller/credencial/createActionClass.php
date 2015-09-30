@@ -11,19 +11,15 @@ use mvc\validator\credencialValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
- * Description of createProvActionClass
+ *  Description of createActionClass esta clase sirve para 
+ *  el create carge datos de la tabla y cumple con la funcion de insertar
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
- * @category modulo proveedor
+ * @category modulo credencial
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
   /* public function execute inicializa las variables 
-   * @return $nombre=> nombre del proveedor (string)
-   * @return $apellido=> apellido del proveedor (string)
-   * @return $direccion=> direccion del proveedor (string)
-   * @return $correo=> correo del proveedor (string)
-   * @return $telefono=> telefono del proveedor (string)
-   * @return $ciudad_id =>ciudad a la que pertenece el proveedor (numeric)
-   * Todas estos datos se pasan en la variable @var $data 
+   * @return $nombre=> nombre del a credencial (string)
+
    * ** */
 
   public function execute() {

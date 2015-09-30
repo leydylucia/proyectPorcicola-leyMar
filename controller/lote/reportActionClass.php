@@ -9,8 +9,10 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /*
- * DESCRIPCION DE LA CLASE
- * @autor Alexandra Marcela Florez
+ * Description of reportActionClass esta clase sirve para realizar los reportes
+ *
+ * @author Alexandra Florez
+ * @category modulo lote
  */
 
 class reportActionClass extends controllerClass implements controllerActionInterface {

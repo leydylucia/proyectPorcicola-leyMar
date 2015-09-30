@@ -8,10 +8,11 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
-/**
- * Description of ejemploClass
- *
-  @author Alexandra Florez
+
+ /**
+ *Description of deleterFilterActionClass esta clase sirve para eliminar filtros
+ *@author Alexandra Florez <alexaflorez88@hotmail.com>
+ * @category modulo entrada bodega
  */
 class deleteFiltersEnActionClass extends controllerClass implements controllerActionInterface {
 

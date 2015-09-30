@@ -26,9 +26,9 @@ class updateCiudadActionClass extends controllerClass implements controllerActio
         $deptoId = request::getInstance()->getPost(ciudadTableClass::getNameField(ciudadTableClass::DEPTO_ID, true));
 
         // $this->Validate($nom_ciudad);
-        
+
         validator::validateEdit();
-        
+
         $ids = array(
             ciudadTableClass::ID => $id
         );
@@ -38,8 +38,8 @@ class updateCiudadActionClass extends controllerClass implements controllerActio
             ciudadTableClass::DEPTO_ID => $deptoId
         );
         ciudadTableClass::update($ids, $data);
-       
-       session::getInstance()->setSuccess('Registro Exitoso');
+
+        session::getInstance()->setSuccess('Registro Exitoso');
 
         routing::getInstance()->redirect('proveedor', 'editCiudad');
       } else {
@@ -78,5 +78,4 @@ class updateCiudadActionClass extends controllerClass implements controllerActio
 //      routing::getInstance()->forward('proveedor', 'editCiudad');
 //    }
 //  }
-
 }

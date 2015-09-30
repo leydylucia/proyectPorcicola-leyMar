@@ -10,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 
 /**
  * Description of verTipoInActionClass  sirve para ver un dato en la grilla
- *@category modulo insumo
+ * @category modulo insumo
  * @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  */
 class verTipoInActionClass extends controllerClass implements controllerActionInterface {
@@ -19,14 +19,14 @@ class verTipoInActionClass extends controllerClass implements controllerActionIn
     try {
 
       $fields = array(
-      tipoInsumoTableClass::ID,
-      tipoInsumoTableClass::DESC_TIPOIN,
-      tipoInsumoTableClass::CREATED_AT
+          tipoInsumoTableClass::ID,
+          tipoInsumoTableClass::DESC_TIPOIN,
+          tipoInsumoTableClass::CREATED_AT
       );
       $where = array(
-      tipoInsumoTableClass::ID=>  request::getInstance()->getRequest(tipoInsumoTableClass::ID)
+          tipoInsumoTableClass::ID => request::getInstance()->getRequest(tipoInsumoTableClass::ID)
       );
-      $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null,null,null,nULL,$where);
+      $this->objTipoin = tipoInsumoTableClass::getAll($fields, true, null, null, null, nULL, $where);
       $this->defineView('verTipoin', 'insumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

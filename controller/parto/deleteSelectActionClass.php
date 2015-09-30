@@ -9,9 +9,10 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description esta cumple una funcion es para el eliminado en masa
  *
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class deleteSelectActionClass extends controllerClass implements controllerActionInterface {
 
@@ -19,7 +20,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
     try {
       if (request::getInstance()->isMethod('POST')) {
         
-        $idsToDelete = request::getInstance()->getPost('chk');
+        $idsToDelete = request::getInstance()->getPost('chk');/*el chk es para escojer varios dator por medio del cheklist*/
         
         foreach ($idsToDelete as $id) {
           $ids = array(

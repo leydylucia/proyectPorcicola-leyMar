@@ -8,8 +8,9 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\credencialValidatorClass as validator;
+
 /**
- * Description of indexProvActionClass
+ * Description of indexActionClass trae datos para visualizarlos en vista indextemplated
  * @author Alexandra Florez <alexaflorez88@hotmail.com>
  * @category modulo credencial
  */
@@ -26,7 +27,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
-        
+
         if (request::getInstance()->hasPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true))) === false) {
 
           if (request::getInstance()->isMethod('POST')) {
@@ -42,8 +43,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[credencialTableClass::NOMBRE] = $filter['nombre'];
         }
-        
-      }
+      }//fin del primer if
       if ((isset($filter['Date1']) and $filter['Date1'] !== null and $filter['Date1'] !== '') and ( isset($filter['Date2']) and $filter['Date2'] !== null and $filter['Date2'] !== '')) {
         $where[credencialTableClass::CREATED_AT] = array(
 //                        date(config::getFormatTimestamp(), strtotime($filter['Date1'])),
@@ -51,7 +51,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $filter['Date1'],
             $filter['Date2']
         );
-      }
+      }//fin del segundo if
 
 
       $fields = array(
@@ -83,8 +83,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
        * @param true Descriptiontrue=> es el borrado logico si lo tienes en la bd pones true sino false
        * ASC => es la forma como se va a ordenar si de forma ascendente o desendente 
        * config::getRowGrid()=> va con el paginado y hace una funcion
-       * @var $this->objInsumo para enviar los datos a la vista      */
-      
+       * @var $this->objCredencial para enviar los datos a la vista      */
+
       $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $this->defineView('index', 'credencial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

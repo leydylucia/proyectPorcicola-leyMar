@@ -9,19 +9,19 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
+ * Description esta cumple una funcion es para el eliminado en filtro
  *
- @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
+  @author Leydy Lucia Castillo Mosquera <leydylucia@hotmail.com>
  * * @category sacrificio venta
  */
 class deleteFiltersTipovActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-    if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
-   session::getInstance()->deleteAttribute('defaultIndexFilters');
-}
-routing::getInstance()->redirect('sacrificioVenta','indexTipov');
+      if (session::getInstance()->hasAttribute('defaultIndexFilters')) {
+        session::getInstance()->deleteAttribute('defaultIndexFilters');
+      }
+      routing::getInstance()->redirect('sacrificioVenta', 'indexTipov');
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

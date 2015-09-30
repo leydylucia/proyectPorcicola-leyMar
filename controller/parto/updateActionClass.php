@@ -10,11 +10,24 @@ use mvc\i18n\i18nClass as i18n;
 use mvc\validator\partoValidatorClass as validator;
 
 /**
- * Description of ejemploClass
+*  Description of updateActionClass esta clase sirve para 
+ *  el update carge datos de la tabla y cumple con la funcion de modificar
  *
  * @author Alexandra Florez
+ * @category modulo parto
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
+  /* public function execute inicializa las variables 
+     * @var $fecha_nacimiento=> fecha nacimiento type(string)
+     * @var $num_nacidos=>numero de nacidos type()
+     * @var $num_vivos=>numero vivostype()
+     * @var $num_muertos=>numero muertos type()
+     * @var $num_hembras=>numero hembras type()
+     * @var $num_machos=>numero machos type()
+   * * @var $fecha_montada=>fecha montada type(string)
+   * * @var $id_padre=>identificacion padre type(string)
+   * * @var $hoja_vida_id=>hoja vida id type()
+     * ** */
 
   public function execute() {
     try {
