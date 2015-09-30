@@ -99,6 +99,7 @@ use mvc\session\sessionClass as session ?>
                     <!--        <li><a href="http://localhost/proyecto/web/index.php/insumo/tipoInsumo"><//?php echo i18n::__('type_product') ?></a></li>-->
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('entrada', 'indexEn') ?>"><?php echo i18n::__('cellar entry') ?></a></li>
                     <li class="dropdown"><a href="<?php echo routing::getInstance()->getUrlWeb('salidaBodega', 'indexSalidaBodega') ?>"><?php echo i18n::__('Hold_Out') ?></a></li>
+                    <li><a href="<?php  echo routing::getInstance()->getUrlWeb('insumo', 'inventarioInsumo') ?> ">inventario</a></li>
                 </ul>
             </li>
             
@@ -107,7 +108,7 @@ use mvc\session\sessionClass as session ?>
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php  echo routing::getInstance()->getUrlWeb('reporte', 'index') ?> "><?php  echo i18n::__('Report') ?></a></li>
-                <li><a href="<?php  echo routing::getInstance()->getUrlWeb('insumo', 'inventarioInsumo') ?> ">inventario</a></li>
+                
                 <li><a href="#"><i class="glyphicon glyphicon-user"> <?php echo session::getInstance()->getUserName() ?></i></a></li>
                 <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?> "><?php echo i18n::__('session') ?></a></li>
                 <li class="dropdown">

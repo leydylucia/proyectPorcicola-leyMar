@@ -110,3 +110,12 @@ h2{
 #centrar{
   margin-right:390px;
 }
+
+.inventario{
+  margin-top: 20px;
+}
+.tituloinventario{
+  color: blue;
+  text-align: center;
+  size: 20px;
+}

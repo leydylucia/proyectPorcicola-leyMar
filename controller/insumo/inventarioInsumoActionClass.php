@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of verInsumoActionClass  sirve para ver un dato en la grilla
+ * Description of inventarioInsumoActionClass  sirve para ver los datos en la 
+ * grilla sobre los insumos
  * @category modulo insumo
  * @author Leydy Lucia Castillo  <leydylucia@hotmail.com>
  */
@@ -21,7 +22,8 @@ class inventarioInsumoActionClass extends controllerClass implements controllerA
       $fields = array(
           insumoTableClass::ID,
           insumoTableClass::DESC_INSUMO,
-          insumoTableClass::TIPO_INSUMO_ID
+          insumoTableClass::TIPO_INSUMO_ID,
+          
         
       );
       $where=null;

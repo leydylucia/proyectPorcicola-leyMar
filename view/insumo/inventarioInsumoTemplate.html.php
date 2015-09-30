@@ -8,7 +8,7 @@
 <?php $detalleEntadar = detalleEntradaTableClass::ID ?>
 <?php $tipoInsumo = tipoInsumoTableClass::ID ?>
 
-<div class="container container-fluid">
+<div class="container container-fluid inventario">
 
      
     </div>
@@ -21,7 +21,7 @@
                 <thead>
                     <tr class="info">
                         
-                      <th colspan="2">datos de insumo</th>
+                      <th colspan="2" class="tituloinventario">Inventario De Insumo</th>
                         </tr>
                     <tr class="info">
                         <th><?php echo i18n::__('describe_product') ?></th>    
